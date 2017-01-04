@@ -32,7 +32,7 @@ public class MeetingTime {
                 return true;
             } else if (endTime.compareTo(other.startTime) > 0 && endTime.compareTo(other.endTime) < 0) {
                 return true;
-            } else if (startTime.compareTo(other.startTime) < 0 && endTime.compareTo(other.startTime) > 0) {
+            } else if (startTime.compareTo(other.startTime) <= 0 && endTime.compareTo(other.startTime) >= 0) {
                 return true;
             } else {
                 return false;
