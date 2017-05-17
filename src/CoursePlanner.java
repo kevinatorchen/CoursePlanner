@@ -15,7 +15,7 @@ public class CoursePlanner {
         MeetingTime[] APPH1040DsectionMTs = {new MeetingTime(1, new Time(14, 5), new Time(14, 55)), new MeetingTime(3, new Time(14, 5), new Time(14, 55))};
         Section APPH1040D = new Section("D", APPH1040DsectionMTs);
         Section[] APPH1040Sections = {APPH1040A, APPH1040B, APPH1040C, APPH1040D};
-        Course APPH1040 = new Course("APPH 1040", APPH1040Sections);
+        Course APPH1040 = new SingleCourse("APPH 1040", APPH1040Sections);
         for (Section currentSection: APPH1040.getSections()) {
             currentSection.setCourse(APPH1040);
         }
@@ -25,7 +25,7 @@ public class CoursePlanner {
         MeetingTime[] ENGL1102BSectionMTs = {new MeetingTime(2, new Time(15, 35), new Time(15, 05)), new MeetingTime(16, new Time(16, 35), new Time(16, 5))};
         Section ENGL1102B = new Section("B", ENGL1102BSectionMTs);
         Section[] ENGL1102Sections = {ENGL1102A, ENGL1102B};
-        Course ENGL1102 = new Course("ENGL 1102", ENGL1102Sections);
+        Course ENGL1102 = new SingleCourse("ENGL 1102", ENGL1102Sections);
         for (Section currentSection: ENGL1102.getSections()) {
             currentSection.setCourse(ENGL1102);
         }
