@@ -32,32 +32,39 @@ public class CoursePlanner {
 
         Course[] courses = {APPH1040, ENGL1102};
 
-        planCourses(courses);
+        ArrayList<ArrayList<Section>> schedules = planCourses(courses);
+
+        //Delete below print statements in final version. Instead, use "schedules" directly.
+        for (ArrayList<Section> currentSchedule: schedules) {
+            System.out.println(Arrays.toString(currentSchedule.toArray()));
+        }
     }
 
-    public static ArrayList<Section> planCourses(Course[] courses) {
+    public static ArrayList<ArrayList<Section>> planCourses(Course[] courses) {
         Arrays.sort(courses);
-        ArrayList<Section> schedule = new ArrayList<>();
-        planCourses(courses, 0, schedule);
-        return schedule;
+        ArrayList<Section> currentSchedule = new ArrayList<>();
+        ArrayList<ArrayList<Section>> allSchedules = new ArrayList<>();
+        planCourses(courses, 0, currentSchedule, allSchedules);
+        return allSchedules;
     }
 
-    public static void planCourses(Course[] courses, int currentCourse, ArrayList<Section> schedule) {
+    public static void planCourses(Course[] courses, int currentCourse, ArrayList<Section> currentSchedule,
+                                   ArrayList<ArrayList<Section>> allSchedules) {
         if (currentCourse >= courses.length) {
-            System.out.println(Arrays.toString(schedule.toArray()));
+            allSchedules.add((ArrayList<Section>) currentSchedule.clone());
         } else {
             for (Section currentSection: courses[currentCourse].getSections()) {
                 boolean conflicts = false;
-                for (Section sectionInSchedule: schedule) {
+                for (Section sectionInSchedule: currentSchedule) {
                     if (currentSection.conflictsWith(sectionInSchedule)) {
                         conflicts = true;
                         break;
                     }
                 }
                 if (!conflicts) {
-                    schedule.add(currentSection);
-                    planCourses(courses, currentCourse + 1, schedule);
-                    schedule.remove(schedule.size() - 1);
+                    currentSchedule.add(currentSection);
+                    planCourses(courses, currentCourse + 1, currentSchedule, allSchedules);
+                    currentSchedule.remove(currentSchedule.size() - 1);
                 }
             }
         }
