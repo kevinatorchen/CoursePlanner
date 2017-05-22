@@ -72,6 +72,9 @@ public class Schedule extends ListFragment {
     changes color theme to GT color theme for nav view header
     ****Proper implementation for persistense for courses.***
     ****Performance issues for ListView***** FIXED??
+    CHANGE ICON!!!!!! THE NAV VIEW
+    SCHEDULE VISUAL CHANGE???
+    Feedback screen.
     NOTE: not accounting for sat sunday classes if they exists.
 
     BUGS; drawing more sections than necessary!!!!!! FIXED
