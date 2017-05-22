@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +30,7 @@ import java.util.Set;
  * Created by Myo on 5/18/2017.
  */
 
-public class Schedule extends ListFragment {
+public class ScheduleVisualList extends ListFragment {
 
 
 
@@ -50,7 +51,7 @@ public class Schedule extends ListFragment {
         Set<Course> courselist = student.getCoursesList();
         CoursePlanner.planCourses(courselist.toArray(new Course[courselist.size()]));
         ArrayList<ArrayList<Section>> al = new ArrayList<>();
-        for(ArrayList<Section> section: CoursePlanner.scheduleList) {
+        for (ArrayList<Section> section: CoursePlanner.scheduleList) {
             al.add(section);
         }
         adapter = new ScheduleAdapter(getContext(), al);

@@ -1,6 +1,5 @@
 package com.example.myothiha09.coursehelper.controller;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
@@ -12,11 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +19,6 @@ import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Student;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,7 +99,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_select_classes) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new AddClass()).commit();
         } else if (id == R.id.nav_schedules) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new Schedule()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScheduleOverviewRecycler()).commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -149,7 +142,9 @@ public class MainActivity extends AppCompatActivity
             }
         } else if (v.getId() == R.id.makeSchedule) {
             navigationView.setCheckedItem(R.id.nav_schedules);
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new Schedule()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScheduleOverviewRecycler()).commit();
+        } else if (v.getId() == R.id.showAllVisually) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScheduleVisualList()).commit();
         }
     }
     public void showCategoryChooser() {

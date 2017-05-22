@@ -64,8 +64,5 @@ public class Model {
         list.put("English", new ArrayList<Course>());
         list.get("English").add(ENGL1102);
 
-
-
-
     }
 }

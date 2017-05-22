@@ -58,7 +58,7 @@ public class ScheduleAdapter extends ArrayAdapter<ArrayList<Section>> {
         ArrayList<Section> current = list.get(position);
         TextView tv = (TextView) rowView.findViewById(R.id.textTitle);
         int title = position + 1;
-        tv.setText("Schedule " + title);
+        tv.setText("ScheduleVisualList " + title);
         makeTimeTable(current);
         return rowView;
     }
