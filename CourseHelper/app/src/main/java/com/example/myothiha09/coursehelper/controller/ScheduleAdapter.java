@@ -176,6 +176,7 @@ public class ScheduleAdapter extends ArrayAdapter<ArrayList<Section>> {
                                         "Course Section: " + x.getName() + "\n" +
                                         "Course Prof: " + x.getProf() +"\n" +
                                         "Course CRN: " + x.getCrn() +"\n" +
+                                        "Course Location: " + x.getLocation() +
                                         "Course MeetingTimes: " + "\n" + meetingTimes)
                                 .neutralText("OK");
 

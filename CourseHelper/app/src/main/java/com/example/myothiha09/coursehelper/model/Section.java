@@ -6,6 +6,7 @@ public class Section {
     private MeetingTime[] meetingTimes;
     private int crn;
     private String prof;
+    private String location;
 
     public Section(String name, MeetingTime[] meetingTimes) {
         this.name = name;
@@ -68,5 +69,8 @@ public class Section {
     @Override
     public String toString() {
         return "Course: " + course.getName() + ", Section: " + name + ", CRN: " + crn;
+    }
+    public String getLocation() {
+        return location;
     }
 }
