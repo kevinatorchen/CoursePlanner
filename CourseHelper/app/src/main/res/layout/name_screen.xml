@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#06D4AD"
+    android:background="@color/background_color"
     android:gravity="center_vertical|center_horizontal"
     android:orientation="vertical">
 
@@ -13,7 +13,7 @@
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:text="Input your Name"
-        android:textColor="@android:color/white"
+        android:textColor="@color/font_color"
         android:textSize="24sp" />
 
     <EditText
@@ -23,7 +23,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/font_color"
         android:textSize="16sp" />
 
     <Button
@@ -35,5 +35,5 @@
         android:elevation="24dp"
         android:onClick="onClick"
         android:text="Next"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/font_color" />
 </LinearLayout>

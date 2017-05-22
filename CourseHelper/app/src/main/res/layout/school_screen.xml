@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFDB01"
+    android:background="@color/background_color"
     android:gravity="center_vertical"
     android:orientation="vertical">
 
@@ -13,7 +13,7 @@
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:text="Input your School"
-        android:textColor="@android:color/black"
+        android:textColor="@color/font_color"
         android:textSize="24sp" />
 
     <EditText
@@ -26,7 +26,7 @@
         android:textAlignment="center"
         android:text="Georgia Tech"
         android:enabled="false"
-        android:textColor="@android:color/black"
+        android:textColor="@color/font_color"
         android:textSize="16sp" />
 
     <Button
@@ -38,6 +38,6 @@
         android:elevation="24dp"
         android:onClick="onClick"
         android:text="Next"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/font_color" />
 
 </LinearLayout>
