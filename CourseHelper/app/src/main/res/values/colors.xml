@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#303F9F</color>
+    <color name="medium_dark_gray">#FF424242</color>
+    <color name="medium_gray">#757575</color>
+    <color name="strong_blue">#FF1A237E</color>
+    <color name="course1">#FF1A237E</color>
+    <color name="course2">#8e24aa</color>
+    <color name="course3">#FF1A237E</color>
+    <color name="course4">#FF1A237E</color>
+    <color name="course5">#FF1A237E</color>
+    <color name="course6">#FF1A237E</color>
+    <color name="course7">#FF1A237E</color>
+    <color name="course8">#FF1A237E</color>
+    <color name="course9">#FF1A237E</color>
+    <color name="course10">#FF1A237E</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
