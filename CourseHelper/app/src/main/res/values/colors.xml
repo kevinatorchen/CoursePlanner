@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#303F9F</color>
     <color name="medium_dark_gray">#FF424242</color>
-    <color name="medium_gray">#757575</color>
+    <color name="medium_gray">#e0e0e0</color>
     <color name="strong_blue">#FF1A237E</color>
     <color name="course1">#1a237e</color>
     <color name="course2">#4a148c</color>

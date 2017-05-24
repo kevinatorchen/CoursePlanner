@@ -21,6 +21,7 @@
             android:name=".controller.MainActivity"
             android:label="CoureHelper"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".controller.ScheduleIndividualDetail"></activity>
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.myothiha09.coursehelper.R;
@@ -35,6 +36,9 @@ public class ScheduleIndividualDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schedule_screen);
         list = ScheduleOverviewRecycler.getCurrent();
+        Toast.makeText(getApplicationContext(), "Click back to go back", Toast.LENGTH_LONG).show();
+        TextView tv = (TextView) findViewById(R.id.textTitle);
+        tv.setText(ScheduleOverviewRecycler.getScheduleNumber());
         makeTimeTable(list);
     }
 
