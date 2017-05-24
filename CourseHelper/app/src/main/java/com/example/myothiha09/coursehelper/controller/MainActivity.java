@@ -2,6 +2,8 @@ package com.example.myothiha09.coursehelper.controller;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity
     private Student student;
     private NavigationView navigationView;
     int index = 0;
+    int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +63,20 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            FragmentManager fm = getSupportFragmentManager();
+            if (fm.getBackStackEntryCount() > 0) {
+                fm.popBackStack();
+            } else {
+                if (count == 1) super.onBackPressed();
+                count++;
+                Boast.makeText(getApplicationContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        count = 0;
+                    }
+                }, 2000);
+            }
         }
     }
 
@@ -97,9 +113,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_select_classes) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new AddClass()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new AddClass()).addToBackStack(null).commit();
         } else if (id == R.id.nav_schedules) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScheduleOverviewRecycler()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScheduleOverviewRecycler()).addToBackStack(null).commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -135,16 +151,16 @@ public class MainActivity extends AppCompatActivity
     public void onClickMain(View v) {
         if (v.getId() == R.id.addClass) {
             if (student.getCoursesList().size() >= 10) {
-                Toast.makeText(getApplicationContext(), "You cannot have more than 10 classes", Toast.LENGTH_LONG).show();
+                Boast.makeText(getApplicationContext(), "You cannot have more than 10 classes", Toast.LENGTH_LONG).show();
             }
             else {
                 showCategoryChooser();
             }
         } else if (v.getId() == R.id.makeSchedule) {
             navigationView.setCheckedItem(R.id.nav_schedules);
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScheduleOverviewRecycler()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScheduleOverviewRecycler()).addToBackStack(null).commit();
         } else if (v.getId() == R.id.showAllVisually) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScheduleVisualList()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScheduleVisualList()).addToBackStack(null).commit();
         }
     }
     public void showCategoryChooser() {

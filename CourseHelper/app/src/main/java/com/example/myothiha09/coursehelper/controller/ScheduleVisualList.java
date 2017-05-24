@@ -40,7 +40,7 @@ public class ScheduleVisualList extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.list_schedule, container, false);
-        Toast.makeText(getActivity(), "Click the course to view details", Toast.LENGTH_LONG).show();
+        Boast.makeText(getActivity(), "Click the course to view details", Toast.LENGTH_LONG).show();
         return view;
     }
 

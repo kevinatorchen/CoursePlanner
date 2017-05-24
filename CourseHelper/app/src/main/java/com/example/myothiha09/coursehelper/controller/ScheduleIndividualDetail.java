@@ -36,7 +36,7 @@ public class ScheduleIndividualDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schedule_screen);
         list = ScheduleOverviewRecycler.getCurrent();
-        Toast.makeText(getApplicationContext(), "Click back to go back", Toast.LENGTH_LONG).show();
+        Boast.makeText(getApplicationContext(), "Click back to go back", Toast.LENGTH_LONG).show();
         TextView tv = (TextView) findViewById(R.id.textTitle);
         tv.setText(ScheduleOverviewRecycler.getScheduleNumber());
         makeTimeTable(list);
