@@ -2,6 +2,7 @@ package com.example.myothiha09.coursehelper.controller;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,7 +100,7 @@ public class ScheduleAdapter extends ArrayAdapter<ArrayList<Section>> {
                         TextView tv = new TextView(getContext());
                         tv.setTextColor(getContext().getResources().getColor(R.color.white));
                         tv.setText(tempCourse.getName());
-                        tv.setTextSize(11);
+                        tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.courseSize));
                         tv.setPadding(15, 15, 0, 0);
                         if (time.getStartTime().getMinute() != 5) {
                             switch (time.getStartTime().getHour()) {

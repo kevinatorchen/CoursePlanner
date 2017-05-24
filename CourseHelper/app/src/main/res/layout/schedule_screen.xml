@@ -173,10 +173,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="0dp"
+                        android:layout_marginTop="@dimen/dp7am"
                         android:gravity="center"
                         android:text="@string/time7am"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time8amTextView"
@@ -184,10 +184,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginTop="@dimen/dp8am"
                         android:gravity="center"
                         android:text="@string/time8am"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time9amTextView"
@@ -195,10 +195,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="120dp"
+                        android:layout_marginTop="@dimen/dp9am"
                         android:gravity="center"
                         android:text="@string/time9am"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time10amTextView"
@@ -206,10 +206,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="180dp"
+                        android:layout_marginTop="@dimen/dp10am"
                         android:gravity="center"
                         android:text="@string/time10am"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time11amTextView"
@@ -217,10 +217,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="240dp"
+                        android:layout_marginTop="@dimen/dp11am"
                         android:gravity="center"
                         android:text="@string/time11am"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time12pmTextView"
@@ -228,10 +228,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="300dp"
+                        android:layout_marginTop="@dimen/dp12pm"
                         android:gravity="center"
                         android:text="@string/time12pm"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time1pmTextView"
@@ -239,10 +239,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="360dp"
+                        android:layout_marginTop="@dimen/dp1pm"
                         android:gravity="center"
                         android:text="@string/time1pm"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time2pmTextView"
@@ -250,10 +250,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="420dp"
+                        android:layout_marginTop="@dimen/dp2pm"
                         android:gravity="center"
                         android:text="@string/time2pm"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time3pmTextView"
@@ -261,10 +261,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="480dp"
+                        android:layout_marginTop="@dimen/dp3pm"
                         android:gravity="center"
                         android:text="@string/time3pm"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time4pmTextView"
@@ -272,10 +272,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="540dp"
+                        android:layout_marginTop="@dimen/dp4pm"
                         android:gravity="center"
                         android:text="@string/time4pm"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time5pmTextView"
@@ -283,10 +283,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="600dp"
+                        android:layout_marginTop="@dimen/dp5pm"
                         android:gravity="center"
                         android:text="@string/time5pm"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time6pmTextView"
@@ -294,10 +294,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="660dp"
+                        android:layout_marginTop="@dimen/dp6pm"
                         android:gravity="center"
                         android:text="@string/time6pm"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time7pmTextView"
@@ -305,10 +305,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="720dp"
+                        android:layout_marginTop="@dimen/dp7pm"
                         android:gravity="center"
                         android:text="@string/time7pm"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
 
                     <TextView
                         android:id="@+id/time8pmTextView"
@@ -316,10 +316,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="6dp"
-                        android:layout_marginTop="780dp"
+                        android:layout_marginTop="@dimen/dp8pm"
                         android:gravity="center"
                         android:text="@string/time8pm"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/hourSize" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -348,6 +348,8 @@
 
                     <include
                         layout="@layout/calendar_zebra"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true" />
 
