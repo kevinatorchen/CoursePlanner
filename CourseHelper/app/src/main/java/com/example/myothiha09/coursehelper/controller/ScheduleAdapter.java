@@ -54,8 +54,8 @@ public class ScheduleAdapter extends ArrayAdapter<ArrayList<Section>> {
     public void makeTimeTable(ArrayList<Section> schedule) {
         int hourHeight = (int) getContext().getResources().getDimension(R.dimen.hourHeight);
         int hour30Height = (int) getContext().getResources().getDimension(R.dimen.hour30Height);
-        Set<Course> set = Model.student.getCoursesList();
-        Course[] courseList = set.toArray(new Course[set.size()]);
+        ArrayList<Course> coursesList = Model.student.getCoursesList();
+        Course[] courseList = coursesList.toArray(new Course[coursesList.size()]);
         int color = getContext().getResources().getColor(R.color.colorAccent);
         Course tempCourse;
         int courseArrayLength = courseList.length;

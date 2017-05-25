@@ -34,7 +34,7 @@ public class ScheduleOverviewRecycler extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.schedule_overview, container, false);
         LinearLayout layout = (LinearLayout) view.findViewById(R.id.nested);
-        Set<Course> courseList = Model.student.getCoursesList();
+        ArrayList<Course> courseList = Model.student.getCoursesList();
         Boast.makeText(getContext(), "Click the schedule to view it visually", Toast.LENGTH_LONG).show();
         CoursePlanner.planCourses(courseList.toArray(new Course[courseList.size()]));
         Set<ArrayList<Section>> list = CoursePlanner.scheduleList;

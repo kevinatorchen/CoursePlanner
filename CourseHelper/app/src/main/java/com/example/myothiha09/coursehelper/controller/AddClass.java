@@ -31,13 +31,13 @@ public class AddClass extends ListFragment {
 
     public static CourseListViewAdapter adapter;
     private Student student;
-    Set<Course> courseSet;
+    ArrayList<Course> courseList;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_class_screen, container, false);
-        Boast.makeText(getActivity(), "Click the course to delete it", Toast.LENGTH_LONG).show();
+        Boast.makeText(getActivity(), "Swipe the course to delete it", Toast.LENGTH_LONG).show();
         return view;
     }
 
@@ -45,10 +45,8 @@ public class AddClass extends ListFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         student = Model.student;
-        courseSet = student.getCoursesList();
-        ArrayList<Course> courseArrayList = new ArrayList<>();
-        courseArrayList.addAll(courseSet);
-        adapter = new CourseListViewAdapter(getActivity(), courseArrayList);
+        courseList = student.getCoursesList();
+        adapter = new CourseListViewAdapter(getActivity(), courseList);
         setListAdapter(adapter);
     }
 
@@ -62,15 +60,11 @@ public class AddClass extends ListFragment {
                 .positiveText("Yes").onPositive(new MaterialDialog.SingleButtonCallback() {
             @Override
             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                Set<Course> toBeRemoved = new HashSet<Course>();
-                for(Course x: courseSet) {
-                    if (x.getName().equals(courseName)) {
-                        toBeRemoved.add(x);
+                int size = courseList.size();
+                for (int i = 0; i < size; i++) {
+                    if (courseList.get(i).getName().equals(courseName)) {
+                        courseList.remove(i);
                     }
-                }
-                for (Course x: toBeRemoved) {
-                    adapter.remove(x);
-                    courseSet.remove(x);
                 }
             }
         })

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:elevation="10dp"
+        android:elevation="2dp"
         android:onClick="onClickMain"
         android:text="See Schedules Visually"
         android:textColor="@color/strong_blue" />

@@ -48,7 +48,7 @@ public class ScheduleVisualList extends ListFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Student student = Model.student;
-        Set<Course> courselist = student.getCoursesList();
+        ArrayList<Course> courselist = student.getCoursesList();
         CoursePlanner.planCourses(courselist.toArray(new Course[courselist.size()]));
         ArrayList<ArrayList<Section>> al = new ArrayList<>();
         for (ArrayList<Section> section: CoursePlanner.scheduleList) {

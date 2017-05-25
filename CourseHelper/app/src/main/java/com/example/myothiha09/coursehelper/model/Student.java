@@ -11,12 +11,12 @@ import java.util.Set;
 public class Student {
     private String name;
     private String university;
-    private Set<Course> coursesList;
+    private ArrayList<Course> coursesList;
 
     public Student(String name, String university) {
         this.name = name;
         this.university = university;
-        coursesList = new HashSet<>();
+        coursesList = new ArrayList<>();
     }
 
     public String getName() {
@@ -35,11 +35,11 @@ public class Student {
         this.university = university;
     }
 
-    public Set<Course> getCoursesList() {
+    public ArrayList<Course> getCoursesList() {
         return coursesList;
     }
 
-    public void setCoursesList(Set<Course> coursesList) {
+    public void setCoursesList(ArrayList<Course> coursesList) {
         this.coursesList = coursesList;
     }
 

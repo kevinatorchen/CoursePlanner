@@ -35,4 +35,7 @@ public class CourseListViewAdapter extends ArrayAdapter<Course>{
         courseName.setText(list.get(position).getName());
         return rowView;
     }
+
+    public class ViewHolder {
+    }
 }

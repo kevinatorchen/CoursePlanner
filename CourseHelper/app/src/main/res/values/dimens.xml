@@ -9,6 +9,8 @@
     <dimen name="hour30Height">45dp</dimen>
     <dimen name="dp10">10dp</dimen>
 
+    <dimen name="ic_clear_margin">16dp</dimen>
+
 
     <dimen name="dp7am">0dp</dimen>
     <dimen name="dp8am">30dp</dimen>

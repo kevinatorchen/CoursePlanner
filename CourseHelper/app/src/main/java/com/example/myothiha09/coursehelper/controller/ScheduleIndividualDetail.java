@@ -117,7 +117,7 @@ public class ScheduleIndividualDetail extends AppCompatActivity {
     public void colorize(ArrayList<Section> schedule) {
         int hourHeight = (int) getResources().getDimension(R.dimen.hourHeight);
         int hour30Height = (int) getResources().getDimension(R.dimen.hour30Height);
-        Set<Course> set = Model.student.getCoursesList();
+        ArrayList<Course> set = Model.student.getCoursesList();
         Course[] courseList = set.toArray(new Course[set.size()]);
         int color = getResources().getColor(R.color.colorAccent);
         Course tempCourse = null;
