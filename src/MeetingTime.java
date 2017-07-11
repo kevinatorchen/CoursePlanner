@@ -3,19 +3,19 @@
  */
 public class MeetingTime {
     //0 = Monday, 7 = Sunday
-    private int dayOfWeek;
+    private int[] daysOfWeek;
     private Time startTime;
     private Time endTime;
 
 
-    public MeetingTime(int dayOfWeek, Time startTime, Time endTime) {
-        this.dayOfWeek = dayOfWeek;
+    public MeetingTime(int[] daysOfWeek, Time startTime, Time endTime) {
+        this.daysOfWeek = daysOfWeek;
         this.startTime = startTime;
         this.endTime = endTime;
     }
 
-    public int getDayOfWeek() {
-        return dayOfWeek;
+    public int[] getDaysOfWeek() {
+        return daysOfWeek;
     }
 
     public Time getStartTime() {
