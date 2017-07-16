@@ -30,8 +30,7 @@ public class DoubleCourse extends Course {
                     meetingTimes[i] = currentSubsectionMT[j];
                 }
                 Section newSection = new Section(name, meetingTimes);
-                individualSections[k] = newSection;
-                k++;
+                individualSections[k++] = newSection;
             }
         }
     }

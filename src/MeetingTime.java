@@ -53,6 +53,14 @@ public class MeetingTime {
             builder.append("F/");
         }
         builder.deleteCharAt(builder.length() - 1);
+        builder.append(" ");
+        builder.append(startTime.getHour());
+        builder.append(":");
+        builder.append(startTime.getMinute());
+        builder.append("-");
+        builder.append(endTime.getHour());
+        builder.append(":");
+        builder.append(endTime.getMinute());
         return builder.toString();
     }
 }
