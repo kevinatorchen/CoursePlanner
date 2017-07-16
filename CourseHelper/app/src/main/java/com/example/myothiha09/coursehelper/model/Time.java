@@ -1,9 +1,7 @@
 package com.example.myothiha09.coursehelper.model;
-
 /**
- * Created by Myo on 5/18/2017.
+ * Created by Kevin on 1/3/2017.
  */
-
 public class Time implements Comparable<Time> {
     private int hour;
     private int minute;
@@ -15,12 +13,6 @@ public class Time implements Comparable<Time> {
 
     public int getHour() {
         return hour;
-    }
-    public String toString() {
-        if (minute/10 != 0)
-        return hour + ": "+ minute;
-
-        return hour + ": 0" + minute;
     }
 
     public int getMinute() {

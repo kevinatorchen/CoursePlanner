@@ -48,15 +48,15 @@ public class ScheduleIndividualDetail extends AppCompatActivity {
         for (Section x : schedule) {
             MeetingTime[] times = x.getMeetingTimes();
             for (MeetingTime time : times) {
-                if (time.getDayOfWeek() == 0) {
+                if ((time.getDaysOfWeek() & 1) != 0) {
                     populateViews(R.id.mondayRelativeLayout);
-                } else if (time.getDayOfWeek() == 1) {
+                } else if ((time.getDaysOfWeek() & 2) != 0) {
                     populateViews(R.id.tuesdayRelativeLayout);
-                } else if (time.getDayOfWeek() == 2) {
+                } else if ((time.getDaysOfWeek() & 4) != 0) {
                     populateViews(R.id.wednesdayRelativeLayout);
-                } else if (time.getDayOfWeek() == 3) {
+                } else if ((time.getDaysOfWeek() & 8) != 0) {
                     populateViews(R.id.thursdayRelativeLayout);
-                } else if (time.getDayOfWeek() == 4) {
+                } else if ((time.getDaysOfWeek() & 16) != 0) {
                     populateViews(R.id.fridayRelativeLayout);
                 }
                 for (int i = 8; i < 21; i++) {
@@ -147,15 +147,15 @@ public class ScheduleIndividualDetail extends AppCompatActivity {
             }
             MeetingTime[] times = x.getMeetingTimes();
             for (MeetingTime time : times) {
-                if (time.getDayOfWeek() == 0) {
+                if ((time.getDaysOfWeek() & 1) != 0) {
                     populateViews(R.id.mondayRelativeLayout);
-                } else if (time.getDayOfWeek() == 1) {
+                } else if ((time.getDaysOfWeek() & 2) != 0) {
                     populateViews(R.id.tuesdayRelativeLayout);
-                } else if (time.getDayOfWeek() == 2) {
+                } else if ((time.getDaysOfWeek() & 4) != 0) {
                     populateViews(R.id.wednesdayRelativeLayout);
-                } else if (time.getDayOfWeek() == 3) {
+                } else if ((time.getDaysOfWeek() & 8) != 0) {
                     populateViews(R.id.thursdayRelativeLayout);
-                } else if (time.getDayOfWeek() == 4) {
+                } else if ((time.getDaysOfWeek() & 16) != 0) {
                     populateViews(R.id.fridayRelativeLayout);
                 }
                 for (int i = 8; i < 21; i++) {

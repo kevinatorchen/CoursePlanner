@@ -1,5 +1,7 @@
 package com.example.myothiha09.coursehelper.model;
-
+/**
+ * Created by Kevin on 1/3/2017.
+ */
 public class Section {
     private Course course;
     private String name;
@@ -12,6 +14,18 @@ public class Section {
         this.name = name;
         this.meetingTimes = meetingTimes;
     }
+
+    /*
+    public boolean conflictsWith(Course other) {
+        if (startTime.compareTo(other.startTime) < 0 && endTime.compareTo(other.startTime) > 0) {
+            return true;
+        } else if (startTime.compareTo(other.endTime) < 0 && endTime.compareTo(other.startTime) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    */
 
     public String getProf() {
         return prof;
@@ -28,23 +42,20 @@ public class Section {
     public void setCrn(int crn) {
         this.crn = crn;
     }
-    /*
-    public boolean conflictsWith(Course other) {
-        if (startTime.compareTo(other.startTime) < 0 && endTime.compareTo(other.startTime) > 0) {
-            return true;
-        } else if (startTime.compareTo(other.endTime) < 0 && endTime.compareTo(other.startTime) > 0) {
-            return true;
-        } else {
-            return false;
-        }
+
+    public String getLocation() {
+        return location;
     }
-    */
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public Course getCourse() {
+        return course;
+    }
 
     public void setCourse(Course course) {
         this.course = course;
-    }
-    public Course getCourse() {
-        return  course;
     }
 
     public String getName() {
@@ -69,8 +80,5 @@ public class Section {
     @Override
     public String toString() {
         return "Course: " + course.getName() + ", Section: " + name + ", CRN: " + crn;
-    }
-    public String getLocation() {
-        return location;
     }
 }
