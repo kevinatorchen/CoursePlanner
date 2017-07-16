@@ -52,7 +52,7 @@ public class MeetingTime {
         if ((daysOfWeek & 16) != 0) {
             builder.append("F/");
         }
-        String outputString = builder.toString();
-        return outputString.substring(0, outputString.length() - 1);
+        builder.deleteCharAt(builder.length() - 1);
+        return builder.toString();
     }
 }
