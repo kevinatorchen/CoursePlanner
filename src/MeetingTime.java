@@ -2,20 +2,16 @@
  * Created by Kevin on 1/3/2017.
  */
 public class MeetingTime {
-    //0 = Monday, 7 = Sunday
-    private int[] daysOfWeek;
+    //least sig = Mon, second least is Tue, etc.
+    private int daysOfWeek;
     private Time startTime;
     private Time endTime;
 
 
-    public MeetingTime(int[] daysOfWeek, Time startTime, Time endTime) {
+    public MeetingTime(int daysOfWeek, Time startTime, Time endTime) {
         this.daysOfWeek = daysOfWeek;
         this.startTime = startTime;
         this.endTime = endTime;
-    }
-
-    public int[] getDaysOfWeek() {
-        return daysOfWeek;
     }
 
     public Time getStartTime() {
@@ -27,18 +23,36 @@ public class MeetingTime {
     }
 
     public boolean conflictsWith(MeetingTime other) {
-        if (dayOfWeek == other.dayOfWeek) {
-            if (startTime.compareTo(other.startTime) > 0 && startTime.compareTo(other.endTime) < 0) {
-                return true;
-            } else if (endTime.compareTo(other.startTime) > 0 && endTime.compareTo(other.endTime) < 0) {
-                return true;
-            } else if (startTime.compareTo(other.startTime) <= 0 && endTime.compareTo(other.startTime) >= 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
+        if ((daysOfWeek & other.daysOfWeek) == 0) {
             return false;
         }
+        if (this.endTime.compareTo(other.startTime) < 0) {
+            return false;
+        }
+        if (other.endTime.compareTo(this.startTime) < 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        if ((daysOfWeek & 1) != 0) {
+            builder.append("M/");
+        }
+        if ((daysOfWeek & 2) != 0) {
+            builder.append("T/");
+        }
+        if ((daysOfWeek & 4) != 0) {
+            builder.append("W/");
+        }
+        if ((daysOfWeek & 8) != 0) {
+            builder.append("T/");
+        }
+        if ((daysOfWeek & 16) != 0) {
+            builder.append("F/");
+        }
+        String outputString = builder.toString();
+        return outputString.substring(0, outputString.length() - 1);
     }
 }
