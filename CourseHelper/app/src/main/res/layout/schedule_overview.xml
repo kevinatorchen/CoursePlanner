@@ -5,28 +5,33 @@
     android:layout_height="match_parent"
     android:background="@color/medium_gray"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    >
 
-    <Button
-        android:id="@+id/showAllVisually"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+  <Button
+      android:id="@+id/showAllVisually"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@android:color/white"
+      android:elevation="2dp"
+      android:onClick="onClickMain"
+      android:text="See Schedules Visually"
+      android:textColor="@color/strong_blue"
+      style="@style/Widget.AppCompat.Button.Borderless.Colored"
+      />
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="8dp"
+      >
+
+    <LinearLayout
+        android:id="@+id/nested"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:elevation="2dp"
-        android:onClick="onClickMain"
-        android:text="See Schedules Visually"
-        android:textColor="@color/strong_blue" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/nested"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"></LinearLayout>
-    </ScrollView>
+        android:orientation="vertical"
+        ></LinearLayout>
+  </ScrollView>
 
 </LinearLayout>
