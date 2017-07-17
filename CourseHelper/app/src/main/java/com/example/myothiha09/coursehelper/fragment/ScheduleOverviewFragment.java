@@ -60,13 +60,16 @@ public class ScheduleOverviewFragment extends Fragment{
                 String CRN = "CRN: " + section.getCrn();
                 String meetingTimes = "Meeting Times: ";
                 for (int i = 0; i < section.getMeetingTimes().length; i++) {
-                    meetingTimes += section.getMeetingTimes()[0] + " ";
+                    meetingTimes += section.getMeetingTimes()[i] + ", ";
                 }
+                meetingTimes = meetingTimes.substring(0 , meetingTimes.length() - 2);
 
                 TextView line1 = new TextView(getContext());
                 line1.setText(courseName + " " + courseSection + " " + CRN);
+                line1.setTextSize(16);
                 TextView line2 = new TextView(getContext());
                 line2.setText(meetingTimes);
+                line2.setPadding(0, 0, 0, 15);
                 nested.addView(line1);
                 nested.addView(line2);
             }
