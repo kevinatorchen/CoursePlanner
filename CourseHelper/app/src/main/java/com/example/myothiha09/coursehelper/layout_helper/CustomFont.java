@@ -1,4 +1,4 @@
-package com.example.myothiha09.coursehelper.model;
+package com.example.myothiha09.coursehelper.layout_helper;
 
 import android.content.Context;
 import android.graphics.Typeface;

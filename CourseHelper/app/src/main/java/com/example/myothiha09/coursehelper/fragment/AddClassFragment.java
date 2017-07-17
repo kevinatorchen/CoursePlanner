@@ -45,15 +45,18 @@ public class AddClassFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_class_screen, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        initRecycler();
+        setUpItemTouchHelper();
+        setUpAnimationDecoratorHelper();
+        return view;
+    }
+    private void initRecycler() {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         adapter = new TestAdapter(Model.student.getCoursesList());
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
-        setUpItemTouchHelper();
-        setUpAnimationDecoratorHelper();
-        return view;
     }
     private void setUpItemTouchHelper() {
 
