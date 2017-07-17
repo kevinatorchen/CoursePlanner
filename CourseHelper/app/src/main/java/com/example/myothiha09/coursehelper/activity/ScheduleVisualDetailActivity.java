@@ -25,15 +25,15 @@ import java.util.ArrayList;
 public class ScheduleVisualDetailActivity extends AppCompatActivity {
   ArrayList<Section> list;
   int timeInt;
-  View rowView;
   ArrayList<Integer> dayList = new ArrayList<>();
   private RelativeLayout layout;
-  private View view = new View(this);
+  private View view;
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.schedule_screen);
     list = ScheduleOverviewFragment.getCurrent();
+    view = new View(this);
     Boast.makeText(getApplicationContext(), "Click back to go back", Toast.LENGTH_LONG).show();
     TextView tv = (TextView) findViewById(R.id.textTitle);
     tv.setText(ScheduleOverviewFragment.getScheduleNumber());
@@ -258,7 +258,7 @@ public class ScheduleVisualDetailActivity extends AppCompatActivity {
   }
 
   public void populateViews(int x, int y) {
-    layout = (RelativeLayout) rowView.findViewById(x);
+    layout = (RelativeLayout) findViewById(x);
     view = layout.findViewById(y);
   }
 }
