@@ -3,11 +3,11 @@ package com.example.myothiha09.coursehelper.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.controller.Boast;
@@ -16,7 +16,6 @@ import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.MeetingTime;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Section;
-
 import java.util.ArrayList;
 
 /**
@@ -24,185 +23,242 @@ import java.util.ArrayList;
  */
 
 public class ScheduleVisualDetailActivity extends AppCompatActivity {
-    ArrayList<Section> list;
-    private RelativeLayout layout;
-    private View[] view = new View[14];
-    private View[] view30 = new View[14];
+  ArrayList<Section> list;
+  int timeInt;
+  View rowView;
+  ArrayList<Integer> dayList = new ArrayList<>();
+  private RelativeLayout layout;
+  private View view = new View(this);
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.schedule_screen);
-        list = ScheduleOverviewFragment.getCurrent();
-        Boast.makeText(getApplicationContext(), "Click back to go back", Toast.LENGTH_LONG).show();
-        TextView tv = (TextView) findViewById(R.id.textTitle);
-        tv.setText(ScheduleOverviewFragment.getScheduleNumber());
-        makeTimeTable(list);
-    }
+  @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.schedule_screen);
+    list = ScheduleOverviewFragment.getCurrent();
+    Boast.makeText(getApplicationContext(), "Click back to go back", Toast.LENGTH_LONG).show();
+    TextView tv = (TextView) findViewById(R.id.textTitle);
+    tv.setText(ScheduleOverviewFragment.getScheduleNumber());
+    makeTimeTable(list);
+  }
 
-    public void makeTimeTable(ArrayList<Section> schedule) {
-        int hourHeight = (int) getResources().getDimension(R.dimen.hourHeight);
-        int hour30Height = (int) getResources().getDimension(R.dimen.hour30Height);
-        for (Section x : schedule) {
-            MeetingTime[] times = x.getMeetingTimes();
-            for (MeetingTime time : times) {
-                if ((time.getDaysOfWeek() & 1) != 0) {
-                    populateViews(R.id.mondayRelativeLayout);
-                } else if ((time.getDaysOfWeek() & 2) != 0) {
-                    populateViews(R.id.tuesdayRelativeLayout);
-                } else if ((time.getDaysOfWeek() & 4) != 0) {
-                    populateViews(R.id.wednesdayRelativeLayout);
-                } else if ((time.getDaysOfWeek() & 8) != 0) {
-                    populateViews(R.id.thursdayRelativeLayout);
-                } else if ((time.getDaysOfWeek() & 16) != 0) {
-                    populateViews(R.id.fridayRelativeLayout);
-                }
-                for (int i = 8; i < 21; i++) {
-                    if (time.getStartTime().getHour() == i) {
-                        if (time.getStartTime().getMinute() != 5) {
-                            if (time.getStartTime().compareTo(time.getEndTime()) <= 60) {
-                                view30[time.getStartTime().getHour() - 7].getLayoutParams().height = hourHeight;
-                            } else {
-                                view30[time.getStartTime().getHour() - 7].getLayoutParams().height = hour30Height;
-                            }
-                        } else {
-                            if (time.getStartTime().compareTo(time.getEndTime()) <= 60) {
-                                view[time.getStartTime().getHour() - 7].getLayoutParams().height = hourHeight;
-                            } else {
-                                view[time.getStartTime().getHour() - 7].getLayoutParams().height = hour30Height;
-                            }
-                        }
-                        i = 21;
-                    }
-                }
-            }
+  public void makeTimeTable(ArrayList<Section> schedule) {
+    int hourHeight = (int) getResources().getDimension(R.dimen.hourHeight);
+    int hour30Height = (int) getResources().getDimension(R.dimen.hour30Height);
+    ArrayList<Course> coursesList = Model.student.getCoursesList();
+    Course[] courseList = coursesList.toArray(new Course[coursesList.size()]);
+    int color = getResources().getColor(R.color.colorAccent);
+    Course tempCourse;
+    int courseArrayLength = courseList.length;
+    for (Section x : schedule) {
+      tempCourse = x.getCourse();
+      if (courseArrayLength >= 1 && x.getCourse().getName().equals(courseList[0].getName())) {
+        color = getResources().getColor(R.color.course1);
+      } else if (courseArrayLength >= 2 && x.getCourse()
+          .getName()
+          .equals(courseList[1].getName())) {
+        color = getResources().getColor(R.color.course2);
+      } else if (courseArrayLength >= 3 && x.getCourse()
+          .getName()
+          .equals(courseList[2].getName())) {
+        color = getResources().getColor(R.color.course3);
+      } else if (courseArrayLength >= 4 && x.getCourse()
+          .getName()
+          .equals(courseList[3].getName())) {
+        color = getResources().getColor(R.color.course4);
+      } else if (courseArrayLength >= 5 && x.getCourse()
+          .getName()
+          .equals(courseList[4].getName())) {
+        color = getResources().getColor(R.color.course5);
+      } else if (courseArrayLength >= 6 && x.getCourse()
+          .getName()
+          .equals(courseList[5].getName())) {
+        color = getResources().getColor(R.color.course6);
+      } else if (courseArrayLength >= 7 && x.getCourse()
+          .getName()
+          .equals(courseList[6].getName())) {
+        color = getResources().getColor(R.color.course7);
+      } else if (courseArrayLength >= 8 && x.getCourse()
+          .getName()
+          .equals(courseList[7].getName())) {
+        color = getResources().getColor(R.color.course8);
+      } else if (courseArrayLength >= 9 && x.getCourse()
+          .getName()
+          .equals(courseList[8].getName())) {
+        color = getResources().getColor(R.color.course9);
+      } else if (courseArrayLength >= 10 && x.getCourse()
+          .getName()
+          .equals(courseList[9].getName())) {
+        color = getResources().getColor(R.color.course10);
+      }
+      MeetingTime[] times = x.getMeetingTimes();
+      for (MeetingTime time : times) {
+        dayList.clear();
+        if ((time.getDaysOfWeek() & 1) != 0) {
+          dayList.add(R.id.mondayRelativeLayout);
         }
-        colorize(schedule);
-    }
-
-    public void populateViews(int x) {
-        layout = (RelativeLayout) findViewById(x);
-        view[0] = layout.findViewById(R.id.am7);
-        view[1] = layout.findViewById(R.id.am8);
-        view[2] = layout.findViewById(R.id.am9);
-        view[3] = layout.findViewById(R.id.am10);
-        view[4] = layout.findViewById(R.id.am11);
-        view[5] = layout.findViewById(R.id.pm12);
-        view[6] = layout.findViewById(R.id.pm1);
-        view[7] = layout.findViewById(R.id.pm2);
-        view[8] = layout.findViewById(R.id.pm3);
-        view[9] = layout.findViewById(R.id.pm4);
-        view[10] = layout.findViewById(R.id.pm5);
-        view[11] = layout.findViewById(R.id.pm6);
-        view[12] = layout.findViewById(R.id.pm7);
-        view[13] = layout.findViewById(R.id.pm8);
-        view30[0] = layout.findViewById(R.id.am730);
-        view30[1] = layout.findViewById(R.id.am830);
-        view30[2] = layout.findViewById(R.id.am930);
-        view30[3] = layout.findViewById(R.id.am1030);
-        view30[4] = layout.findViewById(R.id.am1130);
-        view30[5] = layout.findViewById(R.id.pm1230);
-        view30[6] = layout.findViewById(R.id.pm130);
-        view30[7] = layout.findViewById(R.id.pm230);
-        view30[8] = layout.findViewById(R.id.pm330);
-        view30[9] = layout.findViewById(R.id.pm430);
-        view30[10] = layout.findViewById(R.id.pm530);
-        view30[11] = layout.findViewById(R.id.pm630);
-        view30[12] = layout.findViewById(R.id.pm730);
-        view30[13] = layout.findViewById(R.id.pm830);
-    }
-
-    public void colorize(ArrayList<Section> schedule) {
-        int hourHeight = (int) getResources().getDimension(R.dimen.hourHeight);
-        int hour30Height = (int) getResources().getDimension(R.dimen.hour30Height);
-        ArrayList<Course> set = Model.student.getCoursesList();
-        Course[] courseList = set.toArray(new Course[set.size()]);
-        int color = getResources().getColor(R.color.colorAccent);
-        Course tempCourse = null;
-        int courseArrayLength = courseList.length;
-        for (Section x : schedule) {
-            tempCourse = x.getCourse();
-            if (courseArrayLength >= 1 && x.getCourse().getName().equals(courseList[0].getName())) {
-                color = getResources().getColor(R.color.course1);
-            } else if (courseArrayLength >= 2 && x.getCourse().getName().equals(courseList[1].getName())) {
-                color = getResources().getColor(R.color.course2);
-            } else if (courseArrayLength >= 3 && x.getCourse().getName().equals(courseList[2].getName())) {
-                color = getResources().getColor(R.color.course3);
-            } else if (courseArrayLength >= 4 && x.getCourse().getName().equals(courseList[3].getName())) {
-                color = getResources().getColor(R.color.course4);
-            } else if (courseArrayLength >= 5 && x.getCourse().getName().equals(courseList[4].getName())) {
-                color = getResources().getColor(R.color.course5);
-            } else if (courseArrayLength >= 6 && x.getCourse().getName().equals(courseList[5].getName())) {
-                color = getResources().getColor(R.color.course6);
-            } else if (courseArrayLength >= 7 && x.getCourse().getName().equals(courseList[6].getName())) {
-                color = getResources().getColor(R.color.course7);
-            } else if (courseArrayLength >= 8 && x.getCourse().getName().equals(courseList[7].getName())) {
-                color = getResources().getColor(R.color.course8);
-            } else if (courseArrayLength >= 9 && x.getCourse().getName().equals(courseList[8].getName())) {
-                color = getResources().getColor(R.color.course9);
-            } else if (courseArrayLength >= 10 && x.getCourse().getName().equals(courseList[9].getName())) {
-                color = getResources().getColor(R.color.course10);
-            }
-            MeetingTime[] times = x.getMeetingTimes();
-            for (MeetingTime time : times) {
-                if ((time.getDaysOfWeek() & 1) != 0) {
-                    populateViews(R.id.mondayRelativeLayout);
-                } else if ((time.getDaysOfWeek() & 2) != 0) {
-                    populateViews(R.id.tuesdayRelativeLayout);
-                } else if ((time.getDaysOfWeek() & 4) != 0) {
-                    populateViews(R.id.wednesdayRelativeLayout);
-                } else if ((time.getDaysOfWeek() & 8) != 0) {
-                    populateViews(R.id.thursdayRelativeLayout);
-                } else if ((time.getDaysOfWeek() & 16) != 0) {
-                    populateViews(R.id.fridayRelativeLayout);
-                }
-                for (int i = 8; i < 21; i++) {
-                    if (time.getStartTime().getHour() == i) {
-                        TextView tv = new TextView(this);
-                        tv.setTextColor(getResources().getColor(R.color.white));
-                        tv.setText(tempCourse.getName());
-                        tv.setTextSize(11);
-                        tv.setPadding(15, 15, 0, 0);
-                        View v;
-                        if (time.getStartTime().getMinute() != 5) {
-                            // tv.setText(tempCourse.getName() + "\n" + "Prof: " + x.getProf() + "\n" + "CRN: " + x.getCrn());
-                            RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) view30[time.getStartTime().getHour() - 7].getLayoutParams();
-                            tv.setY(rlp.topMargin);
-                            view30[time.getStartTime().getHour() - 7].setBackgroundColor(color);
-                            v = view30[time.getStartTime().getHour() - 7];
-                        } else {
-                            //tv.setText(tempCourse.getName() + "\n" + "Prof: " + x.getProf() + "\n" + "CRN: " + x.getCrn());
-                            RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) view[time.getStartTime().getHour() - 7].getLayoutParams();
-                            tv.setY(rlp.topMargin);
-                            view[time.getStartTime().getHour() - 7].setBackgroundColor(color);
-                            v = view[time.getStartTime().getHour() - 7];
-                        }
-                        String meetingTimes = "";
-                        for (MeetingTime mT : times) {
-                            meetingTimes += mT + "\n";
-                        }
-                        final MaterialDialog.Builder dialog = new MaterialDialog.Builder(this);
-                        dialog.title("Course Details")
-                                .content("Course: " + tempCourse.getName() + "\n" +
-                                        "Course Section: " + x.getName() + "\n" +
-                                        "Course Prof: " + x.getProf() + "\n" +
-                                        "Course CRN: " + x.getCrn() + "\n" +
-                                        "Course Location: " + x.getLocation() +
-                                        "Course MeetingTimes: " + "\n" + meetingTimes)
-                                .neutralText("OK");
-
-                        v.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                dialog.show();
-                            }
-                        });
-                        layout.addView(tv);
-                        i = 21;
-                    }
-                }
-            }
+        if ((time.getDaysOfWeek() & 2) != 0) {
+          dayList.add(R.id.tuesdayRelativeLayout);
         }
+        if ((time.getDaysOfWeek() & 4) != 0) {
+          dayList.add(R.id.wednesdayRelativeLayout);
+        }
+        if ((time.getDaysOfWeek() & 8) != 0) {
+          dayList.add(R.id.thursdayRelativeLayout);
+        }
+        if ((time.getDaysOfWeek() & 16) != 0) {
+          dayList.add(R.id.fridayRelativeLayout);
+        }
+        for (Integer day : dayList) {
+          for (int i = 8; i < 21; i++) {
+            if (time.getStartTime().getHour() == i) {
+              TextView tv = new TextView(this);
+              tv.setTextColor(getResources().getColor(R.color.white));
+              tv.setText(tempCourse.getName());
+              tv.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                  getResources().getDimension(R.dimen.courseSize));
+              tv.setPadding(15, 15, 0, 0);
+              if (time.getStartTime().getMinute() != 5) {
+                switch (time.getStartTime().getHour()) {
+                  case 7:
+                    timeInt = R.id.am730;
+                    break;
+                  case 8:
+                    timeInt = R.id.am830;
+                    break;
+                  case 9:
+                    timeInt = R.id.am930;
+                    break;
+                  case 10:
+                    timeInt = R.id.am1030;
+                    break;
+                  case 11:
+                    timeInt = R.id.am1130;
+                    break;
+                  case 12:
+                    timeInt = R.id.pm1230;
+                    break;
+                  case 13:
+                    timeInt = R.id.pm130;
+                    break;
+                  case 14:
+                    timeInt = R.id.pm230;
+                    break;
+                  case 15:
+                    timeInt = R.id.pm330;
+                    break;
+                  case 16:
+                    timeInt = R.id.pm430;
+                    break;
+                  case 17:
+                    timeInt = R.id.pm530;
+                    break;
+                  case 18:
+                    timeInt = R.id.pm630;
+                    break;
+                  case 19:
+                    timeInt = R.id.pm730;
+                    break;
+                  case 20:
+                    timeInt = R.id.pm830;
+                    break;
+                }
+                populateViews(day, timeInt);
+              } else {
+                switch (time.getStartTime().getHour()) {
+                  case 7:
+                    timeInt = R.id.am7;
+                    break;
+                  case 8:
+                    timeInt = R.id.am8;
+                    break;
+                  case 9:
+                    timeInt = R.id.am9;
+                    break;
+                  case 10:
+                    timeInt = R.id.am10;
+                    break;
+                  case 11:
+                    timeInt = R.id.am11;
+                    break;
+                  case 12:
+                    timeInt = R.id.pm12;
+                    break;
+                  case 13:
+                    timeInt = R.id.pm1;
+                    break;
+                  case 14:
+                    timeInt = R.id.pm2;
+                    break;
+                  case 15:
+                    timeInt = R.id.pm3;
+                    break;
+                  case 16:
+                    timeInt = R.id.pm4;
+                    break;
+                  case 17:
+                    timeInt = R.id.pm5;
+                    break;
+                  case 18:
+                    timeInt = R.id.pm6;
+                    break;
+                  case 19:
+                    timeInt = R.id.pm7;
+                    break;
+                  case 20:
+                    timeInt = R.id.pm8;
+                    break;
+                }
+                populateViews(day, timeInt);
+              }
+              if (time.getStartTime().compareTo(time.getEndTime()) <= 60) {
+                view.getLayoutParams().height = hourHeight;
+              } else {
+                view.getLayoutParams().height = hour30Height;
+              }
+              RelativeLayout.LayoutParams rlp =
+                  (RelativeLayout.LayoutParams) view.getLayoutParams();
+              tv.setY(rlp.topMargin);
+              view.setBackgroundColor(color);
+              String meetingTimes = "";
+              for (MeetingTime mT : times) {
+                meetingTimes += mT + "\n";
+              }
+              final MaterialDialog.Builder dialog = new MaterialDialog.Builder(this);
+              dialog.title("Course Details")
+                  .content("Course: "
+                      + tempCourse.getName()
+                      + "\n"
+                      + "Course Section: "
+                      + x.getName()
+                      + "\n"
+                      + "Course Prof: "
+                      + x.getProf()
+                      + "\n"
+                      + "Course CRN: "
+                      + x.getCrn()
+                      + "\n"
+                      + "Course Location: "
+                      + x.getLocation()
+                      + "Course MeetingTimes: "
+                      + "\n"
+                      + meetingTimes)
+                  .neutralText("OK");
 
+              view.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                  dialog.show();
+                }
+              });
+              layout.addView(tv);
+              i = 21;
+            }
+          }
+        }
+      }
     }
+  }
+
+  public void populateViews(int x, int y) {
+    layout = (RelativeLayout) rowView.findViewById(x);
+    view = layout.findViewById(y);
+  }
 }

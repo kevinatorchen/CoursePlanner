@@ -58,7 +58,11 @@ public class ScheduleOverviewFragment extends Fragment{
                 String courseName = "Course: " + section.getCourse().getName();
                 String courseSection = "Section: " + section.getName();
                 String CRN = "CRN: " + section.getCrn();
-                String meetingTimes = "Meeting Times: " + section.getMeetingTimes()[0];
+                String meetingTimes = "Meeting Times: ";
+                for (int i = 0; i < section.getMeetingTimes().length; i++) {
+                    meetingTimes += section.getMeetingTimes()[0] + " ";
+                }
+
                 TextView line1 = new TextView(getContext());
                 line1.setText(courseName + " " + courseSection + " " + CRN);
                 TextView line2 = new TextView(getContext());

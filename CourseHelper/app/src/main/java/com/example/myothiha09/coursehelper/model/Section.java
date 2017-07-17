@@ -71,6 +71,7 @@ public class Section {
         return meetingTimes;
     }
 
+
     public boolean conflictsWith(Section other) {
         for (MeetingTime m1: meetingTimes) {
             for (MeetingTime m2: other.meetingTimes) {
