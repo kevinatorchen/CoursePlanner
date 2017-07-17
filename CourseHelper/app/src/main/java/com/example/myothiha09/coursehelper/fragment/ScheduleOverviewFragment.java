@@ -1,4 +1,4 @@
-package com.example.myothiha09.coursehelper.controller;
+package com.example.myothiha09.coursehelper.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,16 +7,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myothiha09.coursehelper.R;
+import com.example.myothiha09.coursehelper.activity.ScheduleVisualDetailActivity;
+import com.example.myothiha09.coursehelper.controller.Boast;
+import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Section;
-import com.example.myothiha09.coursehelper.model.Student;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -25,7 +26,7 @@ import java.util.Set;
  * Created by Myo on 5/22/2017.
  */
 
-public class ScheduleOverviewRecycler extends Fragment{
+public class ScheduleOverviewFragment extends Fragment{
     static ArrayList<Section> current = new ArrayList<>();
     static String scheduleNumber;
 
@@ -70,7 +71,7 @@ public class ScheduleOverviewRecycler extends Fragment{
                 public void onClick(View v) {
                     current = sections;
                     scheduleNumber = tv.getText().toString();
-                    startActivity(new Intent(getContext(), ScheduleIndividualDetail.class));
+                    startActivity(new Intent(getContext(), ScheduleVisualDetailActivity.class));
                 }
             });
             layout.addView(nested, layoutParams);

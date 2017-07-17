@@ -1,4 +1,4 @@
-package com.example.myothiha09.coursehelper.controller;
+package com.example.myothiha09.coursehelper.fragment;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -36,7 +36,7 @@ import static android.support.v7.content.res.AppCompatResources.getDrawable;
  * Created by Myo on 5/25/2017.
  */
 
-public class AddClassRecycler extends Fragment{
+public class AddClassFragment extends Fragment{
     private static RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     public  static RecyclerView.Adapter adapter;

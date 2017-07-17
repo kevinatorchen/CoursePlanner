@@ -1,10 +1,8 @@
 package com.example.myothiha09.coursehelper.model;
 
-import com.example.myothiha09.coursehelper.controller.RegisterActivity;
-import com.google.gson.Gson;
+import com.example.myothiha09.coursehelper.activity.RegisterActivity;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 
 /**

@@ -1,4 +1,4 @@
-package com.example.myothiha09.coursehelper.controller;
+package com.example.myothiha09.coursehelper.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,6 +19,10 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.myothiha09.coursehelper.R;
+import com.example.myothiha09.coursehelper.controller.Boast;
+import com.example.myothiha09.coursehelper.fragment.ScheduleOverviewFragment;
+import com.example.myothiha09.coursehelper.fragment.ScheduleVisualFragment;
+import com.example.myothiha09.coursehelper.fragment.AddClassFragment;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Student;
@@ -57,7 +61,7 @@ public class MainActivity extends AppCompatActivity
                 setText(student.getName());
         ((TextView) layout.findViewById(R.id.headerUni)).
                 setText(student.getUniversity());
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new AddClassRecycler()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new AddClassFragment()).commit();
     }
 
     @Override
@@ -116,9 +120,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_select_classes) {
-            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit).replace(R.id.container, new AddClassRecycler()).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit).replace(R.id.container, new AddClassFragment()).addToBackStack(null).commit();
         } else if (id == R.id.nav_schedules) {
-            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit).replace(R.id.container, new ScheduleOverviewRecycler()).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit).replace(R.id.container, new ScheduleOverviewFragment()).addToBackStack(null).commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -161,9 +165,9 @@ public class MainActivity extends AppCompatActivity
             }
         } else if (v.getId() == R.id.makeSchedule) {
             navigationView.setCheckedItem(R.id.nav_schedules);
-            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit).replace(R.id.container, new ScheduleOverviewRecycler()).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit).replace(R.id.container, new ScheduleOverviewFragment()).addToBackStack(null).commit();
         } else if (v.getId() == R.id.showAllVisually) {
-            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit).replace(R.id.container, new ScheduleVisualList()).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit).replace(R.id.container, new ScheduleVisualFragment()).addToBackStack(null).commit();
         }
     }
     public void showCategoryChooser() {
@@ -222,9 +226,9 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
                         if (!student.getCoursesList().contains(courseList.get(which))) {
-                            //AddClassRecycler.adapter.add(courseList.get(which));
+                            //AddClassFragment.adapter.add(courseList.get(which));
                             student.addCourse(courseList.get(which));
-                            AddClassRecycler.adapter.notifyDataSetChanged();
+                            AddClassFragment.adapter.notifyDataSetChanged();
                         }
                         return true;
                     }

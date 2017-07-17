@@ -1,40 +1,33 @@
-package com.example.myothiha09.coursehelper.controller;
+package com.example.myothiha09.coursehelper.fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myothiha09.coursehelper.R;
+import com.example.myothiha09.coursehelper.adapter.VisualScheduleAdapter;
+import com.example.myothiha09.coursehelper.controller.Boast;
+import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.model.Course;
-import com.example.myothiha09.coursehelper.model.MeetingTime;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Section;
 import com.example.myothiha09.coursehelper.model.Student;
-import com.example.myothiha09.coursehelper.model.Time;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.Set;
 
 /**
  * Created by Myo on 5/18/2017.
  */
 
-public class ScheduleVisualList extends ListFragment {
+public class ScheduleVisualFragment extends ListFragment {
 
 
 
-    ScheduleAdapter adapter;
+    VisualScheduleAdapter adapter;
 
     @Nullable
     @Override
@@ -54,7 +47,7 @@ public class ScheduleVisualList extends ListFragment {
         for (ArrayList<Section> section: CoursePlanner.scheduleList) {
             al.add(section);
         }
-        adapter = new ScheduleAdapter(getContext(), al);
+        adapter = new VisualScheduleAdapter(getContext(), al);
         setListAdapter(adapter);
     }
 

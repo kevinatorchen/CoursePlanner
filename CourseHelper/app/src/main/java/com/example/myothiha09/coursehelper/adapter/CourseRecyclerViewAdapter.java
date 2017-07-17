@@ -1,4 +1,4 @@
-package com.example.myothiha09.coursehelper.controller;
+package com.example.myothiha09.coursehelper.adapter;
 
 
 import android.support.v7.widget.RecyclerView;

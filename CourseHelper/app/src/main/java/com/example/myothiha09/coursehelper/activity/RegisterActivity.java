@@ -1,9 +1,8 @@
-package com.example.myothiha09.coursehelper.controller;
+package com.example.myothiha09.coursehelper.activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.myothiha09.coursehelper.R;
+import com.example.myothiha09.coursehelper.fragment.NameFragment;
+import com.example.myothiha09.coursehelper.fragment.SchoolFragment;
 
 public class RegisterActivity extends AppCompatActivity {
     public static SharedPreferences prefs;

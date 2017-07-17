@@ -1,4 +1,4 @@
-package com.example.myothiha09.coursehelper.controller;
+package com.example.myothiha09.coursehelper.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -24,7 +24,7 @@ import java.util.Set;
  * Created by Myo on 5/21/2017.
  */
 
-public class ScheduleAdapter extends ArrayAdapter<ArrayList<Section>> {
+public class VisualScheduleAdapter extends ArrayAdapter<ArrayList<Section>> {
     final Context context;
     final ArrayList<ArrayList<Section>> list;
     int day;
@@ -33,7 +33,7 @@ public class ScheduleAdapter extends ArrayAdapter<ArrayList<Section>> {
     private RelativeLayout layout;
     private View view = new View(getContext());
 
-    public ScheduleAdapter(Context context, ArrayList<ArrayList<Section>> list) {
+    public VisualScheduleAdapter(Context context, ArrayList<ArrayList<Section>> list) {
         super(context, -1, list);
         this.context = context;
         this.list = list;

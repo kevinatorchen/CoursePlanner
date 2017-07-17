@@ -1,7 +1,6 @@
-package com.example.myothiha09.coursehelper.controller;
+package com.example.myothiha09.coursehelper.activity;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,21 +10,20 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.myothiha09.coursehelper.R;
+import com.example.myothiha09.coursehelper.controller.Boast;
+import com.example.myothiha09.coursehelper.fragment.ScheduleOverviewFragment;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.MeetingTime;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Section;
 
 import java.util.ArrayList;
-import java.util.Set;
-
-import static java.security.AccessController.getContext;
 
 /**
  * Created by Myo on 5/22/2017.
  */
 
-public class ScheduleIndividualDetail extends AppCompatActivity {
+public class ScheduleVisualDetailActivity extends AppCompatActivity {
     ArrayList<Section> list;
     private RelativeLayout layout;
     private View[] view = new View[14];
@@ -35,10 +33,10 @@ public class ScheduleIndividualDetail extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schedule_screen);
-        list = ScheduleOverviewRecycler.getCurrent();
+        list = ScheduleOverviewFragment.getCurrent();
         Boast.makeText(getApplicationContext(), "Click back to go back", Toast.LENGTH_LONG).show();
         TextView tv = (TextView) findViewById(R.id.textTitle);
-        tv.setText(ScheduleOverviewRecycler.getScheduleNumber());
+        tv.setText(ScheduleOverviewFragment.getScheduleNumber());
         makeTimeTable(list);
     }
 
