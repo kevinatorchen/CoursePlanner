@@ -54,7 +54,7 @@ public class MeetingTime {
             builder.append("W/");
         }
         if ((daysOfWeek & 8) != 0) {
-            builder.append("T/");
+            builder.append("R/");
         }
         if ((daysOfWeek & 16) != 0) {
             builder.append("F/");
