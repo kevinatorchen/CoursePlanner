@@ -101,7 +101,7 @@ public class Model {
         MeetingTime[] PHYS2211B01SectionMTs = {new MeetingTime(MONDAY, new Time(12, 35), new Time(13, 25)),
                 new MeetingTime(WEDNESDAY, new Time(12, 35), new Time(1, 25))};
         MeetingTime[] PHYS2211B02SectionMTs = {new MeetingTime(TUESDAY, new Time(11, 5), new Time(11, 55)),
-                new MeetingTime(THURSDAY, new Time(1, 5), new Time(1, 55))};
+                new MeetingTime(THURSDAY, new Time(13, 5), new Time(13, 55))};
         Section PHYS2211BMainSection = new Section("B", PHYS2211BSectionMTs);
         Section PHYS2211B01 = new Section("B01", PHYS2211B01SectionMTs);
         Section PHYS2211B02 = new Section("B02", PHYS2211B02SectionMTs);
