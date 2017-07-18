@@ -4,25 +4,41 @@ package com.example.myothiha09.coursehelper.model;
  * Created by Kevin on 1/3/2017.
  */
 public abstract class Course implements Comparable<Course> {
-    private String name;
+  private String name;
+  private String category;
+  private String longName;
 
-    public Course(String name) {
-        this.name = name;
-    }
+  public Course(String name) {
+    this.name = name;
+  }
+  
+  public String getLongName() {
+    return longName;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setLongName(String longName) {
+    this.longName = longName;
+  }
 
-    public abstract Section[] getSections();
+  public String getName() {
+    return name;
+  }
 
-    @Override
-    public abstract int compareTo(Course other);
+  public String getCategory() {
+    return category;
+  }
 
-    public abstract int numberOfSections();
+  public void setCategory(String category) {
+    this.category = category;
+  }
 
-    @Override
-    public String toString() {
-        return name;
-    }
+  public abstract Section[] getSections();
+
+  @Override public abstract int compareTo(Course other);
+
+  public abstract int numberOfSections();
+
+  @Override public String toString() {
+    return name;
+  }
 }
