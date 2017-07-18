@@ -291,6 +291,10 @@ public class AddClassFragment extends Fragment {
       showCategoryChooser();
     }
   }
+
+  @OnClick(R.id.addActivity) void onAddActivityClicked() {
+    Toast.makeText(getContext(), "Clicked Add Activity", Toast.LENGTH_SHORT).show();
+  }
 }
 
 
