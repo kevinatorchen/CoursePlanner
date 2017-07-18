@@ -218,11 +218,8 @@ public class VisualScheduleAdapter extends ArrayAdapter<ArrayList<Section>> {
                 }
                 populateViews(day, timeInt);
               }
-              if (time.getStartTime().compareTo(time.getEndTime()) <= 60) {
-                view.getLayoutParams().height = hourHeight;
-              } else {
-                view.getLayoutParams().height = hour30Height;
-              }
+              double scale = time.getLength() / 50.0;
+              view.getLayoutParams().height = (int) scale * hourHeight;
               RelativeLayout.LayoutParams rlp =
                   (RelativeLayout.LayoutParams) view.getLayoutParams();
               tv.setY(rlp.topMargin);

@@ -14,9 +14,9 @@ import butterknife.OnClick;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.Model;
-import com.example.myothiha09.coursehelper.model.Student;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /*
@@ -26,11 +26,9 @@ import java.util.List;
 public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAdapter.ViewHolder>
     implements Filterable {
   private final Context context;
+  ItemClickedListener listener;
   private ArrayList<Course> mOriginalValues;
   private ArrayList<Course> mDisplayedValues;
-  ItemClickedListener listener;
-  private int normalHeight;
-  private int titleHeight;
 
   public SearchRecyclerAdapter(Context context) {
     this.context = context;
@@ -118,17 +116,19 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
    */
   public void populateWithData() {
     mOriginalValues.clear();
-    Student student = Model.student;
     createDisplayedValue(Model.courseList);
   }
 
   private void createDisplayedValue(ArrayList<Course> list) {
     for (Course course : list) {
-      String key = course.getName();
       mOriginalValues.add(course);
     }
     mDisplayedValues = mOriginalValues;
-    Collections.sort(mDisplayedValues);
+    Collections.sort(mDisplayedValues, new Comparator<Course>() {
+      @Override public int compare(Course o1, Course o2) {
+        return o1.getName().compareTo(o2.getName());
+      }
+    });
     notifyDataSetChanged();
   }
 

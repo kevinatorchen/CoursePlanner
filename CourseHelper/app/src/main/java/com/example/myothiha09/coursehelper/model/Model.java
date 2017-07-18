@@ -132,14 +132,8 @@ public class Model {
         list.put("Physics", new ArrayList<Course>());
         list.get("Physics").add(PHYS2211);
 
-        for (ArrayList x: list.values()) {
+        for (ArrayList<Course> x: list.values()) {
             courseList.addAll(x);
-            Collections.sort(x, new Comparator<Course>() {
-                @Override public int compare(Course o1, Course o2) {
-                    return o1.getName().compareTo(o2.getName());
-                }
-            });
-
         }
     }
 }
