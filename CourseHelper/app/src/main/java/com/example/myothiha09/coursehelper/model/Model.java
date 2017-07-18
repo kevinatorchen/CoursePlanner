@@ -3,6 +3,8 @@ package com.example.myothiha09.coursehelper.model;
 import com.example.myothiha09.coursehelper.activity.RegisterActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -17,6 +19,7 @@ public class Model {
     private static final int FRIDAY = 16;
 
     public static final ArrayList<String> CATEGORY = new ArrayList<>();
+    public static final ArrayList<Course> courseList = new ArrayList<>();
     public static Student student;
     public static final HashMap <String, ArrayList<Course>> list = new HashMap<>();
     private static Model model;
@@ -128,5 +131,15 @@ public class Model {
         list.get("English").add(ENGL1102);
         list.put("Physics", new ArrayList<Course>());
         list.get("Physics").add(PHYS2211);
+
+        for (ArrayList x: list.values()) {
+            courseList.addAll(x);
+            Collections.sort(x, new Comparator<Course>() {
+                @Override public int compare(Course o1, Course o2) {
+                    return o1.getName().compareTo(o2.getName());
+                }
+            });
+
+        }
     }
 }
