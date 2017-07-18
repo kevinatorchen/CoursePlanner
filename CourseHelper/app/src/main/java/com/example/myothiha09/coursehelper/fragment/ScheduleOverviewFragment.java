@@ -29,7 +29,7 @@ public class ScheduleOverviewFragment extends Fragment {
   static String scheduleNumber;
   LinearLayout nested;
   LinearLayout layout;
-  int index = 1;
+  int index;
 
   public static ArrayList<Section> getCurrent() {
     return current;
@@ -49,7 +49,7 @@ public class ScheduleOverviewFragment extends Fragment {
         .show();
     CoursePlanner.planCourses(courseList.toArray(new Course[courseList.size()]));
     Set<ArrayList<Section>> list = CoursePlanner.scheduleList;
-
+    index = 1;
     for (final ArrayList<Section> sections : list) {
       LinearLayout.LayoutParams layoutParams = createBackground();
       TextView tv = createTitle();
