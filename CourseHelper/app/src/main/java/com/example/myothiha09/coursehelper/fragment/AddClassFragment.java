@@ -285,7 +285,7 @@ public class AddClassFragment extends Fragment {
 
   @OnClick(R.id.addClass) void onAddClassClicked() {
     if (student.getCoursesList().size() >= 10) {
-      Boast.makeText(getContext(), "You cannot have more than 10 classes", Toast.LENGTH_LONG)
+      Boast.makeText(getContext(), "You cannot have more than 10 classes.", Toast.LENGTH_LONG)
           .show();
     } else {
       showCategoryChooser();
@@ -293,7 +293,7 @@ public class AddClassFragment extends Fragment {
   }
 
   @OnClick(R.id.addActivity) void onAddActivityClicked() {
-    Toast.makeText(getContext(), "Clicked Add Activity", Toast.LENGTH_SHORT).show();
+    Boast.makeText(getContext(), "Clicked Add Activity.", Toast.LENGTH_SHORT).show();
   }
 }
 
