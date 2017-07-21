@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Kevin on 1/3/2017.
@@ -6,10 +9,25 @@ public class Section {
     private Course course;
     private String name;
     private MeetingTime[] meetingTimes;
+    private int crn;
+    private String prof;
+    private String location;
 
-    public Section(String name, MeetingTime[] meetingTimes) {
+    public Section(Course course, String name, MeetingTime[] meetingTimes, int crn, String prof, String location) {
+        this.course = course;
         this.name = name;
         this.meetingTimes = meetingTimes;
+        this.crn = crn;
+        this.prof = prof;
+        this.location = location;
+    }
+
+    public Section(String name, MeetingTime[] meetingTimes) {
+        this(null, name, meetingTimes, 0, null, null);
+    }
+
+    public Section(String name, MeetingTime[] meetingTimes, int crn, String prof, String location) {
+        this(null, name, meetingTimes, crn, prof, location);
     }
 
     /*
@@ -24,6 +42,29 @@ public class Section {
     }
     */
 
+    public String getProf() {
+        return prof;
+    }
+
+    public void setProf(String prof) {
+        this.prof = prof;
+    }
+
+    public int getCrn() {
+        return crn;
+    }
+
+    public void setCrn(int crn) {
+        this.crn = crn;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
     public Course getCourse() {
         return course;
     }
@@ -40,6 +81,7 @@ public class Section {
         return meetingTimes;
     }
 
+
     public boolean conflictsWith(Section other) {
         for (MeetingTime m1: meetingTimes) {
             for (MeetingTime m2: other.meetingTimes) {
@@ -53,6 +95,6 @@ public class Section {
 
     @Override
     public String toString() {
-        return "Course: " + course.getName() + ", Section: " + name;
+        return "Course: " + course.getName() + " Section: " + name + " Professor: " + prof;
     }
 }

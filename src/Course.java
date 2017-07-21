@@ -3,19 +3,42 @@
  */
 public abstract class Course implements Comparable<Course> {
     private String name;
+    private String category;
+    private String longName;
 
     public Course(String name) {
         this.name = name;
+    }
+
+    public String getLongName() {
+        return longName;
+    }
+
+    public void setLongName(String longName) {
+        this.longName = longName;
     }
 
     public String getName() {
         return name;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public abstract Section[] getSections();
 
-    @Override
-    public abstract int compareTo(Course other);
+    public abstract Section[] getSections(String professor);
+
+    @Override public abstract int compareTo(Course other);
 
     public abstract int numberOfSections();
+
+    @Override public String toString() {
+        return name;
+    }
 }

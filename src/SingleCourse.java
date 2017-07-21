@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Created by Kevin on 5/17/2017.
  */
@@ -11,6 +13,20 @@ public class SingleCourse extends Course {
 
     public Section[] getSections() {
         return sections;
+    }
+
+    public Section[] getSections(String professor) {
+        if (professor == null || professor.equals("")) {
+            return getSections();
+        }
+
+        ArrayList<Section> matchingSections = new ArrayList<>();
+        for (Section current: sections) {
+            if (professor.equals(current.getProf())) {
+                matchingSections.add(current);
+            }
+        }
+        return matchingSections.toArray(new Section[matchingSections.size()]);
     }
 
     public int numberOfSections() {

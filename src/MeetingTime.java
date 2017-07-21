@@ -56,10 +56,12 @@ public class MeetingTime {
         builder.append(" ");
         builder.append(startTime.getHour());
         builder.append(":");
+        if (startTime.getMinute() < 10) builder.append("0");
         builder.append(startTime.getMinute());
         builder.append("-");
         builder.append(endTime.getHour());
         builder.append(":");
+        if (endTime.getMinute() < 10) builder.append("0");
         builder.append(endTime.getMinute());
         return builder.toString();
     }

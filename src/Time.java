@@ -11,11 +11,11 @@ public class Time implements Comparable<Time> {
     }
 
     public int getHour() {
-        return getHour();
+        return hour;
     }
 
     public int getMinute() {
-        return getMinute();
+        return minute;
     }
 
     @Override
