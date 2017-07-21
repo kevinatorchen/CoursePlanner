@@ -119,12 +119,7 @@ public class CoursePlanner {
 
     public static void planCourses(CourseRequest[] courseRequests, int currentCourse, Schedule schedule) {
         if (currentCourse >= courseRequests.length) {
-            try {
-                System.out.println(Arrays.toString(schedule.getSchedule().toArray()));
-            } catch(NullPointerException e) {
-                System.out.println();
-                System.out.println("Exception thrown");
-            }
+            System.out.println(Arrays.toString(schedule.getSchedule().toArray()));
 
         } else {
             CourseRequest currentCourseRequest = courseRequests[currentCourse];
