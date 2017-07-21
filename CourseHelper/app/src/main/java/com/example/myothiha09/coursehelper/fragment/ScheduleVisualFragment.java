@@ -13,6 +13,7 @@ import com.example.myothiha09.coursehelper.adapter.VisualScheduleAdapter;
 import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.model.Course;
+import com.example.myothiha09.coursehelper.model.CourseRequest;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Section;
 import com.example.myothiha09.coursehelper.model.Student;
@@ -41,8 +42,14 @@ public class ScheduleVisualFragment extends ListFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Student student = Model.student;
-        ArrayList<Course> courselist = student.getCoursesList();
-        CoursePlanner.planCourses(courselist.toArray(new Course[courselist.size()]));
+        ArrayList<Course> courseList = student.getCoursesList();
+        CourseRequest[] courseRequests = new CourseRequest[courseList.size()];
+
+        for (int i = 0; i < courseRequests.length; i++) {
+            //TODO: Replace "null" with input from views
+            courseRequests[i] = new CourseRequest(courseList.get(i), null);
+        }
+        CoursePlanner.planCourses(courseRequests);
         ArrayList<ArrayList<Section>> al = new ArrayList<>();
         for (ArrayList<Section> section: CoursePlanner.scheduleList) {
             al.add(section);

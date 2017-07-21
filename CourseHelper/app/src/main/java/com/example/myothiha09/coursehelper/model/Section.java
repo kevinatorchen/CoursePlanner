@@ -15,9 +15,21 @@ public class Section {
     private String prof;
     private String location;
 
-    public Section(String name, MeetingTime[] meetingTimes) {
+    public Section(Course course, String name, MeetingTime[] meetingTimes, int crn, String prof, String location) {
+        this.course = course;
         this.name = name;
         this.meetingTimes = meetingTimes;
+        this.crn = crn;
+        this.prof = prof;
+        this.location = location;
+    }
+
+    public Section(String name, MeetingTime[] meetingTimes) {
+        this(null, name, meetingTimes, 0, null, null);
+    }
+
+    public Section(String name, MeetingTime[] meetingTimes, int crn, String prof, String location) {
+        this(null, name, meetingTimes, crn, prof, location);
     }
 
     /*
@@ -85,6 +97,6 @@ public class Section {
 
     @Override
     public String toString() {
-        return "Course: " + course.getName() + ", Section: " + name + ", CRN: " + crn;
+        return "Course: " + course.getName() + " Section: " + name + " Professor: " + prof;
     }
 }

@@ -15,6 +15,7 @@ import com.example.myothiha09.coursehelper.activity.ScheduleVisualDetailActivity
 import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.model.Course;
+import com.example.myothiha09.coursehelper.model.CourseRequest;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Section;
 import java.util.ArrayList;
@@ -47,7 +48,14 @@ public class ScheduleOverviewFragment extends Fragment {
     ArrayList<Course> courseList = Model.student.getCoursesList();
     Boast.makeText(getContext(), "Click the schedule to view it visually", Toast.LENGTH_LONG)
         .show();
-    CoursePlanner.planCourses(courseList.toArray(new Course[courseList.size()]));
+
+    CourseRequest[] courseRequests = new CourseRequest[courseList.size()];
+
+    for (int i = 0; i < courseRequests.length; i++) {
+      //TODO: Replace "null" with input from views
+      courseRequests[i] = new CourseRequest(courseList.get(i), null);
+    }
+    CoursePlanner.planCourses(courseRequests);
     Set<ArrayList<Section>> list = CoursePlanner.scheduleList;
     index = 1;
     for (final ArrayList<Section> sections : list) {

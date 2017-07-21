@@ -1,7 +1,9 @@
 package com.example.myothiha09.coursehelper.controller;
 
 import com.example.myothiha09.coursehelper.model.Course;
+import com.example.myothiha09.coursehelper.model.CourseRequest;
 import com.example.myothiha09.coursehelper.model.MeetingTime;
+import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.Section;
 import com.example.myothiha09.coursehelper.model.Time;
 
@@ -46,34 +48,33 @@ public class CoursePlanner {
         planCourses(courses);*/
     }
 
-    public static ArrayList<Section> planCourses(Course[] courses) {
-        Arrays.sort(courses);
-        scheduleList.clear();
-        ArrayList<Section> schedule = new ArrayList<>();
-        planCourses(courses, 0, schedule);
-        return schedule;
+    public static void planCourses(CourseRequest[] courseRequests) {
+        Arrays.sort(courseRequests);
+        Schedule schedule = new Schedule();
+        planCourses(courseRequests, 0, schedule);
     }
 
-    public static void planCourses(Course[] courses, int currentCourse, ArrayList<Section> schedule) {
-        if (currentCourse >= courses.length) {
+    public static void planCourses(CourseRequest[] courseRequests, int currentCourse, Schedule schedule) {
+        if (currentCourse >= courseRequests.length) {
             ArrayList<Section> temp = new ArrayList<>();
-            for(Section x: schedule) {
+            for(Section x: schedule.getSchedule()) {
                 temp.add(x);
             }
             scheduleList.add(temp);
         } else {
-            for (Section currentSection: courses[currentCourse].getSections()) {
+            CourseRequest currentCourseRequest = courseRequests[currentCourse];
+            for (Section currentSection: currentCourseRequest.getCourse().getSections(currentCourseRequest.getProf())) {
                 boolean conflicts = false;
-                for (Section sectionInSchedule: schedule) {
+                for (Section sectionInSchedule: schedule.getSchedule()) {
                     if (currentSection.conflictsWith(sectionInSchedule)) {
                         conflicts = true;
                         break;
                     }
                 }
                 if (!conflicts) {
-                    schedule.add(currentSection);
-                    planCourses(courses, currentCourse + 1, schedule);
-                    schedule.remove(schedule.size() - 1);
+                    schedule.getSchedule().add(currentSection);
+                    planCourses(courseRequests, currentCourse + 1, schedule);
+                    schedule.getSchedule().remove(schedule.getSchedule().size() - 1);
                 }
             }
         }

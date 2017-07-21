@@ -11,7 +11,7 @@ public abstract class Course implements Comparable<Course> {
   public Course(String name) {
     this.name = name;
   }
-  
+
   public String getLongName() {
     return longName;
   }
@@ -34,6 +34,8 @@ public abstract class Course implements Comparable<Course> {
 
   public abstract Section[] getSections();
 
+  public abstract Section[] getSections(String professor);
+
   @Override public abstract int compareTo(Course other);
 
   public abstract int numberOfSections();
@@ -42,3 +44,4 @@ public abstract class Course implements Comparable<Course> {
     return name;
   }
 }
+
