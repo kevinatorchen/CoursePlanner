@@ -22,7 +22,7 @@ public class SingleCourse extends Course {
             return getSections();
         }
 
-        ArrayList<Section> matchingSections = new ArrayList<>();
+        Schedule matchingSections = new ArrayList<>();
         for (Section current: sections) {
             if (professor.equals(current.getProf())) {
                 matchingSections.add(current);

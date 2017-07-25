@@ -17,6 +17,7 @@ import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.CourseRequest;
 import com.example.myothiha09.coursehelper.model.Model;
+import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.Section;
 import java.util.ArrayList;
 import java.util.Set;
@@ -26,13 +27,13 @@ import java.util.Set;
  */
 
 public class ScheduleOverviewFragment extends Fragment {
-  static ArrayList<Section> current = new ArrayList<>();
+  static Schedule current = new ArrayList<>();
   static String scheduleNumber;
   LinearLayout nested;
   LinearLayout layout;
   int index;
 
-  public static ArrayList<Section> getCurrent() {
+  public static Schedule getCurrent() {
     return current;
   }
 
@@ -56,9 +57,9 @@ public class ScheduleOverviewFragment extends Fragment {
       courseRequests[i] = new CourseRequest(courseList.get(i), null);
     }
     CoursePlanner.planCourses(courseRequests);
-    Set<ArrayList<Section>> list = CoursePlanner.scheduleList;
+    Set<Schedule> list = CoursePlanner.scheduleList;
     index = 1;
-    for (final ArrayList<Section> sections : list) {
+    for (final Schedule sections : list) {
       LinearLayout.LayoutParams layoutParams = createBackground();
       TextView tv = createTitle();
       createCoursesInfo(tv, layoutParams, sections);
@@ -89,7 +90,7 @@ public class ScheduleOverviewFragment extends Fragment {
   }
 
   private void createCoursesInfo(final TextView tv, LinearLayout.LayoutParams layoutParams,
-      final ArrayList<Section> sections) {
+      final Schedule sections) {
     for (Section section : sections) {
       String courseName = "Course: " + section.getCourse().getName();
       String courseSection = "Section: " + section.getName();

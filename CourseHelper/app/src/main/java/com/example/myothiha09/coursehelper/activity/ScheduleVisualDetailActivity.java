@@ -15,6 +15,7 @@ import com.example.myothiha09.coursehelper.fragment.ScheduleOverviewFragment;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.MeetingTime;
 import com.example.myothiha09.coursehelper.model.Model;
+import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.Section;
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ import java.util.ArrayList;
  */
 
 public class ScheduleVisualDetailActivity extends AppCompatActivity {
-  ArrayList<Section> list;
+  Schedule list;
   int timeInt;
   ArrayList<Integer> dayList = new ArrayList<>();
   private RelativeLayout layout;
@@ -40,7 +41,7 @@ public class ScheduleVisualDetailActivity extends AppCompatActivity {
     makeTimeTable(list);
   }
 
-  public void makeTimeTable(ArrayList<Section> schedule) {
+  public void makeTimeTable(Schedule schedule) {
     int hourHeight = (int) getResources().getDimension(R.dimen.hourHeight);
     int hour30Height = (int) getResources().getDimension(R.dimen.hour30Height);
     ArrayList<Course> coursesList = Model.student.getCoursesList();

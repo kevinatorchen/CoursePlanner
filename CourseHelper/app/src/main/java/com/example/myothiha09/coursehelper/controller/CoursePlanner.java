@@ -17,7 +17,7 @@ import java.util.Set;
  * Created by Kevin on 1/3/2017.
  */
 public class CoursePlanner {
-    public static Set<ArrayList<Section>> scheduleList = new HashSet<>();
+    public static Set<Schedule> scheduleList = new HashSet<>();
     public static void main(String[] args) {
         /*MeetingTime[] APPH1040AsectionMTs = {new MeetingTime(5, new Time(8, 5), new Time(9, 55))};
         Section APPH1040A = new Section("A", APPH1040AsectionMTs);
@@ -56,7 +56,7 @@ public class CoursePlanner {
 
     public static void planCourses(CourseRequest[] courseRequests, int currentCourse, Schedule schedule) {
         if (currentCourse >= courseRequests.length) {
-            ArrayList<Section> temp = new ArrayList<>();
+            Schedule temp = new ArrayList<>();
             for(Section x: schedule.getSchedule()) {
                 temp.add(x);
             }

@@ -59,7 +59,7 @@ public class DoubleCourse extends Course {
             return getSections();
         }
 
-        ArrayList<Section> sections = new ArrayList<>();
+        Schedule sections = new ArrayList<>();
         for (Section current: individualSections) {
             if (professor.equals(current.getProf())) {
                 sections.add(current);

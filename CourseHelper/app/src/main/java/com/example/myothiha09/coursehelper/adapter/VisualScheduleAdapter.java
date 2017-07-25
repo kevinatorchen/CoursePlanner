@@ -14,6 +14,7 @@ import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.MeetingTime;
 import com.example.myothiha09.coursehelper.model.Model;
+import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.Section;
 import java.util.ArrayList;
 
@@ -21,16 +22,16 @@ import java.util.ArrayList;
  * Created by Myo on 5/21/2017.
  */
 
-public class VisualScheduleAdapter extends ArrayAdapter<ArrayList<Section>> {
+public class VisualScheduleAdapter extends ArrayAdapter<Schedule> {
   final Context context;
-  final ArrayList<ArrayList<Section>> list;
+  final ArrayList<Schedule> list;
   int timeInt;
   View rowView;
   ArrayList<Integer> dayList = new ArrayList<>();
   private RelativeLayout layout;
   private View view = new View(getContext());
 
-  public VisualScheduleAdapter(Context context, ArrayList<ArrayList<Section>> list) {
+  public VisualScheduleAdapter(Context context, ArrayList<Schedule> list) {
     super(context, -1, list);
     this.context = context;
     this.list = list;
@@ -40,7 +41,7 @@ public class VisualScheduleAdapter extends ArrayAdapter<ArrayList<Section>> {
     LayoutInflater inflater =
         (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     rowView = inflater.inflate(R.layout.schedule_screen, parent, false);
-    ArrayList<Section> current = list.get(position);
+    Schedule current = list.get(position);
     TextView tv = (TextView) rowView.findViewById(R.id.textTitle);
     int title = position + 1;
     tv.setText("Schedule " + title);
@@ -49,7 +50,7 @@ public class VisualScheduleAdapter extends ArrayAdapter<ArrayList<Section>> {
     return rowView;
   }
 
-  public void makeTimeTable(ArrayList<Section> schedule) {
+  public void makeTimeTable(Schedule schedule) {
     int hourHeight = (int) getContext().getResources().getDimension(R.dimen.hourHeight);
     int hour30Height = (int) getContext().getResources().getDimension(R.dimen.hour30Height);
     ArrayList<Course> coursesList = Model.student.getCoursesList();
