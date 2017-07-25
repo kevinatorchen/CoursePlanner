@@ -75,14 +75,15 @@ public class CoursePlanner {
         ActivitySection[] gitMadSections = {new ActivitySection("GITMAD", gitmadMTs, "Klaus 2443")};
         Activity gitmad = new Activity("GITMAD", gitMadSections);
 
-        CommitmentRequest[] courseRequests = new CommitmentRequest[4];
+        CommitmentRequest[] courseRequests = new CommitmentRequest[3];
+        //CommitmentRequest[] courseRequests = new CommitmentRequest[4];
         String[] APPH1040Professors = {"Thiha", "Kevin"};
         courseRequests[0] = new CommitmentRequest(APPH1040, APPH1040Professors);
         String[] ENGL1102Professors = {"Kevin", "Nidhi"};
         courseRequests[1] = new CommitmentRequest(ENGL1102, ENGL1102Professors);
         String[] PHYS2211Professors = {"Nidhi"};
         courseRequests[2] = new CommitmentRequest(PHYS2211, PHYS2211Professors);
-        courseRequests[3] = new CommitmentRequest(gitmad, null);
+        //courseRequests[3] = new CommitmentRequest(gitmad, null);
 
         planCourses(courseRequests);
 
@@ -129,6 +130,8 @@ public class CoursePlanner {
     public static void planCourses(CommitmentRequest[] courseRequests, int currentCourse, Schedule schedule) {
         if (currentCourse >= courseRequests.length) {
             System.out.println(Arrays.toString(schedule.getSchedule().toArray()));
+            schedule.generateComparatorValues();
+            System.out.println(schedule.getComparatorValues());
 
         } else {
             CommitmentRequest currentCourseRequest = courseRequests[currentCourse];

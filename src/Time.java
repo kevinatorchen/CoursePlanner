@@ -18,6 +18,10 @@ public class Time implements Comparable<Time> {
         return minute;
     }
 
+    public int getMinuteDifference(Time other) {
+        return Math.abs((other.hour - hour) * 60 + other.minute - minute);
+    }
+
     @Override
     public int compareTo(Time other) {
         if (hour != other.hour) {

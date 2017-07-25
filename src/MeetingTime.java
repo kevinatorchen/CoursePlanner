@@ -4,35 +4,44 @@
 public class MeetingTime {
     //least sig = Mon, second least is Tue, etc.
     private int daysOfWeek;
-    private Time startTime;
-    private Time endTime;
+    private Interval interval;
 
 
     public MeetingTime(int daysOfWeek, Time startTime, Time endTime) {
         this.daysOfWeek = daysOfWeek;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.interval = new Interval(startTime, endTime);
+    }
+
+    public MeetingTime(int daysOfWeek, Interval interval) {
+        this.daysOfWeek = daysOfWeek;
+        this.interval = interval;
+    }
+
+    public int getDaysOfWeek() {
+        return daysOfWeek;
+    }
+
+    public Interval getInterval() {
+        return interval;
     }
 
     public Time getStartTime() {
-        return startTime;
+        return interval.getStartTime();
     }
 
     public Time getEndTime() {
-        return endTime;
+        return interval.getEndTime();
     }
 
     public boolean conflictsWith(MeetingTime other) {
         if ((daysOfWeek & other.daysOfWeek) == 0) {
             return false;
         }
-        if (this.endTime.compareTo(other.startTime) < 0) {
+        if (interval.conflictsWith(other.interval)) {
+            return true;
+        } else {
             return false;
         }
-        if (other.endTime.compareTo(this.startTime) < 0) {
-            return false;
-        }
-        return true;
     }
 
     public String toString() {
@@ -54,15 +63,7 @@ public class MeetingTime {
         }
         builder.deleteCharAt(builder.length() - 1);
         builder.append(" ");
-        builder.append(startTime.getHour());
-        builder.append(":");
-        if (startTime.getMinute() < 10) builder.append("0");
-        builder.append(startTime.getMinute());
-        builder.append("-");
-        builder.append(endTime.getHour());
-        builder.append(":");
-        if (endTime.getMinute() < 10) builder.append("0");
-        builder.append(endTime.getMinute());
+        builder.append(interval.toString());
         return builder.toString();
     }
 }
