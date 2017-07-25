@@ -32,7 +32,16 @@ public abstract class Course implements Comparable<Course> {
 
     public abstract Section[] getSections();
 
-    public abstract Section[] getSections(String professor);
+    public abstract Section[] getSections(String[] professors);
+
+    public boolean contains(String[] arr, String professor) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].equals(professor)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override public abstract int compareTo(Course other);
 

@@ -73,9 +73,12 @@ public class CoursePlanner {
         }
 
         CourseRequest[] courseRequests = new CourseRequest[3];
-        courseRequests[0] = new CourseRequest(APPH1040, "Thiha");
-        courseRequests[1] = new CourseRequest(ENGL1102, "Kevin");
-        courseRequests[2] = new CourseRequest(PHYS2211, "Nidhi");
+        String[] APPH1040Professors = {"Thiha", "Kevin"};
+        courseRequests[0] = new CourseRequest(APPH1040, APPH1040Professors);
+        String[] ENGL1102Professors = {"Kevin", "Nidhi"};
+        courseRequests[1] = new CourseRequest(ENGL1102, ENGL1102Professors);
+        String[] PHYS2211Professors = {"Nidhi"};
+        courseRequests[2] = new CourseRequest(PHYS2211, PHYS2211Professors);
 
         planCourses(courseRequests);
 
