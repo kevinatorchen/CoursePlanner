@@ -5,7 +5,7 @@ import java.util.ArrayList;
  */
 public class DoubleCourse extends Course {
     private DoubleSection[] sections;
-    private Section[] individualSections;
+    private CourseSection[] individualSections;
     private int numberOfSections;
 
     public DoubleCourse(String name, DoubleSection[] sections) {
@@ -16,10 +16,10 @@ public class DoubleCourse extends Course {
     }
 
     private void generateIndividualSections() {
-        individualSections = new Section[numberOfSections];
+        individualSections = new CourseSection[numberOfSections];
         int k = 0;
         for (DoubleSection currentDouble: sections) {
-            for (Section currentSubsection: currentDouble.getSubSections()) {
+            for (CourseSection currentSubsection: currentDouble.getSubSections()) {
                 String name = currentDouble.getMainSection().getName() + " + " + currentSubsection.getName();
                 MeetingTime[] currentDoubleMT = currentDouble.getMainSection().getMeetingTimes();
                 MeetingTime[] currentSubsectionMT = currentSubsection.getMeetingTimes();
@@ -31,7 +31,7 @@ public class DoubleCourse extends Course {
                 for (int i = currentDoubleMT.length, j = 0; i < meetingTimes.length; i++, j++) {
                     meetingTimes[i] = currentSubsectionMT[j];
                 }
-                Section newSection = new Section(currentSubsection.getCourse(), name, meetingTimes,
+                CourseSection newSection = new CourseSection(currentSubsection.getCourse(), name, meetingTimes,
                         currentSubsection.getCrn(), currentSubsection.getProf(), currentSubsection.getLocation());
                 individualSections[k++] = newSection;
             }
@@ -47,31 +47,26 @@ public class DoubleCourse extends Course {
     }
 
     @Override
-    public Section[] getSections() {
+    public CourseSection[] getSections() {
         return individualSections;
     }
 
     @Override
-    public Section[] getSections(String[] professors) {
+    public CourseSection[] getSections(String[] professors) {
         if (professors == null || professors.length == 0) {
             return getSections();
         }
 
-        ArrayList<Section> sections = new ArrayList<>();
-        for (Section current: individualSections) {
+        ArrayList<CourseSection> sections = new ArrayList<>();
+        for (CourseSection current: individualSections) {
             if (contains(professors, current.getProf())) {
                 sections.add(current);
             }
         }
-        return sections.toArray(new Section[sections.size()]);
+        return sections.toArray(new CourseSection[sections.size()]);
     }
 
 
-
-    @Override
-    public int compareTo(Course other) {
-        return this.numberOfSections() - other.numberOfSections();
-    }
 
     @Override
     public int numberOfSections() {
