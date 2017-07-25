@@ -17,14 +17,15 @@ public class SingleCourse extends Course {
         return sections;
     }
 
-    public Section[] getSections(String professor) {
-        if (professor == null || professor.equals("")) {
+    @Override
+    public Section[] getSections(String[] professors) {
+        if (professors == null || professors.equals("")) {
             return getSections();
         }
 
-        Schedule matchingSections = new ArrayList<>();
+        ArrayList<Section> matchingSections = new ArrayList<>();
         for (Section current: sections) {
-            if (professor.equals(current.getProf())) {
+            if (contains(professors, current.getProf())) {
                 matchingSections.add(current);
             }
         }
@@ -40,4 +41,5 @@ public class SingleCourse extends Course {
         return numberOfSections() - o.numberOfSections();
     }
 }
+
 

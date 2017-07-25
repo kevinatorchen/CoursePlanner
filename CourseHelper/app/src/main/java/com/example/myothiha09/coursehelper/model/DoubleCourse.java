@@ -54,19 +54,21 @@ public class DoubleCourse extends Course {
     }
 
     @Override
-    public Section[] getSections(String professor) {
-        if (professor == null || professor.equals("")) {
+    public Section[] getSections(String[] professors) {
+        if (professors == null || professors.length == 0) {
             return getSections();
         }
 
-        Schedule sections = new ArrayList<>();
+        ArrayList<Section> sections = new ArrayList<>();
         for (Section current: individualSections) {
-            if (professor.equals(current.getProf())) {
+            if (contains(professors, current.getProf())) {
                 sections.add(current);
             }
         }
         return sections.toArray(new Section[sections.size()]);
     }
+
+
 
     @Override
     public int compareTo(Course other) {
@@ -78,3 +80,4 @@ public class DoubleCourse extends Course {
         return numberOfSections;
     }
 }
+

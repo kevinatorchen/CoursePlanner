@@ -6,13 +6,13 @@ package com.example.myothiha09.coursehelper.model;
 
 public class CourseRequest implements Comparable<CourseRequest> {
     private Course course;
-    private String prof;
+    private String prof[];
 
     public CourseRequest(Course course) {
         this(course, null);
     }
 
-    public CourseRequest(Course course, String prof) {
+    public CourseRequest(Course course, String[] prof) {
         this.course = course;
         this.prof = prof;
     }
@@ -25,11 +25,11 @@ public class CourseRequest implements Comparable<CourseRequest> {
         this.course = course;
     }
 
-    public String getProf() {
+    public String[] getProf() {
         return prof;
     }
 
-    public void setProf(String prof) {
+    public void setProf(String[] prof) {
         this.prof = prof;
     }
 
