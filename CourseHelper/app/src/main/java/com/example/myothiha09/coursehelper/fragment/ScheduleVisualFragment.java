@@ -7,16 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.adapter.VisualScheduleAdapter;
 import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
-import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Schedule;
-import com.example.myothiha09.coursehelper.model.Student;
-
 import java.util.ArrayList;
 
 /**
@@ -25,35 +21,31 @@ import java.util.ArrayList;
 
 public class ScheduleVisualFragment extends ListFragment {
 
+  VisualScheduleAdapter adapter;
 
+  @Nullable @Override
+  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+      @Nullable Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.list_schedule, container, false);
+    Boast.makeText(getActivity(), "Click the course to view details", Toast.LENGTH_LONG).show();
+    return view;
+  }
 
-    VisualScheduleAdapter adapter;
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.list_schedule, container, false);
-        Boast.makeText(getActivity(), "Click the course to view details", Toast.LENGTH_LONG).show();
-        return view;
+  @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
+    CoursePlanner.planCourses(Model.student.getCourseRequestsAsArray());
+    ArrayList<Schedule> al = new ArrayList<>();
+    for (Schedule section : CoursePlanner.scheduleList) {
+      al.add(section);
     }
+    adapter = new VisualScheduleAdapter(getContext(), al);
+    setListAdapter(adapter);
+  }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        CoursePlanner.planCourses(Model.student.getCourseRequestsAsArray());
-        ArrayList<Schedule> al = new ArrayList<>();
-        for (Schedule section: CoursePlanner.scheduleList) {
-            al.add(section);
-        }
-        adapter = new VisualScheduleAdapter(getContext(), al);
-        setListAdapter(adapter);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        adapter.notifyDataSetChanged();
-    }
+  @Override public void onResume() {
+    super.onResume();
+    adapter.notifyDataSetChanged();
+  }
 
     /*
     TODO:

@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity
   private Student student;
   private NavigationView navigationView;
 
+  //TODO: animations to make it very satisfying to use.
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);

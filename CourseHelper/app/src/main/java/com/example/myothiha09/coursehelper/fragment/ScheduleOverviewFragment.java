@@ -22,7 +22,7 @@ import java.util.Set;
 /**
  * Created by Myo on 5/22/2017.
  */
-
+//TODO: improve UI for this screen
 public class ScheduleOverviewFragment extends Fragment {
   static Schedule current = new Schedule();
   static String scheduleNumber;

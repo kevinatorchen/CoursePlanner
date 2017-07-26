@@ -135,7 +135,7 @@ public class AddClassFragment extends Fragment {
             Course selected = courseList.get(which);
             student.addCourseRequest(new CourseRequest(selected,
                 selected.getProfessors().toArray(new String[selected.getProfessors().size()])));
-            adapter.notifyDataSetChanged();
+            adapter.notifyItemInserted(student.getCourseRequests().size());
             return true;
           }
         })
@@ -177,11 +177,11 @@ public class AddClassFragment extends Fragment {
             }
             student.editCourseRequest(position, new CourseRequest(course,
                 selectedProfList.toArray(new String[selectedProfList.size()])));
-            adapter.notifyDataSetChanged();
+            adapter.notifyItemChanged(position);
             return true;
           }
         })
-        .positiveText("Add Class")
+        .positiveText("Save Changes")
         .negativeText("Cancel")
         .show();
   }
@@ -209,7 +209,7 @@ public class AddClassFragment extends Fragment {
             }
             student.addCourseRequest(new CourseRequest(course,
                 selectedProfList.toArray(new String[selectedProfList.size()])));
-            adapter.notifyDataSetChanged();
+            adapter.notifyItemInserted(student.getCourseRequests().size());
             return true;
           }
         })
