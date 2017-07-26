@@ -62,11 +62,6 @@ public class ClassSearcherDialog extends AppCompatDialog {
         dismiss();
       }
     });
-    smoothScroller = new LinearSmoothScroller(context) {
-      @Override protected int getVerticalSnapPreference() {
-        return LinearSmoothScroller.SNAP_TO_START;
-      }
-    };
     searchRecyclerAdapter.populateWithData();
   }
 

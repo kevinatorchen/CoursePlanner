@@ -10,11 +10,19 @@ public class Student {
   private String name;
   private String university;
   private ArrayList<Course> coursesList;
+  private ArrayList<CourseRequest> courseRequestList = new ArrayList<>();
 
   public Student(String name, String university) {
     this.name = name;
     this.university = university;
     coursesList = new ArrayList<>();
+  }
+
+  public void addCourseRequest(CourseRequest request) {
+    courseRequestList.add(request);
+  }
+  public CourseRequest[] getCourseRequests() {
+    return courseRequestList.toArray(new CourseRequest[courseRequestList.size()]);
   }
 
   public String getName() {

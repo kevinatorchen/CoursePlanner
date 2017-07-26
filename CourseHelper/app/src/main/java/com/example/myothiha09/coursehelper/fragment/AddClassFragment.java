@@ -27,6 +27,7 @@ import com.example.myothiha09.coursehelper.adapter.TestAdapter;
 import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.dialog.ClassSearcherDialog;
 import com.example.myothiha09.coursehelper.model.Course;
+import com.example.myothiha09.coursehelper.model.CourseRequest;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Student;
 import java.util.ArrayList;
@@ -38,10 +39,9 @@ import java.util.List;
 
 public class AddClassFragment extends Fragment {
   public static RecyclerView.Adapter adapter;
+  @BindView(R.id.recycler_view) RecyclerView recyclerView;
   private RecyclerView.LayoutManager layoutManager;
   private Student student;
-
-  @BindView(R.id.recycler_view) RecyclerView recyclerView;
 
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -257,28 +257,76 @@ public class AddClassFragment extends Fragment {
         .negativeText("Cancel")
         .show();
   }
-  public void initClassSearcher() {
+
+  private void initClassSearcher() {
     ClassSearcherDialog dialog = new ClassSearcherDialog(getContext());
     dialog.show();
   }
 
-  public void showClassChooser(String category) {
+  private void showClassChooser(String category) {
+
     final List<Course> courseList = new ArrayList<>();
-    courseList.addAll(Model.list.get(category));
+    for (Course x : Model.list.get(category)) {
+      if (!student.getCoursesList().contains(x)) {
+        courseList.add(x);
+      }
+    }
     new MaterialDialog.Builder(getContext()).title("Class Chooser")
         .items(courseList)
         .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
           @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
               CharSequence text) {
             if (!student.getCoursesList().contains(courseList.get(which))) {
-              //AddClassFragment.adapter.add(courseList.get(which));
-              student.addCourse(courseList.get(which));
-              AddClassFragment.adapter.notifyDataSetChanged();
+              Course selectectedCourse = courseList.get(which);
+              student.addCourse(selectectedCourse);
+              student.addCourseRequest(new CourseRequest(selectectedCourse, null));
+              adapter.notifyDataSetChanged();
             }
             return true;
           }
         })
-        .positiveText("Add")
+        .positiveText("Add Class")
+        .negativeText("Cancel")
+        .neutralText("Choose Professor")
+        .onNeutral(new MaterialDialog.SingleButtonCallback() {
+          @Override
+          public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+            if (!courseList.isEmpty() && !student.getCoursesList().contains(courseList.get(dialog.getSelectedIndex()))) {
+              showProfessorChooser(courseList.get(dialog.getSelectedIndex()));
+            }
+          }
+        })
+        .show();
+  }
+
+  private void showProfessorChooser(final Course course) {
+    Integer[] preSelected = new Integer[course.getProfessors().size()];
+    for (int i = 0; i < course.getProfessors().size(); i++) {
+      preSelected[i] = i;
+    }
+    final List<String> selectedProfList = new ArrayList<>();
+    new MaterialDialog.Builder(getContext()).title("Class Chooser")
+        .items(course.getProfessors())
+        .itemsCallbackMultiChoice(preSelected, new MaterialDialog.ListCallbackMultiChoice() {
+          @Override
+          public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
+            if (which.length == 0) {
+              Boast.makeText(getContext(),
+                  "Course was not added because you did not select a professor", Toast.LENGTH_LONG)
+                  .show();
+              return false;
+            }
+            for (int x : which) {
+              selectedProfList.add(course.getProfessors().get(x));
+            }
+            student.addCourse(course);
+            student.addCourseRequest(new CourseRequest(course,
+                selectedProfList.toArray(new String[selectedProfList.size()])));
+            adapter.notifyDataSetChanged();
+            return true;
+          }
+        })
+        .positiveText("Add Class")
         .negativeText("Cancel")
         .show();
   }

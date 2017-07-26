@@ -34,11 +34,12 @@ public abstract class Course implements Comparable<Course> {
     this.category = category;
   }
 
-  public String getProfessors() {
+  public ArrayList<String> getProfessors() {
     ArrayList<String> professorList = new ArrayList<>();
-    for(Section x: getSections()) {
-      professorList.add(x.getProf());
+    for (Section x : getSections()) {
+      if (!professorList.contains(x.getProf())) professorList.add(x.getProf());
     }
+    return professorList;
   }
 
   public abstract Section[] getSections();

@@ -44,13 +44,7 @@ public class ScheduleVisualFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
         Student student = Model.student;
         ArrayList<Course> courseList = student.getCoursesList();
-        CourseRequest[] courseRequests = new CourseRequest[courseList.size()];
-
-        for (int i = 0; i < courseRequests.length; i++) {
-            //TODO: Replace "null" with input from views
-            courseRequests[i] = new CourseRequest(courseList.get(i), null);
-        }
-        CoursePlanner.planCourses(courseRequests);
+        CoursePlanner.planCourses(Model.student.getCourseRequests());
         ArrayList<Schedule> al = new ArrayList<>();
         for (Schedule section: CoursePlanner.scheduleList) {
             al.add(section);

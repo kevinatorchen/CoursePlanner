@@ -46,17 +46,11 @@ public class ScheduleOverviewFragment extends Fragment {
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.schedule_overview, container, false);
     layout = (LinearLayout) view.findViewById(R.id.nested);
-    ArrayList<Course> courseList = Model.student.getCoursesList();
+    //ArrayList<Course> courseList = Model.student.getCoursesList();
     Boast.makeText(getContext(), "Click the schedule to view it visually", Toast.LENGTH_LONG)
         .show();
 
-    CourseRequest[] courseRequests = new CourseRequest[courseList.size()];
-
-    for (int i = 0; i < courseRequests.length; i++) {
-      //TODO: Replace "null" with input from views
-      courseRequests[i] = new CourseRequest(courseList.get(i), null);
-    }
-    CoursePlanner.planCourses(courseRequests);
+    CoursePlanner.planCourses(Model.student.getCourseRequests());
     Set<Schedule> list = CoursePlanner.scheduleList;
     index = 1;
     for (final Schedule sections : list) {
