@@ -12,11 +12,13 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.model.Course;
+import com.example.myothiha09.coursehelper.model.CourseRequest;
 import com.example.myothiha09.coursehelper.model.MeetingTime;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.Section;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Myo on 5/21/2017.
@@ -52,9 +54,11 @@ public class VisualScheduleAdapter extends ArrayAdapter<Schedule> {
 
   public void makeTimeTable(Schedule schedule) {
     int hourHeight = (int) getContext().getResources().getDimension(R.dimen.hourHeight);
-    int hour30Height = (int) getContext().getResources().getDimension(R.dimen.hour30Height);
-    ArrayList<Course> coursesList = Model.student.getCoursesList();
-    Course[] courseList = coursesList.toArray(new Course[coursesList.size()]);
+    List<CourseRequest> courseRequestList = Model.student.getCourseRequests();
+    Course[] courseList = new Course[courseRequestList.size()];
+    for (int i = 0; i < courseList.length; i++) {
+      courseList[i] = courseRequestList.get(i).getCourse();
+    }
     int color = getContext().getResources().getColor(R.color.colorAccent);
     Course tempCourse;
     int courseArrayLength = courseList.length;

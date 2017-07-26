@@ -10,23 +10,31 @@ import java.util.List;
 public class Student {
   private String name;
   private String university;
-  private ArrayList<Course> coursesList;
-  private List<CourseRequest> courseRequestList = new ArrayList<>();
+  private List<CourseRequest> courseRequestList;
 
   public Student(String name, String university) {
     this.name = name;
     this.university = university;
-    coursesList = new ArrayList<>();
+    courseRequestList = new ArrayList<>();
   }
 
   public void addCourseRequest(CourseRequest request) {
-    courseRequestList.add(request);
+    if (!courseRequestList.contains(request)) courseRequestList.add(request);
   }
+
   public CourseRequest[] getCourseRequestsAsArray() {
     return courseRequestList.toArray(new CourseRequest[courseRequestList.size()]);
   }
+
   public List<CourseRequest> getCourseRequests() {
     return courseRequestList;
+  }
+
+  public boolean takeThisCourse(Course course) {
+    for (CourseRequest request : courseRequestList) {
+      if (request.getCourse().getName().equals(course.getName())) return true;
+    }
+    return false;
   }
 
   public String getName() {
@@ -43,30 +51,5 @@ public class Student {
 
   public void setUniversity(String university) {
     this.university = university;
-  }
-
-  public ArrayList<Course> getCoursesList() {
-    return coursesList;
-  }
-
-  public void setCoursesList(ArrayList<Course> coursesList) {
-    this.coursesList = coursesList;
-  }
-
-  public void addCourse(Course course) {
-    if (!coursesList.contains(course)) {
-      coursesList.add(course);
-    }
-  }
-
-  public Course removeCourse(Course course) {
-    int index = 0;
-    for (Course x : coursesList) {
-      if (course.getName().equals(x.getName())) {
-        coursesList.remove(index);
-      }
-      index++;
-    }
-    return null;
   }
 }

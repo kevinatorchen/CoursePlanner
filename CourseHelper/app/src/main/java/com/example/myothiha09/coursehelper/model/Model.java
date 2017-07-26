@@ -9,10 +9,10 @@ import java.util.HashMap;
  */
 
 public class Model {
-  public static final ArrayList<String> CATEGORY = new ArrayList<>();
-  public static final ArrayList<Course> courseList = new ArrayList<>();
+  public static final ArrayList<String> ALL_COURSE_CATEGORY = new ArrayList<>();
+  public static final ArrayList<Course> ALL_COURSE_CATEGORY_VALUES = new ArrayList<>();
 
-  public static final HashMap<String, ArrayList<Course>> list = new HashMap<>();
+  public static final HashMap<String, ArrayList<Course>> ALL_COURSE_DATA = new HashMap<>();
   private static final int MONDAY = 1;
   private static final int TUESDAY = 2;
   private static final int WEDNESDAY = 4;
@@ -24,7 +24,7 @@ public class Model {
   private Model() {
     coursePopulater();
     studentPopulater();
-    CATEGORY.addAll(list.keySet());
+    ALL_COURSE_CATEGORY.addAll(ALL_COURSE_DATA.keySet());
   }
 
   public static Model getInstance() {
@@ -148,15 +148,15 @@ public class Model {
     //Course[] courses = {APPH1040, ENGL1102, PHYS2211};
 
     //lines for making it possible to choose category then class
-    list.put("APPH", new ArrayList<Course>());
-    list.get("APPH").add(APPH1040);
-    list.put("English", new ArrayList<Course>());
-    list.get("English").add(ENGL1102);
-    list.put("Physics", new ArrayList<Course>());
-    list.get("Physics").add(PHYS2211);
+    ALL_COURSE_DATA.put("APPH", new ArrayList<Course>());
+    ALL_COURSE_DATA.get("APPH").add(APPH1040);
+    ALL_COURSE_DATA.put("English", new ArrayList<Course>());
+    ALL_COURSE_DATA.get("English").add(ENGL1102);
+    ALL_COURSE_DATA.put("Physics", new ArrayList<Course>());
+    ALL_COURSE_DATA.get("Physics").add(PHYS2211);
 
-    for (ArrayList<Course> x : list.values()) {
-      courseList.addAll(x);
+    for (ArrayList<Course> x : ALL_COURSE_DATA.values()) {
+      ALL_COURSE_CATEGORY_VALUES.addAll(x);
     }
   }
 }

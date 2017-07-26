@@ -41,9 +41,9 @@ public class ScheduleOverviewFragment extends Fragment {
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.schedule_overview, container, false);
+    View view = inflater.inflate(R.layout.fragment_schedule_overview, container, false);
     layout = (LinearLayout) view.findViewById(R.id.nested);
-    //ArrayList<Course> courseList = Model.student.getCoursesList();
+    //ArrayList<Course> ALL_COURSE_CATEGORY_VALUES = Model.student.getCoursesList();
     Boast.makeText(getContext(), "Click the schedule to view it visually", Toast.LENGTH_LONG)
         .show();
 

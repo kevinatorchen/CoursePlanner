@@ -11,7 +11,9 @@ import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontMedium;
 import com.example.myothiha09.coursehelper.model.Course;
+import com.example.myothiha09.coursehelper.model.CourseRequest;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Myo on 5/25/2017.
@@ -19,10 +21,10 @@ import java.util.ArrayList;
 
 public class CourseRecyclerViewAdapter
     extends RecyclerView.Adapter<CourseRecyclerViewAdapter.ViewHolder> {
-  ArrayList<Course> list;
+  List<CourseRequest> list;
   ItemClickedListener listener;
 
-  public CourseRecyclerViewAdapter(ArrayList<Course> list) {
+  public CourseRecyclerViewAdapter(List<CourseRequest> list) {
     this.list = list;
   }
 
@@ -34,9 +36,10 @@ public class CourseRecyclerViewAdapter
   }
 
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
-    Course current = list.get(position);
+    Course current = list.get(position).getCourse();
     holder.courseName.setText(current.getName());
     holder.creditHour.setText("Credit Hour: " + current.getCreditHour());
+    holder.professorList.setText(current.getProfessors().toString());
   }
 
   @Override public int getItemCount() {

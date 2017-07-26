@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     Model.getInstance(); //to intialize lists and student
-    index = Model.student.getCoursesList().size();
+    index = Model.student.getCourseRequests().size();
     student = Model.student;
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     ActionBarDrawerToggle toggle =

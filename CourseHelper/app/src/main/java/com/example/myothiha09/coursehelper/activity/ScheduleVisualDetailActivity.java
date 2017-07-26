@@ -13,11 +13,13 @@ import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.fragment.ScheduleOverviewFragment;
 import com.example.myothiha09.coursehelper.model.Course;
+import com.example.myothiha09.coursehelper.model.CourseRequest;
 import com.example.myothiha09.coursehelper.model.MeetingTime;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.Section;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Myo on 5/22/2017.
@@ -43,9 +45,11 @@ public class ScheduleVisualDetailActivity extends AppCompatActivity {
 
   public void makeTimeTable(Schedule schedule) {
     int hourHeight = (int) getResources().getDimension(R.dimen.hourHeight);
-    int hour30Height = (int) getResources().getDimension(R.dimen.hour30Height);
-    ArrayList<Course> coursesList = Model.student.getCoursesList();
-    Course[] courseList = coursesList.toArray(new Course[coursesList.size()]);
+    List<CourseRequest> courseRequestList = Model.student.getCourseRequests();
+    Course[] courseList = new Course[courseRequestList.size()];
+    for (int i = 0; i < courseList.length; i++) {
+      courseList[i] = courseRequestList.get(i).getCourse();
+    }
     int color = getResources().getColor(R.color.colorAccent);
     Course tempCourse;
     int courseArrayLength = courseList.length;

@@ -52,14 +52,15 @@ public class AddClassFragment extends Fragment {
     recyclerView.setHasFixedSize(true);
     layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
     recyclerView.setLayoutManager(layoutManager);
-    adapter = new CourseRecyclerViewAdapter(Model.student.getCoursesList());
+    adapter = new CourseRecyclerViewAdapter(student.getCourseRequests());
     adapter.setListener(new ItemClickedListener() {
+      final List<CourseRequest> courseRequests = Model.student.getCourseRequests();
+
       @Override public void courseChosen(Course course) {
 
       }
 
       @Override public void deleteCourse(final int position) {
-        final List<CourseRequest> courseRequests = Model.student.getCourseRequests();
         new MaterialDialog.Builder(getContext()).title("Are you sure?")
             .content(courseRequests.get(position).getCourse().getName() + " will be deleted.")
             .positiveText("Confirm")
@@ -67,6 +68,7 @@ public class AddClassFragment extends Fragment {
               @Override
               public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                 courseRequests.remove(position);
+                adapter.notifyItemRemoved(position);
               }
             })
             .negativeText("Cancel")
@@ -74,17 +76,21 @@ public class AddClassFragment extends Fragment {
       }
 
       @Override public void editCourse(int position) {
-
+        enableProfEditing();
       }
     });
     recyclerView.setItemAnimator(new DefaultItemAnimator());
     recyclerView.setAdapter(adapter);
   }
 
+  private void enableProfEditing() {
+    Toast.makeText(getContext(), "Edit Course Clicked", Toast.LENGTH_SHORT).show();
+  }
+
   public void showCategoryChooser() {
     final List<String> stringList = new ArrayList<>();
 
-    stringList.addAll(Model.CATEGORY);
+    stringList.addAll(Model.ALL_COURSE_CATEGORY);
     new MaterialDialog.Builder(getContext()).title("Category Chooser")
         .items(stringList)
         .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
@@ -113,10 +119,9 @@ public class AddClassFragment extends Fragment {
   }
 
   private void showClassChooser(String category) {
-
     final List<Course> courseList = new ArrayList<>();
-    for (Course x : Model.list.get(category)) {
-      if (!student.getCoursesList().contains(x)) {
+    for (Course x : Model.ALL_COURSE_DATA.get(category)) {
+      if (!(student.takeThisCourse(x))) {
         courseList.add(x);
       }
     }
@@ -125,12 +130,9 @@ public class AddClassFragment extends Fragment {
         .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
           @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
               CharSequence text) {
-            if (!student.getCoursesList().contains(courseList.get(which))) {
-              Course selectectedCourse = courseList.get(which);
-              student.addCourse(selectectedCourse);
-              student.addCourseRequest(new CourseRequest(selectectedCourse, null));
-              adapter.notifyDataSetChanged();
-            }
+            Course selected = courseList.get(which);
+            student.addCourseRequest(new CourseRequest(selected, null));
+            adapter.notifyDataSetChanged();
             return true;
           }
         })
@@ -140,8 +142,7 @@ public class AddClassFragment extends Fragment {
         .onNeutral(new MaterialDialog.SingleButtonCallback() {
           @Override
           public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-            if (!courseList.isEmpty() && !student.getCoursesList()
-                .contains(courseList.get(dialog.getSelectedIndex()))) {
+            if (!courseList.isEmpty()) {
               showProfessorChooser(courseList.get(dialog.getSelectedIndex()));
             }
           }
@@ -150,13 +151,14 @@ public class AddClassFragment extends Fragment {
   }
 
   private void showProfessorChooser(final Course course) {
-    Integer[] preSelected = new Integer[course.getProfessors().size()];
-    for (int i = 0; i < course.getProfessors().size(); i++) {
+    ArrayList<String> professorList = course.getProfessors();
+    Integer[] preSelected = new Integer[professorList.size()];
+    for (int i = 0; i < preSelected.length; i++) {
       preSelected[i] = i;
     }
     final List<String> selectedProfList = new ArrayList<>();
-    new MaterialDialog.Builder(getContext()).title("Class Chooser")
-        .items(course.getProfessors())
+    new MaterialDialog.Builder(getContext()).title("Professor Chooser")
+        .items(professorList)
         .itemsCallbackMultiChoice(preSelected, new MaterialDialog.ListCallbackMultiChoice() {
           @Override
           public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
@@ -169,7 +171,6 @@ public class AddClassFragment extends Fragment {
             for (int x : which) {
               selectedProfList.add(course.getProfessors().get(x));
             }
-            student.addCourse(course);
             student.addCourseRequest(new CourseRequest(course,
                 selectedProfList.toArray(new String[selectedProfList.size()])));
             adapter.notifyDataSetChanged();
@@ -182,7 +183,7 @@ public class AddClassFragment extends Fragment {
   }
 
   @OnClick(R.id.addClass) void onAddClassClicked() {
-    if (student.getCoursesList().size() >= 10) {
+    if (student.getCourseRequests().size() >= 10) {
       Boast.makeText(getContext(), "You cannot have more than 10 classes.", Toast.LENGTH_LONG)
           .show();
     } else {

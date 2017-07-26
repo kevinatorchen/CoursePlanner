@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDialog;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.view.Window;
 import android.widget.EditText;
@@ -19,13 +18,12 @@ import com.example.myothiha09.coursehelper.adapter.ItemClickedListener;
 import com.example.myothiha09.coursehelper.adapter.SearchRecyclerAdapter;
 import com.example.myothiha09.coursehelper.fragment.AddClassFragment;
 import com.example.myothiha09.coursehelper.model.Course;
+import com.example.myothiha09.coursehelper.model.CourseRequest;
 import com.example.myothiha09.coursehelper.model.Model;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The Custom Dialog that is shown when user click the name field. This allows the user
- * to search for item to add from a list of items or create a new one.
+ * to search for item to add from a ALL_COURSE_DATA of items or create a new one.
  */
 public class ClassSearcherDialog extends AppCompatDialog {
 
@@ -57,14 +55,17 @@ public class ClassSearcherDialog extends AppCompatDialog {
     searchRecyclerView.setAdapter(searchRecyclerAdapter);
     searchRecyclerAdapter.setListener(new ItemClickedListener() {
       @Override public void courseChosen(Course course) {
-        Model.student.addCourse(course);
+        //TODO: handle with prof chooser
+        Model.student.addCourseRequest(new CourseRequest(course, null));
         AddClassFragment.adapter.notifyDataSetChanged();
         dismiss();
       }
 
-      @Override public void deleteCourse(int position) {}
+      @Override public void deleteCourse(int position) {
+      }
 
-      @Override public void editCourse(int position) {}
+      @Override public void editCourse(int position) {
+      }
     });
     searchRecyclerAdapter.populateWithData();
   }

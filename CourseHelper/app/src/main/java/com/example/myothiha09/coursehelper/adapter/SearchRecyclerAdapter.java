@@ -116,7 +116,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
    */
   public void populateWithData() {
     mOriginalValues.clear();
-    createDisplayedValue(Model.courseList);
+    createDisplayedValue(Model.ALL_COURSE_CATEGORY_VALUES);
   }
 
   private void createDisplayedValue(ArrayList<Course> list) {
