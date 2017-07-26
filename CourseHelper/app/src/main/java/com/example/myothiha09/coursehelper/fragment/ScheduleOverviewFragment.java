@@ -27,7 +27,7 @@ import java.util.Set;
  */
 
 public class ScheduleOverviewFragment extends Fragment {
-  static Schedule current = new ArrayList<>();
+  static Schedule current = new Schedule();
   static String scheduleNumber;
   LinearLayout nested;
   LinearLayout layout;
@@ -90,8 +90,8 @@ public class ScheduleOverviewFragment extends Fragment {
   }
 
   private void createCoursesInfo(final TextView tv, LinearLayout.LayoutParams layoutParams,
-      final Schedule sections) {
-    for (Section section : sections) {
+      final Schedule schedule) {
+    for (Section section : schedule.getSchedule()) {
       String courseName = "Course: " + section.getCourse().getName();
       String courseSection = "Section: " + section.getName();
       String CRN = "CRN: " + section.getCrn();
@@ -112,7 +112,7 @@ public class ScheduleOverviewFragment extends Fragment {
     }
     nested.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
-        current = sections;
+        current = schedule;
         scheduleNumber = tv.getText().toString();
         startActivity(new Intent(getContext(), ScheduleVisualDetailActivity.class));
       }

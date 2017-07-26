@@ -1,5 +1,7 @@
 package com.example.myothiha09.coursehelper.model;
 
+import java.util.ArrayList;
+
 /**
  * Created by Kevin on 1/3/2017.
  */
@@ -30,6 +32,13 @@ public abstract class Course implements Comparable<Course> {
 
   public void setCategory(String category) {
     this.category = category;
+  }
+
+  public String getProfessors() {
+    ArrayList<String> professorList = new ArrayList<>();
+    for(Section x: getSections()) {
+      professorList.add(x.getProf());
+    }
   }
 
   public abstract Section[] getSections();

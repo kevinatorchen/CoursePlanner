@@ -56,9 +56,9 @@ public class CoursePlanner {
 
     public static void planCourses(CourseRequest[] courseRequests, int currentCourse, Schedule schedule) {
         if (currentCourse >= courseRequests.length) {
-            Schedule temp = new ArrayList<>();
+            Schedule temp = new Schedule();
             for(Section x: schedule.getSchedule()) {
-                temp.add(x);
+                temp.getSchedule().add(x);
             }
             scheduleList.add(temp);
         } else {

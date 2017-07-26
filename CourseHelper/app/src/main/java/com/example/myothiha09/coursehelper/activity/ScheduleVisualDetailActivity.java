@@ -49,7 +49,7 @@ public class ScheduleVisualDetailActivity extends AppCompatActivity {
     int color = getResources().getColor(R.color.colorAccent);
     Course tempCourse;
     int courseArrayLength = courseList.length;
-    for (Section x : schedule) {
+    for (Section x : schedule.getSchedule()) {
       tempCourse = x.getCourse();
       if (courseArrayLength >= 1 && x.getCourse().getName().equals(courseList[0].getName())) {
         color = getResources().getColor(R.color.course1);
