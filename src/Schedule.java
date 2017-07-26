@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 /**
  * Created by Kevin on 7/20/2017.
  */
 public class Schedule {
     private static final int HOUR = 60;
+    private static final Interval EARLY_MORNING = new Interval(new Time(8,0), new Time(9, 0));
+    private static final Interval LATE_MORNING = new Interval(new Time(9, 0), new Time(10, 0));
+    private static final Interval LUNCH_TIME = new Interval(new Time(11, 0), new Time(14, 0));
+    private static final Interval DINNER_TIME = new Interval(new Time(17, 0), new Time(20, 0));
     private ArrayList<Section> schedule;
     private ComparatorValues comparatorValues;
 
@@ -31,10 +34,6 @@ public class Schedule {
         int morningMinutes = 0;
         int noMealTimes = 0;
         int bitmask = 1;
-        Interval earlyMorning = new Interval(new Time(8,0), new Time(9, 0));
-        Interval lateMorning = new Interval(new Time(9, 0), new Time(10, 0));
-        Interval lunchTime = new Interval(new Time(11, 0), new Time(14, 0));
-        Interval dinnerTime = new Interval(new Time(17, 0), new Time(20, 0));
         for (int i = 0; i < 5; i++) {
             ArrayList<Interval> dailyMeetingTimes = new ArrayList<>();
             for (Section currentSection: schedule) {
@@ -51,14 +50,14 @@ public class Schedule {
                 totalGaps += currentInterval.getStartTime().getMinuteDifference(previousInterval.getEndTime());
             }
             for (Interval currentInterval: dailyMeetingTimes) {
-                morningMinutes += currentInterval.amountOfOverlap(earlyMorning) * 2;
-                morningMinutes += currentInterval.amountOfOverlap(lateMorning);
+                morningMinutes += currentInterval.amountOfOverlap(EARLY_MORNING) * 2;
+                morningMinutes += currentInterval.amountOfOverlap(LATE_MORNING);
             }
 
-            if (!hasHourGap(dailyMeetingTimes, lunchTime)) {
+            if (!hasHourGap(dailyMeetingTimes, LUNCH_TIME)) {
                 noMealTimes++;
             }
-            if (!hasHourGap(dailyMeetingTimes, dinnerTime)) {
+            if (!hasHourGap(dailyMeetingTimes, DINNER_TIME)) {
                 noMealTimes++;
             }
 
