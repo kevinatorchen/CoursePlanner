@@ -26,14 +26,21 @@ public class Interval implements Comparable<Interval> {
         this.endTime = endTime;
     }
 
-    /*
-    //TODO: Finish coding this method.
-    public int amountOfOverlap(Interval other) {
-        if (this.compareTo(other) < 0) {
-            return
-        }
+    public int getDuration() {
+        return endTime.getMinuteDifference(startTime);
     }
-    */
+
+    public int amountOfOverlap(Interval other) {
+        Time minimumStartTime = (startTime.compareTo(other.startTime) < 0) ? startTime : other.startTime;
+        Time maximumEndTime = (endTime.compareTo(other.endTime) > 0) ? endTime : other.endTime;
+        int overallDuration = maximumEndTime.getMinuteDifference(minimumStartTime);
+        int overlap = getDuration() + other.getDuration() - overallDuration;
+        return (overlap > 0) ? overlap : 0;
+    }
+
+    public boolean includesTime(Time time) {
+        return startTime.compareTo(time) < 0 && endTime.compareTo(time) > 0;
+    }
 
     public boolean conflictsWith(Interval other) {
         if (this.endTime.compareTo(other.startTime) < 0) {
@@ -48,15 +55,9 @@ public class Interval implements Comparable<Interval> {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append(startTime.getHour());
-        builder.append(":");
-        if (startTime.getMinute() < 10) builder.append("0");
-        builder.append(startTime.getMinute());
+        builder.append(startTime.toString());
         builder.append("-");
-        builder.append(endTime.getHour());
-        builder.append(":");
-        if (endTime.getMinute() < 10) builder.append("0");
-        builder.append(endTime.getMinute());
+        builder.append(endTime.toString());
         return builder.toString();
     }
 

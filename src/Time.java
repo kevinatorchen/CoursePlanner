@@ -30,4 +30,14 @@ public class Time implements Comparable<Time> {
             return minute - other.minute;
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(hour);
+        builder.append(":");
+        if (minute < 10) builder.append("0");
+        builder.append(minute);
+        return builder.toString();
+    }
 }
