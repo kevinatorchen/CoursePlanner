@@ -25,16 +25,18 @@ import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.CourseRequest;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Student;
+import com.github.clans.fab.FloatingActionMenu;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Myo on 5/25/2017.
  */
-
+//TODO: make use of string resources for everything
 public class AddClassFragment extends Fragment {
   public static CourseRecyclerViewAdapter adapter;
   @BindView(R.id.recycler_view) RecyclerView recyclerView;
+  @BindView(R.id.floatingMenu) FloatingActionMenu fabMenu;
   private RecyclerView.LayoutManager layoutManager;
   private Student student;
 
@@ -52,7 +54,7 @@ public class AddClassFragment extends Fragment {
     recyclerView.setHasFixedSize(true);
     layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
     recyclerView.setLayoutManager(layoutManager);
-    adapter = new CourseRecyclerViewAdapter(student.getCourseRequests());
+    adapter = new CourseRecyclerViewAdapter(getContext(), student.getCourseRequests());
     adapter.setListener(new ItemClickedListener() {
       final List<CourseRequest> courseRequests = Model.student.getCourseRequests();
 
@@ -76,7 +78,7 @@ public class AddClassFragment extends Fragment {
       }
 
       @Override public void editCourse(int position) {
-        enableProfEditing();
+        editProfessor(courseRequests.get(position).getCourse(), position);
       }
     });
     recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -131,7 +133,8 @@ public class AddClassFragment extends Fragment {
           @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
               CharSequence text) {
             Course selected = courseList.get(which);
-            student.addCourseRequest(new CourseRequest(selected, null));
+            student.addCourseRequest(new CourseRequest(selected,
+                selected.getProfessors().toArray(new String[selected.getProfessors().size()])));
             adapter.notifyDataSetChanged();
             return true;
           }
@@ -147,6 +150,39 @@ public class AddClassFragment extends Fragment {
             }
           }
         })
+        .show();
+  }
+
+  private void editProfessor(final Course course, final int position) {
+    String[] selectedProf = student.getCourseRequests().get(position).getProf();
+    ArrayList<String> professorList = course.getProfessors();
+    Integer[] preSelected = new Integer[selectedProf.length];
+    for (int i = 0; i < preSelected.length; i++) {
+      preSelected[i] = professorList.indexOf(selectedProf[i]);
+    }
+    final List<String> selectedProfList = new ArrayList<>();
+    new MaterialDialog.Builder(getContext()).title("Professor Chooser")
+        .items(professorList)
+        .itemsCallbackMultiChoice(preSelected, new MaterialDialog.ListCallbackMultiChoice() {
+          @Override
+          public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
+            if (which.length == 0) {
+              Boast.makeText(getContext(),
+                  "No change was made because you did not select a professor", Toast.LENGTH_LONG)
+                  .show();
+              return false;
+            }
+            for (int x : which) {
+              selectedProfList.add(course.getProfessors().get(x));
+            }
+            student.editCourseRequest(position, new CourseRequest(course,
+                selectedProfList.toArray(new String[selectedProfList.size()])));
+            adapter.notifyDataSetChanged();
+            return true;
+          }
+        })
+        .positiveText("Add Class")
+        .negativeText("Cancel")
         .show();
   }
 
@@ -183,6 +219,7 @@ public class AddClassFragment extends Fragment {
   }
 
   @OnClick(R.id.addClass) void onAddClassClicked() {
+    fabMenu.close(true);
     if (student.getCourseRequests().size() >= 10) {
       Boast.makeText(getContext(), "You cannot have more than 10 classes.", Toast.LENGTH_LONG)
           .show();
@@ -192,6 +229,7 @@ public class AddClassFragment extends Fragment {
   }
 
   @OnClick(R.id.addActivity) void onAddActivityClicked() {
+    fabMenu.close(true);
     Boast.makeText(getContext(), "Clicked Add Activity.", Toast.LENGTH_SHORT).show();
   }
 }

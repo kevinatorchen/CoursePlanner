@@ -18,6 +18,11 @@ public class Student {
     courseRequestList = new ArrayList<>();
   }
 
+  public void editCourseRequest(int position, CourseRequest request) {
+    courseRequestList.remove(position);
+    courseRequestList.add(position, request);
+  }
+
   public void addCourseRequest(CourseRequest request) {
     if (!courseRequestList.contains(request)) courseRequestList.add(request);
   }
