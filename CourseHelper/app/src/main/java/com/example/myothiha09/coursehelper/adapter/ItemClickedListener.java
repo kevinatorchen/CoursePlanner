@@ -7,5 +7,7 @@ import com.example.myothiha09.coursehelper.model.Course;
  */
 
 public interface ItemClickedListener {
-  void classChosen(Course course);
+  void courseChosen(Course course);
+  void deleteCourse(int position);
+  void editCourse(int position);
 }

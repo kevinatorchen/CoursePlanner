@@ -1,53 +1,70 @@
 package com.example.myothiha09.coursehelper.adapter;
 
-
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.example.myothiha09.coursehelper.R;
+import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
+import com.example.myothiha09.coursehelper.layout_helper.CustomFontMedium;
 import com.example.myothiha09.coursehelper.model.Course;
-
 import java.util.ArrayList;
 
 /**
  * Created by Myo on 5/25/2017.
  */
 
-public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecyclerViewAdapter.ViewHolder> {
-    ArrayList<Course> list;
+public class CourseRecyclerViewAdapter
+    extends RecyclerView.Adapter<CourseRecyclerViewAdapter.ViewHolder> {
+  ArrayList<Course> list;
+  ItemClickedListener listener;
 
-    public CourseRecyclerViewAdapter(ArrayList<Course> list) {
-        this.list = list;
+  public CourseRecyclerViewAdapter(ArrayList<Course> list) {
+    this.list = list;
+  }
+
+  @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    View itemView = LayoutInflater.from(parent.getContext())
+        .inflate(R.layout.row_item_added_course, parent, false);
+
+    return new ViewHolder(itemView);
+  }
+
+  @Override public void onBindViewHolder(ViewHolder holder, int position) {
+    Course current = list.get(position);
+    holder.courseName.setText(current.getName());
+    holder.creditHour.setText("Credit Hour: " + current.getCreditHour());
+  }
+
+  @Override public int getItemCount() {
+    return list.size();
+  }
+
+  public void setListener(ItemClickedListener listener) {
+    this.listener = listener;
+  }
+
+  class ViewHolder extends RecyclerView.ViewHolder {
+    @BindView(R.id.courseName) CustomFontMedium courseName;
+    @BindView(R.id.creditHour) CustomFontLight creditHour;
+    @BindView(R.id.professorList) CustomFontLight professorList;
+
+    ViewHolder(View view) {
+      super(view);
+      ButterKnife.bind(this, view);
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.course_list_view, parent, false);
-
-        return new ViewHolder(itemView);
+    @OnClick(R.id.editCourse) void onEditCourse() {
+      int position = getAdapterPosition();
+      listener.editCourse(position);
     }
 
-    @Override
-    public void onBindViewHolder(CourseRecyclerViewAdapter.ViewHolder holder, int position) {
-        Course current = list.get(position);
-        holder.courseLabel.setText(current.getName());
+    @OnClick(R.id.deleteCourse) void onDeleteCourse() {
+      int position = getAdapterPosition();
+      listener.deleteCourse(position);
     }
-
-    @Override
-    public int getItemCount() {
-        return list.size();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public static TextView courseLabel;
-        public ViewHolder(View rowView) {
-            super(rowView);
-            courseLabel = (TextView) rowView.findViewById(R.id.courseName);
-        }
-    }
-
+  }
 }

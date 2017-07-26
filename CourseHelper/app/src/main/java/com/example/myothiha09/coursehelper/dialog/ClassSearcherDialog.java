@@ -56,11 +56,15 @@ public class ClassSearcherDialog extends AppCompatDialog {
     searchRecyclerAdapter = new SearchRecyclerAdapter(context);
     searchRecyclerView.setAdapter(searchRecyclerAdapter);
     searchRecyclerAdapter.setListener(new ItemClickedListener() {
-      @Override public void classChosen(Course course) {
+      @Override public void courseChosen(Course course) {
         Model.student.addCourse(course);
         AddClassFragment.adapter.notifyDataSetChanged();
         dismiss();
       }
+
+      @Override public void deleteCourse(int position) {}
+
+      @Override public void editCourse(int position) {}
     });
     searchRecyclerAdapter.populateWithData();
   }

@@ -40,7 +40,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
   public SearchRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View itemView;
     itemView = LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.class_search_row_item, parent, false);
+        .inflate(R.layout.row_item_class_search, parent, false);
     return new ViewHolder(itemView);
   }
 
@@ -143,7 +143,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
     @OnClick(R.id.searchRowItemContainer) void onClick() {
       int position = getAdapterPosition();
       List<Course> searchItemList = mDisplayedValues;
-      listener.classChosen(searchItemList.get(position));
+      listener.courseChosen(searchItemList.get(position));
     }
   }
 }

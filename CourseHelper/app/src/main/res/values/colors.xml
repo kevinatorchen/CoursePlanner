@@ -19,4 +19,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="font_color">#FFE100</color>
     <color name="background_color">#132241</color>
+    <color name="gray_color">#716f71</color>
 </resources>

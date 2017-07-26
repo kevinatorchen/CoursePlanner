@@ -9,6 +9,7 @@ public abstract class Course implements Comparable<Course> {
   private String name;
   private String category;
   private String longName;
+  private int creditHour;
 
   public Course(String name) {
     this.name = name;
@@ -40,6 +41,10 @@ public abstract class Course implements Comparable<Course> {
       if (!professorList.contains(x.getProf())) professorList.add(x.getProf());
     }
     return professorList;
+  }
+
+  public int getCreditHour() {
+    return creditHour;
   }
 
   public abstract Section[] getSections();
