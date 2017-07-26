@@ -117,6 +117,19 @@ public class AddClassFragment extends Fragment {
 
   private void initClassSearcher() {
     ClassSearcherDialog dialog = new ClassSearcherDialog(getContext());
+    dialog.setListener(new ItemClickedListener() {
+      @Override public void courseChosen(Course course) {
+        showProfessorChooser(course);
+      }
+
+      @Override public void deleteCourse(int position) {
+
+      }
+
+      @Override public void editCourse(int position) {
+
+      }
+    });
     dialog.show();
   }
 

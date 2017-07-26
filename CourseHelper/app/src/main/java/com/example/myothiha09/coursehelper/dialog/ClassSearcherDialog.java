@@ -16,10 +16,7 @@ import butterknife.OnTextChanged;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.adapter.ItemClickedListener;
 import com.example.myothiha09.coursehelper.adapter.SearchRecyclerAdapter;
-import com.example.myothiha09.coursehelper.fragment.AddClassFragment;
 import com.example.myothiha09.coursehelper.model.Course;
-import com.example.myothiha09.coursehelper.model.CourseRequest;
-import com.example.myothiha09.coursehelper.model.Model;
 
 /**
  * The Custom Dialog that is shown when user click the name field. This allows the user
@@ -32,9 +29,8 @@ public class ClassSearcherDialog extends AppCompatDialog {
   @BindView(R.id.searchRecyclerView) RecyclerView searchRecyclerView;
   @BindView(R.id.dialog_root) LinearLayout dialogRoot;
   @BindDimen(R.dimen.dialog_width) int dialog_width;
+  ItemClickedListener listener;
   private SearchRecyclerAdapter searchRecyclerAdapter;
-  private LinearLayoutManager searchLayoutManager;
-  private RecyclerView.SmoothScroller smoothScroller;
 
   public ClassSearcherDialog(@NonNull Context context) {
     super(context);
@@ -45,9 +41,13 @@ public class ClassSearcherDialog extends AppCompatDialog {
     initDialog();
   }
 
+  public void setListener(ItemClickedListener listener) {
+    this.listener = listener;
+  }
+
   private void initDialog() {
     dialogRoot.getLayoutParams().width = dialog_width;
-    searchLayoutManager = new LinearLayoutManager(context);
+    LinearLayoutManager searchLayoutManager = new LinearLayoutManager(context);
     searchRecyclerView.addItemDecoration(
         new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
     searchRecyclerView.setLayoutManager(searchLayoutManager);
@@ -55,16 +55,16 @@ public class ClassSearcherDialog extends AppCompatDialog {
     searchRecyclerView.setAdapter(searchRecyclerAdapter);
     searchRecyclerAdapter.setListener(new ItemClickedListener() {
       @Override public void courseChosen(Course course) {
-        //TODO: handle with prof chooser
-        Model.student.addCourseRequest(new CourseRequest(course, null));
-        AddClassFragment.adapter.notifyDataSetChanged();
+        listener.courseChosen(course);
         dismiss();
       }
 
       @Override public void deleteCourse(int position) {
+
       }
 
       @Override public void editCourse(int position) {
+
       }
     });
     searchRecyclerAdapter.populateWithData();

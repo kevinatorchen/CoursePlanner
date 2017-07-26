@@ -121,7 +121,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
 
   private void createDisplayedValue(ArrayList<Course> list) {
     for (Course course : list) {
-      mOriginalValues.add(course);
+      if (!Model.student.takeThisCourse(course)) mOriginalValues.add(course);
     }
     mDisplayedValues = mOriginalValues;
     Collections.sort(mDisplayedValues, new Comparator<Course>() {
