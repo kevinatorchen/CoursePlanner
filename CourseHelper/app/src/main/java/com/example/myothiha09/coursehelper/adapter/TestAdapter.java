@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.model.Course;
+import com.example.myothiha09.coursehelper.model.CourseRequest;
+import com.example.myothiha09.coursehelper.model.Model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +26,7 @@ public class TestAdapter extends RecyclerView.Adapter {
 
   List<Course> items;
   List<Course> itemsPendingRemoval;
+  List<CourseRequest> courseRequests = Model.student.getCourseRequests();
   boolean undoOn; // is undo on, you can turn it on from the toolbar menu
   HashMap<Course, Runnable> pendingRunnables = new HashMap<>();
   private Handler handler = new Handler(); // hanlder for running delayed runnables
@@ -105,6 +108,7 @@ public class TestAdapter extends RecyclerView.Adapter {
     }
     if (items.contains(item)) {
       items.remove(position);
+      courseRequests.remove(position);
       notifyItemRemoved(position);
     }
   }

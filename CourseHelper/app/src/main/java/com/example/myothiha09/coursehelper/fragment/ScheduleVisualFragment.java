@@ -13,10 +13,8 @@ import com.example.myothiha09.coursehelper.adapter.VisualScheduleAdapter;
 import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.model.Course;
-import com.example.myothiha09.coursehelper.model.CourseRequest;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Schedule;
-import com.example.myothiha09.coursehelper.model.Section;
 import com.example.myothiha09.coursehelper.model.Student;
 
 import java.util.ArrayList;
@@ -44,7 +42,7 @@ public class ScheduleVisualFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
         Student student = Model.student;
         ArrayList<Course> courseList = student.getCoursesList();
-        CoursePlanner.planCourses(Model.student.getCourseRequests());
+        CoursePlanner.planCourses(Model.student.getCourseRequestsAsArray());
         ArrayList<Schedule> al = new ArrayList<>();
         for (Schedule section: CoursePlanner.scheduleList) {
             al.add(section);

@@ -1,24 +1,19 @@
 package com.example.myothiha09.coursehelper.controller;
 
-import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.CourseRequest;
-import com.example.myothiha09.coursehelper.model.MeetingTime;
 import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.Section;
-import com.example.myothiha09.coursehelper.model.Time;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
  * Created by Kevin on 1/3/2017.
  */
 public class CoursePlanner {
-    public static Set<Schedule> scheduleList = new HashSet<>();
-    public static void main(String[] args) {
+  public static Set<Schedule> scheduleList = new HashSet<>();
+
+  public static void main(String[] args) {
         /*MeetingTime[] APPH1040AsectionMTs = {new MeetingTime(5, new Time(8, 5), new Time(9, 55))};
         Section APPH1040A = new Section("A", APPH1040AsectionMTs);
         MeetingTime[] APPH1040BsectionMTs = {new MeetingTime(1, new Time(13, 5), new Time(13, 55)), new MeetingTime(3, new Time(13, 5), new Time(13, 55))};
@@ -46,37 +41,40 @@ public class CoursePlanner {
         Course[] courses = {APPH1040, ENGL1102};
 
         planCourses(courses);*/
-    }
+  }
 
-    public static void planCourses(CourseRequest[] courseRequests) {
-        Arrays.sort(courseRequests);
-        Schedule schedule = new Schedule();
-        planCourses(courseRequests, 0, schedule);
-    }
+  public static void planCourses(CourseRequest[] courseRequests) {
+    scheduleList.clear();
+    Arrays.sort(courseRequests);
+    Schedule schedule = new Schedule();
+    planCourses(courseRequests, 0, schedule);
+  }
 
-    public static void planCourses(CourseRequest[] courseRequests, int currentCourse, Schedule schedule) {
-        if (currentCourse >= courseRequests.length) {
-            Schedule temp = new Schedule();
-            for(Section x: schedule.getSchedule()) {
-                temp.getSchedule().add(x);
-            }
-            scheduleList.add(temp);
-        } else {
-            CourseRequest currentCourseRequest = courseRequests[currentCourse];
-            for (Section currentSection: currentCourseRequest.getCourse().getSections(currentCourseRequest.getProf())) {
-                boolean conflicts = false;
-                for (Section sectionInSchedule: schedule.getSchedule()) {
-                    if (currentSection.conflictsWith(sectionInSchedule)) {
-                        conflicts = true;
-                        break;
-                    }
-                }
-                if (!conflicts) {
-                    schedule.getSchedule().add(currentSection);
-                    planCourses(courseRequests, currentCourse + 1, schedule);
-                    schedule.getSchedule().remove(schedule.getSchedule().size() - 1);
-                }
-            }
+  public static void planCourses(CourseRequest[] courseRequests, int currentCourse,
+      Schedule schedule) {
+    if (currentCourse >= courseRequests.length) {
+      Schedule temp = new Schedule();
+      for (Section x : schedule.getSchedule()) {
+        temp.getSchedule().add(x);
+      }
+      scheduleList.add(temp);
+    } else {
+      CourseRequest currentCourseRequest = courseRequests[currentCourse];
+      for (Section currentSection : currentCourseRequest.getCourse()
+          .getSections(currentCourseRequest.getProf())) {
+        boolean conflicts = false;
+        for (Section sectionInSchedule : schedule.getSchedule()) {
+          if (currentSection.conflictsWith(sectionInSchedule)) {
+            conflicts = true;
+            break;
+          }
         }
+        if (!conflicts) {
+          schedule.getSchedule().add(currentSection);
+          planCourses(courseRequests, currentCourse + 1, schedule);
+          schedule.getSchedule().remove(schedule.getSchedule().size() - 1);
+        }
+      }
     }
+  }
 }
