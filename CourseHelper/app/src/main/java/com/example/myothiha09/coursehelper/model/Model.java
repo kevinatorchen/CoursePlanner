@@ -141,7 +141,7 @@ public class Model {
     MeetingTime[] gitmadMTs =
         { new MeetingTime(MONDAY + TUESDAY, new Time(12, 35), new Time(13, 25)) };
     StudentActivitySection gitMadSection =
-        new StudentActivitySection("GITMAD", gitmadMTs, "Klaus 2443");
+        new StudentActivitySection("", gitmadMTs, "Klaus 2443");
 
     StudentActivitySection[] gitMadSections = { gitMadSection };
     StudentActivity gitmad = new StudentActivity("GITMAD", gitMadSections);
