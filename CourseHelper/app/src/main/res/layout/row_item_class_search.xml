@@ -15,7 +15,7 @@
       android:maxLines="1"
       android:paddingBottom="16dp"
       android:paddingTop="16dp"
-      android:textColor="#4A4A4A"
+      android:textColor="@color/content_font_color"
       android:textSize="14sp"
       />
 

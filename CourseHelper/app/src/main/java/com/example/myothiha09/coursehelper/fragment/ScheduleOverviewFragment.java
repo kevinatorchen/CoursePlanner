@@ -37,7 +37,8 @@ public class ScheduleOverviewFragment extends Fragment {
   LinearLayout nested;
   @BindView(R.id.nested) LinearLayout layout;
   @BindDimen(R.dimen.padding) int margin;
-  @BindColor(R.color.strong_blue) int titleColor;
+  @BindColor(R.color.title_font_color) int titleColor;
+  @BindColor(R.color.content_font_color) int contentColor;
   @BindDrawable(R.drawable.bg_card_button) Drawable cardBG;
   int index;
 
@@ -105,8 +106,10 @@ public class ScheduleOverviewFragment extends Fragment {
       CustomFontRegular line1 = new CustomFontRegular(getContext());
 
       line1.setText(courseName + " " + courseSection + " " + CRN);
+      line1.setTextColor(contentColor);
       CustomFontLight line2 = new CustomFontLight(getContext());
       line2.setText(meetingTimes);
+      line2.setTextColor(contentColor);
       line2.setPadding(0, 0, 0, margin/2);
       nested.setPadding(margin, margin, margin, margin);
       nested.addView(line1);

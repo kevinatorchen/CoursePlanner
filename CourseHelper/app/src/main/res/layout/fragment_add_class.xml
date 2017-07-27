@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:background="@color/medium_gray"
     android:orientation="vertical"
     >
@@ -23,21 +23,25 @@
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
       android:layout_alignParentRight="true"
-      fab:menu_labels_ellipsize="end"
-      fab:menu_labels_singleLine="true"
-      fab:menu_fab_label="Cancel"
-      fab:menu_backgroundColor="@android:color/transparent"
+      android:padding="8dp"
       fab:menu_animationDelayPerItem="0"
+      fab:menu_backgroundColor="@android:color/transparent"
       fab:menu_colorNormal="@color/colorPrimary"
       fab:menu_colorPressed="@color/colorPrimary"
       fab:menu_colorRipple="@color/colorPrimaryDark"
-      android:padding="8dp">
+      fab:menu_fab_label="Cancel"
+      fab:menu_labels_ellipsize="end"
+      fab:menu_labels_singleLine="true"
+      >
 
     <com.github.clans.fab.FloatingActionButton
         android:id="@+id/addClass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/fab_add"
+        fab:fab_colorNormal="@color/fab_menu"
+        fab:fab_colorPressed="@color/fab_menu"
+        fab:fab_colorRipple="@color/fab_menu_ripple"
         fab:fab_label="Add Class"
         fab:fab_size="mini"
         />
@@ -47,6 +51,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/fab_add"
+        fab:fab_colorNormal="@color/fab_menu"
+        fab:fab_colorPressed="@color/fab_menu"
+        fab:fab_colorRipple="@color/fab_menu_ripple"
         fab:fab_label="Add Activity"
         fab:fab_size="mini"
         />
@@ -54,9 +61,12 @@
         android:id="@+id/makeSchedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/make_schedule_icon"
-        fab:fab_label="Make Schedule"
         android:onClick="onClickMain"
+        android:src="@drawable/make_schedule_icon"
+        fab:fab_colorNormal="@color/fab_menu"
+        fab:fab_colorPressed="@color/fab_menu"
+        fab:fab_colorRipple="@color/fab_menu_ripple"
+        fab:fab_label="Make Schedule"
         fab:fab_size="mini"
         />
   </com.github.clans.fab.FloatingActionMenu>
