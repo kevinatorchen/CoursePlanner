@@ -11,8 +11,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.myothiha09.coursehelper.R;
+import com.example.myothiha09.coursehelper.model.Commitment;
 import com.example.myothiha09.coursehelper.model.CommitmentRequest;
 import com.example.myothiha09.coursehelper.model.Course;
+import com.example.myothiha09.coursehelper.model.CourseSection;
 import com.example.myothiha09.coursehelper.model.MeetingTime;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Schedule;
@@ -32,6 +34,7 @@ public class VisualScheduleAdapter extends ArrayAdapter<Schedule> {
   ArrayList<Integer> dayList = new ArrayList<>();
   private RelativeLayout layout;
   private View view = new View(getContext());
+  MaterialDialog.Builder dialog;
 
   public VisualScheduleAdapter(Context context, ArrayList<Schedule> list) {
     super(context, -1, list);
@@ -55,52 +58,52 @@ public class VisualScheduleAdapter extends ArrayAdapter<Schedule> {
   public void makeTimeTable(Schedule schedule) {
     int hourHeight = (int) getContext().getResources().getDimension(R.dimen.hourHeight);
     List<CommitmentRequest> commitmentRequestList = Model.student.getCommitmentRequests();
-    Course[] courseList = new Course[commitmentRequestList.size()];
-    for (int i = 0; i < courseList.length; i++) {
-      courseList[i] = commitmentRequestList.get(i).getCourse();
+    Commitment[] commitmentList = new Course[commitmentRequestList.size()];
+    for (int i = 0; i < commitmentList.length; i++) {
+      commitmentList[i] = commitmentRequestList.get(i).getCommitment();
     }
     int color = getContext().getResources().getColor(R.color.colorAccent);
-    Course tempCourse;
-    int courseArrayLength = courseList.length;
+    Commitment tempCommitment;
+    int courseArrayLength = commitmentList.length;
     for (Section x : schedule.getSchedule()) {
-      tempCourse = x.getCourse();
-      if (courseArrayLength >= 1 && x.getCourse().getName().equals(courseList[0].getName())) {
+      tempCommitment = x.getCommitment();
+      if (courseArrayLength >= 1 && tempCommitment.getName().equals(commitmentList[0].getName())) {
         color = getContext().getResources().getColor(R.color.course1);
-      } else if (courseArrayLength >= 2 && x.getCourse()
+      } else if (courseArrayLength >= 2 && tempCommitment
           .getName()
-          .equals(courseList[1].getName())) {
+          .equals(commitmentList[1].getName())) {
         color = getContext().getResources().getColor(R.color.course2);
-      } else if (courseArrayLength >= 3 && x.getCourse()
+      } else if (courseArrayLength >= 3 && tempCommitment
           .getName()
-          .equals(courseList[2].getName())) {
+          .equals(commitmentList[2].getName())) {
         color = getContext().getResources().getColor(R.color.course3);
-      } else if (courseArrayLength >= 4 && x.getCourse()
+      } else if (courseArrayLength >= 4 && tempCommitment
           .getName()
-          .equals(courseList[3].getName())) {
+          .equals(commitmentList[3].getName())) {
         color = getContext().getResources().getColor(R.color.course4);
-      } else if (courseArrayLength >= 5 && x.getCourse()
+      } else if (courseArrayLength >= 5 && tempCommitment
           .getName()
-          .equals(courseList[4].getName())) {
+          .equals(commitmentList[4].getName())) {
         color = getContext().getResources().getColor(R.color.course5);
-      } else if (courseArrayLength >= 6 && x.getCourse()
+      } else if (courseArrayLength >= 6 && tempCommitment
           .getName()
-          .equals(courseList[5].getName())) {
+          .equals(commitmentList[5].getName())) {
         color = getContext().getResources().getColor(R.color.course6);
-      } else if (courseArrayLength >= 7 && x.getCourse()
+      } else if (courseArrayLength >= 7 && tempCommitment
           .getName()
-          .equals(courseList[6].getName())) {
+          .equals(commitmentList[6].getName())) {
         color = getContext().getResources().getColor(R.color.course7);
-      } else if (courseArrayLength >= 8 && x.getCourse()
+      } else if (courseArrayLength >= 8 && tempCommitment
           .getName()
-          .equals(courseList[7].getName())) {
+          .equals(commitmentList[7].getName())) {
         color = getContext().getResources().getColor(R.color.course8);
-      } else if (courseArrayLength >= 9 && x.getCourse()
+      } else if (courseArrayLength >= 9 && tempCommitment
           .getName()
-          .equals(courseList[8].getName())) {
+          .equals(commitmentList[8].getName())) {
         color = getContext().getResources().getColor(R.color.course9);
-      } else if (courseArrayLength >= 10 && x.getCourse()
+      } else if (courseArrayLength >= 10 && tempCommitment
           .getName()
-          .equals(courseList[9].getName())) {
+          .equals(commitmentList[9].getName())) {
         color = getContext().getResources().getColor(R.color.course10);
       }
       MeetingTime[] times = x.getMeetingTimes();
@@ -126,7 +129,7 @@ public class VisualScheduleAdapter extends ArrayAdapter<Schedule> {
             if (time.getStartTime().getHour() == i) {
               TextView tv = new TextView(getContext());
               tv.setTextColor(getContext().getResources().getColor(R.color.white));
-              tv.setText(tempCourse.getName());
+              tv.setText(tempCommitment.getName());
               tv.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                   getContext().getResources().getDimension(R.dimen.courseSize));
               tv.setPadding(15, 15, 0, 0);
@@ -233,26 +236,42 @@ public class VisualScheduleAdapter extends ArrayAdapter<Schedule> {
               for (MeetingTime mT : times) {
                 meetingTimes += mT + "\n";
               }
-              final MaterialDialog.Builder dialog = new MaterialDialog.Builder(getContext());
-              dialog.title("Course Details")
-                  .content("Course: "
-                      + tempCourse.getName()
-                      + "\n"
-                      + "Course Section: "
-                      + x.getName()
-                      + "\n"
-                      + "Course Prof: "
-                      + x.getProf()
-                      + "\n"
-                      + "Course CRN: "
-                      + x.getCrn()
-                      + "\n"
-                      + "Course Location: "
-                      + x.getLocation()
-                      + "Course MeetingTimes: "
-                      + "\n"
-                      + meetingTimes)
-                  .neutralText("OK");
+              if (x.getCommitment() instanceof Course) {
+                Course tempCourse = (Course) x.getCommitment();
+                CourseSection courseSection = (CourseSection) x;
+                dialog = new MaterialDialog.Builder(getContext());
+                dialog.title("Course Details")
+                    .content("Course: "
+                        + tempCourse.getName()
+                        + "\n"
+                        + "Course Section: "
+                        + courseSection.getName()
+                        + "\n"
+                        + "Course Prof: "
+                        + courseSection.getProf()
+                        + "\n"
+                        + "Course CRN: "
+                        + courseSection.getCrn()
+                        + "\n"
+                        + "Course Location: "
+                        + x.getLocation()
+                        + "Course MeetingTimes: "
+                        + "\n"
+                        + meetingTimes)
+                    .neutralText("OK");
+              } else {
+                dialog = new MaterialDialog.Builder(getContext());
+                dialog.title("StudentActivity Details")
+                    .content("StudentActivity: "
+                        + x.getCommitment().getName()
+                        + "\n"
+                        + "Activity Location: "
+                        + x.getLocation()
+                        + "Activity MeetingTimes: "
+                        + "\n"
+                        + meetingTimes)
+                    .neutralText("OK");
+              }
 
               view.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {

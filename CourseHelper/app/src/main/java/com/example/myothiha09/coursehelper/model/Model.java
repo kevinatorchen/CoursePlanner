@@ -1,6 +1,5 @@
 package com.example.myothiha09.coursehelper.model;
 
-import com.example.myothiha09.coursehelper.activity.RegisterActivity;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,6 +10,8 @@ import java.util.HashMap;
 public class Model {
   public static final ArrayList<String> ALL_COURSE_CATEGORY = new ArrayList<>();
   public static final ArrayList<Course> ALL_COURSE_CATEGORY_VALUES = new ArrayList<>();
+
+  public static final ArrayList<StudentActivity> ALL_STUDENT_ACTIVITY = new ArrayList<>();
 
   public static final HashMap<String, ArrayList<Course>> ALL_COURSE_DATA = new HashMap<>();
   private static final int MONDAY = 1;
@@ -32,7 +33,6 @@ public class Model {
     }
     return model;
   }
-
 
   private void coursePopulater() {
         /*
@@ -61,66 +61,91 @@ public class Model {
         for (Section currentSection: ENGL1102.getSections()) {
             currentSection.setCourse(ENGL1102);
         }*/
-    MeetingTime[] APPH1040AsectionMTs = {new MeetingTime(FRIDAY, new Time(8, 5), new Time(9, 55))};
+    MeetingTime[] APPH1040AsectionMTs =
+        { new MeetingTime(FRIDAY, new Time(8, 5), new Time(9, 55)) };
     CourseSection APPH1040A = new CourseSection("A", APPH1040AsectionMTs, 5234, "Nidhi", "Howey");
-    MeetingTime[] APPH1040EsectionMTs = {new MeetingTime(MONDAY + WEDNESDAY, new Time(13, 5), new Time(13, 55))};
-    CourseSection APPH1040E = new CourseSection("E", APPH1040EsectionMTs, 5235, "Kevin", "Scheller");
-    MeetingTime[] APPH1040LsectionMTs = {new MeetingTime(FRIDAY, new Time(13, 5), new Time(14, 55))};
+    MeetingTime[] APPH1040EsectionMTs =
+        { new MeetingTime(MONDAY + WEDNESDAY, new Time(13, 5), new Time(13, 55)) };
+    CourseSection APPH1040E =
+        new CourseSection("E", APPH1040EsectionMTs, 5235, "Kevin", "Scheller");
+    MeetingTime[] APPH1040LsectionMTs =
+        { new MeetingTime(FRIDAY, new Time(13, 5), new Time(14, 55)) };
     CourseSection APPH1040L = new CourseSection("L", APPH1040LsectionMTs, 5236, "Thiha", "CULC");
-    CourseSection[] APPH1040Sections = {APPH1040A, APPH1040E, APPH1040L};
+    CourseSection[] APPH1040Sections = { APPH1040A, APPH1040E, APPH1040L };
     Course APPH1040 = new SingleCourse("APPH 1040", APPH1040Sections);
-    for (CourseSection currentSection: APPH1040Sections) {
+    for (CourseSection currentSection : APPH1040Sections) {
       currentSection.setCommitment(APPH1040);
     }
 
-    MeetingTime[] ENGL1102ASectionMTs = {new MeetingTime(MONDAY + WEDNESDAY + FRIDAY, new Time(8, 5), new Time(8, 55))};
-    MeetingTime[] ENGL1102BSectionMTs = {new MeetingTime(TUESDAY + THURSDAY, new Time(9, 35), new Time (10, 55))};
-    MeetingTime[] ENGL1102CSectionMTs = {new MeetingTime(MONDAY + WEDNESDAY + FRIDAY, new Time(12, 5), new Time(12, 55))};
+    MeetingTime[] ENGL1102ASectionMTs =
+        { new MeetingTime(MONDAY + WEDNESDAY + FRIDAY, new Time(8, 5), new Time(8, 55)) };
+    MeetingTime[] ENGL1102BSectionMTs =
+        { new MeetingTime(TUESDAY + THURSDAY, new Time(9, 35), new Time(10, 55)) };
+    MeetingTime[] ENGL1102CSectionMTs =
+        { new MeetingTime(MONDAY + WEDNESDAY + FRIDAY, new Time(12, 5), new Time(12, 55)) };
     CourseSection ENGL1102A = new CourseSection("A", ENGL1102ASectionMTs, 5512, "Kevin", "IC");
     CourseSection ENGL1102B = new CourseSection("B", ENGL1102BSectionMTs, 5513, "Kevin", "IC");
     CourseSection ENGL1102C = new CourseSection("C", ENGL1102CSectionMTs, 5514, "Thiha", "IC");
-    CourseSection[] ENGL1102Sections = {ENGL1102A, ENGL1102B, ENGL1102C};
+    CourseSection[] ENGL1102Sections = { ENGL1102A, ENGL1102B, ENGL1102C };
     Course ENGL1102 = new SingleCourse("ENGL 1102", ENGL1102Sections);
-    for (CourseSection currentSection: ENGL1102Sections) {
+    for (CourseSection currentSection : ENGL1102Sections) {
       currentSection.setCommitment(ENGL1102);
     }
 
-    MeetingTime[] PHYS2211ASectionMTs = {new MeetingTime(MONDAY + WEDNESDAY + FRIDAY, new Time(8, 5), new Time(8, 55))};
-    MeetingTime[] PHYS2211A01SectionMTs = {new MeetingTime(MONDAY, new Time(12, 5), new Time(12, 55)),
-            new MeetingTime(WEDNESDAY, new Time(10, 5), new Time(11, 55))};
-    MeetingTime[] PHYS2211A02SectionMTs = {new MeetingTime(MONDAY, new Time(18, 5), new Time(18, 55)),
-            new MeetingTime(WEDNESDAY, new Time(12, 5), new Time(13, 55))};
+    MeetingTime[] PHYS2211ASectionMTs =
+        { new MeetingTime(MONDAY + WEDNESDAY + FRIDAY, new Time(8, 5), new Time(8, 55)) };
+    MeetingTime[] PHYS2211A01SectionMTs = {
+        new MeetingTime(MONDAY, new Time(12, 5), new Time(12, 55)),
+        new MeetingTime(WEDNESDAY, new Time(10, 5), new Time(11, 55))
+    };
+    MeetingTime[] PHYS2211A02SectionMTs = {
+        new MeetingTime(MONDAY, new Time(18, 5), new Time(18, 55)),
+        new MeetingTime(WEDNESDAY, new Time(12, 5), new Time(13, 55))
+    };
     CourseSection PHYS2211AMainSection = new CourseSection("A", PHYS2211ASectionMTs);
-    CourseSection PHYS2211A01 = new CourseSection("A01", PHYS2211A01SectionMTs, 8921, "Nidhi", "Howey");
-    CourseSection PHYS2211A02 = new CourseSection("A02", PHYS2211A02SectionMTs, 8922, "Nidhi", "Howey");
-    CourseSection[] PHYS2211ASubsections = {PHYS2211A01, PHYS2211A02};
+    CourseSection PHYS2211A01 =
+        new CourseSection("A01", PHYS2211A01SectionMTs, 8921, "Nidhi", "Howey");
+    CourseSection PHYS2211A02 =
+        new CourseSection("A02", PHYS2211A02SectionMTs, 8922, "Nidhi", "Howey");
+    CourseSection[] PHYS2211ASubsections = { PHYS2211A01, PHYS2211A02 };
     DoubleSection PHYS2211A = new DoubleSection(PHYS2211AMainSection, PHYS2211ASubsections);
-    MeetingTime[] PHYS2211BSectionMTs = {new MeetingTime(TUESDAY + THURSDAY, new Time(9, 5), new Time(10, 35))};
-    MeetingTime[] PHYS2211B01SectionMTs = {new MeetingTime(MONDAY, new Time(12, 35), new Time(13, 25)),
-            new MeetingTime(WEDNESDAY, new Time(12, 35), new Time(1, 25))};
-    MeetingTime[] PHYS2211B02SectionMTs = {new MeetingTime(TUESDAY, new Time(11, 5), new Time(11, 55)),
-            new MeetingTime(THURSDAY, new Time(1, 5), new Time(1, 55))};
+    MeetingTime[] PHYS2211BSectionMTs =
+        { new MeetingTime(TUESDAY + THURSDAY, new Time(9, 5), new Time(10, 35)) };
+    MeetingTime[] PHYS2211B01SectionMTs = {
+        new MeetingTime(MONDAY, new Time(12, 35), new Time(13, 25)),
+        new MeetingTime(WEDNESDAY, new Time(12, 35), new Time(1, 25))
+    };
+    MeetingTime[] PHYS2211B02SectionMTs = {
+        new MeetingTime(TUESDAY, new Time(11, 5), new Time(11, 55)),
+        new MeetingTime(THURSDAY, new Time(1, 5), new Time(1, 55))
+    };
     CourseSection PHYS2211BMainSection = new CourseSection("B", PHYS2211BSectionMTs);
-    CourseSection PHYS2211B01 = new CourseSection("B01", PHYS2211B01SectionMTs, 8923, "Kevin", "Howey");
-    CourseSection PHYS2211B02 = new CourseSection("B02", PHYS2211B02SectionMTs, 8924, "Kevin", "Howey");
-    CourseSection[] PHYS2211BSubsections = {PHYS2211B01, PHYS2211B02};
+    CourseSection PHYS2211B01 =
+        new CourseSection("B01", PHYS2211B01SectionMTs, 8923, "Kevin", "Howey");
+    CourseSection PHYS2211B02 =
+        new CourseSection("B02", PHYS2211B02SectionMTs, 8924, "Kevin", "Howey");
+    CourseSection[] PHYS2211BSubsections = { PHYS2211B01, PHYS2211B02 };
     DoubleSection PHYS2211B = new DoubleSection(PHYS2211BMainSection, PHYS2211BSubsections);
-    DoubleSection[] PHYS2211Sections = {PHYS2211A, PHYS2211B};
+    DoubleSection[] PHYS2211Sections = { PHYS2211A, PHYS2211B };
     DoubleCourse PHYS2211 = new DoubleCourse("PHYS 2211", PHYS2211Sections);
-    for (DoubleSection currentDoubleSection: PHYS2211Sections) {
+    for (DoubleSection currentDoubleSection : PHYS2211Sections) {
       currentDoubleSection.getMainSection().setCommitment(PHYS2211);
-      for (CourseSection currentSubSection: currentDoubleSection.getSubSections()) {
+      for (CourseSection currentSubSection : currentDoubleSection.getSubSections()) {
         currentSubSection.setCommitment(PHYS2211);
       }
     }
-    for (CourseSection currentSingleSection: PHYS2211.getSections()) {
+    for (CourseSection currentSingleSection : PHYS2211.getSections()) {
       currentSingleSection.setCommitment(PHYS2211);
     }
 
-    MeetingTime[] gitmadMTs = {new MeetingTime(MONDAY + TUESDAY, new Time(12, 35), new Time(13, 25))};
-    ActivitySection[] gitMadSections = {new ActivitySection("GITMAD", gitmadMTs, "Klaus 2443")};
-    Activity gitmad = new Activity("GITMAD", gitMadSections);
+    MeetingTime[] gitmadMTs =
+        { new MeetingTime(MONDAY + TUESDAY, new Time(12, 35), new Time(13, 25)) };
+    StudentActivitySection gitMadSection =
+        new StudentActivitySection("GITMAD", gitmadMTs, "Klaus 2443");
 
+    StudentActivitySection[] gitMadSections = { gitMadSection };
+    StudentActivity gitmad = new StudentActivity("GITMAD", gitMadSections);
+    gitMadSection.setCommitment(gitmad);
 
     //Sample course requests:
     //CommitmentRequest[] courseRequests = new CommitmentRequest[3];
@@ -137,6 +162,8 @@ public class Model {
     ALL_COURSE_DATA.get("English").add(ENGL1102);
     ALL_COURSE_DATA.put("Physics", new ArrayList<Course>());
     ALL_COURSE_DATA.get("Physics").add(PHYS2211);
+
+    ALL_STUDENT_ACTIVITY.add(gitmad);
 
     for (ArrayList<Course> x : ALL_COURSE_DATA.values()) {
       ALL_COURSE_CATEGORY_VALUES.addAll(x);

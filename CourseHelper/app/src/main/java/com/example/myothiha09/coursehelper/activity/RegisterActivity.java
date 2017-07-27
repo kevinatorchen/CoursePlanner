@@ -13,7 +13,7 @@ public class RegisterActivity extends AppCompatActivity {
   /**
    * A static method to start this activity more conveniently
    *
-   * @param context the context this Activity was started from
+   * @param context the context this StudentActivity was started from
    */
   public static void start(Context context) {
     Intent intent = new Intent(context, RegisterActivity.class);

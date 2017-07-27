@@ -4,10 +4,10 @@ package com.example.myothiha09.coursehelper.model;
  * Created by KChen10 on 7/27/2017.
  */
 
-public class Activity extends Commitment {
-    private ActivitySection[] sections;
+public class StudentActivity extends Commitment {
+    private StudentActivitySection[] sections;
 
-    public Activity(String name, ActivitySection[] sections) {
+    public StudentActivity(String name, StudentActivitySection[] sections) {
         super(name, null);
         this.sections = sections;
     }

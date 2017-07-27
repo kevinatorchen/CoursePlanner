@@ -21,10 +21,12 @@ import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.adapter.CourseRecyclerViewAdapter;
 import com.example.myothiha09.coursehelper.adapter.ItemClickedListener;
 import com.example.myothiha09.coursehelper.dialog.ClassSearcherDialog;
+import com.example.myothiha09.coursehelper.model.Commitment;
 import com.example.myothiha09.coursehelper.model.CommitmentRequest;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Student;
+import com.example.myothiha09.coursehelper.model.StudentActivity;
 import com.github.clans.fab.FloatingActionMenu;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,8 +67,10 @@ public class AddClassFragment extends Fragment {
 
       @Override public void deleteCourse(final int position) {
         new MaterialDialog.Builder(getContext()).title("Are you sure?")
-            .content(commitmentRequests.get(position).getCourse().getName() + " will be deleted.")
-            .positiveText("Confirm").contentColor(contentColor)
+            .content(
+                commitmentRequests.get(position).getCommitment().getName() + " will be deleted.")
+            .positiveText("Confirm")
+            .contentColor(contentColor)
             .onPositive(new MaterialDialog.SingleButtonCallback() {
               @Override
               public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
@@ -79,7 +83,7 @@ public class AddClassFragment extends Fragment {
       }
 
       @Override public void editCourse(int position) {
-        editProfessor(commitmentRequests.get(position).getCourse(), position);
+        editProfessor(commitmentRequests.get(position).getCommitment(), position);
       }
     });
     recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -95,7 +99,8 @@ public class AddClassFragment extends Fragment {
 
     stringList.addAll(Model.ALL_COURSE_CATEGORY);
     new MaterialDialog.Builder(getContext()).title("Category Chooser")
-        .items(stringList).contentColor(contentColor)
+        .items(stringList)
+        .contentColor(contentColor)
         .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
           @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
               CharSequence text) {
@@ -137,7 +142,7 @@ public class AddClassFragment extends Fragment {
   private void showClassChooser(String category) {
     final List<Course> courseList = new ArrayList<>();
     for (Course x : Model.ALL_COURSE_DATA.get(category)) {
-      if (!(student.takeThisCourse(x))) {
+      if (!(student.haveThisCommitment(x))) {
         courseList.add(x);
       }
     }
@@ -168,37 +173,47 @@ public class AddClassFragment extends Fragment {
         .show();
   }
 
-  private void editProfessor(final Course course, final int position) {
-    String[] selectedProf = student.getCommitmentRequests().get(position).getProf();
-    ArrayList<String> professorList = course.getProfessors();
-    Integer[] preSelected = new Integer[selectedProf.length];
-    for (int i = 0; i < preSelected.length; i++) {
-      preSelected[i] = professorList.indexOf(selectedProf[i]);
+  private void editProfessor(final Commitment commitment, final int position) {
+    if (commitment instanceof Course) {
+      final Course course = (Course) commitment;
+      String[] selectedProf = student.getCommitmentRequests().get(position).getProf();
+      ArrayList<String> professorList = course.getProfessors();
+      Integer[] preSelected = new Integer[selectedProf.length];
+      for (int i = 0; i < preSelected.length; i++) {
+        preSelected[i] = professorList.indexOf(selectedProf[i]);
+      }
+      final List<String> selectedProfList = new ArrayList<>();
+      new MaterialDialog.Builder(getContext()).title("Professor Chooser")
+          .items(professorList)
+          .contentColor(contentColor)
+          .itemsCallbackMultiChoice(preSelected, new MaterialDialog.ListCallbackMultiChoice() {
+            @Override public boolean onSelection(MaterialDialog dialog, Integer[] which,
+                CharSequence[] text) {
+              if (which.length == 0) {
+                Toast.makeText(getContext(),
+                    "No change was made because you did not select a professor", Toast.LENGTH_LONG)
+                    .show();
+                return false;
+              }
+              for (int x : which) {
+                selectedProfList.add(course.getProfessors().get(x));
+              }
+              student.editCommitmentRequest(position, new CommitmentRequest(course,
+                  selectedProfList.toArray(new String[selectedProfList.size()])));
+              adapter.notifyItemChanged(position);
+              return true;
+            }
+          })
+          .positiveText("Save Changes")
+          .negativeText("Cancel")
+          .show();
+    } else {
+      //TODO: change meeting times?
+      StudentActivity studentActivity = (StudentActivity) commitment;
+      Toast.makeText(getContext(),
+          studentActivity.getName() + " is an activity. So, it can't be edited.",
+          Toast.LENGTH_SHORT).show();
     }
-    final List<String> selectedProfList = new ArrayList<>();
-    new MaterialDialog.Builder(getContext()).title("Professor Chooser")
-        .items(professorList).contentColor(contentColor)
-        .itemsCallbackMultiChoice(preSelected, new MaterialDialog.ListCallbackMultiChoice() {
-          @Override
-          public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
-            if (which.length == 0) {
-              Toast.makeText(getContext(),
-                  "No change was made because you did not select a professor", Toast.LENGTH_LONG)
-                  .show();
-              return false;
-            }
-            for (int x : which) {
-              selectedProfList.add(course.getProfessors().get(x));
-            }
-            student.editCommitmentRequest(position, new CommitmentRequest(course,
-                selectedProfList.toArray(new String[selectedProfList.size()])));
-            adapter.notifyItemChanged(position);
-            return true;
-          }
-        })
-        .positiveText("Save Changes")
-        .negativeText("Cancel")
-        .show();
   }
 
   private void showProfessorChooser(final Course course) {
@@ -209,7 +224,8 @@ public class AddClassFragment extends Fragment {
     }
     final List<String> selectedProfList = new ArrayList<>();
     new MaterialDialog.Builder(getContext()).title("Professor Chooser")
-        .items(professorList).contentColor(contentColor)
+        .items(professorList)
+        .contentColor(contentColor)
         .itemsCallbackMultiChoice(preSelected, new MaterialDialog.ListCallbackMultiChoice() {
           @Override
           public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
@@ -245,7 +261,31 @@ public class AddClassFragment extends Fragment {
 
   @OnClick(R.id.addActivity) void onAddActivityClicked() {
     fabMenu.close(true);
-    Toast.makeText(getContext(), "Clicked Add Activity.", Toast.LENGTH_SHORT).show();
+    showActivityChooser();
+  }
+
+  private void showActivityChooser() {
+    final List<StudentActivity> activityList = new ArrayList<>();
+    for (StudentActivity x : Model.ALL_STUDENT_ACTIVITY) {
+      if (!(student.haveThisCommitment(x))) {
+        activityList.add(x);
+      }
+    }
+    new MaterialDialog.Builder(getContext()).title("Class Chooser")
+        .items(activityList)
+        .contentColor(contentColor)
+        .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+          @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
+              CharSequence text) {
+            StudentActivity selected = activityList.get(which);
+            student.addCommitmentRequest(new CommitmentRequest(selected, null));
+            adapter.notifyItemInserted(student.getCommitmentRequests().size());
+            return true;
+          }
+        })
+        .positiveText("Add Activity")
+        .negativeText("Cancel")
+        .show();
   }
 }
 

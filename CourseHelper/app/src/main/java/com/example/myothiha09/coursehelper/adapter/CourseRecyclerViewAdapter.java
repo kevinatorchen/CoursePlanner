@@ -1,5 +1,6 @@
 package com.example.myothiha09.coursehelper.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,9 @@ import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontMedium;
 import com.example.myothiha09.coursehelper.model.CommitmentRequest;
 
+import com.example.myothiha09.coursehelper.model.Course;
+import com.example.myothiha09.coursehelper.model.Student;
+import com.example.myothiha09.coursehelper.model.StudentActivity;
 import java.util.List;
 
 /**
@@ -21,9 +25,9 @@ import java.util.List;
 
 public class CourseRecyclerViewAdapter
     extends RecyclerView.Adapter<CourseRecyclerViewAdapter.ViewHolder> {
-  List<CommitmentRequest> list;
-  Context context;
-  ItemClickedListener listener;
+  private List<CommitmentRequest> list;
+  private Context context;
+  private ItemClickedListener listener;
 
   public CourseRecyclerViewAdapter(Context context, List<CommitmentRequest> list) {
     this.context = context;
@@ -39,14 +43,30 @@ public class CourseRecyclerViewAdapter
 
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
     CommitmentRequest current = list.get(position);
-    holder.courseName.setText(current.getCourse().getName());
-    holder.creditHour.setText("Credit Hour: " + current.getCourse().getCreditHour());
-    String prof = "Selected Profs: ";
-    for (String x : current.getProf()) {
-      prof += x + ", ";
+    if (getItemViewType(position) == 1) {
+      Course course = (Course) current.getCommitment();
+      holder.courseName.setText(course.getName());
+      holder.creditHour.setText("Credit Hour: " + course.getCreditHour());
+      String prof = "Selected Profs: ";
+      for (String x : course.getProfessors()) {
+        prof += x + ", ";
+      }
+      prof = prof.substring(0, prof.length() - 2);
+      holder.professorList.setText(prof);
+    } else {
+      StudentActivity activity = (StudentActivity) current.getCommitment();
+      holder.courseName.setText(activity.getName());
+      holder.creditHour.setText("Credit Hour: " + 0);
+      holder.professorList.setText("Activity Leader: ");
     }
-    prof = prof.substring(0, prof.length() - 2);
-    holder.professorList.setText(prof);
+  }
+
+  @Override public int getItemViewType(int position) {
+    if (list.get(position).getCommitment() instanceof Course) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 
   @Override public int getItemCount() {

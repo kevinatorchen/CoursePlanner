@@ -21,6 +21,9 @@ import com.example.myothiha09.coursehelper.activity.ScheduleVisualDetailActivity
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontRegular;
+import com.example.myothiha09.coursehelper.model.Commitment;
+import com.example.myothiha09.coursehelper.model.Course;
+import com.example.myothiha09.coursehelper.model.CourseSection;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.Section;
@@ -103,9 +106,12 @@ public class ScheduleOverviewFragment extends Fragment {
   private void createCoursesInfo(final TextView tv, LinearLayout.LayoutParams layoutParams,
       final Schedule schedule) {
     for (Section section : schedule.getSchedule()) {
-      String courseName = section.getCourse().getName();
-      String courseSection = section.getName();
-      String CRN = section.getCrn() + "";
+      Commitment commitment = section.getCommitment();
+      String content = commitment.getName() + " " + section.getName();
+      if (commitment instanceof Course) {
+        String CRN = ((CourseSection)section).getCrn() + "";
+        content += " " + CRN;
+      }
       String meetingTimes = "";
       for (int i = 0; i < section.getMeetingTimes().length; i++) {
         meetingTimes += section.getMeetingTimes()[i] + ", ";
@@ -113,7 +119,7 @@ public class ScheduleOverviewFragment extends Fragment {
       meetingTimes = meetingTimes.substring(0, meetingTimes.length() - 2);
       CustomFontRegular line1 = new CustomFontRegular(getContext());
 
-      line1.setText(courseName + " " + courseSection + " " + CRN);
+      line1.setText(content);
       line1.setTextColor(contentColor);
       CustomFontLight line2 = new CustomFontLight(getContext());
       line2.setText(meetingTimes);

@@ -40,9 +40,9 @@ public class Student implements Serializable{
     return commitmentRequestList;
   }
 
-  public boolean takeThisCourse(Course course) {
+  public boolean haveThisCommitment(Commitment commitment) {
     for (CommitmentRequest request : commitmentRequestList) {
-      if (request.getCommitment().getName().equals(course.getName())) return true;
+      if (request.getCommitment().getName().equals(commitment.getName())) return true;
     }
     return false;
   }
