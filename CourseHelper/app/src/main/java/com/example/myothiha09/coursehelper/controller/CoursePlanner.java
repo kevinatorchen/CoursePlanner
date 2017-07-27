@@ -60,7 +60,7 @@ public class CoursePlanner {
       scheduleList.add(temp);
     } else {
       CommitmentRequest currentCommitmentRequest = commitmentRequests[currentCourse];
-      for (Section currentSection : currentCommitmentRequest.getCourse()
+      for (Section currentSection : currentCommitmentRequest.getCommitment()
           .getSections(currentCommitmentRequest.getProf())) {
         boolean conflicts = false;
         for (Section sectionInSchedule : schedule.getSchedule()) {
