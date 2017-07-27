@@ -54,7 +54,7 @@ public class VisualScheduleAdapter extends ArrayAdapter<Schedule> {
 
   public void makeTimeTable(Schedule schedule) {
     int hourHeight = (int) getContext().getResources().getDimension(R.dimen.hourHeight);
-    List<CommitmentRequest> commitmentRequestList = Model.student.getCourseRequests();
+    List<CommitmentRequest> commitmentRequestList = Model.student.getCommitmentRequests();
     Course[] courseList = new Course[commitmentRequestList.size()];
     for (int i = 0; i < courseList.length; i++) {
       courseList[i] = commitmentRequestList.get(i).getCourse();

@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
       Model.student = gson.fromJson(jsonStudent, Student.class);
     }
     Student student = Model.student;
-    index = student.getCourseRequests().size();
+    index = student.getCommitmentRequests().size();
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     ActionBarDrawerToggle toggle =
         new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,

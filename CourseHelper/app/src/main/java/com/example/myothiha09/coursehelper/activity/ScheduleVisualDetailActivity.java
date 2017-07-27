@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.fragment.ScheduleOverviewFragment;
+import com.example.myothiha09.coursehelper.model.Commitment;
 import com.example.myothiha09.coursehelper.model.CommitmentRequest;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.MeetingTime;
@@ -42,16 +43,16 @@ public class ScheduleVisualDetailActivity extends AppCompatActivity {
 
   public void makeTimeTable(Schedule schedule) {
     int hourHeight = (int) getResources().getDimension(R.dimen.hourHeight);
-    List<CommitmentRequest> commitmentRequestList = Model.student.getCourseRequests();
-    Course[] courseList = new Course[commitmentRequestList.size()];
+    List<CommitmentRequest> commitmentRequestList = Model.student.getCommitmentRequests();
+    Commitment[] courseList = new Course[commitmentRequestList.size()];
     for (int i = 0; i < courseList.length; i++) {
-      courseList[i] = commitmentRequestList.get(i).getCourse();
+      courseList[i] = commitmentRequestList.get(i).getCommitment();
     }
     int color = getResources().getColor(R.color.colorAccent);
-    Course tempCourse;
+    Commitment tempCommitment;
     int courseArrayLength = courseList.length;
     for (Section x : schedule.getSchedule()) {
-      tempCourse = x.getCourse();
+      tempCommitment = x.getCommitment();
       if (courseArrayLength >= 1 && x.getCourse().getName().equals(courseList[0].getName())) {
         color = getResources().getColor(R.color.course1);
       } else if (courseArrayLength >= 2 && x.getCourse()
@@ -114,7 +115,7 @@ public class ScheduleVisualDetailActivity extends AppCompatActivity {
             if (time.getStartTime().getHour() == i) {
               TextView tv = new TextView(this);
               tv.setTextColor(getResources().getColor(R.color.white));
-              tv.setText(tempCourse.getName());
+              tv.setText(tempCommitment.getName());
               tv.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                   getResources().getDimension(R.dimen.courseSize));
               tv.setPadding(15, 15, 0, 0);

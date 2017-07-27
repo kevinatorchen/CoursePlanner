@@ -23,20 +23,20 @@ public class Student implements Serializable{
     commitmentRequestList = new ArrayList<>();
   }
 
-  public void editCourseRequest(int position, CommitmentRequest request) {
+  public void editCommitmentRequest(int position, CommitmentRequest request) {
     commitmentRequestList.remove(position);
     commitmentRequestList.add(position, request);
   }
 
-  public void addCourseRequest(CommitmentRequest request) {
+  public void addCommitmentRequest(CommitmentRequest request) {
     if (!commitmentRequestList.contains(request)) commitmentRequestList.add(request);
   }
 
-  public CommitmentRequest[] getCourseRequestsAsArray() {
+  public CommitmentRequest[] getCommmitmentRequestAsArray() {
     return commitmentRequestList.toArray(new CommitmentRequest[commitmentRequestList.size()]);
   }
 
-  public List<CommitmentRequest> getCourseRequests() {
+  public List<CommitmentRequest> getCommitmentRequests() {
     return commitmentRequestList;
   }
 

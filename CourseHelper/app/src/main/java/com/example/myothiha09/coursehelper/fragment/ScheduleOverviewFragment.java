@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindColor;
 import butterknife.BindDimen;
 import butterknife.BindDrawable;
@@ -57,7 +56,7 @@ public class ScheduleOverviewFragment extends Fragment {
     ButterKnife.bind(this, view);
     //ArrayList<Course> ALL_COURSE_CATEGORY_VALUES = Model.student.getCoursesList();
 
-    CoursePlanner.planCourses(Model.student.getCourseRequestsAsArray());
+    CoursePlanner.planCourses(Model.student.getCommmitmentRequestAsArray());
     Set<Schedule> list = CoursePlanner.scheduleList;
     index = 1;
     for (final Schedule sections : list) {

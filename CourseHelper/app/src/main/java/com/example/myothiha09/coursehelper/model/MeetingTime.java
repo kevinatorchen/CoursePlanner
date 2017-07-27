@@ -8,7 +8,6 @@ public class MeetingTime {
   private int daysOfWeek;
   private Interval interval;
 
-
   public MeetingTime(int daysOfWeek, Time startTime, Time endTime) {
     this.daysOfWeek = daysOfWeek;
     this.interval = new Interval(startTime, endTime);
@@ -33,6 +32,16 @@ public class MeetingTime {
 
   public Time getEndTime() {
     return interval.getEndTime();
+  }
+
+  public int getLength() {
+    if (getStartTime().getHour() != getEndTime().getHour()) {
+      int start = getStartTime().getHour() * 50 + getEndTime().getMinute();
+      int end = getEndTime().getHour() * 50 + getEndTime().getMinute();
+      return end - start;
+    } else {
+      return getEndTime().getMinute() - getStartTime().getMinute();
+    }
   }
 
   public boolean conflictsWith(MeetingTime other) {

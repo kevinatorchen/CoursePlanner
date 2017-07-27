@@ -6,7 +6,6 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.adapter.VisualScheduleAdapter;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
@@ -30,7 +29,7 @@ public class ScheduleVisualFragment extends ListFragment {
 
   @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-    CoursePlanner.planCourses(Model.student.getCourseRequestsAsArray());
+    CoursePlanner.planCourses(Model.student.getCommmitmentRequestAsArray());
     ArrayList<Schedule> al = new ArrayList<>();
     for (Schedule section : CoursePlanner.scheduleList) {
       al.add(section);

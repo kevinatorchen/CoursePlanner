@@ -55,9 +55,9 @@ public class AddClassFragment extends Fragment {
     recyclerView.setHasFixedSize(true);
     layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
     recyclerView.setLayoutManager(layoutManager);
-    adapter = new CourseRecyclerViewAdapter(getContext(), student.getCourseRequests());
+    adapter = new CourseRecyclerViewAdapter(getContext(), student.getCommitmentRequests());
     adapter.setListener(new ItemClickedListener() {
-      final List<CommitmentRequest> commitmentRequests = Model.student.getCourseRequests();
+      final List<CommitmentRequest> commitmentRequests = Model.student.getCommitmentRequests();
 
       @Override public void courseChosen(Course course) {
 
@@ -148,9 +148,9 @@ public class AddClassFragment extends Fragment {
           @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
               CharSequence text) {
             Course selected = courseList.get(which);
-            student.addCourseRequest(new CommitmentRequest(selected,
+            student.addCommitmentRequest(new CommitmentRequest(selected,
                 selected.getProfessors().toArray(new String[selected.getProfessors().size()])));
-            adapter.notifyItemInserted(student.getCourseRequests().size());
+            adapter.notifyItemInserted(student.getCommitmentRequests().size());
             return true;
           }
         })
@@ -169,7 +169,7 @@ public class AddClassFragment extends Fragment {
   }
 
   private void editProfessor(final Course course, final int position) {
-    String[] selectedProf = student.getCourseRequests().get(position).getProf();
+    String[] selectedProf = student.getCommitmentRequests().get(position).getProf();
     ArrayList<String> professorList = course.getProfessors();
     Integer[] preSelected = new Integer[selectedProf.length];
     for (int i = 0; i < preSelected.length; i++) {
@@ -190,7 +190,7 @@ public class AddClassFragment extends Fragment {
             for (int x : which) {
               selectedProfList.add(course.getProfessors().get(x));
             }
-            student.editCourseRequest(position, new CommitmentRequest(course,
+            student.editCommitmentRequest(position, new CommitmentRequest(course,
                 selectedProfList.toArray(new String[selectedProfList.size()])));
             adapter.notifyItemChanged(position);
             return true;
@@ -222,9 +222,9 @@ public class AddClassFragment extends Fragment {
             for (int x : which) {
               selectedProfList.add(course.getProfessors().get(x));
             }
-            student.addCourseRequest(new CommitmentRequest(course,
+            student.addCommitmentRequest(new CommitmentRequest(course,
                 selectedProfList.toArray(new String[selectedProfList.size()])));
-            adapter.notifyItemInserted(student.getCourseRequests().size());
+            adapter.notifyItemInserted(student.getCommitmentRequests().size());
             return true;
           }
         })
@@ -235,7 +235,7 @@ public class AddClassFragment extends Fragment {
 
   @OnClick(R.id.addClass) void onAddClassClicked() {
     fabMenu.close(true);
-    if (student.getCourseRequests().size() >= 10) {
+    if (student.getCommitmentRequests().size() >= 10) {
       Toast.makeText(getContext(), "You cannot have more than 10 classes.", Toast.LENGTH_LONG)
           .show();
     } else {
