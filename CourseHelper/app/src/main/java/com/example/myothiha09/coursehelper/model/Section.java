@@ -7,11 +7,24 @@ public abstract class Section {
     private String name;
     private MeetingTime[] meetingTimes;
     private String location;
+    private Commitment commitment;
 
     public Section(String name, MeetingTime[] meetingTimes, String location) {
+        this(name, meetingTimes, location, null);
+    }
+    public Section(String name, MeetingTime[] meetingTimes, String location, Commitment commitment) {
         this.name = name;
         this.meetingTimes = meetingTimes;
         this.location = location;
+        this.commitment = commitment;
+    }
+
+    public Commitment getCommitment() {
+        return commitment;
+    }
+
+    public void setCommitment(Commitment commitment) {
+        this.commitment = commitment;
     }
 
     public String getLocation() {
@@ -46,4 +59,3 @@ public abstract class Section {
         return "Name: " + name;
     }
 }
-
