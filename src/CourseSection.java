@@ -2,14 +2,12 @@
  * Created by Kevin on 1/3/2017.
  */
 public class CourseSection extends Section {
-    private Course course;
     private int crn;
     private String prof;
 
 
-    public CourseSection(Course course, String name, MeetingTime[] meetingTimes, int crn, String prof, String location) {
-        super(name, meetingTimes, location);
-        this.course = course;
+    public CourseSection(Commitment commitment, String name, MeetingTime[] meetingTimes, int crn, String prof, String location) {
+        super(name, meetingTimes, location, commitment);
         this.crn = crn;
         this.prof = prof;
     }
@@ -50,17 +48,8 @@ public class CourseSection extends Section {
         this.crn = crn;
     }
 
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
     @Override
     public String toString() {
-        return "Course: " + course.getName() + " Section: " + getName() + " Professor: " + prof;
+        return "Course: " + super.getCommitment().getName() + " Section: " + getName() + " Professor: " + prof;
     }
 }

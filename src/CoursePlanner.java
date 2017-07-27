@@ -24,7 +24,7 @@ public class CoursePlanner {
         CourseSection[] APPH1040Sections = {APPH1040A, APPH1040E, APPH1040L};
         Course APPH1040 = new SingleCourse("APPH 1040", APPH1040Sections);
         for (CourseSection currentSection: APPH1040Sections) {
-            currentSection.setCourse(APPH1040);
+            currentSection.setCommitment(APPH1040);
         }
 
         MeetingTime[] ENGL1102ASectionMTs = {new MeetingTime(MONDAY + WEDNESDAY + FRIDAY, new Time(8, 5), new Time(8, 55))};
@@ -36,7 +36,7 @@ public class CoursePlanner {
         CourseSection[] ENGL1102Sections = {ENGL1102A, ENGL1102B, ENGL1102C};
         Course ENGL1102 = new SingleCourse("ENGL 1102", ENGL1102Sections);
         for (CourseSection currentSection: ENGL1102Sections) {
-            currentSection.setCourse(ENGL1102);
+            currentSection.setCommitment(ENGL1102);
         }
 
         MeetingTime[] PHYS2211ASectionMTs = {new MeetingTime(MONDAY + WEDNESDAY + FRIDAY, new Time(8, 5), new Time(8, 55))};
@@ -62,13 +62,13 @@ public class CoursePlanner {
         DoubleSection[] PHYS2211Sections = {PHYS2211A, PHYS2211B};
         DoubleCourse PHYS2211 = new DoubleCourse("PHYS 2211", PHYS2211Sections);
         for (DoubleSection currentDoubleSection: PHYS2211Sections) {
-            currentDoubleSection.getMainSection().setCourse(PHYS2211);
+            currentDoubleSection.getMainSection().setCommitment(PHYS2211);
             for (CourseSection currentSubSection: currentDoubleSection.getSubSections()) {
-                currentSubSection.setCourse(PHYS2211);
+                currentSubSection.setCommitment(PHYS2211);
             }
         }
         for (CourseSection currentSingleSection: PHYS2211.getSections()) {
-            currentSingleSection.setCourse(PHYS2211);
+            currentSingleSection.setCommitment(PHYS2211);
         }
 
         MeetingTime[] gitmadMTs = {new MeetingTime(MONDAY + TUESDAY, new Time(12, 35), new Time(13, 25))};
@@ -102,7 +102,7 @@ public class CoursePlanner {
         CourseSection[] APPH1040Sections = {APPH1040A, APPH1040B, APPH1040C, APPH1040D};
         Course APPH1040 = new SingleCourse("APPH 1040", APPH1040Sections);
         for (CourseSection currentSection: APPH1040Sections) {
-            currentSection.setCourse(APPH1040);
+            currentSection.setCommitment(APPH1040);
         }
 
         MeetingTime[] ENGL1102ASectionMTs = {new MeetingTime(1, new Time(13, 5), new Time (13, 55)), new MeetingTime(3, new Time(13, 5), new Time (13, 55)), new MeetingTime(5, new Time(13, 5), new Time (13, 55))};
@@ -112,7 +112,7 @@ public class CoursePlanner {
         CourseSection[] ENGL1102Sections = {ENGL1102A, ENGL1102B};
         Course ENGL1102 = new SingleCourse("ENGL 1102", ENGL1102Sections);
         for (CourseSection currentSection: ENGL1102Sections) {
-            currentSection.setCourse(ENGL1102);
+            currentSection.setCommitment(ENGL1102);
         }
 
         Course[] courses = {APPH1040, ENGL1102};
