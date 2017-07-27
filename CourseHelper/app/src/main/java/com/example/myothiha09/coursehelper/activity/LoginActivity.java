@@ -81,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
       String studentJson = gson.toJson(new Student("Myo Thiha", "Georgia Tech"));
       prefs.edit().putString(Constants.STUDENT_TAG, studentJson).apply();
       MainActivity.start(this);
+      finish();
     }
   }
 
@@ -117,6 +118,5 @@ public class LoginActivity extends AppCompatActivity {
    */
   @OnClick(R.id.registerButton) public void registerButton() {
     RegisterActivity.start(getApplicationContext());
-    finish();
   }
 }
