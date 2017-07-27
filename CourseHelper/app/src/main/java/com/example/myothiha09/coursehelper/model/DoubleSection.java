@@ -6,27 +6,27 @@ import java.util.Arrays;
  * Created by Kevin on 7/2/2017.
  */
 public class DoubleSection {
-    private Section mainSection;
-    private Section[] subSections;
+    private CourseSection mainSection;
+    private CourseSection[] subSections;
 
-    public DoubleSection(Section mainSection, Section[] subSections) {
+    public DoubleSection(CourseSection mainSection, CourseSection[] subSections) {
         this.mainSection = mainSection;
         this.subSections = subSections;
     }
 
-    public Section getMainSection() {
+    public CourseSection getMainSection() {
         return mainSection;
     }
 
-    public void setMainSection(Section mainSection) {
+    public void setMainSection(CourseSection mainSection) {
         this.mainSection = mainSection;
     }
 
-    public Section[] getSubSections() {
+    public CourseSection[] getSubSections() {
         return subSections;
     }
 
-    public void setSubSections(Section[] subSections) {
+    public void setSubSections(CourseSection[] subSections) {
         this.subSections = subSections;
     }
 
@@ -38,4 +38,3 @@ public class DoubleSection {
                 '}';
     }
 }
-

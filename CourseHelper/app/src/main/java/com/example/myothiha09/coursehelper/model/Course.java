@@ -5,14 +5,29 @@ import java.util.ArrayList;
 /**
  * Created by Kevin on 1/3/2017.
  */
-public abstract class Course implements Comparable<Course> {
-  private String name;
-  private String category;
+public abstract class Course extends Commitment {
   private String longName;
   private int creditHour;
 
   public Course(String name) {
-    this.name = name;
+    super(name);
+  }
+
+  public int getCreditHour() {
+    return creditHour;
+  }
+
+  public ArrayList<String> getProfessors() {
+    ArrayList<String> professorList = new ArrayList<>();
+    for (Section x : getSections()) {
+      if (x instanceof CourseSection) {
+        CourseSection section = (CourseSection) x;
+        if (!professorList.contains(section.getProf())) {
+          professorList.add(section.getProf());
+        }
+      }
+    }
+    return professorList;
   }
 
   public String getLongName() {
@@ -23,33 +38,6 @@ public abstract class Course implements Comparable<Course> {
     this.longName = longName;
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public String getCategory() {
-    return category;
-  }
-
-  public void setCategory(String category) {
-    this.category = category;
-  }
-
-  public ArrayList<String> getProfessors() {
-    ArrayList<String> professorList = new ArrayList<>();
-    for (Section x : getSections()) {
-      if (!professorList.contains(x.getProf())) professorList.add(x.getProf());
-    }
-    return professorList;
-  }
-
-  public int getCreditHour() {
-    return creditHour;
-  }
-
-  public abstract Section[] getSections();
-
-  public abstract Section[] getSections(String[] professors);
 
   public boolean contains(String[] arr, String professor) {
     for (int i = 0; i < arr.length; i++) {
@@ -60,12 +48,5 @@ public abstract class Course implements Comparable<Course> {
     return false;
   }
 
-  @Override public abstract int compareTo(Course other);
-
-  public abstract int numberOfSections();
-
-  @Override public String toString() {
-    return name;
-  }
 }
 

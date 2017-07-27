@@ -10,8 +10,8 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.fragment.ScheduleOverviewFragment;
+import com.example.myothiha09.coursehelper.model.CommitmentRequest;
 import com.example.myothiha09.coursehelper.model.Course;
-import com.example.myothiha09.coursehelper.model.CourseRequest;
 import com.example.myothiha09.coursehelper.model.MeetingTime;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Schedule;
@@ -42,10 +42,10 @@ public class ScheduleVisualDetailActivity extends AppCompatActivity {
 
   public void makeTimeTable(Schedule schedule) {
     int hourHeight = (int) getResources().getDimension(R.dimen.hourHeight);
-    List<CourseRequest> courseRequestList = Model.student.getCourseRequests();
-    Course[] courseList = new Course[courseRequestList.size()];
+    List<CommitmentRequest> commitmentRequestList = Model.student.getCourseRequests();
+    Course[] courseList = new Course[commitmentRequestList.size()];
     for (int i = 0; i < courseList.length; i++) {
-      courseList[i] = courseRequestList.get(i).getCourse();
+      courseList[i] = commitmentRequestList.get(i).getCourse();
     }
     int color = getResources().getColor(R.color.colorAccent);
     Course tempCourse;

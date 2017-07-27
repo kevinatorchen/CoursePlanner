@@ -11,38 +11,38 @@ import java.util.List;
 public class Student implements Serializable{
   private String name;
   private String university;
-  private List<CourseRequest> courseRequestList;
+  private List<CommitmentRequest> commitmentRequestList;
   public Student() {
     this.name  = "";
     this.university = "";
-    courseRequestList = new ArrayList<>();
+    commitmentRequestList = new ArrayList<>();
   }
   public Student(String name, String university) {
     this.name = name;
     this.university = university;
-    courseRequestList = new ArrayList<>();
+    commitmentRequestList = new ArrayList<>();
   }
 
-  public void editCourseRequest(int position, CourseRequest request) {
-    courseRequestList.remove(position);
-    courseRequestList.add(position, request);
+  public void editCourseRequest(int position, CommitmentRequest request) {
+    commitmentRequestList.remove(position);
+    commitmentRequestList.add(position, request);
   }
 
-  public void addCourseRequest(CourseRequest request) {
-    if (!courseRequestList.contains(request)) courseRequestList.add(request);
+  public void addCourseRequest(CommitmentRequest request) {
+    if (!commitmentRequestList.contains(request)) commitmentRequestList.add(request);
   }
 
-  public CourseRequest[] getCourseRequestsAsArray() {
-    return courseRequestList.toArray(new CourseRequest[courseRequestList.size()]);
+  public CommitmentRequest[] getCourseRequestsAsArray() {
+    return commitmentRequestList.toArray(new CommitmentRequest[commitmentRequestList.size()]);
   }
 
-  public List<CourseRequest> getCourseRequests() {
-    return courseRequestList;
+  public List<CommitmentRequest> getCourseRequests() {
+    return commitmentRequestList;
   }
 
   public boolean takeThisCourse(Course course) {
-    for (CourseRequest request : courseRequestList) {
-      if (request.getCourse().getName().equals(course.getName())) return true;
+    for (CommitmentRequest request : commitmentRequestList) {
+      if (request.getCommitment().getName().equals(course.getName())) return true;
     }
     return false;
   }

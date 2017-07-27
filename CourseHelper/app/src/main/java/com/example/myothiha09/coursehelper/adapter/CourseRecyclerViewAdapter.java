@@ -11,7 +11,8 @@ import butterknife.OnClick;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontMedium;
-import com.example.myothiha09.coursehelper.model.CourseRequest;
+import com.example.myothiha09.coursehelper.model.CommitmentRequest;
+
 import java.util.List;
 
 /**
@@ -20,11 +21,11 @@ import java.util.List;
 
 public class CourseRecyclerViewAdapter
     extends RecyclerView.Adapter<CourseRecyclerViewAdapter.ViewHolder> {
-  List<CourseRequest> list;
+  List<CommitmentRequest> list;
   Context context;
   ItemClickedListener listener;
 
-  public CourseRecyclerViewAdapter(Context context, List<CourseRequest> list) {
+  public CourseRecyclerViewAdapter(Context context, List<CommitmentRequest> list) {
     this.context = context;
     this.list = list;
   }
@@ -37,7 +38,7 @@ public class CourseRecyclerViewAdapter
   }
 
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
-    CourseRequest current = list.get(position);
+    CommitmentRequest current = list.get(position);
     holder.courseName.setText(current.getCourse().getName());
     holder.creditHour.setText("Credit Hour: " + current.getCourse().getCreditHour());
     String prof = "Selected Profs: ";

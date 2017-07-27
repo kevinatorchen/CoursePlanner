@@ -1,6 +1,6 @@
 package com.example.myothiha09.coursehelper.controller;
 
-import com.example.myothiha09.coursehelper.model.CourseRequest;
+import com.example.myothiha09.coursehelper.model.CommitmentRequest;
 import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.Section;
 import java.util.Arrays;
@@ -43,25 +43,25 @@ public class CoursePlanner {
         planCourses(courses);*/
   }
 
-  public static void planCourses(CourseRequest[] courseRequests) {
+  public static void planCourses(CommitmentRequest[] commitmentRequests) {
     scheduleList.clear();
-    Arrays.sort(courseRequests);
+    Arrays.sort(commitmentRequests);
     Schedule schedule = new Schedule();
-    planCourses(courseRequests, 0, schedule);
+    planCourses(commitmentRequests, 0, schedule);
   }
 
-  public static void planCourses(CourseRequest[] courseRequests, int currentCourse,
-      Schedule schedule) {
-    if (currentCourse >= courseRequests.length) {
+  public static void planCourses(CommitmentRequest[] commitmentRequests, int currentCourse,
+                                 Schedule schedule) {
+    if (currentCourse >= commitmentRequests.length) {
       Schedule temp = new Schedule();
       for (Section x : schedule.getSchedule()) {
         temp.getSchedule().add(x);
       }
       scheduleList.add(temp);
     } else {
-      CourseRequest currentCourseRequest = courseRequests[currentCourse];
-      for (Section currentSection : currentCourseRequest.getCourse()
-          .getSections(currentCourseRequest.getProf())) {
+      CommitmentRequest currentCommitmentRequest = commitmentRequests[currentCourse];
+      for (Section currentSection : currentCommitmentRequest.getCourse()
+          .getSections(currentCommitmentRequest.getProf())) {
         boolean conflicts = false;
         for (Section sectionInSchedule : schedule.getSchedule()) {
           if (currentSection.conflictsWith(sectionInSchedule)) {
@@ -71,7 +71,7 @@ public class CoursePlanner {
         }
         if (!conflicts) {
           schedule.getSchedule().add(currentSection);
-          planCourses(courseRequests, currentCourse + 1, schedule);
+          planCourses(commitmentRequests, currentCourse + 1, schedule);
           schedule.getSchedule().remove(schedule.getSchedule().size() - 1);
         }
       }

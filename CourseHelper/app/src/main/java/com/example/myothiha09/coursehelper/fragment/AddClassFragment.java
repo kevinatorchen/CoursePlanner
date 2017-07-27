@@ -21,8 +21,8 @@ import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.adapter.CourseRecyclerViewAdapter;
 import com.example.myothiha09.coursehelper.adapter.ItemClickedListener;
 import com.example.myothiha09.coursehelper.dialog.ClassSearcherDialog;
+import com.example.myothiha09.coursehelper.model.CommitmentRequest;
 import com.example.myothiha09.coursehelper.model.Course;
-import com.example.myothiha09.coursehelper.model.CourseRequest;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Student;
 import com.github.clans.fab.FloatingActionMenu;
@@ -57,7 +57,7 @@ public class AddClassFragment extends Fragment {
     recyclerView.setLayoutManager(layoutManager);
     adapter = new CourseRecyclerViewAdapter(getContext(), student.getCourseRequests());
     adapter.setListener(new ItemClickedListener() {
-      final List<CourseRequest> courseRequests = Model.student.getCourseRequests();
+      final List<CommitmentRequest> commitmentRequests = Model.student.getCourseRequests();
 
       @Override public void courseChosen(Course course) {
 
@@ -65,12 +65,12 @@ public class AddClassFragment extends Fragment {
 
       @Override public void deleteCourse(final int position) {
         new MaterialDialog.Builder(getContext()).title("Are you sure?")
-            .content(courseRequests.get(position).getCourse().getName() + " will be deleted.")
+            .content(commitmentRequests.get(position).getCourse().getName() + " will be deleted.")
             .positiveText("Confirm").contentColor(contentColor)
             .onPositive(new MaterialDialog.SingleButtonCallback() {
               @Override
               public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                courseRequests.remove(position);
+                commitmentRequests.remove(position);
                 adapter.notifyItemRemoved(position);
               }
             })
@@ -79,7 +79,7 @@ public class AddClassFragment extends Fragment {
       }
 
       @Override public void editCourse(int position) {
-        editProfessor(courseRequests.get(position).getCourse(), position);
+        editProfessor(commitmentRequests.get(position).getCourse(), position);
       }
     });
     recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -148,7 +148,7 @@ public class AddClassFragment extends Fragment {
           @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
               CharSequence text) {
             Course selected = courseList.get(which);
-            student.addCourseRequest(new CourseRequest(selected,
+            student.addCourseRequest(new CommitmentRequest(selected,
                 selected.getProfessors().toArray(new String[selected.getProfessors().size()])));
             adapter.notifyItemInserted(student.getCourseRequests().size());
             return true;
@@ -190,7 +190,7 @@ public class AddClassFragment extends Fragment {
             for (int x : which) {
               selectedProfList.add(course.getProfessors().get(x));
             }
-            student.editCourseRequest(position, new CourseRequest(course,
+            student.editCourseRequest(position, new CommitmentRequest(course,
                 selectedProfList.toArray(new String[selectedProfList.size()])));
             adapter.notifyItemChanged(position);
             return true;
@@ -222,7 +222,7 @@ public class AddClassFragment extends Fragment {
             for (int x : which) {
               selectedProfList.add(course.getProfessors().get(x));
             }
-            student.addCourseRequest(new CourseRequest(course,
+            student.addCourseRequest(new CommitmentRequest(course,
                 selectedProfList.toArray(new String[selectedProfList.size()])));
             adapter.notifyItemInserted(student.getCourseRequests().size());
             return true;
