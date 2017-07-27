@@ -271,7 +271,7 @@ public class AddClassFragment extends Fragment {
         activityList.add(x);
       }
     }
-    new MaterialDialog.Builder(getContext()).title("Class Chooser")
+    new MaterialDialog.Builder(getContext()).title("Activity Chooser")
         .items(activityList)
         .contentColor(contentColor)
         .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
