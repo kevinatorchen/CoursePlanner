@@ -16,7 +16,9 @@
     <color name="course9">#6c0508</color>
     <color name="course10">#1a237e</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="font_color">#FFE100</color>
+    <color name="nav_bg">#00254c</color>
+    <color name="font_color">#f5d376</color>
+    <color name="nav_font_color">#f5d376</color>
 
     <color name="content_font_color">#335170</color>
     <color name="title_font_color">#00254c</color>

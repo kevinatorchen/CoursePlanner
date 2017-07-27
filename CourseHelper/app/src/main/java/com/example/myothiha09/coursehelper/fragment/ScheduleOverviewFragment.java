@@ -64,15 +64,18 @@ public class ScheduleOverviewFragment extends Fragment {
     Set<Schedule> list = CoursePlanner.scheduleList;
     index = 1;
     for (final Schedule sections : list) {
-      LinearLayout.LayoutParams layoutParams = createBackground();
-      TextView tv = createTitle();
-      createCoursesInfo(tv, layoutParams, sections);
+      if (!sections.getSchedule().isEmpty()) {
+        LinearLayout.LayoutParams layoutParams = createBackground();
+        TextView tv = createTitle();
+        createCoursesInfo(tv, layoutParams, sections);
+      }
     }
     return view;
   }
 
   @OnClick(R.id.viewScheduleVisually) void viewVisually() {
-    getActivity().getSupportFragmentManager().beginTransaction()
+    getActivity().getSupportFragmentManager()
+        .beginTransaction()
         .setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit)
         .replace(R.id.container, new ScheduleVisualFragment())
         .addToBackStack(null)

@@ -38,13 +38,14 @@ public class ScheduleVisualFragment extends ListFragment {
     for (Schedule section : CoursePlanner.scheduleList) {
       al.add(section);
     }
-    adapter = new VisualScheduleAdapter(getContext(), al);
-    setListAdapter(adapter);
+    if (!al.isEmpty() && !al.get(0).getSchedule().isEmpty()) {
+      adapter = new VisualScheduleAdapter(getContext(), al);
+      setListAdapter(adapter);
+    }
   }
 
   @Override public void onResume() {
     super.onResume();
-    adapter.notifyDataSetChanged();
   }
 
     /*
