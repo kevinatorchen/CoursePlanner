@@ -1,28 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/medium_gray"
     android:orientation="vertical"
     android:padding="16dp"
     >
-
-  <Button
-      android:id="@+id/showAllVisually"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="8dp"
-      android:background="@drawable/bg_card_button"
-      android:onClick="onClickMain"
-      android:text="See Schedules Visually"
-      android:textColor="@color/title_font_color"
-      />
-
   <ScrollView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_marginTop="8dp"
       >
 
     <LinearLayout
@@ -32,5 +19,13 @@
         android:orientation="vertical"
         />
   </ScrollView>
+  <android.support.design.widget.FloatingActionButton
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentRight="true"
+      android:id="@+id/viewScheduleVisually"
+      android:src="@drawable/view_schedule_visually"
+      />
 
-</LinearLayout>
+</RelativeLayout>

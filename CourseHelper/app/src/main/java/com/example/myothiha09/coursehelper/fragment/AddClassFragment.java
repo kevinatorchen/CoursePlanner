@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,6 +38,7 @@ public class AddClassFragment extends Fragment {
   public static CourseRecyclerViewAdapter adapter;
   @BindView(R.id.recycler_view) RecyclerView recyclerView;
   @BindView(R.id.floatingMenu) FloatingActionMenu fabMenu;
+  @BindColor(R.color.content_font_color) int contentColor;
   private RecyclerView.LayoutManager layoutManager;
   private Student student;
 
@@ -65,7 +67,7 @@ public class AddClassFragment extends Fragment {
       @Override public void deleteCourse(final int position) {
         new MaterialDialog.Builder(getContext()).title("Are you sure?")
             .content(courseRequests.get(position).getCourse().getName() + " will be deleted.")
-            .positiveText("Confirm")
+            .positiveText("Confirm").contentColor(contentColor)
             .onPositive(new MaterialDialog.SingleButtonCallback() {
               @Override
               public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
@@ -94,7 +96,7 @@ public class AddClassFragment extends Fragment {
 
     stringList.addAll(Model.ALL_COURSE_CATEGORY);
     new MaterialDialog.Builder(getContext()).title("Category Chooser")
-        .items(stringList)
+        .items(stringList).contentColor(contentColor)
         .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
           @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
               CharSequence text) {
@@ -142,6 +144,7 @@ public class AddClassFragment extends Fragment {
     }
     new MaterialDialog.Builder(getContext()).title("Class Chooser")
         .items(courseList)
+        .contentColor(contentColor)
         .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
           @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
               CharSequence text) {
@@ -175,7 +178,7 @@ public class AddClassFragment extends Fragment {
     }
     final List<String> selectedProfList = new ArrayList<>();
     new MaterialDialog.Builder(getContext()).title("Professor Chooser")
-        .items(professorList)
+        .items(professorList).contentColor(contentColor)
         .itemsCallbackMultiChoice(preSelected, new MaterialDialog.ListCallbackMultiChoice() {
           @Override
           public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
@@ -207,7 +210,7 @@ public class AddClassFragment extends Fragment {
     }
     final List<String> selectedProfList = new ArrayList<>();
     new MaterialDialog.Builder(getContext()).title("Professor Chooser")
-        .items(professorList)
+        .items(professorList).contentColor(contentColor)
         .itemsCallbackMultiChoice(preSelected, new MaterialDialog.ListCallbackMultiChoice() {
           @Override
           public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {

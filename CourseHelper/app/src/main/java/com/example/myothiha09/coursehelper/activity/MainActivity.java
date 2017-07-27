@@ -20,7 +20,6 @@ import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.fragment.AddClassFragment;
 import com.example.myothiha09.coursehelper.fragment.ScheduleOverviewFragment;
-import com.example.myothiha09.coursehelper.fragment.ScheduleVisualFragment;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Student;
 
@@ -162,12 +161,6 @@ public class MainActivity extends AppCompatActivity
       getSupportFragmentManager().beginTransaction()
           .setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit)
           .replace(R.id.container, new ScheduleOverviewFragment())
-          .addToBackStack(null)
-          .commit();
-    } else if (v.getId() == R.id.showAllVisually) {
-      getSupportFragmentManager().beginTransaction()
-          .setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit)
-          .replace(R.id.container, new ScheduleVisualFragment())
           .addToBackStack(null)
           .commit();
     }

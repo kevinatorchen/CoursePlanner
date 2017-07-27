@@ -16,6 +16,7 @@ import butterknife.BindDimen;
 import butterknife.BindDrawable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.activity.ScheduleVisualDetailActivity;
 import com.example.myothiha09.coursehelper.controller.Boast;
@@ -70,6 +71,14 @@ public class ScheduleOverviewFragment extends Fragment {
     return view;
   }
 
+  @OnClick(R.id.viewScheduleVisually) void viewVisually() {
+    getActivity().getSupportFragmentManager().beginTransaction()
+        .setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit)
+        .replace(R.id.container, new ScheduleVisualFragment())
+        .addToBackStack(null)
+        .commit();
+  }
+
   private LinearLayout.LayoutParams createBackground() {
     nested = new LinearLayout(getContext());
     LinearLayout.LayoutParams layoutParams =
@@ -86,7 +95,7 @@ public class ScheduleOverviewFragment extends Fragment {
     final TextView tv = new TextView(getContext());
     tv.setText("Schedule " + index++);
     tv.setTextSize(18);
-    tv.setPadding(0, 0, 0, margin/2);
+    tv.setPadding(0, 0, 0, margin / 2);
     tv.setTextColor(titleColor);
     nested.addView(tv);
     return tv;
@@ -110,7 +119,7 @@ public class ScheduleOverviewFragment extends Fragment {
       CustomFontLight line2 = new CustomFontLight(getContext());
       line2.setText(meetingTimes);
       line2.setTextColor(contentColor);
-      line2.setPadding(0, 0, 0, margin/2);
+      line2.setPadding(0, 0, 0, margin / 2);
       nested.setPadding(margin, margin, margin, margin);
       nested.addView(line1);
       nested.addView(line2);
