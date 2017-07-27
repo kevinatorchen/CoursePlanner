@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.myothiha09.coursehelper.R;
-import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.fragment.AddClassFragment;
 import com.example.myothiha09.coursehelper.fragment.ScheduleOverviewFragment;
 import com.example.myothiha09.coursehelper.model.Model;
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity
       } else {
         if (count == 1) super.onBackPressed();
         count++;
-        Boast.makeText(getApplicationContext(), "Press back again to exit", Toast.LENGTH_SHORT)
+        Toast.makeText(getApplicationContext(), "Press back again to exit", Toast.LENGTH_SHORT)
             .show();
         new Handler().postDelayed(new Runnable() {
           @Override public void run() {

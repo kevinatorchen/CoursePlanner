@@ -19,7 +19,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.activity.ScheduleVisualDetailActivity;
-import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontRegular;
@@ -57,8 +56,6 @@ public class ScheduleOverviewFragment extends Fragment {
     View view = inflater.inflate(R.layout.fragment_schedule_overview, container, false);
     ButterKnife.bind(this, view);
     //ArrayList<Course> ALL_COURSE_CATEGORY_VALUES = Model.student.getCoursesList();
-    Boast.makeText(getContext(), "Click the schedule to view it visually", Toast.LENGTH_LONG)
-        .show();
 
     CoursePlanner.planCourses(Model.student.getCourseRequestsAsArray());
     Set<Schedule> list = CoursePlanner.scheduleList;

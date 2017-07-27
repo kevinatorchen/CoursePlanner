@@ -7,10 +7,8 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.myothiha09.coursehelper.R;
-import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.fragment.ScheduleOverviewFragment;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.CourseRequest;
@@ -37,7 +35,6 @@ public class ScheduleVisualDetailActivity extends AppCompatActivity {
     setContentView(R.layout.schedule_screen);
     list = ScheduleOverviewFragment.getCurrent();
     view = new View(this);
-    Boast.makeText(getApplicationContext(), "Click back to go back", Toast.LENGTH_LONG).show();
     TextView tv = (TextView) findViewById(R.id.textTitle);
     tv.setText(ScheduleOverviewFragment.getScheduleNumber());
     makeTimeTable(list);

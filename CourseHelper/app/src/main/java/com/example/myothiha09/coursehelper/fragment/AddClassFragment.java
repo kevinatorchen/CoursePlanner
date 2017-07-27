@@ -20,7 +20,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.adapter.CourseRecyclerViewAdapter;
 import com.example.myothiha09.coursehelper.adapter.ItemClickedListener;
-import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.dialog.ClassSearcherDialog;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.CourseRequest;
@@ -183,7 +182,7 @@ public class AddClassFragment extends Fragment {
           @Override
           public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
             if (which.length == 0) {
-              Boast.makeText(getContext(),
+              Toast.makeText(getContext(),
                   "No change was made because you did not select a professor", Toast.LENGTH_LONG)
                   .show();
               return false;
@@ -215,7 +214,7 @@ public class AddClassFragment extends Fragment {
           @Override
           public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
             if (which.length == 0) {
-              Boast.makeText(getContext(),
+              Toast.makeText(getContext(),
                   "Course was not added because you did not select a professor", Toast.LENGTH_LONG)
                   .show();
               return false;
@@ -237,7 +236,7 @@ public class AddClassFragment extends Fragment {
   @OnClick(R.id.addClass) void onAddClassClicked() {
     fabMenu.close(true);
     if (student.getCourseRequests().size() >= 10) {
-      Boast.makeText(getContext(), "You cannot have more than 10 classes.", Toast.LENGTH_LONG)
+      Toast.makeText(getContext(), "You cannot have more than 10 classes.", Toast.LENGTH_LONG)
           .show();
     } else {
       showCategoryChooser();
@@ -246,7 +245,7 @@ public class AddClassFragment extends Fragment {
 
   @OnClick(R.id.addActivity) void onAddActivityClicked() {
     fabMenu.close(true);
-    Boast.makeText(getContext(), "Clicked Add Activity.", Toast.LENGTH_SHORT).show();
+    Toast.makeText(getContext(), "Clicked Add Activity.", Toast.LENGTH_SHORT).show();
   }
 }
 

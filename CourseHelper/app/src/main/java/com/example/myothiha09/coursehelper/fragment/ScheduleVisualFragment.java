@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.adapter.VisualScheduleAdapter;
-import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Schedule;
@@ -26,9 +25,7 @@ public class ScheduleVisualFragment extends ListFragment {
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.list_schedule, container, false);
-    Boast.makeText(getActivity(), "Click the course to view details", Toast.LENGTH_LONG).show();
-    return view;
+    return inflater.inflate(R.layout.list_schedule, container, false);
   }
 
   @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
