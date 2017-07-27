@@ -1,5 +1,6 @@
 package com.example.myothiha09.coursehelper.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,11 +8,15 @@ import java.util.List;
  * Created by Myo on 5/17/2017.
  */
 
-public class Student {
+public class Student implements Serializable{
   private String name;
   private String university;
   private List<CourseRequest> courseRequestList;
-
+  public Student() {
+    this.name  = "";
+    this.university = "";
+    courseRequestList = new ArrayList<>();
+  }
   public Student(String name, String university) {
     this.name = name;
     this.university = university;

@@ -2,6 +2,8 @@ package com.example.myothiha09.coursehelper.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
@@ -21,25 +23,39 @@ import com.example.myothiha09.coursehelper.fragment.AddClassFragment;
 import com.example.myothiha09.coursehelper.fragment.ScheduleOverviewFragment;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Student;
+import com.example.myothiha09.coursehelper.util.Constants;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
   public static Context context;
   int index = 0;
   int count = 0;
-  private Student student;
+  SharedPreferences prefs;
   private NavigationView navigationView;
 
   //TODO: animations to make it very satisfying to use.
+  public static void start(Context context) {
+    Intent intent = new Intent(context, MainActivity.class);
+    context.startActivity(intent);
+  }
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    prefs = getSharedPreferences(getPackageName(), MODE_PRIVATE);
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
-    Model.getInstance(); //to intialize lists and student
-    index = Model.student.getCourseRequests().size();
-    student = Model.student;
+    Model.getInstance();
+    String jsonStudent = prefs.getString(Constants.STUDENT_TAG, "");
+    if (jsonStudent.equals("")) {
+      Model.student = new Student();
+    } else {
+      Gson gson = new Gson();
+      Model.student = gson.fromJson(jsonStudent, Student.class);
+    }
+    Student student = Model.student;
+    index = student.getCourseRequests().size();
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     ActionBarDrawerToggle toggle =
         new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,
@@ -146,9 +162,9 @@ public class MainActivity extends AppCompatActivity
     });
     myDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
       @Override public void onClick(DialogInterface dialog, int which) {
-        RegisterActivity.prefs.edit().clear().commit();
+        prefs.edit().clear().apply();
         finishAffinity();
-        System.exit(1);
+        LoginActivity.start(MainActivity.this);
       }
     });
     return myDialogBuilder.create();

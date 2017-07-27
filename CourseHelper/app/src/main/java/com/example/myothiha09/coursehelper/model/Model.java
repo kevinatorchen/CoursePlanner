@@ -23,7 +23,6 @@ public class Model {
 
   private Model() {
     coursePopulater();
-    studentPopulater();
     ALL_COURSE_CATEGORY.addAll(ALL_COURSE_DATA.keySet());
   }
 
@@ -34,10 +33,6 @@ public class Model {
     return model;
   }
 
-  private void studentPopulater() {
-    student = new Student(RegisterActivity.prefs.getString("StudentName", "Student"),
-        RegisterActivity.prefs.getString("UniName", "University"));
-  }
 
   private void coursePopulater() {
         /*

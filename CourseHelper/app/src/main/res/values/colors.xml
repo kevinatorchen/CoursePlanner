@@ -25,4 +25,11 @@
     <color name="fab_menu">#335170</color>
     <color name="fab_menu_ripple">#203a55</color>
     <color name="background_color">#132241</color>
+
+
+    <color name="login_icon">#ECECEC</color>
+    <color name="login_button_bg">#00254c</color>
+    <color name="login_clicked">#001d39</color>
+
+    <color name="register_pressed">#001d39</color>
 </resources>
