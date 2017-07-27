@@ -6,9 +6,7 @@
   <dimen name="nav_header_height">160dp</dimen>
   <dimen name="hourHeight">30dp</dimen>
   <dimen name="hour30Height">45dp</dimen>
-  <dimen name="dp10">10dp</dimen>
-
-  <dimen name="ic_clear_margin">16dp</dimen>
+  <dimen name="padding">16dp</dimen>
 
   <dimen name="dialog_width">300dp</dimen>
 

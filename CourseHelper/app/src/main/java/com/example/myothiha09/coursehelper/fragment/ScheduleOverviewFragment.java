@@ -1,6 +1,7 @@
 package com.example.myothiha09.coursehelper.fragment;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,10 +11,17 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.BindColor;
+import butterknife.BindDimen;
+import butterknife.BindDrawable;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.activity.ScheduleVisualDetailActivity;
 import com.example.myothiha09.coursehelper.controller.Boast;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
+import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
+import com.example.myothiha09.coursehelper.layout_helper.CustomFontRegular;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.Section;
@@ -27,7 +35,10 @@ public class ScheduleOverviewFragment extends Fragment {
   static Schedule current = new Schedule();
   static String scheduleNumber;
   LinearLayout nested;
-  LinearLayout layout;
+  @BindView(R.id.nested) LinearLayout layout;
+  @BindDimen(R.dimen.padding) int margin;
+  @BindColor(R.color.strong_blue) int titleColor;
+  @BindDrawable(R.drawable.bg_card_button) Drawable cardBG;
   int index;
 
   public static Schedule getCurrent() {
@@ -42,7 +53,7 @@ public class ScheduleOverviewFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_schedule_overview, container, false);
-    layout = (LinearLayout) view.findViewById(R.id.nested);
+    ButterKnife.bind(this, view);
     //ArrayList<Course> ALL_COURSE_CATEGORY_VALUES = Model.student.getCoursesList();
     Boast.makeText(getContext(), "Click the schedule to view it visually", Toast.LENGTH_LONG)
         .show();
@@ -63,10 +74,9 @@ public class ScheduleOverviewFragment extends Fragment {
     LinearLayout.LayoutParams layoutParams =
         new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT);
-    layoutParams.topMargin = (int) getResources().getDimension(R.dimen.dp10);
-    int margin = (int) getResources().getDimension(R.dimen.dp10);
+    layoutParams.bottomMargin = margin;
     nested.setPadding(margin, margin, margin, margin);
-    nested.setBackground(getResources().getDrawable(R.drawable.bg_card));
+    nested.setBackground(cardBG);
     nested.setOrientation(LinearLayout.VERTICAL);
     return layoutParams;
   }
@@ -75,7 +85,8 @@ public class ScheduleOverviewFragment extends Fragment {
     final TextView tv = new TextView(getContext());
     tv.setText("Schedule " + index++);
     tv.setTextSize(18);
-    tv.setTextColor(getResources().getColor(R.color.strong_blue));
+    tv.setPadding(0, 0, 0, margin/2);
+    tv.setTextColor(titleColor);
     nested.addView(tv);
     return tv;
   }
@@ -83,21 +94,21 @@ public class ScheduleOverviewFragment extends Fragment {
   private void createCoursesInfo(final TextView tv, LinearLayout.LayoutParams layoutParams,
       final Schedule schedule) {
     for (Section section : schedule.getSchedule()) {
-      String courseName = "Course: " + section.getCourse().getName();
-      String courseSection = "Section: " + section.getName();
-      String CRN = "CRN: " + section.getCrn();
-      String meetingTimes = "Meeting Times: ";
+      String courseName = section.getCourse().getName();
+      String courseSection = section.getName();
+      String CRN = section.getCrn() + "";
+      String meetingTimes = "";
       for (int i = 0; i < section.getMeetingTimes().length; i++) {
         meetingTimes += section.getMeetingTimes()[i] + ", ";
       }
       meetingTimes = meetingTimes.substring(0, meetingTimes.length() - 2);
+      CustomFontRegular line1 = new CustomFontRegular(getContext());
 
-      TextView line1 = new TextView(getContext());
       line1.setText(courseName + " " + courseSection + " " + CRN);
-      line1.setTextSize(16);
-      TextView line2 = new TextView(getContext());
+      CustomFontLight line2 = new CustomFontLight(getContext());
       line2.setText(meetingTimes);
-      line2.setPadding(0, 0, 0, 15);
+      line2.setPadding(0, 0, 0, margin/2);
+      nested.setPadding(margin, margin, margin, margin);
       nested.addView(line1);
       nested.addView(line2);
     }
