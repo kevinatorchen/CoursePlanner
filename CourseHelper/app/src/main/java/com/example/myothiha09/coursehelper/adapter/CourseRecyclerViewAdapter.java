@@ -1,6 +1,5 @@
 package com.example.myothiha09.coursehelper.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import com.example.myothiha09.coursehelper.layout_helper.CustomFontMedium;
 import com.example.myothiha09.coursehelper.model.CommitmentRequest;
 
 import com.example.myothiha09.coursehelper.model.Course;
-import com.example.myothiha09.coursehelper.model.Student;
 import com.example.myothiha09.coursehelper.model.StudentActivity;
 import java.util.List;
 
@@ -87,14 +85,14 @@ public class CourseRecyclerViewAdapter
       ButterKnife.bind(this, view);
     }
 
-    @OnClick(R.id.editCourse) void onEditCourse() {
+    @OnClick(R.id.editCommitment) void onEditCourse() {
       int position = getAdapterPosition();
-      listener.editCourse(position);
+      listener.editCommitment(position);
     }
 
-    @OnClick(R.id.deleteCourse) void onDeleteCourse() {
+    @OnClick(R.id.delCommitment) void onDeleteCourse() {
       int position = getAdapterPosition();
-      listener.deleteCourse(position);
+      listener.delCommitment(position);
     }
   }
 }

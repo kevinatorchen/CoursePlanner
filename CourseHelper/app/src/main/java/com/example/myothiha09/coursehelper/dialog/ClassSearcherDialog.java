@@ -16,6 +16,7 @@ import butterknife.OnTextChanged;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.adapter.ItemClickedListener;
 import com.example.myothiha09.coursehelper.adapter.SearchRecyclerAdapter;
+import com.example.myothiha09.coursehelper.model.Commitment;
 import com.example.myothiha09.coursehelper.model.Course;
 
 /**
@@ -54,16 +55,16 @@ public class ClassSearcherDialog extends AppCompatDialog {
     searchRecyclerAdapter = new SearchRecyclerAdapter(context);
     searchRecyclerView.setAdapter(searchRecyclerAdapter);
     searchRecyclerAdapter.setListener(new ItemClickedListener() {
-      @Override public void courseChosen(Course course) {
-        listener.courseChosen(course);
+      @Override public void commitmentChosen(Commitment commitment) {
+        listener.commitmentChosen(commitment);
         dismiss();
       }
 
-      @Override public void deleteCourse(int position) {
+      @Override public void delCommitment(int position) {
 
       }
 
-      @Override public void editCourse(int position) {
+      @Override public void editCommitment(int position) {
 
       }
     });

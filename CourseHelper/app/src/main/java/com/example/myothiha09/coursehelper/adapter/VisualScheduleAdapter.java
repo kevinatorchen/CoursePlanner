@@ -45,7 +45,7 @@ public class VisualScheduleAdapter extends ArrayAdapter<Schedule> {
   public View getView(int position, View convertView, @NonNull ViewGroup parent) {
     LayoutInflater inflater =
         (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    rowView = inflater.inflate(R.layout.schedule_screen, parent, false);
+    rowView = inflater.inflate(R.layout.fragment_visual_schedule, parent, false);
     Schedule current = list.get(position);
     TextView tv = (TextView) rowView.findViewById(R.id.textTitle);
     int title = position + 1;

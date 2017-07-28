@@ -25,6 +25,7 @@ import com.example.myothiha09.coursehelper.model.CourseSection;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.Section;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -39,16 +40,8 @@ public class ScheduleOverviewFragment extends Fragment {
   @BindDimen(R.dimen.padding) int margin;
   @BindColor(R.color.title_font_color) int titleColor;
   @BindColor(R.color.content_font_color) int contentColor;
-  @BindDrawable(R.drawable.bg_card_button) Drawable cardBG;
+  @BindDrawable(R.drawable.bg_card) Drawable cardBG;
   int index;
-
-  public static Schedule getCurrent() {
-    return current;
-  }
-
-  public static String getScheduleNumber() {
-    return scheduleNumber;
-  }
 
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -58,7 +51,7 @@ public class ScheduleOverviewFragment extends Fragment {
     //ArrayList<Course> ALL_COURSE_CATEGORY_VALUES = Model.student.getCoursesList();
 
     CoursePlanner.planCourses(Model.student.getCommmitmentRequestAsArray());
-    Set<Schedule> list = CoursePlanner.scheduleList;
+    List<Schedule> list = CoursePlanner.scheduleList;
     index = 1;
     for (final Schedule sections : list) {
       if (!sections.getSchedule().isEmpty()) {
@@ -71,10 +64,12 @@ public class ScheduleOverviewFragment extends Fragment {
   }
 
   @OnClick(R.id.viewScheduleVisually) void viewVisually() {
+    ScheduleVisualFragment frag = new ScheduleVisualFragment();
+    frag.putExtra(0);
     getActivity().getSupportFragmentManager()
         .beginTransaction()
         .setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit)
-        .replace(R.id.container, new ScheduleVisualFragment())
+        .replace(R.id.container, frag)
         .addToBackStack(null)
         .commit();
   }
@@ -126,13 +121,13 @@ public class ScheduleOverviewFragment extends Fragment {
       nested.setPadding(margin, margin, margin, margin);
       nested.addView(line1);
       nested.addView(line2);
+      nested.setTag((index - 2) + "");
     }
     nested.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
-        current = schedule;
-        scheduleNumber = tv.getText().toString();
-        ScheduleVisualDetailFragment frag = new ScheduleVisualDetailFragment();
-        frag.putExtra(current, scheduleNumber);
+        ScheduleVisualFragment frag = new ScheduleVisualFragment();
+        int num = Integer.parseInt(v.getTag().toString());
+        frag.putExtra(num);
         getActivity().getSupportFragmentManager().beginTransaction()
             .setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit)
             .replace(R.id.container, frag)

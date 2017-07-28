@@ -61,11 +61,11 @@ public class AddClassFragment extends Fragment {
     adapter.setListener(new ItemClickedListener() {
       final List<CommitmentRequest> commitmentRequests = Model.student.getCommitmentRequests();
 
-      @Override public void courseChosen(Course course) {
+      @Override public void commitmentChosen(Commitment commitment) {
 
       }
 
-      @Override public void deleteCourse(final int position) {
+      @Override public void delCommitment(final int position) {
         new MaterialDialog.Builder(getContext()).title("Are you sure?")
             .content(
                 commitmentRequests.get(position).getCommitment().getName() + " will be deleted.")
@@ -82,7 +82,7 @@ public class AddClassFragment extends Fragment {
             .show();
       }
 
-      @Override public void editCourse(int position) {
+      @Override public void editCommitment(int position) {
         editProfessor(commitmentRequests.get(position).getCommitment(), position);
       }
     });
@@ -124,15 +124,15 @@ public class AddClassFragment extends Fragment {
   private void initClassSearcher() {
     ClassSearcherDialog dialog = new ClassSearcherDialog(getContext());
     dialog.setListener(new ItemClickedListener() {
-      @Override public void courseChosen(Course course) {
-        showProfessorChooser(course);
+      @Override public void commitmentChosen(Commitment commitment) {
+        showProfessorChooser((Course)commitment);
       }
 
-      @Override public void deleteCourse(int position) {
+      @Override public void delCommitment(int position) {
 
       }
 
-      @Override public void editCourse(int position) {
+      @Override public void editCommitment(int position) {
 
       }
     });

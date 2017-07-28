@@ -143,7 +143,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
     @OnClick(R.id.searchRowItemContainer) void onClick() {
       int position = getAdapterPosition();
       List<Course> searchItemList = mDisplayedValues;
-      listener.courseChosen(searchItemList.get(position));
+      listener.commitmentChosen(searchItemList.get(position));
     }
   }
 }

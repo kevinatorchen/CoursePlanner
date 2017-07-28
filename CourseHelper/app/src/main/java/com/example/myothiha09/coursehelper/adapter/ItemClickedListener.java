@@ -1,5 +1,6 @@
 package com.example.myothiha09.coursehelper.adapter;
 
+import com.example.myothiha09.coursehelper.model.Commitment;
 import com.example.myothiha09.coursehelper.model.Course;
 
 /**
@@ -7,7 +8,7 @@ import com.example.myothiha09.coursehelper.model.Course;
  */
 
 public interface ItemClickedListener {
-  void courseChosen(Course course);
-  void deleteCourse(int position);
-  void editCourse(int position);
+  void commitmentChosen(Commitment commitment);
+  void delCommitment(int position);
+  void editCommitment(int position);
 }

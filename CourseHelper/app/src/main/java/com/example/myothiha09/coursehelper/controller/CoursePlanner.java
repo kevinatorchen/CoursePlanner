@@ -3,15 +3,17 @@ package com.example.myothiha09.coursehelper.controller;
 import com.example.myothiha09.coursehelper.model.CommitmentRequest;
 import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.Section;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
  * Created by Kevin on 1/3/2017.
  */
 public class CoursePlanner {
-  public static Set<Schedule> scheduleList = new HashSet<>();
+  public static List<Schedule> scheduleList = new ArrayList<>();
 
   public static void main(String[] args) {
         /*MeetingTime[] APPH1040AsectionMTs = {new MeetingTime(5, new Time(8, 5), new Time(9, 55))};
