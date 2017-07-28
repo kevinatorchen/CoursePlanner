@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Kevin on 1/3/2017.
@@ -81,12 +78,13 @@ public class CoursePlanner {
         List<CommitmentRequest> commitmentRequests = new ArrayList<>();
         String[] APPH1040Professors = {"Thiha", "Kevin"};
         commitmentRequests.add(new CommitmentRequest(APPH1040, APPH1040Professors));
-        String[] ENGL1102Professors = {"Kevin", "Nidhi"};
+        //String[] ENGL1102Professors = {"Kevin", "Nidhi"};
+        String[] ENGL1102Professors = {"Nidhi"};
         commitmentRequests.add(new CommitmentRequest(ENGL1102, ENGL1102Professors));
         String[] PHYS2211Professors = {"Nidhi"};
         commitmentRequests.add(new CommitmentRequest(PHYS2211, PHYS2211Professors));
 
-        planCourses(commitmentRequests);
+        planAlternatives(commitmentRequests, 1);
 
     }
 
@@ -123,12 +121,16 @@ public class CoursePlanner {
     }
 
     public static void planCourses(List<CommitmentRequest> courseRequests) {
-        Collections.sort(courseRequests);
-        Schedule schedule = new Schedule();
-        planCourses(courseRequests, 0, schedule);
+        planCourses(courseRequests, false);
     }
 
-    public static void planCourses(List<CommitmentRequest> courseRequests, int currentCourse, Schedule schedule) {
+    public static void planCourses(List<CommitmentRequest> courseRequests, boolean ignoreProfessor) {
+        Collections.sort(courseRequests);
+        Schedule schedule = new Schedule();
+        planCourses(courseRequests, 0, schedule, ignoreProfessor);
+    }
+
+    public static void planCourses(List<CommitmentRequest> courseRequests, int currentCourse, Schedule schedule, boolean ignoreProfessor) {
         if (currentCourse >= courseRequests.size()) {
             System.out.println(Arrays.toString(schedule.getSchedule().toArray()));
             schedule.generateComparatorValues();
@@ -136,7 +138,10 @@ public class CoursePlanner {
 
         } else {
             CommitmentRequest currentCourseRequest = courseRequests.get(currentCourse);
-            for (Section currentSection: currentCourseRequest.getCommitment().getSections(currentCourseRequest.getProf())) {
+            Section[] sections = (ignoreProfessor) ?
+                    currentCourseRequest.getCommitment().getSections() :
+                    currentCourseRequest.getCommitment().getSections(currentCourseRequest.getProf());
+            for (Section currentSection: sections) {
                 boolean conflicts = false;
                 for (Section sectionInSchedule: schedule.getSchedule()) {
                     if (currentSection.conflictsWith(sectionInSchedule)) {
@@ -146,10 +151,49 @@ public class CoursePlanner {
                 }
                 if (!conflicts) {
                     schedule.getSchedule().add(currentSection);
-                    planCourses(courseRequests, currentCourse + 1, schedule);
+                    planCourses(courseRequests, currentCourse + 1, schedule, ignoreProfessor);
                     schedule.getSchedule().remove(schedule.getSchedule().size() - 1);
                 }
             }
         }
+    }
+
+    //Tries allowing all professors only.
+    public static void planAltConservative(List<CommitmentRequest> courseRequests) {
+        planAlternatives(courseRequests, 0);
+    }
+
+    //Does whatever it can to find alternatives.
+    public static void planAltFull(List<CommitmentRequest> courseRequests) {
+        planAlternatives(courseRequests, courseRequests.size());
+    }
+
+    //Tries allowing all professors and/or dropping "maxDrop" number of commitments.
+    public static void planAlternatives(List<CommitmentRequest> courseRequests, int maxDrop) {
+        List<ArrayList<CommitmentRequest>> alternativeRequests = CoursePlanner.<CommitmentRequest>powerSet(courseRequests, courseRequests.size() - maxDrop);
+        for (ArrayList<CommitmentRequest> currentAlternative: alternativeRequests) {
+            planCourses(currentAlternative);
+            planCourses(currentAlternative, true);
+        }
+    }
+
+    public static <T> List<ArrayList<T>> powerSet(List<T> elements, int minSize) {
+        List<ArrayList<T>> result = new ArrayList<>();
+        result.add(new ArrayList<T>());
+        for (T current: elements) {
+            int size = result.size();
+            for (int i = 0; i < size; i++) {
+                ArrayList<T> newSet = (ArrayList<T>) result.get(i).clone();
+                newSet.add(current);
+                result.add(newSet);
+            }
+        }
+        List<ArrayList<T>> truncated = new ArrayList<>();
+        for (ArrayList<T> current: result) {
+            if (current.size() >= minSize) {
+                truncated.add(current);
+            }
+        }
+        return truncated;
     }
 }
