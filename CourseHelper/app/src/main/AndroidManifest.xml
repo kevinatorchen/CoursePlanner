@@ -23,7 +23,7 @@
             android:name=".activity.MainActivity"
             android:label="CoureHelper"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.ScheduleVisualDetailActivity"></activity>
+        <activity android:name=".fragment.ScheduleVisualDetailFragment"></activity>
     </application>
 
 </manifest>

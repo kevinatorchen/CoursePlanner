@@ -3,382 +3,226 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:padding="5dp"
+    >
 
-    <TextView
-        android:id="@+id/textTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+  <TextView
+      android:id="@+id/textTitle"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:text="TextView"
+      android:textColor="@android:color/black"
+      android:textSize="20sp"
+      android:textStyle="bold"
+      />
 
+  <LinearLayout
+      android:id="@+id/dayLabelsLinearLayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_marginLeft="30dp"
+      android:layout_marginTop="16dp"
+      >
+
+
+    <RelativeLayout
+        android:id="@+id/mondayHeaderRelativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+        >
+
+      <TextView
+          android:id="@+id/mondayTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentLeft="true"
+          android:layout_marginLeft="6dp"
+          android:gravity="center"
+          android:text="@string/mon"
+          android:textColor="@color/medium_dark_gray"
+          android:textSize="15dp"
+          android:textStyle="bold"
+          />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tuesdayHeaderRelativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+        >
+
+      <TextView
+          android:id="@+id/tuesdayTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentLeft="true"
+          android:layout_marginLeft="6dp"
+          android:text="@string/tue"
+          android:textColor="@color/medium_dark_gray"
+          android:textSize="15dp"
+          android:textStyle="bold"
+          />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/wednesdayHeaderRelativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+        >
+
+      <TextView
+          android:id="@+id/wednesdayTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentLeft="true"
+          android:layout_marginLeft="6dp"
+          android:text="@string/wed"
+          android:textColor="@color/medium_dark_gray"
+          android:textSize="15dp"
+          android:textStyle="bold"
+          />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/thursdayHeaderRelativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+        >
+
+      <TextView
+          android:id="@+id/thursdayTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentLeft="true"
+          android:layout_marginLeft="6dp"
+          android:text="@string/thu"
+          android:textColor="@color/medium_dark_gray"
+          android:textSize="15dp"
+          android:textStyle="bold"
+          />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fridayHeaderRelativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+        >
+
+      <TextView
+          android:id="@+id/fridayTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentLeft="true"
+          android:layout_marginLeft="6dp"
+          android:text="@string/fri"
+          android:textColor="@color/medium_dark_gray"
+          android:textSize="15dp"
+          android:textStyle="bold"
+          />
+    </RelativeLayout>
+
+  </LinearLayout>
+
+  <View
+      android:id="@+id/dividerView"
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:layout_below="@+id/dayLabelsLinearLayout"
+      android:background="@color/medium_gray"
+      />
+
+  <FrameLayout
+      android:id="@+id/calendarScrollView"
+      android:layout_width="match_parent"
+      android:layout_height="fill_parent"
+      android:layout_alignParentBottom="true"
+      android:layout_below="@+id/dividerView"
+      android:fadingEdge="none"
+      android:overScrollMode="never"
+      android:padding="0dp"
+      android:scrollbars="none"
+      >
+    <include
+        layout="@layout/cal_zebra"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        />
     <LinearLayout
-        android:id="@+id/dayLabelsLinearLayout"
+        android:id="@+id/calendarRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp">
+        android:orientation="horizontal"
+        android:padding="0dp"
+        >
+      <View
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          />
 
+      <RelativeLayout
+          android:id="@+id/mondayRelativeLayout"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2"
+          >
+      </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/mondayHeaderRelativeLayout"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_weight="2"
-            android:gravity="center_horizontal">
+      <RelativeLayout
+          android:id="@+id/tuesdayRelativeLayout"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2"
+          >
 
-            <TextView
-                android:id="@+id/mondayTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="6dp"
-                android:gravity="center"
-                android:text="@string/mon"
-                android:textColor="@color/medium_dark_gray"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-        </RelativeLayout>
+      </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/tuesdayHeaderRelativeLayout"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_weight="2"
-            android:gravity="center_horizontal">
+      <RelativeLayout
+          android:id="@+id/wednesdayRelativeLayout"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2"
+          >
 
-            <TextView
-                android:id="@+id/tuesdayTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="6dp"
-                android:text="@string/tue"
-                android:textColor="@color/medium_dark_gray"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-        </RelativeLayout>
+      </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/wednesdayHeaderRelativeLayout"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_weight="2"
-            android:gravity="center_horizontal">
+      <RelativeLayout
+          android:id="@+id/thursdayRelativeLayout"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2"
+          >
 
-            <TextView
-                android:id="@+id/wednesdayTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="6dp"
-                android:text="@string/wed"
-                android:textColor="@color/medium_dark_gray"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-        </RelativeLayout>
+      </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/thursdayHeaderRelativeLayout"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_weight="2"
-            android:gravity="center_horizontal">
+      <RelativeLayout
+          android:id="@+id/fridayRelativeLayout"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2"
+          >
 
-            <TextView
-                android:id="@+id/thursdayTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="6dp"
-                android:text="@string/thu"
-                android:textColor="@color/medium_dark_gray"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/fridayHeaderRelativeLayout"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_weight="2"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:id="@+id/fridayTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="6dp"
-                android:text="@string/fri"
-                android:textColor="@color/medium_dark_gray"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
+      </RelativeLayout>
     </LinearLayout>
 
-    <View
-        android:id="@+id/dividerView"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/dayLabelsLinearLayout"
-        android:background="@color/medium_gray" />
-
-    <ScrollView
-        android:id="@+id/calendarScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/dividerView"
-        android:fadingEdge="none"
-        android:overScrollMode="never"
-        android:padding="0dp"
-        android:scrollbars="none">
-
-        <RelativeLayout
-            android:id="@+id/calendarRelativeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="0dp">
-
-            <LinearLayout
-                android:id="@+id/calendarSplitterRelativeLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:padding="0dp">
-
-                <RelativeLayout
-                    android:id="@+id/hoursRelativeLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:padding="0dp">
-
-                    <include layout="@layout/calendar_zebra" />
-
-                    <TextView
-                        android:id="@+id/time7amTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp7am"
-                        android:gravity="center"
-                        android:text="@string/time7am"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time8amTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp8am"
-                        android:gravity="center"
-                        android:text="@string/time8am"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time9amTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp9am"
-                        android:gravity="center"
-                        android:text="@string/time9am"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time10amTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp10am"
-                        android:gravity="center"
-                        android:text="@string/time10am"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time11amTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp11am"
-                        android:gravity="center"
-                        android:text="@string/time11am"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time12pmTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp12pm"
-                        android:gravity="center"
-                        android:text="@string/time12pm"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time1pmTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp1pm"
-                        android:gravity="center"
-                        android:text="@string/time1pm"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time2pmTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp2pm"
-                        android:gravity="center"
-                        android:text="@string/time2pm"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time3pmTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp3pm"
-                        android:gravity="center"
-                        android:text="@string/time3pm"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time4pmTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp4pm"
-                        android:gravity="center"
-                        android:text="@string/time4pm"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time5pmTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp5pm"
-                        android:gravity="center"
-                        android:text="@string/time5pm"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time6pmTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp6pm"
-                        android:gravity="center"
-                        android:text="@string/time6pm"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time7pmTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp7pm"
-                        android:gravity="center"
-                        android:text="@string/time7pm"
-                        android:textSize="@dimen/hourSize" />
-
-                    <TextView
-                        android:id="@+id/time8pmTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginTop="@dimen/dp8pm"
-                        android:gravity="center"
-                        android:text="@string/time8pm"
-                        android:textSize="@dimen/hourSize" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/mondayRelativeLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2">
-
-                    <include layout="@layout/calendar_zebra" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/tuesdayRelativeLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2">
-
-                    <include layout="@layout/calendar_zebra" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/wednesdayRelativeLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2">
-
-                    <include
-                        layout="@layout/calendar_zebra"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/thursdayRelativeLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2">
-
-                    <include layout="@layout/calendar_zebra" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/fridayRelativeLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2">
-
-                    <include layout="@layout/calendar_zebra" />
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-        </RelativeLayout>
-    </ScrollView>
+  </FrameLayout>
 
 
 </RelativeLayout>

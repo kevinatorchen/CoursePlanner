@@ -1,6 +1,5 @@
 package com.example.myothiha09.coursehelper.fragment;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,7 +16,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.myothiha09.coursehelper.R;
-import com.example.myothiha09.coursehelper.activity.ScheduleVisualDetailActivity;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontRegular;
@@ -109,7 +107,7 @@ public class ScheduleOverviewFragment extends Fragment {
       Commitment commitment = section.getCommitment();
       String content = commitment.getName() + " " + section.getName();
       if (commitment instanceof Course) {
-        String CRN = ((CourseSection)section).getCrn() + "";
+        String CRN = ((CourseSection) section).getCrn() + "";
         content += " " + CRN;
       }
       String meetingTimes = "";
@@ -133,7 +131,13 @@ public class ScheduleOverviewFragment extends Fragment {
       @Override public void onClick(View v) {
         current = schedule;
         scheduleNumber = tv.getText().toString();
-        startActivity(new Intent(getContext(), ScheduleVisualDetailActivity.class));
+        ScheduleVisualDetailFragment frag = new ScheduleVisualDetailFragment();
+        frag.putExtra(current, scheduleNumber);
+        getActivity().getSupportFragmentManager().beginTransaction()
+            .setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit)
+            .replace(R.id.container, frag)
+            .addToBackStack(null)
+            .commit();
       }
     });
     layout.addView(nested, layoutParams);
