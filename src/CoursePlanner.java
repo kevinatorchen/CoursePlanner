@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Kevin on 1/3/2017.
@@ -75,17 +78,15 @@ public class CoursePlanner {
         ActivitySection[] gitMadSections = {new ActivitySection("GITMAD", gitmadMTs, "Klaus 2443")};
         Activity gitmad = new Activity("GITMAD", gitMadSections);
 
-        CommitmentRequest[] courseRequests = new CommitmentRequest[3];
-        //CommitmentRequest[] courseRequests = new CommitmentRequest[4];
+        List<CommitmentRequest> commitmentRequests = new ArrayList<>();
         String[] APPH1040Professors = {"Thiha", "Kevin"};
-        courseRequests[0] = new CommitmentRequest(APPH1040, APPH1040Professors);
+        commitmentRequests.add(new CommitmentRequest(APPH1040, APPH1040Professors));
         String[] ENGL1102Professors = {"Kevin", "Nidhi"};
-        courseRequests[1] = new CommitmentRequest(ENGL1102, ENGL1102Professors);
+        commitmentRequests.add(new CommitmentRequest(ENGL1102, ENGL1102Professors));
         String[] PHYS2211Professors = {"Nidhi"};
-        courseRequests[2] = new CommitmentRequest(PHYS2211, PHYS2211Professors);
-        //courseRequests[3] = new CommitmentRequest(gitmad, null);
+        commitmentRequests.add(new CommitmentRequest(PHYS2211, PHYS2211Professors));
 
-        planCourses(courseRequests);
+        planCourses(commitmentRequests);
 
     }
 
@@ -121,20 +122,20 @@ public class CoursePlanner {
 
     }
 
-    public static void planCourses(CommitmentRequest[] courseRequests) {
-        Arrays.sort(courseRequests);
+    public static void planCourses(List<CommitmentRequest> courseRequests) {
+        Collections.sort(courseRequests);
         Schedule schedule = new Schedule();
         planCourses(courseRequests, 0, schedule);
     }
 
-    public static void planCourses(CommitmentRequest[] courseRequests, int currentCourse, Schedule schedule) {
-        if (currentCourse >= courseRequests.length) {
+    public static void planCourses(List<CommitmentRequest> courseRequests, int currentCourse, Schedule schedule) {
+        if (currentCourse >= courseRequests.size()) {
             System.out.println(Arrays.toString(schedule.getSchedule().toArray()));
             schedule.generateComparatorValues();
             System.out.println(schedule.getComparatorValues());
 
         } else {
-            CommitmentRequest currentCourseRequest = courseRequests[currentCourse];
+            CommitmentRequest currentCourseRequest = courseRequests.get(currentCourse);
             for (Section currentSection: currentCourseRequest.getCommitment().getSections(currentCourseRequest.getProf())) {
                 boolean conflicts = false;
                 for (Section sectionInSchedule: schedule.getSchedule()) {
