@@ -62,7 +62,28 @@ public class AddClassFragment extends Fragment {
       final List<CommitmentRequest> commitmentRequests = Model.student.getCommitmentRequests();
 
       @Override public void commitmentChosen(Commitment commitment) {
+        if (commitment instanceof Course) {
 
+          Course course = (Course) commitment;
+          String content = course.getName()
+              + " - "
+              + course.getLongName()
+              + "\n"
+              + "Credit: "
+              + course.getCreditHour()
+              + "\n" + "All Professors: " + course.getProfessors();
+          new MaterialDialog.Builder(getContext()).title("Course Details")
+              .contentColor(contentColor)
+              .content(content)
+              .positiveText("OK")
+              .show();
+        } else {
+          new MaterialDialog.Builder(getContext()).title("Activity Details")
+              .contentColor(contentColor)
+              .content(commitment.getName())
+              .positiveText("OK")
+              .show();
+        }
       }
 
       @Override public void delCommitment(final int position) {
@@ -88,10 +109,6 @@ public class AddClassFragment extends Fragment {
     });
     recyclerView.setItemAnimator(new DefaultItemAnimator());
     recyclerView.setAdapter(adapter);
-  }
-
-  private void enableProfEditing() {
-    Toast.makeText(getContext(), "Edit Course Clicked", Toast.LENGTH_SHORT).show();
   }
 
   public void showCategoryChooser() {
@@ -125,7 +142,7 @@ public class AddClassFragment extends Fragment {
     ClassSearcherDialog dialog = new ClassSearcherDialog(getContext());
     dialog.setListener(new ItemClickedListener() {
       @Override public void commitmentChosen(Commitment commitment) {
-        showProfessorChooser((Course)commitment);
+        showProfessorChooser((Course) commitment);
       }
 
       @Override public void delCommitment(int position) {

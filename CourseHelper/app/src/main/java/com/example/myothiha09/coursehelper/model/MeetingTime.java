@@ -35,13 +35,9 @@ public class MeetingTime {
   }
 
   public int getLength() {
-    if (getStartTime().getHour() != getEndTime().getHour()) {
-      int start = getStartTime().getHour() * 50 + getEndTime().getMinute();
-      int end = getEndTime().getHour() * 50 + getEndTime().getMinute();
+      int start = getStartTime().getHour() * 60 + getStartTime().getMinute();
+      int end = getEndTime().getHour() * 60 + getEndTime().getMinute();
       return end - start;
-    } else {
-      return getEndTime().getMinute() - getStartTime().getMinute();
-    }
   }
 
   public boolean conflictsWith(MeetingTime other) {

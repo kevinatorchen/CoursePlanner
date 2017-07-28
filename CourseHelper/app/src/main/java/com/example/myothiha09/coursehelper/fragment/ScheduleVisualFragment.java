@@ -3,13 +3,13 @@ package com.example.myothiha09.coursehelper.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -62,7 +62,7 @@ public class ScheduleVisualFragment extends Fragment {
         scheduleNumber--;
         makeTimeTable(scheduleList.get(scheduleNumber));
       }
-    } else if (v.getId() == R.id.next_button){
+    } else if (v.getId() == R.id.next_button) {
       if (scheduleNumber != scheduleList.size() - 1) {
         resetSchedule();
         scheduleNumber++;
@@ -76,11 +76,10 @@ public class ScheduleVisualFragment extends Fragment {
         R.id.mondayRelativeLayout, R.id.tuesdayRelativeLayout, R.id.wednesdayRelativeLayout,
         R.id.thursdayRelativeLayout, R.id.fridayRelativeLayout
     };
-    for (int x: dayList) {
+    for (int x : dayList) {
       layout = ButterKnife.findById(rowView, x);
       layout.removeAllViewsInLayout();
     }
-
   }
 
   public void putExtra(int scheduleNumber) {
@@ -152,18 +151,16 @@ public class ScheduleVisualFragment extends Fragment {
                   .getMinute() * minuteHeight);
           view.setY(topMargin);
           tv.setY(topMargin);
-          int height = (int) (time.getLength() * minuteHeight);
-          view.setMinimumHeight(height);
-          view.getLayoutParams().height = height;
+          view.getLayoutParams().height = (int) Math.round(time.getLength() * minuteHeight);
           view.setBackgroundColor(color);
           dialog = new MaterialDialog.Builder(getContext()).titleColor(
               getResources().getColor(R.color.title_font_color))
               .contentColor(getResources().getColor(R.color.content_font_color));
-          createDialog(x);
+          final MaterialDialog.Builder detailDialog = createDialog(x);
 
           view.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
-              dialog.show();
+              detailDialog.show();
             }
           });
         }
@@ -189,7 +186,7 @@ public class ScheduleVisualFragment extends Fragment {
     }
   }
 
-  private void createDialog(Section x) {
+  private MaterialDialog.Builder createDialog(Section x) {
     String meetingTimes = "";
     for (MeetingTime mT : x.getMeetingTimes()) {
       meetingTimes += mT + "\n";
@@ -197,6 +194,7 @@ public class ScheduleVisualFragment extends Fragment {
     if (x.getCommitment() instanceof Course) {
       Course tempCourse = (Course) x.getCommitment();
       CourseSection courseSection = (CourseSection) x;
+      dialog = new MaterialDialog.Builder(getContext());
       dialog.title("Course Details")
           .content("Name: "
               + tempCourse.getName()
@@ -229,6 +227,7 @@ public class ScheduleVisualFragment extends Fragment {
               + meetingTimes)
           .neutralText("OK");
     }
+    return dialog;
   }
 
   @Override public void onDestroyView() {

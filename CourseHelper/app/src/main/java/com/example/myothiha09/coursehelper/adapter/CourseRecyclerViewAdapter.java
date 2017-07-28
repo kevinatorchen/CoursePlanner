@@ -11,6 +11,7 @@ import butterknife.OnClick;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontMedium;
+import com.example.myothiha09.coursehelper.model.Commitment;
 import com.example.myothiha09.coursehelper.model.CommitmentRequest;
 
 import com.example.myothiha09.coursehelper.model.Course;
@@ -83,6 +84,12 @@ public class CourseRecyclerViewAdapter
     ViewHolder(View view) {
       super(view);
       ButterKnife.bind(this, view);
+    }
+
+    @OnClick (R.id.add_commitment_card) void onClickCommitment() {
+      int position = getAdapterPosition();
+      Commitment commitment = list.get(position).getCommitment();
+      listener.commitmentChosen(commitment);
     }
 
     @OnClick(R.id.editCommitment) void onEditCourse() {
