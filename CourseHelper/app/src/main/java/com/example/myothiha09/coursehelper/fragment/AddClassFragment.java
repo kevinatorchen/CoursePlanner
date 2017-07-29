@@ -71,7 +71,9 @@ public class AddClassFragment extends Fragment {
               + "\n"
               + "Credit: "
               + course.getCreditHour()
-              + "\n" + "All Professors: " + course.getProfessors();
+              + "\n"
+              + "All Professors: "
+              + course.getProfessors();
           new MaterialDialog.Builder(getContext()).title("Course Details")
               .contentColor(contentColor)
               .content(content)
@@ -163,12 +165,17 @@ public class AddClassFragment extends Fragment {
         courseList.add(x);
       }
     }
-    new MaterialDialog.Builder(getContext()).title("Class Chooser")
+    new MaterialDialog.Builder(getContext()).title("Course Chooser")
         .items(courseList)
         .contentColor(contentColor)
         .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
           @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
               CharSequence text) {
+            if (courseList.isEmpty()) {
+              Toast.makeText(getContext(), "No course was added since nothing was selected.",
+                  Toast.LENGTH_SHORT).show();
+              return false;
+            }
             Course selected = courseList.get(which);
             student.addCommitmentRequest(new CommitmentRequest(selected,
                 selected.getProfessors().toArray(new String[selected.getProfessors().size()])));

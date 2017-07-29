@@ -32,17 +32,15 @@ import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.ScheduleSorter;
 import com.example.myothiha09.coursehelper.model.Section;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Myo on 5/22/2017.
  */
 //TODO: improve UI for this screen
 public class ScheduleOverviewFragment extends Fragment {
-  static Schedule current = new Schedule();
-  static String scheduleNumber;
-  LinearLayout nested;
-  @BindView(R.id.nested) LinearLayout layout;
+  LinearLayout card;
+  @BindView(R.id.nested) LinearLayout nestedLayout;
+  @BindView(R.id.sorting_spinner) Spinner spinner;
   @BindDimen(R.dimen.padding) int margin;
   @BindColor(R.color.title_font_color) int titleColor;
   @BindColor(R.color.content_font_color) int contentColor;
@@ -86,14 +84,14 @@ public class ScheduleOverviewFragment extends Fragment {
   }
 
   private LinearLayout.LayoutParams createBackground() {
-    nested = new LinearLayout(getContext());
+    card = new LinearLayout(getContext());
     LinearLayout.LayoutParams layoutParams =
         new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT);
     layoutParams.bottomMargin = margin;
-    nested.setPadding(margin, margin, margin, margin);
-    nested.setBackground(cardBG);
-    nested.setOrientation(LinearLayout.VERTICAL);
+    card.setPadding(margin, margin, margin, margin);
+    card.setBackground(cardBG);
+    card.setOrientation(LinearLayout.VERTICAL);
     return layoutParams;
   }
 
@@ -103,38 +101,32 @@ public class ScheduleOverviewFragment extends Fragment {
     tv.setTextSize(18);
     tv.setPadding(0, 0, 0, margin / 2);
     tv.setTextColor(titleColor);
-    nested.addView(tv);
+    card.addView(tv);
     return tv;
   }
 
   private Spinner createSortingList(View view) {
-    Spinner spinner = (Spinner) view.findViewById(R.id.sorting_spinner);
-    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-            R.array.sorting_array, android.R.layout.simple_spinner_item);
+    ArrayAdapter<CharSequence> adapter =
+        ArrayAdapter.createFromResource(getContext(), R.array.sorting_array,
+            android.R.layout.simple_spinner_item);
     spinner.setAdapter(adapter);
     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        for (int i = 0; i < layout.getChildCount(); i++) {
-          if (!(layout.getChildAt(i) instanceof Spinner)) {
-            layout.removeViewAt(i);
-          }
-        }
-
         if (position == 1) {
+          nestedLayout.removeAllViewsInLayout();
           ScheduleSorter.sort(CoursePlanner.scheduleList, new NoGapsComparator());
           displaySchedules(CoursePlanner.scheduleList);
         }
         if (position == 2) {
+          nestedLayout.removeAllViewsInLayout();
           ScheduleSorter.sort(CoursePlanner.scheduleList, new NoMorningClassesComparator());
           displaySchedules(CoursePlanner.scheduleList);
         }
-
       }
 
-      @Override
-      public void onNothingSelected(AdapterView<?> parent) {
+      @Override public void onNothingSelected(AdapterView<?> parent) {
 
       }
     });
@@ -163,23 +155,24 @@ public class ScheduleOverviewFragment extends Fragment {
       line2.setText(meetingTimes);
       line2.setTextColor(contentColor);
       line2.setPadding(0, 0, 0, margin / 2);
-      nested.setPadding(margin, margin, margin, margin);
-      nested.addView(line1);
-      nested.addView(line2);
-      nested.setTag((index - 2) + "");
+      card.setPadding(margin, margin, margin, margin);
+      card.addView(line1);
+      card.addView(line2);
+      card.setTag((index - 2) + "");
     }
-    nested.setOnClickListener(new View.OnClickListener() {
+    card.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
         ScheduleVisualFragment frag = new ScheduleVisualFragment();
         int num = Integer.parseInt(v.getTag().toString());
         frag.putExtra(num);
-        getActivity().getSupportFragmentManager().beginTransaction()
+        getActivity().getSupportFragmentManager()
+            .beginTransaction()
             .setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit)
             .replace(R.id.container, frag)
             .addToBackStack(null)
             .commit();
       }
     });
-    layout.addView(nested, layoutParams);
+    nestedLayout.addView(card, layoutParams);
   }
 }

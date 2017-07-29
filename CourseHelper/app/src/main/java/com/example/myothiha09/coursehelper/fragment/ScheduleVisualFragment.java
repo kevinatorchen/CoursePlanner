@@ -49,7 +49,7 @@ public class ScheduleVisualFragment extends Fragment {
       @Nullable Bundle savedInstanceState) {
     rowView = inflater.inflate(R.layout.fragment_visual_schedule, container, false);
     unbinder = ButterKnife.bind(this, rowView);
-    CoursePlanner.planCourses(Model.student.getCommmitmentRequestAsArray());
+    //CoursePlanner.planCourses(Model.student.getCommmitmentRequestAsArray());
     scheduleList = CoursePlanner.scheduleList;
     makeTimeTable(scheduleList.get(scheduleNumber));
     return rowView;
