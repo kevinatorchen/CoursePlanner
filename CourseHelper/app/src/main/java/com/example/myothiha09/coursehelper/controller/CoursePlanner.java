@@ -59,6 +59,7 @@ public class CoursePlanner {
       for (Section x : schedule.getSchedule()) {
         temp.getSchedule().add(x);
       }
+      temp.generateComparatorValues();
       scheduleList.add(temp);
     } else {
       CommitmentRequest currentCommitmentRequest = commitmentRequests[currentCourse];

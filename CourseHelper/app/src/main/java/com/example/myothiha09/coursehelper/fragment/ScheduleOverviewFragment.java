@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindColor;
 import butterknife.BindDimen;
@@ -23,7 +26,10 @@ import com.example.myothiha09.coursehelper.model.Commitment;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.CourseSection;
 import com.example.myothiha09.coursehelper.model.Model;
+import com.example.myothiha09.coursehelper.model.NoGapsComparator;
+import com.example.myothiha09.coursehelper.model.NoMorningClassesComparator;
 import com.example.myothiha09.coursehelper.model.Schedule;
+import com.example.myothiha09.coursehelper.model.ScheduleSorter;
 import com.example.myothiha09.coursehelper.model.Section;
 import java.util.List;
 import java.util.Set;
@@ -52,6 +58,12 @@ public class ScheduleOverviewFragment extends Fragment {
 
     CoursePlanner.planCourses(Model.student.getCommmitmentRequestAsArray());
     List<Schedule> list = CoursePlanner.scheduleList;
+    createSortingList(view);
+    displaySchedules(list);
+    return view;
+  }
+
+  public void displaySchedules(List<Schedule> list) {
     index = 1;
     for (final Schedule sections : list) {
       if (!sections.getSchedule().isEmpty()) {
@@ -60,7 +72,6 @@ public class ScheduleOverviewFragment extends Fragment {
         createCoursesInfo(tv, layoutParams, sections);
       }
     }
-    return view;
   }
 
   @OnClick(R.id.viewScheduleVisually) void viewVisually() {
@@ -94,6 +105,40 @@ public class ScheduleOverviewFragment extends Fragment {
     tv.setTextColor(titleColor);
     nested.addView(tv);
     return tv;
+  }
+
+  private Spinner createSortingList(View view) {
+    Spinner spinner = (Spinner) view.findViewById(R.id.sorting_spinner);
+    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+            R.array.sorting_array, android.R.layout.simple_spinner_item);
+    spinner.setAdapter(adapter);
+    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+      @Override
+      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        for (int i = 0; i < layout.getChildCount(); i++) {
+          if (!(layout.getChildAt(i) instanceof Spinner)) {
+            layout.removeViewAt(i);
+          }
+        }
+
+        if (position == 1) {
+          ScheduleSorter.sort(CoursePlanner.scheduleList, new NoGapsComparator());
+          displaySchedules(CoursePlanner.scheduleList);
+        }
+        if (position == 2) {
+          ScheduleSorter.sort(CoursePlanner.scheduleList, new NoMorningClassesComparator());
+          displaySchedules(CoursePlanner.scheduleList);
+        }
+
+      }
+
+      @Override
+      public void onNothingSelected(AdapterView<?> parent) {
+
+      }
+    });
+    return spinner;
   }
 
   private void createCoursesInfo(final TextView tv, LinearLayout.LayoutParams layoutParams,

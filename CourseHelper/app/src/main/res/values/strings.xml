@@ -24,6 +24,11 @@
   <string name="time6pm">6 pm</string>
   <string name="time7pm">7 pm</string>
   <string name="time8pm">8 pm</string>
-
+  <string-array name="sorting_array">
+    <item>Sort By:</item>
+    <item>Fewest Gaps</item>
+    <item>Fewest Morning Classes</item>
+    <item>Advanced Sort</item>
+  </string-array>
 
 </resources>
