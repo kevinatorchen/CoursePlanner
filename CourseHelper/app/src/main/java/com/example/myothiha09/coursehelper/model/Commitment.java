@@ -5,28 +5,14 @@ package com.example.myothiha09.coursehelper.model;
  */
 
 public abstract class Commitment implements Comparable<Commitment>{
-    private String category;
     private String name;
 
-    public Commitment(String name, String category) {
-        this.name = name;
-        this.category = category;
-    }
-
     public Commitment(String name) {
-        this(name, null);
+        this.name = name;
     }
 
     public String getName() {
         return name;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public abstract Section[] getSections();
@@ -39,7 +25,6 @@ public abstract class Commitment implements Comparable<Commitment>{
     }
 
     public abstract int numberOfSections();
-
 
     @Override
     public String toString() {

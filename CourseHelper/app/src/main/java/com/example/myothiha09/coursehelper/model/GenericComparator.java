@@ -4,9 +4,8 @@ package com.example.myothiha09.coursehelper.model;
  * Created by KChen10 on 7/26/2017.
  */
 public class GenericComparator {
-    //Weights to factor in
     private static final int MAX_SCORE = 100000;
-
+    //Weights to factor in
     private int totalGaps;
     private int morningMinutes;
     private int noMealTimes;
