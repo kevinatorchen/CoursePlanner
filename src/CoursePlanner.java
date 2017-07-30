@@ -10,6 +10,8 @@ public class CoursePlanner {
     private static final int THURSDAY  = 8;
     private static final int FRIDAY = 16;
 
+    private static ArrayList<Schedule> scheduleList = new ArrayList<>();
+
     public static void main(String[] args) {
         testCase2();
     }
@@ -78,14 +80,18 @@ public class CoursePlanner {
         List<CommitmentRequest> commitmentRequests = new ArrayList<>();
         String[] APPH1040Professors = {"Thiha", "Kevin"};
         commitmentRequests.add(new CommitmentRequest(APPH1040, APPH1040Professors));
-        //String[] ENGL1102Professors = {"Kevin", "Nidhi"};
-        String[] ENGL1102Professors = {"Nidhi"};
+        String[] ENGL1102Professors = {"Kevin", "Nidhi"};
+        //String[] ENGL1102Professors = {"Nidhi"};
         commitmentRequests.add(new CommitmentRequest(ENGL1102, ENGL1102Professors));
         String[] PHYS2211Professors = {"Nidhi"};
         commitmentRequests.add(new CommitmentRequest(PHYS2211, PHYS2211Professors));
 
-        planAlternatives(commitmentRequests, 1);
-
+        planCourses(commitmentRequests);
+        ScheduleSorter.sort(scheduleList, new NoGapsComparator());
+        for (Schedule currentSchedule: scheduleList) {
+            System.out.println(Arrays.toString(currentSchedule.getSchedule().toArray()));
+            System.out.println(currentSchedule.getComparatorValues());
+        }
     }
 
     public static void testCase1() {
@@ -132,9 +138,12 @@ public class CoursePlanner {
 
     public static void planCourses(List<CommitmentRequest> courseRequests, int currentCourse, Schedule schedule, boolean ignoreProfessor) {
         if (currentCourse >= courseRequests.size()) {
-            System.out.println(Arrays.toString(schedule.getSchedule().toArray()));
-            schedule.generateComparatorValues();
-            System.out.println(schedule.getComparatorValues());
+            Schedule temp = new Schedule();
+            for (Section x : schedule.getSchedule()) {
+                temp.getSchedule().add(x);
+            }
+            temp.generateComparatorValues();
+            scheduleList.add(temp);
 
         } else {
             CommitmentRequest currentCourseRequest = courseRequests.get(currentCourse);
