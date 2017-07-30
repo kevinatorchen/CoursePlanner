@@ -52,9 +52,7 @@ public class ScheduleOverviewFragment extends Fragment {
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_schedule_overview, container, false);
     ButterKnife.bind(this, view);
-    //ArrayList<Course> ALL_COURSE_CATEGORY_VALUES = Model.student.getCoursesList();
-
-    CoursePlanner.planCourses(Model.student.getCommmitmentRequestAsArray());
+    CoursePlanner.planCourses(Model.student.getCommitmentRequests());
     List<Schedule> list = CoursePlanner.scheduleList;
     createSortingList(view);
     displaySchedules(list);

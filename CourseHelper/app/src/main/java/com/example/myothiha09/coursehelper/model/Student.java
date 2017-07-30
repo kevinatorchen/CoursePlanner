@@ -32,10 +32,6 @@ public class Student implements Serializable{
     if (!commitmentRequestList.contains(request)) commitmentRequestList.add(request);
   }
 
-  public CommitmentRequest[] getCommmitmentRequestAsArray() {
-    return commitmentRequestList.toArray(new CommitmentRequest[commitmentRequestList.size()]);
-  }
-
   public List<CommitmentRequest> getCommitmentRequests() {
     return commitmentRequestList;
   }
