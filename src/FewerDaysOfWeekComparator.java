@@ -3,7 +3,7 @@
  */
 public class FewerDaysOfWeekComparator extends GenericComparator {
 
-    public FewerDaysOfWeekComparator(int totalGaps, int morningMinutes, int daysOfWeek, int noMealTimes, int wrongProfessors, int missingCommitments) {
+    public FewerDaysOfWeekComparator() {
         super(0, 0, 1, 0, 100, 100);
     }
 }
