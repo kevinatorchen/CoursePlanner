@@ -86,7 +86,7 @@ public class CoursePlanner {
         String[] PHYS2211Professors = {"Nidhi"};
         commitmentRequests.add(new CommitmentRequest(PHYS2211, PHYS2211Professors));
 
-        planCourses(commitmentRequests);
+        planAltFull(commitmentRequests);
         ScheduleSorter.sort(scheduleList, new NoGapsComparator());
         for (Schedule currentSchedule: scheduleList) {
             System.out.println(Arrays.toString(currentSchedule.getSchedule().toArray()));
@@ -131,18 +131,23 @@ public class CoursePlanner {
     }
 
     public static void planCourses(List<CommitmentRequest> courseRequests, boolean ignoreProfessor) {
-        Collections.sort(courseRequests);
-        Schedule schedule = new Schedule();
-        planCourses(courseRequests, 0, schedule, ignoreProfessor);
+        planCourses(courseRequests, ignoreProfessor, 0);
     }
 
-    public static void planCourses(List<CommitmentRequest> courseRequests, int currentCourse, Schedule schedule, boolean ignoreProfessor) {
+    public static void planCourses(List<CommitmentRequest> courseRequests, boolean ignoreProfessor, int droppedCommitments) {
+        Collections.sort(courseRequests);
+        Schedule schedule = new Schedule();
+        planCourses(courseRequests, 0, schedule, ignoreProfessor, 0, droppedCommitments);
+    }
+
+    public static void planCourses(List<CommitmentRequest> courseRequests, int currentCourse, Schedule schedule,
+                                   boolean ignoreProfessor, int altProfessors, int droppedCommitments) {
         if (currentCourse >= courseRequests.size()) {
             Schedule temp = new Schedule();
             for (Section x : schedule.getSchedule()) {
                 temp.getSchedule().add(x);
             }
-            temp.generateComparatorValues();
+            temp.generateComparatorValues(altProfessors, droppedCommitments);
             scheduleList.add(temp);
 
         } else {
@@ -160,7 +165,14 @@ public class CoursePlanner {
                 }
                 if (!conflicts) {
                     schedule.getSchedule().add(currentSection);
-                    planCourses(courseRequests, currentCourse + 1, schedule, ignoreProfessor);
+                    int updatedAltProfessors = altProfessors;
+                    if (ignoreProfessor && currentSection instanceof CourseSection) {
+                        CourseSection currentCourseSection = (CourseSection) currentSection;
+                        if (!currentCourseRequest.containsProf(currentCourseSection.getProf())) {
+                            updatedAltProfessors++;
+                        }
+                    }
+                    planCourses(courseRequests, currentCourse + 1, schedule, ignoreProfessor, updatedAltProfessors, droppedCommitments);
                     schedule.getSchedule().remove(schedule.getSchedule().size() - 1);
                 }
             }
@@ -174,15 +186,16 @@ public class CoursePlanner {
 
     //Does whatever it can to find alternatives.
     public static void planAltFull(List<CommitmentRequest> courseRequests) {
-        planAlternatives(courseRequests, courseRequests.size());
+        planAlternatives(courseRequests, courseRequests.size() - 1);
     }
 
     //Tries allowing all professors and/or dropping "maxDrop" number of commitments.
     public static void planAlternatives(List<CommitmentRequest> courseRequests, int maxDrop) {
-        List<ArrayList<CommitmentRequest>> alternativeRequests = CoursePlanner.<CommitmentRequest>powerSet(courseRequests, courseRequests.size() - maxDrop);
+        List<ArrayList<CommitmentRequest>> alternativeRequests = CoursePlanner.powerSet(courseRequests, courseRequests.size() - maxDrop);
         for (ArrayList<CommitmentRequest> currentAlternative: alternativeRequests) {
-            planCourses(currentAlternative);
-            planCourses(currentAlternative, true);
+            int droppedCourses = courseRequests.size() - currentAlternative.size();
+            planCourses(currentAlternative, false, droppedCourses);
+            planCourses(currentAlternative, true, droppedCourses);
         }
     }
 
