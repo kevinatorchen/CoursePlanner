@@ -27,6 +27,7 @@ import com.example.myothiha09.coursehelper.model.Commitment;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.CourseSection;
 import com.example.myothiha09.coursehelper.model.FewerDaysOfTheWeekComparator;
+import com.example.myothiha09.coursehelper.model.GenericComparator;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.NoGapsComparator;
 import com.example.myothiha09.coursehelper.model.NoMorningClassesComparator;
@@ -115,19 +116,13 @@ public class ScheduleOverviewFragment extends Fragment {
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         if (position == 1) {
-          nestedLayout.removeAllViewsInLayout();
-          ScheduleSorter.sort(CoursePlanner.scheduleList, new NoGapsComparator());
-          displaySchedules(CoursePlanner.scheduleList);
+          sortSchedules(new NoGapsComparator(), CoursePlanner.scheduleList);
         }
         if (position == 2) {
-          nestedLayout.removeAllViewsInLayout();
-          ScheduleSorter.sort(CoursePlanner.scheduleList, new NoMorningClassesComparator());
-          displaySchedules(CoursePlanner.scheduleList);
+          sortSchedules(new NoMorningClassesComparator(), CoursePlanner.scheduleList);
         }
         if (position == 3) {
-          nestedLayout.removeAllViewsInLayout();
-          ScheduleSorter.sort(CoursePlanner.scheduleList, new FewerDaysOfTheWeekComparator());
-          displaySchedules(CoursePlanner.scheduleList);
+          sortSchedules(new FewerDaysOfTheWeekComparator(), CoursePlanner.scheduleList);
         }
         if (position == 4) {
           AdvancedSortDialog dialog = new AdvancedSortDialog(getContext());
@@ -140,6 +135,12 @@ public class ScheduleOverviewFragment extends Fragment {
       }
     });
     return spinner;
+  }
+
+  public void sortSchedules(GenericComparator comparator, List<Schedule> schedules) {
+    nestedLayout.removeAllViewsInLayout();
+    ScheduleSorter.sort(schedules, new NoMorningClassesComparator());
+    displaySchedules(schedules);
   }
 
   private void createCoursesInfo(final TextView tv, LinearLayout.LayoutParams layoutParams,

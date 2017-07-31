@@ -1,20 +1,22 @@
 package com.example.myothiha09.coursehelper.dialog;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDialog;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.myothiha09.coursehelper.R;
+import com.example.myothiha09.coursehelper.controller.CoursePlanner;
+import com.example.myothiha09.coursehelper.model.GenericComparator;
+import com.example.myothiha09.coursehelper.model.Schedule;
+import com.example.myothiha09.coursehelper.model.ScheduleFilter;
 
-import org.w3c.dom.Text;
+import java.util.List;
 
 import butterknife.ButterKnife;
 
@@ -48,6 +50,9 @@ public class AdvancedSortDialog extends AppCompatDialog {
     private final SeekBar mealsSeekBar;
     private final SeekBar requestedProfessorsSeekBar;
     private final SeekBar requestedCommitmentSeekBar;
+
+    private final Button sortButton;
+    private final Button cancelButton;
 
     public AdvancedSortDialog(Context context) {
         super(context);
@@ -193,9 +198,13 @@ public class AdvancedSortDialog extends AppCompatDialog {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-
+                    morningClassesText.setEnabled(false);
+                    morningClassesValue.setEnabled(false);
+                    morningClassesSeekBar.setEnabled(false);
                 } else {
-
+                    morningClassesText.setEnabled(true);
+                    morningClassesValue.setEnabled(true);
+                    morningClassesSeekBar.setEnabled(true);
                 }
             }
         });
@@ -204,12 +213,52 @@ public class AdvancedSortDialog extends AppCompatDialog {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-
+                    mealsText.setEnabled(false);
+                    mealsValue.setEnabled(false);
+                    mealsSeekBar.setEnabled(false);
                 } else {
-
+                    mealsText.setEnabled(true);
+                    mealsValue.setEnabled(true);
+                    mealsSeekBar.setEnabled(true);
                 }
             }
         });
-    }
 
+        sortButton = (Button) findViewById(R.id.sortButton);
+        cancelButton = (Button) findViewById(R.id.cancelButton);
+
+        sortButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Schedule> schedules = CoursePlanner.scheduleList;
+                int morningClasses = 0;
+                if (morningClassesCheckBox.isChecked()) {
+                    schedules = ScheduleFilter.filterMorningClasses(schedules);
+                } else {
+                    morningClasses = Integer.parseInt(morningClassesValue.getText().toString());
+                }
+                int gaps = Integer.parseInt(gapsValue.getText().toString());
+                int daysEachWeek = Integer.parseInt(daysEachWeekValue.getText().toString());
+                int meals = 0;
+                if (mealTimeCheckBox.isChecked()) {
+                    schedules = ScheduleFilter.filterNoMeals(schedules);
+                } else {
+                    meals = Integer.parseInt(mealsValue.getText().toString());
+                }
+                int requestedProfessors = Integer.parseInt(requestedProfessorsValue.getText().toString());
+                int requestedCommitments = Integer.parseInt(requestedCommitmentValue.getText().toString());
+                GenericComparator comparator = new GenericComparator(gaps, morningClasses, daysEachWeek,
+                        meals, requestedProfessors, requestedCommitments);
+                dismiss();
+
+            }
+        });
+        Button cancelButton = (Button) findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+    }
 }
