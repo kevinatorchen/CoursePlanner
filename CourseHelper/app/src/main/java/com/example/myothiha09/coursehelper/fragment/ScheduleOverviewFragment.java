@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
+import com.example.myothiha09.coursehelper.dialog.AdvancedSortDialog;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontRegular;
 import com.example.myothiha09.coursehelper.model.Commitment;
@@ -121,6 +122,10 @@ public class ScheduleOverviewFragment extends Fragment {
           nestedLayout.removeAllViewsInLayout();
           ScheduleSorter.sort(CoursePlanner.scheduleList, new NoMorningClassesComparator());
           displaySchedules(CoursePlanner.scheduleList);
+        }
+        if (position == 3) {
+          AdvancedSortDialog dialog = new AdvancedSortDialog(getContext());
+          dialog.show();
         }
       }
 
