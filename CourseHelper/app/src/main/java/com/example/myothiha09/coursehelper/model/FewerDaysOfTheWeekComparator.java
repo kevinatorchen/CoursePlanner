@@ -7,7 +7,7 @@ import com.example.myothiha09.coursehelper.model.GenericComparator;
  */
 public class FewerDaysOfTheWeekComparator extends GenericComparator {
 
-    public FewerDaysOfTheWeekComparator(int totalGaps, int morningMinutes, int daysOfWeek, int noMealTimes, int wrongProfessors, int missingCommitments) {
+    public FewerDaysOfTheWeekComparator() {
         super(0, 0, 1, 0, 100, 100);
     }
 }

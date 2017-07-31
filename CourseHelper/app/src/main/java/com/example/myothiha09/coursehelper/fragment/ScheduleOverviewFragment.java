@@ -26,6 +26,7 @@ import com.example.myothiha09.coursehelper.layout_helper.CustomFontRegular;
 import com.example.myothiha09.coursehelper.model.Commitment;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.CourseSection;
+import com.example.myothiha09.coursehelper.model.FewerDaysOfTheWeekComparator;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.NoGapsComparator;
 import com.example.myothiha09.coursehelper.model.NoMorningClassesComparator;
@@ -124,6 +125,11 @@ public class ScheduleOverviewFragment extends Fragment {
           displaySchedules(CoursePlanner.scheduleList);
         }
         if (position == 3) {
+          nestedLayout.removeAllViewsInLayout();
+          ScheduleSorter.sort(CoursePlanner.scheduleList, new FewerDaysOfTheWeekComparator());
+          displaySchedules(CoursePlanner.scheduleList);
+        }
+        if (position == 4) {
           AdvancedSortDialog dialog = new AdvancedSortDialog(getContext());
           dialog.show();
         }

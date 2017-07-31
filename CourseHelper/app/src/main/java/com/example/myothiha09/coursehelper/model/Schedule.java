@@ -36,6 +36,7 @@ public class Schedule {
         int morningMinutes = 0;
         int noMealTimes = 0;
         int bitmask = 1;
+        int daysOfWeek = 0;
         for (int i = 0; i < 5; i++) {
             ArrayList<Interval> dailyMeetingTimes = new ArrayList<>();
             for (Section currentSection: schedule) {
@@ -44,6 +45,9 @@ public class Schedule {
                         dailyMeetingTimes.add(currentMeetingTime.getInterval());
                     }
                 }
+            }
+            if (dailyMeetingTimes.size() > 0) {
+                daysOfWeek++;
             }
             Collections.sort(dailyMeetingTimes);
             for (int j = 1; j < dailyMeetingTimes.size(); j++) {
@@ -66,7 +70,7 @@ public class Schedule {
             bitmask = bitmask << 1;
         }
 
-        comparatorValues = new ComparatorValues(totalGaps, morningMinutes, noMealTimes, wrongProfessors, missingCommitments);
+        comparatorValues = new ComparatorValues(totalGaps, morningMinutes, daysOfWeek, noMealTimes, wrongProfessors, missingCommitments);
     }
 
     private boolean hasHourGap(ArrayList<Interval> dailyMeetingTimes, Interval interval) {
