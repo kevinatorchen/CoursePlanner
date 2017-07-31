@@ -135,6 +135,7 @@ public class CoursePlanner {
     }
 
     public static void planCourses(List<CommitmentRequest> courseRequests, boolean ignoreProfessor, int droppedCommitments) {
+        scheduleList.clear();
         Collections.sort(courseRequests);
         Schedule schedule = new Schedule();
         planCourses(courseRequests, 0, schedule, ignoreProfessor, 0, droppedCommitments);
