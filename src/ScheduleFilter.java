@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by KChen10 on 7/31/2017.
  */
-public class Filter {
+public class ScheduleFilter {
     public static ArrayList<Schedule> filterMorningClasses(List<Schedule> schedule) {
         ArrayList<Schedule> filteredSchedules = new ArrayList<>();
         for (Schedule currentSchedule: schedule) {

@@ -87,7 +87,7 @@ public class CoursePlanner {
         commitmentRequests.add(new CommitmentRequest(PHYS2211, PHYS2211Professors));
 
         planAltFull(commitmentRequests);
-        ArrayList<Schedule> filteredList = Filter.filterMorningClasses(scheduleList);
+        ArrayList<Schedule> filteredList = ScheduleFilter.filterMorningClasses(scheduleList);
         for (Schedule currentSchedule: filteredList) {
             System.out.println(Arrays.toString(currentSchedule.getSchedule().toArray()));
             System.out.println(currentSchedule.getComparatorValues());
