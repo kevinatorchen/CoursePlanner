@@ -4,13 +4,15 @@
 public class ComparatorValues {
     private int totalGaps;
     private int morningMinutes; // 8 - 8:59 am is doubled, 9 - 9:59 am is normal.
+    private int daysOfWeek;
     private int noMealTime; //Lunch = 11 am - 2 pm, Dinner = 5 am - 8 pm
     private int wrongProfessors; // Used for creating alternative schedules with different professors.
     private int missingCommitments; //Used for creating alternative schedules with certain dropped commitments.
 
-    public ComparatorValues(int totalGaps, int morningMinutes, int noMealTime, int wrongProfessors, int missingCommitments) {
+    public ComparatorValues(int totalGaps, int morningMinutes, int daysOfWeek, int noMealTime, int wrongProfessors, int missingCommitments) {
         this.totalGaps = totalGaps;
         this.morningMinutes = morningMinutes;
+        this.daysOfWeek = daysOfWeek;
         this.noMealTime = noMealTime;
         this.wrongProfessors = wrongProfessors;
         this.missingCommitments = missingCommitments;
@@ -30,6 +32,14 @@ public class ComparatorValues {
 
     public void setMorningMinutes(int morningMinutes) {
         this.morningMinutes = morningMinutes;
+    }
+
+    public int getDaysOfWeek() {
+        return daysOfWeek;
+    }
+
+    public void setDaysOfWeek(int daysOfWeek) {
+        this.daysOfWeek = daysOfWeek;
     }
 
     public int getNoMealTime() {
@@ -55,11 +65,13 @@ public class ComparatorValues {
     public void setMissingCommitments(int missingCommitments) {
         this.missingCommitments = missingCommitments;
     }
+
     @Override
     public String toString() {
         return "ComparatorValues{" +
                 "totalGaps=" + totalGaps +
                 ", morningMinutes=" + morningMinutes +
+                ", daysOfWeek=" + daysOfWeek +
                 ", noMealTime=" + noMealTime +
                 ", wrongProfessors=" + wrongProfessors +
                 ", missingCommitments=" + missingCommitments +

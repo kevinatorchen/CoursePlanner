@@ -3,6 +3,6 @@
  */
 public class NoMorningClassesComparator extends GenericComparator {
     public NoMorningClassesComparator() {
-        super(0, 1, 0, 100, 100);
+        super(0, 1, 0,0, 100, 100);
     }
 }

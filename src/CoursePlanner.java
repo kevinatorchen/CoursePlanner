@@ -131,11 +131,11 @@ public class CoursePlanner {
     }
 
     public static void planCourses(List<CommitmentRequest> courseRequests, boolean ignoreProfessor) {
+        scheduleList.clear();
         planCourses(courseRequests, ignoreProfessor, 0);
     }
 
     public static void planCourses(List<CommitmentRequest> courseRequests, boolean ignoreProfessor, int droppedCommitments) {
-        scheduleList.clear();
         Collections.sort(courseRequests);
         Schedule schedule = new Schedule();
         planCourses(courseRequests, 0, schedule, ignoreProfessor, 0, droppedCommitments);
@@ -192,10 +192,10 @@ public class CoursePlanner {
 
     //Tries allowing all professors and/or dropping "maxDrop" number of commitments.
     public static void planAlternatives(List<CommitmentRequest> courseRequests, int maxDrop) {
+        scheduleList.clear();
         List<ArrayList<CommitmentRequest>> alternativeRequests = CoursePlanner.powerSet(courseRequests, courseRequests.size() - maxDrop);
         for (ArrayList<CommitmentRequest> currentAlternative: alternativeRequests) {
             int droppedCourses = courseRequests.size() - currentAlternative.size();
-            planCourses(currentAlternative, false, droppedCourses);
             planCourses(currentAlternative, true, droppedCourses);
         }
     }
