@@ -15,6 +15,15 @@ public class CommitmentRequest implements Comparable<CommitmentRequest> {
         this.prof = prof;
     }
 
+    public boolean containsProf(String professor) {
+        for (String currentProf: prof) {
+            if (currentProf.equals(professor)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Commitment getCommitment() {
         return commitment;
     }

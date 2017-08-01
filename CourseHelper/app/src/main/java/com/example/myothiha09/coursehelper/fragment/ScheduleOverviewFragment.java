@@ -20,11 +20,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
+import com.example.myothiha09.coursehelper.dialog.AdvancedSortDialog;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontRegular;
 import com.example.myothiha09.coursehelper.model.Commitment;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.CourseSection;
+import com.example.myothiha09.coursehelper.model.FewerDaysOfTheWeekComparator;
+import com.example.myothiha09.coursehelper.model.GenericComparator;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.NoGapsComparator;
 import com.example.myothiha09.coursehelper.model.NoMorningClassesComparator;
@@ -52,9 +55,7 @@ public class ScheduleOverviewFragment extends Fragment {
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_schedule_overview, container, false);
     ButterKnife.bind(this, view);
-    //ArrayList<Course> ALL_COURSE_CATEGORY_VALUES = Model.student.getCoursesList();
-
-    CoursePlanner.planCourses(Model.student.getCommmitmentRequestAsArray());
+    CoursePlanner.planCourses(Model.student.getCommitmentRequests());
     List<Schedule> list = CoursePlanner.scheduleList;
     createSortingList(view);
     displaySchedules(list);
@@ -115,14 +116,17 @@ public class ScheduleOverviewFragment extends Fragment {
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         if (position == 1) {
-          nestedLayout.removeAllViewsInLayout();
-          ScheduleSorter.sort(CoursePlanner.scheduleList, new NoGapsComparator());
-          displaySchedules(CoursePlanner.scheduleList);
+          sortSchedules(new NoGapsComparator(), CoursePlanner.scheduleList);
         }
         if (position == 2) {
-          nestedLayout.removeAllViewsInLayout();
-          ScheduleSorter.sort(CoursePlanner.scheduleList, new NoMorningClassesComparator());
-          displaySchedules(CoursePlanner.scheduleList);
+          sortSchedules(new NoMorningClassesComparator(), CoursePlanner.scheduleList);
+        }
+        if (position == 3) {
+          sortSchedules(new FewerDaysOfTheWeekComparator(), CoursePlanner.scheduleList);
+        }
+        if (position == 4) {
+          AdvancedSortDialog dialog = new AdvancedSortDialog(getContext());
+          dialog.show();
         }
       }
 
@@ -131,6 +135,12 @@ public class ScheduleOverviewFragment extends Fragment {
       }
     });
     return spinner;
+  }
+
+  public void sortSchedules(GenericComparator comparator, List<Schedule> schedules) {
+    nestedLayout.removeAllViewsInLayout();
+    ScheduleSorter.sort(schedules, comparator);
+    displaySchedules(schedules);
   }
 
   private void createCoursesInfo(final TextView tv, LinearLayout.LayoutParams layoutParams,

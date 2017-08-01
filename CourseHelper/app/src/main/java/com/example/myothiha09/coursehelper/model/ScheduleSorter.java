@@ -10,14 +10,21 @@ import java.util.TreeMap;
  */
 public class ScheduleSorter {
     public static void sort(List<Schedule> schedules, GenericComparator comparator) {
-        TreeMap<Long, Schedule> scoreToSchedule = new TreeMap<>(Collections.reverseOrder());
+        TreeMap<Long, ArrayList<Schedule>> scoreToSchedule = new TreeMap<>();
         for (Schedule current: schedules) {
-            scoreToSchedule.put(comparator.computeScheduleValue(current), current);
+            long score = comparator.computeScheduleValue(current);
+            if (!scoreToSchedule.containsKey(score)) {
+                scoreToSchedule.put(score, new ArrayList<Schedule>());
+            }
+            scoreToSchedule.get(score).add(current);
         }
         schedules.clear();
-        for (Schedule current: scoreToSchedule.values()) {
-            schedules.add(current);
+        for (ArrayList<Schedule> currentSchedules: scoreToSchedule.values()) {
+            for (Schedule currentSchedule: currentSchedules) {
+                schedules.add(currentSchedule);
+            }
         }
     }
 }
+
 

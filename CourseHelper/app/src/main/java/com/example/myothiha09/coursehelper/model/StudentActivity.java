@@ -8,7 +8,7 @@ public class StudentActivity extends Commitment {
     private StudentActivitySection[] sections;
 
     public StudentActivity(String name, StudentActivitySection[] sections) {
-        super(name, null);
+        super(name);
         this.sections = sections;
     }
 

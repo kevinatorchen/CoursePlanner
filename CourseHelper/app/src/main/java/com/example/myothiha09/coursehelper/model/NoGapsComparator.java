@@ -5,6 +5,6 @@ package com.example.myothiha09.coursehelper.model;
  */
 public class NoGapsComparator extends GenericComparator {
     public NoGapsComparator() {
-        super(1, 0, 0, 100, 100);
+        super(1, 0, 0,0, 100, 100);
     }
 }

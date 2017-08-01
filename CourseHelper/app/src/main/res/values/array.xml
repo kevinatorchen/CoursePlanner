@@ -4,6 +4,7 @@
     <item>Sort By:</item>
     <item>Fewest Gaps</item>
     <item>Fewest Morning Classes</item>
+    <item>Fewest Days of the Week</item>
     <item>Advanced Sort</item>
   </string-array>
 </resources>
