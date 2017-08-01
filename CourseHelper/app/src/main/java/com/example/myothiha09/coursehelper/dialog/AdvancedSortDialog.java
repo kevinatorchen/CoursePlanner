@@ -249,6 +249,7 @@ public class AdvancedSortDialog extends AppCompatDialog {
                 int requestedCommitments = Integer.parseInt(requestedCommitmentValue.getText().toString());
                 GenericComparator comparator = new GenericComparator(gaps, morningClasses, daysEachWeek,
                         meals, requestedProfessors, requestedCommitments);
+                //TODO: pass back "comparator" and "schedules", calling sortSchedules() from ScheduleOverviewFragment.
                 dismiss();
 
             }

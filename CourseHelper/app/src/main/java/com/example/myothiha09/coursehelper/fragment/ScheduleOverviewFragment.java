@@ -139,7 +139,7 @@ public class ScheduleOverviewFragment extends Fragment {
 
   public void sortSchedules(GenericComparator comparator, List<Schedule> schedules) {
     nestedLayout.removeAllViewsInLayout();
-    ScheduleSorter.sort(schedules, new NoMorningClassesComparator());
+    ScheduleSorter.sort(schedules, comparator);
     displaySchedules(schedules);
   }
 
