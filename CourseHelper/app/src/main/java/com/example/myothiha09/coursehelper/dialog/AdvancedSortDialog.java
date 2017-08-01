@@ -7,6 +7,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -16,9 +17,16 @@ import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.model.GenericComparator;
 import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.ScheduleFilter;
+import com.example.myothiha09.coursehelper.util.Entry;
+import com.example.myothiha09.coursehelper.util.EntryWithTextBox;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -26,36 +34,15 @@ import butterknife.ButterKnife;
  */
 
 public class AdvancedSortDialog extends AppCompatDialog {
+
     private final Context context;
 
-    private final CheckBox morningClassesCheckBox;
-    private final CheckBox mealTimeCheckBox;
-    private final CheckBox alternativeCheckBox;
-
-    private final TextView morningClassesText;
-    private final TextView gapsText;
-    private final TextView daysEachWeekText;
-    private final TextView mealsText;
-    private final TextView requestedProfessorsText;
-    private final TextView requestedCommitmentsText;
-
-    private final TextView morningClassesValue;
-    private final TextView gapsValue;
-    private final TextView daysEachWeekValue;
-    private final TextView mealsValue;
-    private final TextView requestedProfessorsValue;
-    private final TextView requestedCommitmentValue;
-
-    private final SeekBar morningClassesSeekBar;
-    private final SeekBar gapsSeekBar;
-    private final SeekBar daysEachWeekSeekBar;
-    private final SeekBar mealsSeekBar;
-    private final SeekBar requestedProfessorsSeekBar;
-    private final SeekBar requestedCommitmentSeekBar;
-
+    @BindView(R.id.maxCommitmentsLabel) TextView maxCommitmentsLabel;
+    @BindView(R.id.maxCommitmentsEditText) EditText maxCommitmentsEditText;
     private final Button sortButton;
     private final Button cancelButton;
     private AdvancedSortListener listener;
+    private HashMap<String, Entry> entries;
 
     public AdvancedSortDialog(Context context) {
         super(context);
@@ -65,196 +52,44 @@ public class AdvancedSortDialog extends AppCompatDialog {
         ButterKnife.bind(this);
         setTitle(context.getString(R.string.advanced_sort));
 
-        morningClassesValue = (TextView) findViewById(R.id.morningClassesValue);
-        gapsValue = (TextView) findViewById(R.id.gapsValue);
-        daysEachWeekValue = (TextView) findViewById(R.id.daysOfWeekValue);
-        mealsValue = (TextView) findViewById(R.id.mealsValue);
-        requestedProfessorsValue = (TextView) findViewById(R.id.requestedProfessorsValue);
-        requestedCommitmentValue = (TextView) findViewById(R.id.requestedCommitmentsValue);
+        entries = new HashMap<>();
+        entries.put("Morning Classes",
+                new EntryWithTextBox((TextView) findViewById(R.id.morningClassesLabel),
+                        (EditText) findViewById(R.id.morningClassesEditText),
+                        (SeekBar) findViewById(R.id.morningClassesSeekBar), 100,
+                        (CheckBox) findViewById(R.id.morningClassesFilter)));
+        entries.put("Gaps",
+                new Entry((TextView) findViewById(R.id.gapsLabel),
+                        (EditText) findViewById(R.id.gapsEditText),
+                        (SeekBar) findViewById(R.id.gapsSeekBar), 100));
+        entries.put("Fewer Days",
+                new Entry((TextView) findViewById(R.id.fewerDaysLabel),
+                        (EditText) findViewById(R.id.fewerDaysEditText),
+                        (SeekBar) findViewById(R.id.fewerDaysSeekBar), 100));
+        entries.put("Meal Times",
+                new EntryWithTextBox((TextView) findViewById(R.id.mealTimeLabel),
+                        (EditText) findViewById(R.id.mealTimeEditText),
+                        (SeekBar) findViewById(R.id.mealTimeSeekBar), 100,
+                        (CheckBox) findViewById(R.id.mealTimeCheckBox)));
+        entries.put("Requested Professors",
+                new Entry((TextView) findViewById(R.id.requestedProfessorsLabel),
+                        (EditText) findViewById(R.id.requestedProfessorsEditText),
+                        (SeekBar) findViewById(R.id.requestedProfessorsSeekBar), 100));
+        entries.put("Requested Commitments",
+                new Entry((TextView) findViewById(R.id.requestedCommitmentsLabel),
+                        (EditText) findViewById(R.id.requestedCommitmentsEditText),
+                        (SeekBar) findViewById(R.id.requestedCommitmentsSeekBar), 100));
 
-        morningClassesText = (TextView) findViewById(R.id.morningClassesText);
-        gapsText = (TextView) findViewById(R.id.gapsText);
-        daysEachWeekText = (TextView) findViewById(R.id.daysEachWeekText);
-        mealsText = (TextView) findViewById(R.id.mealsText);
-        requestedProfessorsText = (TextView) findViewById(R.id.requestedProfessorsText);
-        requestedCommitmentsText = (TextView) findViewById(R.id.requestedCommitmentsText);
 
-        /*
-        morningClassesValue.setText(Integer.toString(-100));
-        gapsValue.setText(Integer.toString(-100));
-        mealsValue.setText(Integer.toString(-100));
-        requestedProfessorsValue.setText(Integer.toString(0));
-        requestedCommitmentValue.setText(Integer.toString(0));
-        */
-
-        morningClassesSeekBar = (SeekBar) findViewById(R.id.morningClassesSeekBar);
-        morningClassesSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                morningClassesValue.setText(Integer.toString(progress - 100));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        morningClassesSeekBar.setProgress(100);
-        gapsSeekBar = (SeekBar) findViewById(R.id.gapsSeekBar);
-        gapsSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                gapsValue.setText(Integer.toString(progress - 100));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        gapsSeekBar.setProgress(100);
-        daysEachWeekSeekBar = (SeekBar) findViewById(R.id.daysEachWeekSeekBar);
-        daysEachWeekSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                daysEachWeekValue.setText(Integer.toString(progress - 100));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        daysEachWeekSeekBar.setProgress(100);
-        mealsSeekBar = (SeekBar) findViewById(R.id.mealTimesSeekBar);
-        mealsSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                mealsValue.setText(Integer.toString(progress - 100));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        mealsSeekBar.setProgress(100);
-        requestedProfessorsSeekBar = (SeekBar) findViewById(R.id.requestedProfessorsSeekBar);
-        requestedProfessorsSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                requestedProfessorsValue.setText(Integer.toString(progress));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        requestedProfessorsSeekBar.setProgress(0);
-        requestedCommitmentSeekBar = (SeekBar) findViewById(R.id.requestedCommitmentsSeekBar);
-        requestedCommitmentSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                requestedCommitmentValue.setText(Integer.toString(progress));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-        requestedCommitmentSeekBar.setProgress(0);
-        morningClassesCheckBox = (CheckBox) findViewById(R.id.filterMorningClasses);
-        morningClassesCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    morningClassesText.setEnabled(false);
-                    morningClassesValue.setEnabled(false);
-                    morningClassesSeekBar.setEnabled(false);
-                } else {
-                    morningClassesText.setEnabled(true);
-                    morningClassesValue.setEnabled(true);
-                    morningClassesSeekBar.setEnabled(true);
-                }
-            }
-        });
-        mealTimeCheckBox = (CheckBox) findViewById(R.id.mealTimeFilter);
-        mealTimeCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    mealsText.setEnabled(false);
-                    mealsValue.setEnabled(false);
-                    mealsSeekBar.setEnabled(false);
-                } else {
-                    mealsText.setEnabled(true);
-                    mealsValue.setEnabled(true);
-                    mealsSeekBar.setEnabled(true);
-                }
-            }
-        });
-        alternativeCheckBox = (CheckBox) findViewById(R.id.alternativeCheckBox);
-        alternativeCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    requestedProfessorsText.setVisibility(View.VISIBLE);
-                    requestedProfessorsValue.setVisibility(View.VISIBLE);
-                    requestedProfessorsSeekBar.setVisibility(View.VISIBLE);
-                    requestedCommitmentsText.setVisibility(View.VISIBLE);
-                    requestedCommitmentValue.setVisibility(View.VISIBLE);
-                    requestedCommitmentSeekBar.setVisibility(View.VISIBLE);
-
-                } else {
-                    requestedProfessorsText.setVisibility(View.INVISIBLE);
-                    requestedProfessorsValue.setVisibility(View.INVISIBLE);
-                    requestedProfessorsSeekBar.setVisibility(View.INVISIBLE);
-                    requestedCommitmentsText.setVisibility(View.INVISIBLE);
-                    requestedCommitmentValue.setVisibility(View.INVISIBLE);
-                    requestedCommitmentSeekBar.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-        alternativeCheckBox.setChecked(true);
-        alternativeCheckBox.setChecked(false);
-
+        for (Entry currentEntry: entries.values()) {
+            currentEntry.initViews();
+        }
         sortButton = (Button) findViewById(R.id.sortButton);
         cancelButton = (Button) findViewById(R.id.cancelButton);
 
+        /*
         sortButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 List<Schedule> schedules = CoursePlanner.scheduleList;
@@ -288,8 +123,10 @@ public class AdvancedSortDialog extends AppCompatDialog {
                 dismiss();
             }
         });
+        */
     }
     public void setListener(AdvancedSortListener listener) {
         this.listener = listener;
     }
+
 }
