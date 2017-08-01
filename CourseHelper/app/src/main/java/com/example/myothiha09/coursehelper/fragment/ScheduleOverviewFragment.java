@@ -19,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.myothiha09.coursehelper.R;
+import com.example.myothiha09.coursehelper.adapter.AdvancedSortListener;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.dialog.AdvancedSortDialog;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
@@ -48,6 +49,8 @@ public class ScheduleOverviewFragment extends Fragment {
   @BindColor(R.color.title_font_color) int titleColor;
   @BindColor(R.color.content_font_color) int contentColor;
   @BindDrawable(R.drawable.bg_card) Drawable cardBG;
+  private AdvancedSortDialog advancedSortDialog;
+
   int index;
 
   @Nullable @Override
@@ -57,9 +60,19 @@ public class ScheduleOverviewFragment extends Fragment {
     ButterKnife.bind(this, view);
     CoursePlanner.planCourses(Model.student.getCommitmentRequests());
     List<Schedule> list = CoursePlanner.scheduleList;
+    initDialog();
     createSortingList(view);
     displaySchedules(list);
     return view;
+  }
+  private void initDialog() {
+    advancedSortDialog = new AdvancedSortDialog(getContext());
+    advancedSortDialog.setListener(new AdvancedSortListener() {
+      @Override public void onSortSettingChanged(GenericComparator comparator, List<Schedule> schedule) {
+        sortSchedules(comparator, schedule);
+      }
+    });
+
   }
 
   public void displaySchedules(List<Schedule> list) {
@@ -125,8 +138,7 @@ public class ScheduleOverviewFragment extends Fragment {
           sortSchedules(new FewerDaysOfTheWeekComparator(), CoursePlanner.scheduleList);
         }
         if (position == 4) {
-          AdvancedSortDialog dialog = new AdvancedSortDialog(getContext());
-          dialog.show();
+          advancedSortDialog.show();
         }
       }
 

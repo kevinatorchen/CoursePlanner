@@ -11,6 +11,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.myothiha09.coursehelper.R;
+import com.example.myothiha09.coursehelper.adapter.AdvancedSortListener;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.model.GenericComparator;
 import com.example.myothiha09.coursehelper.model.Schedule;
@@ -53,6 +54,7 @@ public class AdvancedSortDialog extends AppCompatDialog {
 
     private final Button sortButton;
     private final Button cancelButton;
+    private AdvancedSortListener listener;
 
     public AdvancedSortDialog(Context context) {
         super(context);
@@ -250,6 +252,7 @@ public class AdvancedSortDialog extends AppCompatDialog {
                 GenericComparator comparator = new GenericComparator(gaps, morningClasses, daysEachWeek,
                         meals, requestedProfessors, requestedCommitments);
                 //TODO: pass back "comparator" and "schedules", calling sortSchedules() from ScheduleOverviewFragment.
+                listener.onSortSettingChanged(comparator, schedules);
                 dismiss();
 
             }
@@ -261,5 +264,8 @@ public class AdvancedSortDialog extends AppCompatDialog {
                 dismiss();
             }
         });
+    }
+    public void setListener(AdvancedSortListener listener) {
+        this.listener = listener;
     }
 }
