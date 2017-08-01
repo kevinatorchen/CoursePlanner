@@ -30,6 +30,7 @@ public class AdvancedSortDialog extends AppCompatDialog {
 
     private final CheckBox morningClassesCheckBox;
     private final CheckBox mealTimeCheckBox;
+    private final CheckBox alternativeCheckBox;
 
     private final TextView morningClassesText;
     private final TextView gapsText;
@@ -225,6 +226,30 @@ public class AdvancedSortDialog extends AppCompatDialog {
                 }
             }
         });
+        alternativeCheckBox = (CheckBox) findViewById(R.id.alternativeCheckBox);
+        alternativeCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    requestedProfessorsText.setVisibility(View.VISIBLE);
+                    requestedProfessorsValue.setVisibility(View.VISIBLE);
+                    requestedProfessorsSeekBar.setVisibility(View.VISIBLE);
+                    requestedCommitmentsText.setVisibility(View.VISIBLE);
+                    requestedCommitmentValue.setVisibility(View.VISIBLE);
+                    requestedCommitmentSeekBar.setVisibility(View.VISIBLE);
+
+                } else {
+                    requestedProfessorsText.setVisibility(View.INVISIBLE);
+                    requestedProfessorsValue.setVisibility(View.INVISIBLE);
+                    requestedProfessorsSeekBar.setVisibility(View.INVISIBLE);
+                    requestedCommitmentsText.setVisibility(View.INVISIBLE);
+                    requestedCommitmentValue.setVisibility(View.INVISIBLE);
+                    requestedCommitmentSeekBar.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+        alternativeCheckBox.setChecked(true);
+        alternativeCheckBox.setChecked(false);
 
         sortButton = (Button) findViewById(R.id.sortButton);
         cancelButton = (Button) findViewById(R.id.cancelButton);
@@ -251,7 +276,6 @@ public class AdvancedSortDialog extends AppCompatDialog {
                 int requestedCommitments = Integer.parseInt(requestedCommitmentValue.getText().toString());
                 GenericComparator comparator = new GenericComparator(gaps, morningClasses, daysEachWeek,
                         meals, requestedProfessors, requestedCommitments);
-                //TODO: pass back "comparator" and "schedules", calling sortSchedules() from ScheduleOverviewFragment.
                 listener.onSortSettingChanged(comparator, schedules);
                 dismiss();
 
