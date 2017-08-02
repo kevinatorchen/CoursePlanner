@@ -2,6 +2,7 @@ package com.example.myothiha09.coursehelper.util;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -85,7 +86,9 @@ public class Entry {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
                     int value = Integer.parseInt(s.toString());
-                    if ()
+                    if (value <= 100 && value > -1 * maxValue) {
+                        seekBar.setProgress(value + maxValue);
+                    }
                 } catch (NumberFormatException e) {
 
                 }
@@ -94,6 +97,14 @@ public class Entry {
             @Override
             public void afterTextChanged(Editable s) {
 
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    editText.setText(Integer.toString(seekBar.getProgress() - maxValue));
+                }
             }
         });
     }

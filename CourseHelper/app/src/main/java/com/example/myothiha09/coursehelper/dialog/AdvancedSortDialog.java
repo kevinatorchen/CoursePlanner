@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -39,6 +40,9 @@ public class AdvancedSortDialog extends AppCompatDialog {
 
     @BindView(R.id.maxCommitmentsLabel) TextView maxCommitmentsLabel;
     @BindView(R.id.maxCommitmentsEditText) EditText maxCommitmentsEditText;
+    @BindView(R.id.otherProfessorsButton) RadioButton otherProfessorsButton;
+    @BindView(R.id.someCommitmentsButton) RadioButton someCommitmentsButton;
+    @BindView(R.id.anyCommitmentsButton) RadioButton anyCommitmentsButton;
     private final Button sortButton;
     private final Button cancelButton;
     private AdvancedSortListener listener;
@@ -87,6 +91,23 @@ public class AdvancedSortDialog extends AppCompatDialog {
         sortButton = (Button) findViewById(R.id.sortButton);
         cancelButton = (Button) findViewById(R.id.cancelButton);
 
+        otherProfessorsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+        someCommitmentsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        anyCommitmentsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
         /*
         sortButton.setOnClickListener(new View.OnClickListener() {
 
@@ -125,6 +146,9 @@ public class AdvancedSortDialog extends AppCompatDialog {
         });
         */
     }
+
+    
+
     public void setListener(AdvancedSortListener listener) {
         this.listener = listener;
     }
