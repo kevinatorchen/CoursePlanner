@@ -1,388 +1,416 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+  <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:padding="8dp"
+      android:layout_height="wrap_content"
+      >
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/advancedSortTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Advanced Sort:"
+        android:textSize="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-            <TextView
-                android:id="@+id/advancedSortTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="Advanced Sort:"
-                android:textSize="32dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <CheckBox
+        android:id="@+id/morningClassesFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Filter Out Schedules With Morning Classes"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/advancedSortTitle"
+        />
 
-            <CheckBox
-                android:id="@+id/morningClassesFilter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Filter Out Schedules With Morning Classes"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/advancedSortTitle" />
+    <TextView
+        android:id="@+id/morningClassesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Fewer Morning Classes:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/morningClassesFilter"
+        />
 
-            <TextView
-                android:id="@+id/morningClassesLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Fewer Morning Classes:"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/morningClassesFilter" />
+    <EditText
+        android:id="@+id/morningClassesEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toRightOf="@+id/morningClassesLabel"
+        app:layout_constraintTop_toBottomOf="@+id/morningClassesFilter"
+        />
 
-            <EditText
-                android:id="@+id/morningClassesEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:inputType="number"
-                android:textSize="14dp"
-                app:layout_constraintLeft_toRightOf="@+id/morningClassesLabel"
-                app:layout_constraintTop_toBottomOf="@+id/morningClassesFilter" />
+    <SeekBar
+        android:id="@+id/morningClassesSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:max="200"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/morningClassesEditText"
+        />
 
-            <SeekBar
-                android:id="@+id/morningClassesSeekBar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:max="200"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/morningClassesEditText" />
+    <TextView
+        android:id="@+id/gapsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Fewer Gaps Between Classes:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/morningClassesSeekBar"
+        />
 
-            <TextView
-                android:id="@+id/gapsLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Fewer Gaps Between Classes:"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/morningClassesSeekBar" />
+    <EditText
+        android:id="@+id/gapsEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toRightOf="@+id/gapsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/morningClassesSeekBar"
+        />
 
-            <EditText
-                android:id="@+id/gapsEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:inputType="number"
-                android:textSize="14dp"
-                app:layout_constraintLeft_toRightOf="@+id/gapsLabel"
-                app:layout_constraintTop_toBottomOf="@+id/morningClassesSeekBar" />
+    <SeekBar
+        android:id="@+id/gapsSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:max="200"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gapsLabel"
+        />
 
-            <SeekBar
-                android:id="@+id/gapsSeekBar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:max="200"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gapsLabel" />
+    <TextView
+        android:id="@+id/fewerDaysLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Fewer Days Each Week:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gapsSeekBar"
+        />
 
-            <TextView
-                android:id="@+id/fewerDaysLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Fewer Days Each Week:"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gapsSeekBar" />
+    <EditText
+        android:id="@+id/fewerDaysEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toRightOf="@+id/fewerDaysLabel"
+        app:layout_constraintTop_toBottomOf="@+id/gapsSeekBar"
+        />
 
-            <EditText
-                android:id="@+id/fewerDaysEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:inputType="number"
-                android:textSize="14dp"
-                app:layout_constraintLeft_toRightOf="@+id/fewerDaysLabel"
-                app:layout_constraintTop_toBottomOf="@+id/gapsSeekBar" />
+    <SeekBar
+        android:id="@+id/fewerDaysSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:max="200"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fewerDaysLabel"
+        />
 
-            <SeekBar
-                android:id="@+id/fewerDaysSeekBar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:max="200"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fewerDaysLabel" />
+    <CheckBox
+        android:id="@+id/mealTimeCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Filter Out Schedules Without Enough Time For Meals"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fewerDaysSeekBar"
+        />
 
-            <CheckBox
-                android:id="@+id/mealTimeCheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Filter Out Schedules Without Enough Time For Meals"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fewerDaysSeekBar" />
+    <TextView
+        android:id="@+id/mealTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Enough Time For Meals:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mealTimeCheckBox"
+        />
 
-            <TextView
-                android:id="@+id/mealTimeLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Enough Time For Meals:"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mealTimeCheckBox" />
+    <EditText
+        android:id="@+id/mealTimeEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toRightOf="@+id/mealTimeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/mealTimeCheckBox"
+        />
 
-            <EditText
-                android:id="@+id/mealTimeEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:inputType="number"
-                android:textSize="14dp"
-                app:layout_constraintLeft_toRightOf="@+id/mealTimeLabel"
-                app:layout_constraintTop_toBottomOf="@+id/mealTimeCheckBox" />
+    <SeekBar
+        android:id="@+id/mealTimeSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:max="200"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mealTimeLabel"
+        />
 
-            <SeekBar
-                android:id="@+id/mealTimeSeekBar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:max="200"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mealTimeLabel" />
+    <CheckBox
+        android:id="@+id/alternativeCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Enable Alternative Schedules:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mealTimeSeekBar"
+        />
+<android.support.constraint.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/alternativeSettingsBox"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/alternativeCheckBox"
+    >
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/alternativeRadioGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        >
 
-            <CheckBox
-                android:id="@+id/alternativeCheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Enable Alternative Schedules:"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mealTimeSeekBar" />
+      <RadioButton
+          android:id="@+id/otherProfessorsButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:onClick="onRadioButtonClicked"
+          android:text="Allow Other Professors Only"
+          />
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/alternativeRadioGroup"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@id/alternativeCheckBox"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                >
+      <RadioButton
+          android:id="@+id/someCommitmentsButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:onClick="onRadioButtonClicked"
+          android:text="Allow Some Classes/Activities To Be Dropped"
+          />
 
-                <RadioButton
-                    android:id="@+id/otherProfessorsButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="Allow Other Professors Only" />
+      <RadioButton
+          android:id="@+id/anyCommitmentsButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:onClick="onRadioButtonClicked"
+          android:text="Allow Any Number of Classes/Activities To Be Dropped"
+          />
+    </RadioGroup>
 
-                <RadioButton
-                    android:id="@+id/someCommitmentsButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="Allow Some Classes/Activities To Be Dropped" />
+    <TextView
+        android:id="@+id/requestedProfessorsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Contains All Requested Professors:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alternativeRadioGroup"
+        />
 
-                <RadioButton
-                    android:id="@+id/anyCommitmentsButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="Allow Any Number of Classes/Activities To Be Dropped" />
-            </RadioGroup>
+    <EditText
+        android:id="@+id/requestedProfessorsEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toRightOf="@+id/requestedProfessorsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/alternativeRadioGroup"
+        />
 
-            <TextView
-                android:id="@+id/requestedProfessorsLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Contains All Requested Professors:"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/alternativeRadioGroup" />
+    <SeekBar
+        android:id="@+id/requestedProfessorsSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:max="100"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/requestedProfessorsLabel"
+        />
 
-            <EditText
-                android:id="@+id/requestedProfessorsEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:inputType="number"
-                android:textSize="14dp"
-                app:layout_constraintLeft_toRightOf="@+id/requestedProfessorsLabel"
-                app:layout_constraintTop_toBottomOf="@+id/alternativeRadioGroup" />
+    <TextView
+        android:id="@+id/requestedCommitmentsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Contains All Requested Classes/Activities:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/requestedProfessorsSeekBar"
+        />
 
-            <SeekBar
-                android:id="@+id/requestedProfessorsSeekBar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:max="100"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/requestedProfessorsLabel"
-                android:layout_marginLeft="8dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginRight="8dp"
-                app:layout_constraintRight_toRightOf="parent" />
+    <EditText
+        android:id="@+id/requestedCommitmentsEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toRightOf="@+id/requestedCommitmentsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/requestedProfessorsSeekBar"
+        />
 
-            <TextView
-                android:id="@+id/requestedCommitmentsLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Contains All Requested Classes/Activities:"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/requestedProfessorsSeekBar" />
+    <SeekBar
+        android:id="@+id/requestedCommitmentsSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:max="100"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/requestedCommitmentsLabel"
+        />
 
-            <EditText
-                android:id="@+id/requestedCommitmentsEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:inputType="number"
-                android:textSize="14dp"
-                app:layout_constraintLeft_toRightOf="@+id/requestedCommitmentsLabel"
-                app:layout_constraintTop_toBottomOf="@+id/requestedProfessorsSeekBar" />
+    <TextView
+        android:id="@+id/maxCommitmentsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Max Number of Classes/Activities To Drop:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/requestedCommitmentsSeekBar"
+        />
 
-            <SeekBar
-                android:id="@+id/requestedCommitmentsSeekBar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:max="100"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/requestedCommitmentsLabel" />
+    <EditText
+        android:id="@+id/maxCommitmentsEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toRightOf="@+id/maxCommitmentsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/requestedCommitmentsSeekBar"
+        />
+</android.support.constraint.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/maxCommitmentsLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Max Number of Classes/Activities To Drop:"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/requestedCommitmentsSeekBar" />
+    <Button
+        android:id="@+id/sortButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Sort"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alternativeSettingsBox"
+        />
 
-            <EditText
-                android:id="@+id/maxCommitmentsEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:inputType="number"
-                android:textSize="14dp"
-                app:layout_constraintLeft_toRightOf="@+id/maxCommitmentsLabel"
-                app:layout_constraintTop_toBottomOf="@+id/requestedCommitmentsSeekBar" />
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Cancel"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alternativeSettingsBox"
+        />
+  </android.support.constraint.ConstraintLayout>
+</ScrollView>
 
-            <Button
-                android:id="@+id/sortButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Sort"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/maxCommitmentsLabel"
-                tools:layout_editor_absoluteX="45dp"
-                tools:layout_editor_absoluteY="548dp" />
-
-            <Button
-                android:id="@+id/cancelButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Cancel"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/maxCommitmentsLabel"
-                tools:layout_editor_absoluteX="45dp"
-                tools:layout_editor_absoluteY="548dp" />
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
-
-</FrameLayout>
