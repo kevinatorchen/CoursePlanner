@@ -10,10 +10,10 @@ import android.widget.TextView;
  * Created by KChen10 on 8/1/2017.
  */
 
-public class EntryWithTextBox extends Entry {
+public class EntryWithCheckBox extends Entry {
     private CheckBox checkBox;
 
-    public EntryWithTextBox(TextView textView, EditText editText, SeekBar seekBar, int maxValue, CheckBox checkBox) {
+    public EntryWithCheckBox(TextView textView, EditText editText, SeekBar seekBar, int maxValue, CheckBox checkBox) {
         super(textView, editText, seekBar, maxValue);
         this.checkBox = checkBox;
     }

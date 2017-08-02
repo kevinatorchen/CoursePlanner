@@ -59,6 +59,7 @@ public class Entry {
     }
 
     public void initViews() {
+        editText.setText(Integer.toString(0));
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -109,9 +110,21 @@ public class Entry {
         });
     }
 
-    protected void setEnabled(boolean enabled) {
+    public void setEnabled(boolean enabled) {
         textView.setEnabled(enabled);
         editText.setEnabled(enabled);
         seekBar.setEnabled(enabled);
+    }
+
+    public void setVisible(boolean visible) {
+        if (visible) {
+            textView.setVisibility(TextView.VISIBLE);
+            editText.setVisibility(TextView.VISIBLE);
+            seekBar.setVisibility(TextView.VISIBLE);
+        } else {
+            textView.setVisibility(TextView.INVISIBLE);
+            editText.setVisibility(TextView.INVISIBLE);
+            seekBar.setVisibility(TextView.INVISIBLE);
+        }
     }
 }

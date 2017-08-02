@@ -18,8 +18,9 @@ import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.model.GenericComparator;
 import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.ScheduleFilter;
+import com.example.myothiha09.coursehelper.util.AlternativeSelection;
 import com.example.myothiha09.coursehelper.util.Entry;
-import com.example.myothiha09.coursehelper.util.EntryWithTextBox;
+import com.example.myothiha09.coursehelper.util.EntryWithCheckBox;
 
 import org.w3c.dom.Text;
 
@@ -38,6 +39,7 @@ public class AdvancedSortDialog extends AppCompatDialog {
 
     private final Context context;
 
+    @BindView(R.id.alternativeCheckBox) CheckBox alternativeCheckBox;
     @BindView(R.id.maxCommitmentsLabel) TextView maxCommitmentsLabel;
     @BindView(R.id.maxCommitmentsEditText) EditText maxCommitmentsEditText;
     @BindView(R.id.otherProfessorsButton) RadioButton otherProfessorsButton;
@@ -58,7 +60,7 @@ public class AdvancedSortDialog extends AppCompatDialog {
 
         entries = new HashMap<>();
         entries.put("Morning Classes",
-                new EntryWithTextBox((TextView) findViewById(R.id.morningClassesLabel),
+                new EntryWithCheckBox((TextView) findViewById(R.id.morningClassesLabel),
                         (EditText) findViewById(R.id.morningClassesEditText),
                         (SeekBar) findViewById(R.id.morningClassesSeekBar), 100,
                         (CheckBox) findViewById(R.id.morningClassesFilter)));
@@ -71,18 +73,18 @@ public class AdvancedSortDialog extends AppCompatDialog {
                         (EditText) findViewById(R.id.fewerDaysEditText),
                         (SeekBar) findViewById(R.id.fewerDaysSeekBar), 100));
         entries.put("Meal Times",
-                new EntryWithTextBox((TextView) findViewById(R.id.mealTimeLabel),
+                new EntryWithCheckBox((TextView) findViewById(R.id.mealTimeLabel),
                         (EditText) findViewById(R.id.mealTimeEditText),
                         (SeekBar) findViewById(R.id.mealTimeSeekBar), 100,
                         (CheckBox) findViewById(R.id.mealTimeCheckBox)));
         entries.put("Requested Professors",
                 new Entry((TextView) findViewById(R.id.requestedProfessorsLabel),
                         (EditText) findViewById(R.id.requestedProfessorsEditText),
-                        (SeekBar) findViewById(R.id.requestedProfessorsSeekBar), 100));
+                        (SeekBar) findViewById(R.id.requestedProfessorsSeekBar), 0));
         entries.put("Requested Commitments",
                 new Entry((TextView) findViewById(R.id.requestedCommitmentsLabel),
                         (EditText) findViewById(R.id.requestedCommitmentsEditText),
-                        (SeekBar) findViewById(R.id.requestedCommitmentsSeekBar), 100));
+                        (SeekBar) findViewById(R.id.requestedCommitmentsSeekBar), 0));
 
 
         for (Entry currentEntry: entries.values()) {
@@ -91,48 +93,73 @@ public class AdvancedSortDialog extends AppCompatDialog {
         sortButton = (Button) findViewById(R.id.sortButton);
         cancelButton = (Button) findViewById(R.id.cancelButton);
 
-        otherProfessorsButton.setOnClickListener(new View.OnClickListener() {
+        initRadioButton(otherProfessorsButton, true, false, false);
+        initRadioButton(someCommitmentsButton, true, true, true);
+        initRadioButton(anyCommitmentsButton, true, true, false);
+
+        maxCommitmentsEditText.setText(Integer.toString(0));
+
+        alternativeCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            }
-        });
-        someCommitmentsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                setAlternativeViewsVisible(alternativeCheckBox.isChecked());
+                otherProfessorsButton.setChecked(true);
+                Entry requestedCommitments = entries.get("Requested Commitments");
+                requestedCommitments.setEnabled(false);
+                maxCommitmentsLabel.setEnabled(false);
+                maxCommitmentsEditText.setEnabled(false);
 
             }
         });
-        anyCommitmentsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+        setAlternativeViewsVisible(false);
 
-        /*
+
         sortButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 List<Schedule> schedules = CoursePlanner.scheduleList;
-                int morningClasses = 0;
-                if (morningClassesCheckBox.isChecked()) {
+                int morningClassesValue = 0;
+                EntryWithCheckBox morningClassesEntry = (EntryWithCheckBox) entries.get("Morning Classes");
+                if (morningClassesEntry.getCheckBox().isChecked()) {
                     schedules = ScheduleFilter.filterMorningClasses(schedules);
                 } else {
-                    morningClasses = Integer.parseInt(morningClassesValue.getText().toString());
+                    morningClassesValue = Integer.parseInt(morningClassesEntry.getEditText().getText().toString());
                 }
-                int gaps = Integer.parseInt(gapsValue.getText().toString());
-                int daysEachWeek = Integer.parseInt(daysEachWeekValue.getText().toString());
-                int meals = 0;
-                if (mealTimeCheckBox.isChecked()) {
+                Entry gapsEntry = entries.get("Gaps");
+                int gapsValue = Integer.parseInt(gapsEntry.getEditText().getText().toString());
+                Entry fewerDaysEntry = entries.get("Fewer Days");
+                int fewerDaysValue = Integer.parseInt(fewerDaysEntry.getEditText().getText().toString());
+                int mealsValue = 0;
+                EntryWithCheckBox mealTimeEntry = (EntryWithCheckBox) entries.get("Meal Times");
+                if (mealTimeEntry.getCheckBox().isChecked()) {
                     schedules = ScheduleFilter.filterNoMeals(schedules);
                 } else {
-                    meals = Integer.parseInt(mealsValue.getText().toString());
+                    mealsValue = Integer.parseInt(mealTimeEntry.getEditText()
+                            .getText().toString());
                 }
-                int requestedProfessors = Integer.parseInt(requestedProfessorsValue.getText().toString());
-                int requestedCommitments = Integer.parseInt(requestedCommitmentValue.getText().toString());
-                GenericComparator comparator = new GenericComparator(gaps, morningClasses, daysEachWeek,
-                        meals, requestedProfessors, requestedCommitments);
-                listener.onSortSettingChanged(comparator, schedules);
+
+                Entry requestedProfessorsEntry = entries.get("Requested Professors");
+                Entry requestedCommitmentsEntry = entries.get("Requested Commitments");
+
+                int requestedProfessorsValue = Integer.parseInt(requestedProfessorsEntry.getEditText().getText().toString());
+                int requestedCommitmentsValue = Integer.parseInt(requestedCommitmentsEntry.getEditText().getText().toString());
+                int maxDropValue = Integer.parseInt(maxCommitmentsEditText.getText().toString());
+                AlternativeSelection alternativeSelection;
+                if (alternativeCheckBox.isChecked()) {
+                    if (otherProfessorsButton.isChecked()) {
+                        alternativeSelection = AlternativeSelection.PROFONLY;
+                    } else if (someCommitmentsButton.isChecked()) {
+                        alternativeSelection = AlternativeSelection.SOMEALT;
+                    } else { //anyCommitmentsButton is checked
+                        alternativeSelection = AlternativeSelection.ANYALT;
+                    }
+                } else {
+                    alternativeSelection = AlternativeSelection.NONE;
+                }
+                GenericComparator comparator = new GenericComparator(gapsValue, morningClassesValue,
+                        fewerDaysValue, mealsValue, requestedProfessorsValue, requestedCommitmentsValue);
+                listener.onSortSettingChanged(comparator, schedules, alternativeSelection, maxDropValue);
                 dismiss();
 
             }
@@ -144,10 +171,43 @@ public class AdvancedSortDialog extends AppCompatDialog {
                 dismiss();
             }
         });
-        */
+
     }
 
-    
+    public void initRadioButton(RadioButton button, final boolean showProfessors,
+                                final boolean showCommitments, final boolean showMaxCommitments) {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Entry requestedProfessors = entries.get("Requested Professors");
+                requestedProfessors.setEnabled(showProfessors);
+                Entry requestedCommitments = entries.get("Requested Commitments");
+                requestedCommitments.setEnabled(showCommitments);
+                maxCommitmentsLabel.setEnabled(showMaxCommitments);
+                maxCommitmentsEditText.setEnabled(showMaxCommitments);
+            }
+        });
+    }
+
+    public void setAlternativeViewsVisible(boolean visible) {
+        Entry requestedProfessors = entries.get("Requested Professors");
+        requestedProfessors.setVisible(visible);
+        Entry requestedCommitments = entries.get("Requested Commitments");
+        requestedCommitments.setVisible(visible);
+        if (visible) {
+            maxCommitmentsLabel.setVisibility(TextView.VISIBLE);
+            maxCommitmentsEditText.setVisibility(TextView.VISIBLE);
+            otherProfessorsButton.setVisibility(TextView.VISIBLE);
+            someCommitmentsButton.setVisibility(TextView.VISIBLE);
+            anyCommitmentsButton.setVisibility(TextView.VISIBLE);
+        } else {
+            maxCommitmentsLabel.setVisibility(TextView.INVISIBLE);
+            maxCommitmentsEditText.setVisibility(TextView.INVISIBLE);
+            otherProfessorsButton.setVisibility(TextView.INVISIBLE);
+            someCommitmentsButton.setVisibility(TextView.INVISIBLE);
+            anyCommitmentsButton.setVisibility(TextView.INVISIBLE);
+        }
+    }
 
     public void setListener(AdvancedSortListener listener) {
         this.listener = listener;

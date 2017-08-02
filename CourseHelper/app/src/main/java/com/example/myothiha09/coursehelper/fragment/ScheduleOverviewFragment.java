@@ -35,6 +35,8 @@ import com.example.myothiha09.coursehelper.model.NoMorningClassesComparator;
 import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.ScheduleSorter;
 import com.example.myothiha09.coursehelper.model.Section;
+import com.example.myothiha09.coursehelper.util.AlternativeSelection;
+
 import java.util.List;
 
 /**
@@ -68,8 +70,21 @@ public class ScheduleOverviewFragment extends Fragment {
   private void initDialog() {
     advancedSortDialog = new AdvancedSortDialog(getContext());
     advancedSortDialog.setListener(new AdvancedSortListener() {
-      @Override public void onSortSettingChanged(GenericComparator comparator, List<Schedule> schedule) {
-        sortSchedules(comparator, schedule);
+      @Override
+      public void onSortSettingChanged(GenericComparator comparator, List<Schedule> schedule, AlternativeSelection alternativeSelection, int maxDrop) {
+        if (alternativeSelection == AlternativeSelection.NONE) {
+          sortSchedules(comparator, schedule);
+        } else {
+          if (alternativeSelection == AlternativeSelection.PROFONLY) {
+            CoursePlanner.planAltConservative(Model.student.getCommitmentRequests());
+          } else if (alternativeSelection == AlternativeSelection.SOMEALT) {
+            CoursePlanner.planAlternatives(Model.student.getCommitmentRequests(), maxDrop);
+          } else { // alternativeSelection == AlternativeSelection.ANYALT
+            CoursePlanner.planAltFull(Model.student.getCommitmentRequests());
+          }
+          List<Schedule> list = CoursePlanner.scheduleList;
+          sortSchedules(comparator, list);
+        }
       }
     });
 
