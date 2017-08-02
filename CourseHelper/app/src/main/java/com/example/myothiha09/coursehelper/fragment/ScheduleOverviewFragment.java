@@ -142,7 +142,6 @@ public class ScheduleOverviewFragment extends Fragment {
     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
         if (position == 1) {
           sortSchedules(new NoGapsComparator(), CoursePlanner.scheduleList);
         }
@@ -199,6 +198,7 @@ public class ScheduleOverviewFragment extends Fragment {
     }
     card.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
+        spinner.setSelection(0);
         ScheduleVisualFragment frag = new ScheduleVisualFragment();
         int num = Integer.parseInt(v.getTag().toString());
         frag.putExtra(num);
