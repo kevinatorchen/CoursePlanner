@@ -22,6 +22,7 @@ import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.adapter.AdvancedSortListener;
 import com.example.myothiha09.coursehelper.controller.CoursePlanner;
 import com.example.myothiha09.coursehelper.dialog.AdvancedSortDialog;
+import com.example.myothiha09.coursehelper.dialog.SimpleAdvancedSortDialog;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontLight;
 import com.example.myothiha09.coursehelper.layout_helper.CustomFontRegular;
 import com.example.myothiha09.coursehelper.model.Commitment;
@@ -36,7 +37,6 @@ import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.ScheduleSorter;
 import com.example.myothiha09.coursehelper.model.Section;
 import com.example.myothiha09.coursehelper.util.AlternativeSelection;
-
 import java.util.List;
 
 /**
@@ -51,9 +51,9 @@ public class ScheduleOverviewFragment extends Fragment {
   @BindColor(R.color.title_font_color) int titleColor;
   @BindColor(R.color.content_font_color) int contentColor;
   @BindDrawable(R.drawable.bg_card) Drawable cardBG;
-  private AdvancedSortDialog advancedSortDialog;
-
   int index;
+  private AdvancedSortDialog advancedSortDialog;
+  private SimpleAdvancedSortDialog simpleAdvancedSortDialog;
 
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -63,15 +63,26 @@ public class ScheduleOverviewFragment extends Fragment {
     CoursePlanner.planCourses(Model.student.getCommitmentRequests());
     List<Schedule> list = CoursePlanner.scheduleList;
     initDialog();
-    createSortingList(view);
+    createSortingList();
     displaySchedules(list);
     return view;
   }
+
   private void initDialog() {
-    advancedSortDialog = new AdvancedSortDialog(getContext());
+    if (simpleAdvancedSortDialog == null) {
+      simpleAdvancedSortDialog = new SimpleAdvancedSortDialog(getContext());
+      simpleAdvancedSortDialog.setListener(new AdvancedSortListener() {
+        @Override public void onSortSettingChanged(GenericComparator comparator, List<Schedule> schedule,
+            AlternativeSelection alternativeSelection, int maxDrop) {
+          sortSchedules(comparator, schedule);
+        }
+      });
+    }
+    /*advancedSortDialog = new AdvancedSortDialog(getContext());
     advancedSortDialog.setListener(new AdvancedSortListener() {
       @Override
-      public void onSortSettingChanged(GenericComparator comparator, List<Schedule> schedule, AlternativeSelection alternativeSelection, int maxDrop) {
+      public void onSortSettingChanged(GenericComparator comparator, List<Schedule> schedule,
+          AlternativeSelection alternativeSelection, int maxDrop) {
         if (alternativeSelection == AlternativeSelection.NONE) {
           sortSchedules(comparator, schedule);
         } else {
@@ -86,8 +97,7 @@ public class ScheduleOverviewFragment extends Fragment {
           sortSchedules(comparator, list);
         }
       }
-    });
-
+    });*/
   }
 
   public void displaySchedules(List<Schedule> list) {
@@ -134,25 +144,26 @@ public class ScheduleOverviewFragment extends Fragment {
     return tv;
   }
 
-  private Spinner createSortingList(View view) {
+  private Spinner createSortingList() {
     ArrayAdapter<CharSequence> adapter =
         ArrayAdapter.createFromResource(getContext(), R.array.sorting_array,
-            android.R.layout.simple_spinner_item);
-    spinner.setAdapter(adapter);
+            R.layout.spinner_custom_layout);
+
     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (position == 1) {
+        if (position == 0) {
           sortSchedules(new NoGapsComparator(), CoursePlanner.scheduleList);
         }
-        if (position == 2) {
+        if (position == 1) {
           sortSchedules(new NoMorningClassesComparator(), CoursePlanner.scheduleList);
         }
-        if (position == 3) {
+        if (position == 2) {
           sortSchedules(new FewerDaysOfTheWeekComparator(), CoursePlanner.scheduleList);
         }
-        if (position == 4) {
-          advancedSortDialog.show();
+        if (position == 3) {
+          simpleAdvancedSortDialog.show();
+          //advancedSortDialog.show();
         }
       }
 
@@ -160,6 +171,7 @@ public class ScheduleOverviewFragment extends Fragment {
 
       }
     });
+    spinner.setAdapter(adapter);
     return spinner;
   }
 
@@ -198,7 +210,6 @@ public class ScheduleOverviewFragment extends Fragment {
     }
     card.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
-        spinner.setSelection(0);
         ScheduleVisualFragment frag = new ScheduleVisualFragment();
         int num = Integer.parseInt(v.getTag().toString());
         frag.putExtra(num);

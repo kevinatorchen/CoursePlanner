@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string-array name="sorting_array">
-    <item>Sort By:</item>
     <item>Fewest Gaps</item>
     <item>Fewest Morning Classes</item>
     <item>Fewest Days of the Week</item>

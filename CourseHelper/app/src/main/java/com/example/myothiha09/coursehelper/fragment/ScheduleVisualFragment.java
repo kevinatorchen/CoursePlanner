@@ -3,7 +3,6 @@ package com.example.myothiha09.coursehelper.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,7 +50,7 @@ public class ScheduleVisualFragment extends Fragment {
     unbinder = ButterKnife.bind(this, rowView);
     //CoursePlanner.planCourses(Model.student.getCommmitmentRequestAsArray());
     scheduleList = CoursePlanner.scheduleList;
-    makeTimeTable(scheduleList.get(scheduleNumber));
+    if (!scheduleList.isEmpty()) makeTimeTable(scheduleList.get(scheduleNumber));
     return rowView;
   }
 
@@ -63,7 +62,7 @@ public class ScheduleVisualFragment extends Fragment {
         makeTimeTable(scheduleList.get(scheduleNumber));
       }
     } else if (v.getId() == R.id.next_button) {
-      if (scheduleNumber != scheduleList.size() - 1) {
+      if (!(scheduleNumber + 1 >= scheduleList.size())) {
         resetSchedule();
         scheduleNumber++;
         makeTimeTable(scheduleList.get(scheduleNumber));
