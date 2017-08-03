@@ -47,7 +47,7 @@ public class CourseRecyclerViewAdapter
       holder.courseName.setText(course.getName());
       holder.creditHour.setText("Credit Hour: " + course.getCreditHour());
       String prof = "Selected Profs: ";
-      for (String x : course.getProfessors()) {
+      for (String x : current.getProf()) {
         prof += x + ", ";
       }
       prof = prof.substring(0, prof.length() - 2);
