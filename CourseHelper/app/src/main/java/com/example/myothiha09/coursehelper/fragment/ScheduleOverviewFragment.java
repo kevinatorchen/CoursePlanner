@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -54,6 +55,7 @@ public class ScheduleOverviewFragment extends Fragment {
   @BindColor(R.color.content_font_color) int contentColor;
   @BindDrawable(R.drawable.bg_card) Drawable cardBG;
   int index;
+  boolean touched = false;
   private AdvancedSortDialog advancedSortDialog;
   private SimpleAdvancedSortDialog simpleAdvancedSortDialog;
 
@@ -68,6 +70,12 @@ public class ScheduleOverviewFragment extends Fragment {
     createSortingList();
     displaySchedules(list);
     return view;
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    touched = false;
   }
 
   private void initDialog() {
@@ -151,6 +159,13 @@ public class ScheduleOverviewFragment extends Fragment {
         ArrayAdapter.createFromResource(getContext(), R.array.sorting_array,
             R.layout.spinner_custom_layout);
 
+    spinner.setOnTouchListener(new View.OnTouchListener() {
+      @Override
+      public boolean onTouch(View v, MotionEvent event) {
+        touched = true;
+        return false;
+      }
+    });
     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -163,9 +178,10 @@ public class ScheduleOverviewFragment extends Fragment {
         if (position == 2) {
           sortSchedules(new FewerDaysOfTheWeekComparator(), CoursePlanner.scheduleList);
         }
-        if (position == 3) {
+        if (position == 3 && touched) {
           simpleAdvancedSortDialog.show();
           //advancedSortDialog.show();
+          touched = false;
         }
       }
 
