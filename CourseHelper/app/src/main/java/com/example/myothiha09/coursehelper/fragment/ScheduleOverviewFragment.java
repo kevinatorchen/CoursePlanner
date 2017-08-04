@@ -37,6 +37,8 @@ import com.example.myothiha09.coursehelper.model.Schedule;
 import com.example.myothiha09.coursehelper.model.ScheduleSorter;
 import com.example.myothiha09.coursehelper.model.Section;
 import com.example.myothiha09.coursehelper.util.AlternativeSelection;
+import com.example.myothiha09.coursehelper.util.NDSpinner;
+
 import java.util.List;
 
 /**
@@ -46,7 +48,7 @@ import java.util.List;
 public class ScheduleOverviewFragment extends Fragment {
   LinearLayout card;
   @BindView(R.id.nested) LinearLayout nestedLayout;
-  @BindView(R.id.sorting_spinner) Spinner spinner;
+  @BindView(R.id.sorting_spinner) NDSpinner spinner;
   @BindDimen(R.dimen.padding) int margin;
   @BindColor(R.color.title_font_color) int titleColor;
   @BindColor(R.color.content_font_color) int contentColor;
