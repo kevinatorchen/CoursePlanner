@@ -21,6 +21,7 @@ import com.example.myothiha09.coursehelper.R;
 import com.example.myothiha09.coursehelper.adapter.CourseRecyclerViewAdapter;
 import com.example.myothiha09.coursehelper.adapter.ItemClickedListener;
 import com.example.myothiha09.coursehelper.dialog.ClassSearcherDialog;
+import com.example.myothiha09.coursehelper.dialog.CustomActivityDialog;
 import com.example.myothiha09.coursehelper.model.Commitment;
 import com.example.myothiha09.coursehelper.model.CommitmentRequest;
 import com.example.myothiha09.coursehelper.model.Course;
@@ -58,10 +59,10 @@ public class AddClassFragment extends Fragment {
     layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
     recyclerView.setLayoutManager(layoutManager);
     adapter = new CourseRecyclerViewAdapter(getContext(), student.getCommitmentRequests());
-    adapter.setListener(new ItemClickedListener() {
+    adapter.setListener(new ItemClickedListener<Commitment>() {
       final List<CommitmentRequest> commitmentRequests = Model.student.getCommitmentRequests();
 
-      @Override public void commitmentChosen(Commitment commitment) {
+      @Override public void itemChosen(Commitment commitment) {
         if (commitment instanceof Course) {
 
           Course course = (Course) commitment;
@@ -88,7 +89,7 @@ public class AddClassFragment extends Fragment {
         }
       }
 
-      @Override public void delCommitment(final int position) {
+      @Override public void delItem(final int position) {
         new MaterialDialog.Builder(getContext()).title("Are you sure?")
             .content(
                 commitmentRequests.get(position).getCommitment().getName() + " will be deleted.")
@@ -105,7 +106,7 @@ public class AddClassFragment extends Fragment {
             .show();
       }
 
-      @Override public void editCommitment(int position) {
+      @Override public void editItem(int position) {
         editProfessor(commitmentRequests.get(position).getCommitment(), position);
       }
     });
@@ -142,16 +143,16 @@ public class AddClassFragment extends Fragment {
 
   private void initClassSearcher() {
     ClassSearcherDialog dialog = new ClassSearcherDialog(getContext());
-    dialog.setListener(new ItemClickedListener() {
-      @Override public void commitmentChosen(Commitment commitment) {
+    dialog.setListener(new ItemClickedListener<Commitment>() {
+      @Override public void itemChosen(Commitment commitment) {
         showProfessorChooser((Course) commitment);
       }
 
-      @Override public void delCommitment(int position) {
+      @Override public void delItem(int position) {
 
       }
 
-      @Override public void editCommitment(int position) {
+      @Override public void editItem(int position) {
 
       }
     });
@@ -275,8 +276,8 @@ public class AddClassFragment extends Fragment {
 
   @OnClick(R.id.addClass) void onAddClassClicked() {
     fabMenu.close(true);
-    if (student.getCommitmentRequests().size() >= 10) {
-      Toast.makeText(getContext(), "You cannot have more than 10 classes.", Toast.LENGTH_LONG)
+    if (student.getCommitmentRequests().size() >= 8) {
+      Toast.makeText(getContext(), "You cannot have more than 8 classes.", Toast.LENGTH_LONG)
           .show();
     } else {
       showCategoryChooser();
@@ -285,7 +286,7 @@ public class AddClassFragment extends Fragment {
 
   @OnClick(R.id.addActivity) void onAddActivityClicked() {
     fabMenu.close(true);
-    showActivityChooser();
+    initCustomActivity();
   }
 
   private void showActivityChooser() {
@@ -310,6 +311,25 @@ public class AddClassFragment extends Fragment {
         .positiveText("Add Activity")
         .negativeText("Cancel")
         .show();
+  }
+
+  private void initCustomActivity() {
+    CustomActivityDialog dialog = new CustomActivityDialog(getContext());
+    dialog.setListener(new ItemClickedListener<StudentActivity>() {
+      @Override public void itemChosen(StudentActivity activity) {
+        student.addCommitmentRequest(new CommitmentRequest(activity, null));
+        adapter.notifyItemInserted(student.getCommitmentRequests().size());
+      }
+
+      @Override public void delItem(int position) {
+
+      }
+
+      @Override public void editItem(int position) {
+
+      }
+    });
+    dialog.show();
   }
 }
 

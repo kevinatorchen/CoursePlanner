@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.myothiha09.coursehelper.R;
+import com.example.myothiha09.coursehelper.model.Commitment;
 import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.Model;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
 public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAdapter.ViewHolder>
     implements Filterable {
   private final Context context;
-  ItemClickedListener listener;
+  ItemClickedListener<Commitment> listener;
   private ArrayList<Course> mOriginalValues;
   private ArrayList<Course> mDisplayedValues;
 
@@ -44,7 +45,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
     return new ViewHolder(itemView);
   }
 
-  public void setListener(ItemClickedListener listener) {
+  public void setListener(ItemClickedListener<Commitment> listener) {
     this.listener = listener;
   }
 
@@ -143,7 +144,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
     @OnClick(R.id.searchRowItemContainer) void onClick() {
       int position = getAdapterPosition();
       List<Course> searchItemList = mDisplayedValues;
-      listener.commitmentChosen(searchItemList.get(position));
+      listener.itemChosen(searchItemList.get(position));
     }
   }
 }

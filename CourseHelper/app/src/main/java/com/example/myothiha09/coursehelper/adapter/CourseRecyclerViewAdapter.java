@@ -26,7 +26,7 @@ public class CourseRecyclerViewAdapter
     extends RecyclerView.Adapter<CourseRecyclerViewAdapter.ViewHolder> {
   private List<CommitmentRequest> list;
   private Context context;
-  private ItemClickedListener listener;
+  private ItemClickedListener<Commitment> listener;
 
   public CourseRecyclerViewAdapter(Context context, List<CommitmentRequest> list) {
     this.context = context;
@@ -72,7 +72,7 @@ public class CourseRecyclerViewAdapter
     return list.size();
   }
 
-  public void setListener(ItemClickedListener listener) {
+  public void setListener(ItemClickedListener<Commitment> listener) {
     this.listener = listener;
   }
 
@@ -89,17 +89,17 @@ public class CourseRecyclerViewAdapter
     @OnClick (R.id.add_commitment_card) void onClickCommitment() {
       int position = getAdapterPosition();
       Commitment commitment = list.get(position).getCommitment();
-      listener.commitmentChosen(commitment);
+      listener.itemChosen(commitment);
     }
 
     @OnClick(R.id.editCommitment) void onEditCourse() {
       int position = getAdapterPosition();
-      listener.editCommitment(position);
+      listener.editItem(position);
     }
 
     @OnClick(R.id.delCommitment) void onDeleteCourse() {
       int position = getAdapterPosition();
-      listener.delCommitment(position);
+      listener.delItem(position);
     }
   }
 }

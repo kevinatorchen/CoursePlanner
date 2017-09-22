@@ -6,4 +6,11 @@
     <item>Fewest Days of the Week</item>
     <item>Advanced Sort</item>
   </string-array>
+  <string-array name="days_of_week_array">
+    <item>Monday</item>
+    <item>Tuesday</item>
+    <item>Wednesday</item>
+    <item>Thursday</item>
+    <item>Friday</item>
+  </string-array>
 </resources>

@@ -21,7 +21,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".activity.MainActivity"
-            android:label="CoureHelper"
+            android:label="Course Planner"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".fragment.ScheduleVisualFragment"></activity>
     </application>

@@ -30,7 +30,7 @@ public class ClassSearcherDialog extends AppCompatDialog {
   @BindView(R.id.searchRecyclerView) RecyclerView searchRecyclerView;
   @BindView(R.id.dialog_root) LinearLayout dialogRoot;
   @BindDimen(R.dimen.dialog_width) int dialog_width;
-  ItemClickedListener listener;
+  ItemClickedListener<Commitment> listener;
   private SearchRecyclerAdapter searchRecyclerAdapter;
 
   public ClassSearcherDialog(@NonNull Context context) {
@@ -42,7 +42,7 @@ public class ClassSearcherDialog extends AppCompatDialog {
     initDialog();
   }
 
-  public void setListener(ItemClickedListener listener) {
+  public void setListener(ItemClickedListener<Commitment> listener) {
     this.listener = listener;
   }
 
@@ -54,17 +54,17 @@ public class ClassSearcherDialog extends AppCompatDialog {
     searchRecyclerView.setLayoutManager(searchLayoutManager);
     searchRecyclerAdapter = new SearchRecyclerAdapter(context);
     searchRecyclerView.setAdapter(searchRecyclerAdapter);
-    searchRecyclerAdapter.setListener(new ItemClickedListener() {
-      @Override public void commitmentChosen(Commitment commitment) {
-        listener.commitmentChosen(commitment);
+    searchRecyclerAdapter.setListener(new ItemClickedListener<Commitment>() {
+      @Override public void itemChosen(Commitment commitment) {
+        listener.itemChosen(commitment);
         dismiss();
       }
 
-      @Override public void delCommitment(int position) {
+      @Override public void delItem(int position) {
 
       }
 
-      @Override public void editCommitment(int position) {
+      @Override public void editItem(int position) {
 
       }
     });
