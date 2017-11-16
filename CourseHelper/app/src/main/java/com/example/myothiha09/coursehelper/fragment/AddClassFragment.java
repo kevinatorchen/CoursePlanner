@@ -280,7 +280,7 @@ public class AddClassFragment extends Fragment {
       Toast.makeText(getContext(), "You cannot have more than 8 classes.", Toast.LENGTH_LONG)
           .show();
     } else {
-      showCategoryChooser();
+        initClassSearcher();
     }
   }
 
