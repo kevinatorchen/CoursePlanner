@@ -10,6 +10,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -21,15 +22,15 @@ import java.util.HashMap;
 public class FirebaseCourseReader {
     public static void populateCourses(HashMap<String, ArrayList<Course>> allCourseData) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("courses");
+        DatabaseReference myRef = database.getReference("Courses/CS 1332");
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.d("Read", "Value is: " + value);
+                HashMap value = dataSnapshot.getValue(HashMap.class);
+                Log.d("Read", "Value is: " + Arrays.toString(value.keySet().toArray()));
             }
 
             @Override
