@@ -8,7 +8,7 @@ public class MeetingTime {
   private int daysOfWeek;
   private Interval interval;
 
-  public MeetingTime(int daysOfWeek, Time startTime, Time endTime) {
+  public MeetingTime(int i, Time startTime, Time endTime) {
     this.daysOfWeek = daysOfWeek;
     this.interval = new Interval(startTime, endTime);
   }
