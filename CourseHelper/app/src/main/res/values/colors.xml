@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00254c</color>
+    <color name="colorPrimaryDark">#002143</color>
+    <color name="colorAccent">#002143</color>
+    <color name="medium_dark_gray">#FF424242</color>
+    <color name="medium_gray">#e0e0e0</color>
+    <color name="course1">#1a237e</color>
+    <color name="course2">#4a148c</color>
+    <color name="course3">#0a3f59</color>
+    <color name="course4">#076551</color>
+    <color name="course5">#810949</color>
+    <color name="course6">#827717</color>
+    <color name="course7">#054760</color>
+    <color name="course8">#560836</color>
+    <color name="course9">#6c0508</color>
+    <color name="course10">#1a237e</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="nav_bg">#00254c</color>
+    <color name="font_color">#f5d376</color>
+    <color name="nav_font_color">#f5d376</color>
+
+    <color name="content_font_color">#335170</color>
+    <color name="title_font_color">#00254c</color>
+    <color name="fab_menu">#335170</color>
+    <color name="fab_menu_ripple">#203a55</color>
+    <color name="background_color">#132241</color>
+
+
+    <color name="login_icon">#ECECEC</color>
+    <color name="login_button_bg">#00254c</color>
+    <color name="login_clicked">#001d39</color>
+
+    <color name="register_pressed">#001d39</color>
+
+    <color name="schedule_selector_bg">#ffffff</color>
+</resources>

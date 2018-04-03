@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "396801659052",
+    "firebase_url": "https://course-planner-7feb5.firebaseio.com",
+    "project_id": "course-planner-7feb5",
+    "storage_bucket": "course-planner-7feb5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396801659052:android:b099a956ab5af65e",
+        "android_client_info": {
+          "package_name": "com.example.myothiha09.coursehelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "396801659052-3hudhibc1g2toqsoth70up3fcjne52a6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myothiha09.coursehelper",
+            "certificate_hash": "10695bc4f42083b1c12aadb8497cb3c0fc9175c0"
+          }
+        },
+        {
+          "client_id": "396801659052-lsan337ia7ct8cb3r7jt506fpupidro5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-9VphVG3F0_QygtPyd8fJnUnQgN3_KIM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "396801659052-lsan337ia7ct8cb3r7jt506fpupidro5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
