@@ -15,6 +15,10 @@ import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.myothiha09.coursehelper.R;
@@ -28,6 +32,9 @@ import com.example.myothiha09.coursehelper.model.Course;
 import com.example.myothiha09.coursehelper.model.Model;
 import com.example.myothiha09.coursehelper.model.Student;
 import com.example.myothiha09.coursehelper.model.StudentActivity;
+import com.example.myothiha09.coursehelper.rest.RestClient;
+import com.example.myothiha09.coursehelper.temp.TempCourse;
+import com.example.myothiha09.coursehelper.temp.TempMajor;
 import com.github.clans.fab.FloatingActionMenu;
 import java.util.ArrayList;
 import java.util.List;
@@ -115,30 +122,63 @@ public class AddClassFragment extends Fragment {
   }
 
   public void showCategoryChooser() {
-    final List<String> stringList = new ArrayList<>();
+    final List<TempMajor> stringList = new ArrayList<>();
+    RestClient.getInstance().getService().listMajors().enqueue(new Callback<List<TempMajor>>() {
+        @Override
+        public void onResponse(Call<List<TempMajor>> call, Response<List<TempMajor>> response) {
+            stringList.addAll(response.body());
+            new MaterialDialog.Builder(getContext()).title("Category Chooser")
+                    .items(stringList)
+                    .contentColor(contentColor)
+                    .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+                        @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
+                                                             CharSequence text) {
+                            showClassChooser(stringList.get(which).ident);
+                            return true;
+                        }
+                    })
+                    .positiveText("Next")
+                    .neutralText("Search for Class")
+                    .onNeutral(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            dialog.dismiss();
+                            initClassSearcher();
+                        }
+                    })
+                    .negativeText("Cancel")
+                    .show();
+        }
 
-    stringList.addAll(Model.ALL_COURSE_CATEGORY);
-    new MaterialDialog.Builder(getContext()).title("Category Chooser")
-        .items(stringList)
-        .contentColor(contentColor)
-        .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
-          @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
-              CharSequence text) {
-            showClassChooser(stringList.get(which));
-            return true;
-          }
-        })
-        .positiveText("Next")
-        .neutralText("Search for Class")
-        .onNeutral(new MaterialDialog.SingleButtonCallback() {
-          @Override
-          public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-            dialog.dismiss();
-            initClassSearcher();
-          }
-        })
-        .negativeText("Cancel")
-        .show();
+        @Override
+        public void onFailure(Call<List<TempMajor>> call, Throwable t) {
+
+        }
+    });
+    //stringList.addAll(Model.ALL_COURSE_CATEGORY);
+
+//    stringList.addAll(Model.ALL_COURSE_CATEGORY);
+//    new MaterialDialog.Builder(getContext()).title("Category Chooser")
+//        .items(stringList)
+//        .contentColor(contentColor)
+//        .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+//          @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
+//              CharSequence text) {
+//            showClassChooser(stringList.get(which));
+//            return true;
+//          }
+//        })
+//        .positiveText("Next")
+//        .neutralText("Search for Class")
+//        .onNeutral(new MaterialDialog.SingleButtonCallback() {
+//          @Override
+//          public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+//            dialog.dismiss();
+//            initClassSearcher();
+//          }
+//        })
+//        .negativeText("Cancel")
+//        .show();
   }
 
   private void initClassSearcher() {
@@ -160,42 +200,80 @@ public class AddClassFragment extends Fragment {
   }
 
   private void showClassChooser(String category) {
-    final List<Course> courseList = new ArrayList<>();
-    for (Course x : Model.ALL_COURSE_DATA.get(category)) {
-      if (!(student.haveThisCommitment(x))) {
-        courseList.add(x);
-      }
-    }
-    new MaterialDialog.Builder(getContext()).title("Course Chooser")
-        .items(courseList)
-        .contentColor(contentColor)
-        .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
-          @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
-              CharSequence text) {
-            if (courseList.isEmpty()) {
-              Toast.makeText(getContext(), "No course was added since nothing was selected.",
-                  Toast.LENGTH_SHORT).show();
-              return false;
-            }
-            Course selected = courseList.get(which);
-            student.addCommitmentRequest(new CommitmentRequest(selected,
-                selected.getProfessors().toArray(new String[selected.getProfessors().size()])));
-            adapter.notifyItemInserted(student.getCommitmentRequests().size());
-            return true;
-          }
-        })
-        .positiveText("Add Class")
-        .negativeText("Cancel")
-        .neutralText("Choose Professor")
-        .onNeutral(new MaterialDialog.SingleButtonCallback() {
-          @Override
-          public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-            if (!courseList.isEmpty()) {
-              showProfessorChooser(courseList.get(dialog.getSelectedIndex()));
-            }
-          }
-        })
-        .show();
+    final List<TempCourse> courseList = new ArrayList<>();
+    RestClient.getInstance().getService().listCoursesForMajor(category).enqueue(new Callback<List<TempCourse>>() {
+        @Override
+        public void onResponse(Call<List<TempCourse>> call, Response<List<TempCourse>> response) {
+            courseList.addAll(response.body());
+            new MaterialDialog.Builder(getContext()).title("Course Chooser ")
+                    .items(courseList)
+                    .contentColor(contentColor)
+                    .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+                        @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
+                                                             CharSequence text) {
+                            if (courseList.isEmpty()) {
+                                Toast.makeText(getContext(), "No course was added since nothing was selected.",
+                                        Toast.LENGTH_SHORT).show();
+                                return false;
+                            }
+                            return true;
+                        }
+                    })
+                    .positiveText("Add Class")
+                    .negativeText("Cancel")
+                    .neutralText("Choose Professor")
+                    .onNeutral(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            if (!courseList.isEmpty()) {
+                                //showProfessorChooser(courseList.get(dialog.getSelectedIndex()));
+                            }
+                        }
+                    })
+                    .show();
+        }
+
+        @Override
+        public void onFailure(Call<List<TempCourse>> call, Throwable t) {
+
+        }
+    });
+
+//    for (Course x : Model.ALL_COURSE_DATA.get(category)) {
+//      if (!(student.haveThisCommitment(x))) {
+//        courseList.add(x);
+//      }
+//    }
+//    new MaterialDialog.Builder(getContext()).title("Course Chooser ")
+//        .items(courseList)
+//        .contentColor(contentColor)
+//        .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+//          @Override public boolean onSelection(MaterialDialog dialog, View view, int which,
+//              CharSequence text) {
+//            if (courseList.isEmpty()) {
+//              Toast.makeText(getContext(), "No course was added since nothing was selected.",
+//                  Toast.LENGTH_SHORT).show();
+//              return false;
+//            }
+//            Course selected = courseList.get(which);
+//            student.addCommitmentRequest(new CommitmentRequest(selected,
+//                selected.getProfessors().toArray(new String[selected.getProfessors().size()])));
+//            adapter.notifyItemInserted(student.getCommitmentRequests().size());
+//            return true;
+//          }
+//        })
+//        .positiveText("Add Class")
+//        .negativeText("Cancel")
+//        .neutralText("Choose Professor")
+//        .onNeutral(new MaterialDialog.SingleButtonCallback() {
+//          @Override
+//          public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+//            if (!courseList.isEmpty()) {
+//              showProfessorChooser(courseList.get(dialog.getSelectedIndex()));
+//            }
+//          }
+//        })
+//        .show();
   }
 
   private void editProfessor(final Commitment commitment, final int position) {
@@ -280,7 +358,8 @@ public class AddClassFragment extends Fragment {
       Toast.makeText(getContext(), "You cannot have more than 8 classes.", Toast.LENGTH_LONG)
           .show();
     } else {
-        initClassSearcher();
+        showCategoryChooser();
+        //initClassSearcher();
     }
   }
 
