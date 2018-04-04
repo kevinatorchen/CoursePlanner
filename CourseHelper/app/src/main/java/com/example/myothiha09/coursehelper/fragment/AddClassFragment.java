@@ -246,6 +246,9 @@ public class AddClassFragment extends Fragment {
                                         for (int i = 0; i < sections.length; i++) {
                                             TempPeriod t = tempList.get(i);
                                             course.setCreditHour(t.credits);
+                                            //TODO: progress bar and disable click when making calls to server
+                                            //TODO: handle allowing to add duplicate classes
+                                            //TODO: lag when creating a schedule (DEAL with loading bar and multithreading in the future)
                                             //TODO: app crashes will null (data not filled in???)g
                                             //TODO: deal with double section courses T_T will be so painful
                                             //TODO: deal with weird classes that is causing the app to crash (some classes don't have meeting times? very very rare cases) not sure what causes the bug
