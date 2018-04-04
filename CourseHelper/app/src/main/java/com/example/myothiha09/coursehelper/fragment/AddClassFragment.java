@@ -246,6 +246,7 @@ public class AddClassFragment extends Fragment {
                                         for (int i = 0; i < sections.length; i++) {
                                             TempPeriod t = tempList.get(i);
                                             course.setCreditHour(t.credits);
+                                            //TODO: save user courses so that they dont disappear when exitting.
                                             //TODO: progress bar and disable click when making calls to server
                                             //TODO: handle allowing to add duplicate classes
                                             //TODO: lag when creating a schedule (DEAL with loading bar and multithreading in the future)
