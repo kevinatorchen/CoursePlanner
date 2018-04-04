@@ -188,7 +188,11 @@ public class ScheduleVisualFragment extends Fragment {
   private MaterialDialog.Builder createDialog(Section x) {
     String meetingTimes = "";
     for (MeetingTime mT : x.getMeetingTimes()) {
-      meetingTimes += mT + "\n";
+      meetingTimes += mT;
+      meetingTimes += "\n";
+      meetingTimes += "Location: " + mT.getLocation();
+      meetingTimes += "\n";
+      meetingTimes += "\n";
     }
     if (x.getCommitment() instanceof Course) {
       Course tempCourse = (Course) x.getCommitment();
@@ -207,8 +211,6 @@ public class ScheduleVisualFragment extends Fragment {
               + "CRN: "
               + courseSection.getCrn()
               + "\n"
-              + "Location: "
-              + x.getLocation()
               + "Meeting Times: "
               + "\n"
               + meetingTimes)

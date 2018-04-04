@@ -7,11 +7,11 @@ import java.util.ArrayList;
  */
 
 public class TempPeriod {
-    int call_number;
-    int credits;
-    String ident;
-    ArrayList<TimeSlot> timeslots;
-    Instructor instructor = new Instructor();
+    public int call_number;
+    public int credits;
+    public String ident;
+    public ArrayList<TimeSlot> timeslots;
+    public Instructor instructor = new Instructor();
 
     @Override
     public String toString() {
@@ -27,14 +27,4 @@ public class TempPeriod {
         }
         return result;
     }
-}
-class Instructor {
-    String fname;
-    String lname;
-}
-class TimeSlot {
-    public String location;
-    public int start_time;
-    public int end_time;
-    public String day;
 }

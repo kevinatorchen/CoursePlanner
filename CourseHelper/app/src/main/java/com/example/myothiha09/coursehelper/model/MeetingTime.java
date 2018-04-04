@@ -7,15 +7,20 @@ public class MeetingTime {
   //least sig = Mon, second least is Tue, etc.
   private int daysOfWeek;
   private Interval interval;
+  private String location;
 
   public MeetingTime(int i, Time startTime, Time endTime) {
-    this.daysOfWeek = daysOfWeek;
+    this.daysOfWeek = i;
     this.interval = new Interval(startTime, endTime);
   }
 
   public MeetingTime(int daysOfWeek, Interval interval) {
     this.daysOfWeek = daysOfWeek;
     this.interval = interval;
+  }
+
+  public void setLocation(String location) {
+    this.location = location;
   }
 
   public int getDaysOfWeek() {
@@ -72,6 +77,10 @@ public class MeetingTime {
     builder.append(" ");
     builder.append(interval.toString());
     return builder.toString();
+  }
+
+  public String getLocation() {
+    return location;
   }
 }
 

@@ -210,7 +210,7 @@ public class ScheduleOverviewFragment extends Fragment {
       }
       String meetingTimes = "";
       for (int i = 0; i < section.getMeetingTimes().length; i++) {
-        meetingTimes += section.getMeetingTimes()[i] + ", ";
+        meetingTimes += section.getMeetingTimes()[i].toString() + ", ";
       }
       meetingTimes = meetingTimes.substring(0, meetingTimes.length() - 2);
       CustomFontRegular line1 = new CustomFontRegular(getContext());

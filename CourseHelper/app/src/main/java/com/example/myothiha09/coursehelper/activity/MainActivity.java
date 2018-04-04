@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
   SharedPreferences prefs;
   private NavigationView navigationView;
 
-  //TODO: animations to make it very satisfying to use.
+
   public static void start(Context context) {
     Intent intent = new Intent(context, MainActivity.class);
     context.startActivity(intent);

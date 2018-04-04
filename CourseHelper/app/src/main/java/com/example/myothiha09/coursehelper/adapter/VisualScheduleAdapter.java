@@ -156,7 +156,11 @@ public class VisualScheduleAdapter extends ArrayAdapter<Schedule> {
   private void createDialog(Section x) {
     String meetingTimes = "";
     for (MeetingTime mT : x.getMeetingTimes()) {
-      meetingTimes += mT + "\n";
+      meetingTimes += mT;
+      meetingTimes += "\n";
+      meetingTimes += "Location: " + mT.getLocation();
+      meetingTimes += "\n";
+      meetingTimes += "\n";
     }
     if (x.getCommitment() instanceof Course) {
       Course tempCourse = (Course) x.getCommitment();
@@ -174,8 +178,6 @@ public class VisualScheduleAdapter extends ArrayAdapter<Schedule> {
               + "CRN: "
               + courseSection.getCrn()
               + "\n"
-              + "Location: "
-              + x.getLocation()
               + "Meeting Times: "
               + "\n"
               + meetingTimes)
