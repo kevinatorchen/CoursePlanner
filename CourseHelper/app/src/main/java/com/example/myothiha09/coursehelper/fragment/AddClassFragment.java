@@ -38,9 +38,11 @@ import com.example.myothiha09.coursehelper.model.Student;
 import com.example.myothiha09.coursehelper.model.StudentActivity;
 import com.example.myothiha09.coursehelper.model.Time;
 import com.example.myothiha09.coursehelper.rest.RestClient;
+import com.example.myothiha09.coursehelper.temp.Instructor;
 import com.example.myothiha09.coursehelper.temp.TempCourse;
 import com.example.myothiha09.coursehelper.temp.TempMajor;
 import com.example.myothiha09.coursehelper.temp.TempPeriod;
+import com.example.myothiha09.coursehelper.temp.TimeSlot;
 import com.github.clans.fab.FloatingActionMenu;
 
 import java.util.ArrayList;
@@ -216,6 +218,32 @@ public class AddClassFragment extends Fragment {
         dialog.show();
     }
 
+
+    private boolean containsSameTimeslots(TempPeriod a, TempPeriod b) {
+        if (a.timeslots.size() != b.timeslots.size()) {
+            return false;
+        }
+        for (int i = 0; i < a.timeslots.size(); i++) {
+            TimeSlot aTimeSlot = a.timeslots.get(i);
+            TimeSlot bTimeSlot = b.timeslots.get(i);
+            if (aTimeSlot.day != bTimeSlot.day || aTimeSlot.start_time != bTimeSlot.start_time
+                    || aTimeSlot.end_time != bTimeSlot.end_time) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean containsSimilarSection(List<TempPeriod> filteredList, TempPeriod section) {
+        for (TempPeriod current: filteredList) {
+            if (current.instructor.equals(section.instructor) && containsSameTimeslots(current, section)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     private void showClassChooser(final String category) {
         final List<TempCourse> courseList = new ArrayList<>();
         RestClient.getInstance().getService().listCoursesForMajor(category).enqueue(new Callback<List<TempCourse>>() {
@@ -248,6 +276,18 @@ public class AddClassFragment extends Fragment {
                                                 i--;
                                             }
                                         }
+
+                                        List<TempPeriod> filteredList = new ArrayList<>();
+                                        for (TempPeriod currentPeriod: tempList) {
+                                            if (currentPeriod == null) {
+                                                System.out.println("Woah!");
+                                            }
+                                            if (!containsSimilarSection(filteredList, currentPeriod)) {
+                                                filteredList.add(currentPeriod);
+                                            }
+                                        }
+                                        tempList = filteredList;
+
                                         CourseSection[] sections = new CourseSection[tempList.size()];
                                         Course course = new SingleCourse(name, sections);
                                         for (int i = 0; i < sections.length; i++) {

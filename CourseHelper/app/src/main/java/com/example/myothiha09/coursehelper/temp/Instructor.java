@@ -8,6 +8,19 @@ public class Instructor {
     public String fname;
     public String lname;
 
+    private boolean equalStrings(String a, String b) {
+        return a == null && b == null || !(a == null || b == null) && a.equals(b);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof Instructor)) {
+            return false;
+        }
+        Instructor otherInstructor = (Instructor) other;
+        return equalStrings(this.fname, otherInstructor.fname) && equalStrings(this.lname, otherInstructor.lname);
+    }
+
     @Override
     public String toString() {
         if (fname == null && lname == null) {

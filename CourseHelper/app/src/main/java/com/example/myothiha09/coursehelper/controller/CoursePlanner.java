@@ -65,12 +65,16 @@ public class CoursePlanner {
   public static void planCourses(List<CommitmentRequest> courseRequests, int currentCourse, Schedule schedule,
                                  boolean ignoreProfessor, int altProfessors, int droppedCommitments) {
     if (currentCourse >= courseRequests.size()) {
+      if (scheduleList.size() > 1000) {
+        return;
+      }
       Schedule temp = new Schedule();
       for (Section x : schedule.getSchedule()) {
         temp.getSchedule().add(x);
       }
       temp.generateComparatorValues(altProfessors, droppedCommitments);
       scheduleList.add(temp);
+
 
     } else {
       CommitmentRequest currentCourseRequest = courseRequests.get(currentCourse);
