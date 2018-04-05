@@ -241,6 +241,13 @@ public class AddClassFragment extends Fragment {
                                         String name = category + " " + selected.ident;
                                         List<TempPeriod> tempList = response.body();
 
+                                        //TODO Replace with a O(N) instead of O(N^2) algorithm.
+                                        for (int i = 0; i < tempList.size(); i++) {
+                                            if (tempList.get(i).timeslots.size() == 0) {
+                                                tempList.remove(i);
+                                                i--;
+                                            }
+                                        }
                                         CourseSection[] sections = new CourseSection[tempList.size()];
                                         Course course = new SingleCourse(name, sections);
                                         for (int i = 0; i < sections.length; i++) {
