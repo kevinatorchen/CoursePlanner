@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import butterknife.BindColor;
 import butterknife.BindDimen;
 import butterknife.BindDrawable;
@@ -41,6 +43,8 @@ import com.example.myothiha09.coursehelper.util.AlternativeSelection;
 import com.example.myothiha09.coursehelper.util.NDSpinner;
 
 import java.util.List;
+
+import static com.example.myothiha09.coursehelper.controller.CoursePlanner.MAX_RESULTS;
 
 /**
  * Created by Myo on 5/22/2017.
@@ -118,6 +122,11 @@ public class ScheduleOverviewFragment extends Fragment {
         TextView tv = createTitle();
         createCoursesInfo(tv, layoutParams, sections);
       }
+    }
+    if (list.size() > MAX_RESULTS) {
+      Toast.makeText(getContext(), "Showing only first 1000 results. " +
+              "Try selecting specific " +
+              "professors and/or adding weekly activities.", Toast.LENGTH_LONG).show();
     }
   }
 

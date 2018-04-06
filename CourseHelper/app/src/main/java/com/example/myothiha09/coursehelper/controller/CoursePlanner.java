@@ -15,6 +15,7 @@ import java.util.Set;
  * Created by Kevin on 1/3/2017.
  */
 public class CoursePlanner {
+  public static final int MAX_RESULTS = 1000;
   public static List<Schedule> scheduleList = new ArrayList<>();
 
   public static void main(String[] args) {
@@ -65,7 +66,7 @@ public class CoursePlanner {
   public static void planCourses(List<CommitmentRequest> courseRequests, int currentCourse, Schedule schedule,
                                  boolean ignoreProfessor, int altProfessors, int droppedCommitments) {
     if (currentCourse >= courseRequests.size()) {
-      if (scheduleList.size() > 1000) {
+      if (scheduleList.size() > MAX_RESULTS) {
         return;
       }
       Schedule temp = new Schedule();
