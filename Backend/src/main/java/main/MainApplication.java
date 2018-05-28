@@ -3,6 +3,8 @@ package main;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+//I found this to be a good guide: http://www.springboottutorial.com/creating-rest-service-with-spring-boot
+
 //TO RUN THIS DEMO:
 
 /*
@@ -13,10 +15,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
     {
         "id": 5000,
         "content": "Hello",
-        "name": {
-            "firstName": "Kevin",
-            "lastName": "Chen"
-        }
+        "names": [
+            {
+                "firstName": "Jane",
+                "lastName": "Doe"
+            },
+            {
+                "firstName": "James",
+                "lastName": "Smith"
+            }
+        ]
     }
  */
 

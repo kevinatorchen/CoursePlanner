@@ -1,10 +1,14 @@
 package model;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Greeting {
 
     private int id;
     private String content;
-    private Name name;
+    private List<Name> names;
 
     public Greeting() {
 
@@ -23,7 +27,11 @@ public class Greeting {
         return content;
     }
 
-    public String getName() {
-        return name.getFirstName() + " " + name.getLastName();
+    public String getNames() {
+        StringBuilder builder = new StringBuilder();
+        for (Name name: names) {
+            builder.append(name.getFirstName() + " " + name.getLastName() + "\n");
+        }
+        return builder.toString();
     }
 }

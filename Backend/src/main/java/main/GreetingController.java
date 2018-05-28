@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -13,6 +15,6 @@ public class GreetingController {
 
     @RequestMapping(value = "/greeting", method = RequestMethod.POST)
     public String greeting(@RequestBody Greeting input) {
-        return input.getName();
+        return input.getNames();
     }
 }
