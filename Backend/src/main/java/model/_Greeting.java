@@ -1,20 +1,18 @@
 package model;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class Greeting {
+public class _Greeting {
 
     private int id;
     private String content;
-    private List<Name> names;
+    private List<_Name> names;
 
-    public Greeting() {
+    public _Greeting() {
 
     }
 
-    public Greeting(int id, String content) {
+    public _Greeting(int id, String content) {
         this.id = id;
         this.content = content;
     }
@@ -29,7 +27,7 @@ public class Greeting {
 
     public String getNames() {
         StringBuilder builder = new StringBuilder();
-        for (Name name: names) {
+        for (_Name name: names) {
             builder.append(name.getFirstName() + " " + name.getLastName() + "\n");
         }
         return builder.toString();
