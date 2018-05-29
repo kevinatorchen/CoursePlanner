@@ -1,0 +1,2269 @@
+{
+    "courseRequests":[
+        {
+            "courseName":"APPH 1040",
+            "sectionData":[
+                {
+                    "call_number":86999,
+                    "credits":2,
+                    "ident":"A",
+                    "instructor":{
+                        "fname":"Michele Lee ",
+                        "lname":"Rosbruck"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":790,
+                            "location":"College of Business 100",
+                            "start_time":740
+                        },
+                        {
+                            "day":"W",
+                            "end_time":790,
+                            "location":"College of Business 100",
+                            "start_time":740
+                        }
+                    ]
+                },
+                {
+                    "call_number":90185,
+                    "credits":2,
+                    "ident":"B",
+                    "instructor":{
+                        "fname":"Michele Lee ",
+                        "lname":"Rosbruck"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":885,
+                            "location":"College of Business 100",
+                            "start_time":835
+                        },
+                        {
+                            "day":"W",
+                            "end_time":885,
+                            "location":"College of Business 100",
+                            "start_time":835
+                        }
+                    ]
+                },
+                {
+                    "call_number":86232,
+                    "credits":2,
+                    "ident":"E",
+                    "instructor":{
+                        "fname":"Michele Lee ",
+                        "lname":"Rosbruck"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":860,
+                            "location":"Clough Commons 152",
+                            "start_time":810
+                        },
+                        {
+                            "day":"R",
+                            "end_time":860,
+                            "location":"Clough Commons 152",
+                            "start_time":810
+                        }
+                    ]
+                },
+                {
+                    "call_number":86233,
+                    "credits":2,
+                    "ident":"J",
+                    "instructor":{
+                        "fname":"Teresa Kay ",
+                        "lname":"Snow"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"F",
+                            "end_time":840,
+                            "location":"College of Business 100",
+                            "start_time":740
+                        }
+                    ]
+                },
+                {
+                    "call_number":86234,
+                    "credits":2,
+                    "ident":"L",
+                    "instructor":{
+                        "fname":"Teresa Kay ",
+                        "lname":"Snow"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"F",
+                            "end_time":1000,
+                            "location":"College of Business 100",
+                            "start_time":900
+                        }
+                    ]
+                },
+                {
+                    "call_number":89720,
+                    "credits":2,
+                    "ident":"RBS",
+                    "instructor":{
+                        "fname":"Lesley  ",
+                        "lname":"Baradel"
+                    }
+                }
+            ]
+        },
+        {
+            "courseName":"CS 1301",
+            "sectionData":[
+                {
+                    "call_number":82745,
+                    "credits":3,
+                    "ident":"A03",
+                    "instructor":{
+                        "fname":"Melinda Hardy ",
+                        "lname":"McDaniel"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"F",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"R",
+                            "end_time":1065,
+                            "location":"Van Leer C340",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":82746,
+                    "credits":3,
+                    "ident":"A04",
+                    "instructor":{
+                        "fname":"Melinda Hardy ",
+                        "lname":"McDaniel"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"F",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":1065,
+                            "location":"Van Leer C240",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":87416,
+                    "credits":3,
+                    "ident":"B03",
+                    "instructor":{
+                        "fname":"Melinda Hardy ",
+                        "lname":"McDaniel"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":530,
+                            "location":"College of Business 100",
+                            "start_time":480
+                        },
+                        {
+                            "day":"W",
+                            "end_time":530,
+                            "location":"College of Business 100",
+                            "start_time":480
+                        },
+                        {
+                            "day":"F",
+                            "end_time":530,
+                            "location":"College of Business 100",
+                            "start_time":480
+                        },
+                        {
+                            "day":"R",
+                            "end_time":1065,
+                            "location":"Molecular Sciences & Engr 1224",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":87417,
+                    "credits":3,
+                    "ident":"B04",
+                    "instructor":{
+                        "fname":"Melinda Hardy ",
+                        "lname":"McDaniel"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":530,
+                            "location":"College of Business 100",
+                            "start_time":480
+                        },
+                        {
+                            "day":"W",
+                            "end_time":530,
+                            "location":"College of Business 100",
+                            "start_time":480
+                        },
+                        {
+                            "day":"F",
+                            "end_time":530,
+                            "location":"College of Business 100",
+                            "start_time":480
+                        },
+                        {
+                            "day":"W",
+                            "end_time":1065,
+                            "location":"Architecture (East) 207",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":82848,
+                    "credits":3,
+                    "ident":"GR",
+                    "instructor":{
+                        "fname":"Melinda Hardy ",
+                        "lname":"McDaniel"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"F",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":1065,
+                            "location":"Cherry Emerson 320",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":90085,
+                    "credits":3,
+                    "ident":"HP",
+                    "instructor":{
+                        "fname":"David Andrew ",
+                        "lname":"Joyner"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"R",
+                            "end_time":975,
+                            "location":"West Village Dining Commons 277",
+                            "start_time":900
+                        }
+                    ]
+                },
+                {
+                    "call_number":90091,
+                    "credits":3,
+                    "ident":"O1",
+                    "instructor":{
+                        "fname":"David Andrew ",
+                        "lname":"Joyner"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"R",
+                            "end_time":1065,
+                            "location":"Klaus 1443",
+                            "start_time":990
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "courseName":"ENGL 1102",
+            "sectionData":[
+                {
+                    "call_number":84638,
+                    "credits":3,
+                    "ident":"A2",
+                    "instructor":{
+                        "fname":"Julie  ",
+                        "lname":"Weng"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":595,
+                            "location":"Stephen C Hall 103",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":595,
+                            "location":"Stephen C Hall 103",
+                            "start_time":545
+                        },
+                        {
+                            "day":"F",
+                            "end_time":595,
+                            "location":"Stephen C Hall 103",
+                            "start_time":545
+                        }
+                    ]
+                },
+                {
+                    "call_number":84640,
+                    "credits":3,
+                    "ident":"A3",
+                    "instructor":{
+                        "fname":"Kate G ",
+                        "lname":"Holterhoff"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":595,
+                            "location":"Clough Commons 123",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":595,
+                            "location":"Clough Commons 123",
+                            "start_time":545
+                        },
+                        {
+                            "day":"F",
+                            "end_time":595,
+                            "location":"Clough Commons 123",
+                            "start_time":545
+                        }
+                    ]
+                },
+                {
+                    "call_number":82867,
+                    "credits":3,
+                    "ident":"B",
+                    "instructor":{
+                        "fname":"Christina M ",
+                        "lname":"Colvin"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":725,
+                            "location":"Clough Commons 123",
+                            "start_time":675
+                        },
+                        {
+                            "day":"W",
+                            "end_time":725,
+                            "location":"Clough Commons 123",
+                            "start_time":675
+                        },
+                        {
+                            "day":"F",
+                            "end_time":725,
+                            "location":"Clough Commons 123",
+                            "start_time":675
+                        }
+                    ]
+                },
+                {
+                    "call_number":83680,
+                    "credits":3,
+                    "ident":"B1",
+                    "instructor":{
+                        "fname":"Katie S ",
+                        "lname":"Homar"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":725,
+                            "location":"Clough Commons 127",
+                            "start_time":675
+                        },
+                        {
+                            "day":"W",
+                            "end_time":725,
+                            "location":"Clough Commons 127",
+                            "start_time":675
+                        },
+                        {
+                            "day":"F",
+                            "end_time":725,
+                            "location":"Clough Commons 127",
+                            "start_time":675
+                        }
+                    ]
+                },
+                {
+                    "call_number":84978,
+                    "credits":3,
+                    "ident":"B2",
+                    "instructor":{
+                        "fname":"Patrick G ",
+                        "lname":"Ellis"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":725,
+                            "location":"Clough Commons 129",
+                            "start_time":675
+                        },
+                        {
+                            "day":"W",
+                            "end_time":725,
+                            "location":"Clough Commons 129",
+                            "start_time":675
+                        },
+                        {
+                            "day":"F",
+                            "end_time":725,
+                            "location":"Clough Commons 129",
+                            "start_time":675
+                        }
+                    ]
+                },
+                {
+                    "call_number":85215,
+                    "credits":3,
+                    "ident":"B5",
+                    "instructor":{
+                        "fname":"Bethany G ",
+                        "lname":"Jacobs"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":725,
+                            "location":"Stephen C Hall 103",
+                            "start_time":675
+                        },
+                        {
+                            "day":"W",
+                            "end_time":725,
+                            "location":"Stephen C Hall 103",
+                            "start_time":675
+                        },
+                        {
+                            "day":"F",
+                            "end_time":725,
+                            "location":"Stephen C Hall 103",
+                            "start_time":675
+                        }
+                    ]
+                },
+                {
+                    "call_number":87472,
+                    "credits":3,
+                    "ident":"C",
+                    "instructor":{
+                        "fname":"Julie  ",
+                        "lname":"Weng"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":530,
+                            "location":"Stephen C Hall 103",
+                            "start_time":480
+                        },
+                        {
+                            "day":"W",
+                            "end_time":530,
+                            "location":"Stephen C Hall 103",
+                            "start_time":480
+                        },
+                        {
+                            "day":"F",
+                            "end_time":530,
+                            "location":"Stephen C Hall 103",
+                            "start_time":480
+                        }
+                    ]
+                },
+                {
+                    "call_number":86362,
+                    "credits":3,
+                    "ident":"D",
+                    "instructor":{
+                        "fname":"Amy K ",
+                        "lname":"King"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":885,
+                            "location":"Clough Commons 127",
+                            "start_time":810
+                        },
+                        {
+                            "day":"R",
+                            "end_time":885,
+                            "location":"Clough Commons 127",
+                            "start_time":810
+                        }
+                    ]
+                },
+                {
+                    "call_number":82225,
+                    "credits":3,
+                    "ident":"D1",
+                    "instructor":{
+                        "fname":"Anna S ",
+                        "lname":"Ioanes"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":885,
+                            "location":"Clough Commons 123",
+                            "start_time":810
+                        },
+                        {
+                            "day":"R",
+                            "end_time":885,
+                            "location":"Clough Commons 123",
+                            "start_time":810
+                        }
+                    ]
+                },
+                {
+                    "call_number":82223,
+                    "credits":3,
+                    "ident":"D3",
+                    "instructor":{
+                        "fname":"Andrew P ",
+                        "lname":"Marzoni"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":885,
+                            "location":"Clough Commons 325",
+                            "start_time":810
+                        },
+                        {
+                            "day":"R",
+                            "end_time":885,
+                            "location":"Clough Commons 325",
+                            "start_time":810
+                        }
+                    ]
+                },
+                {
+                    "call_number":85151,
+                    "credits":3,
+                    "ident":"D4",
+                    "instructor":{
+                        "fname":"Maria  ",
+                        "lname":"Aldinger"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":885,
+                            "location":"Stephen C Hall 103",
+                            "start_time":810
+                        },
+                        {
+                            "day":"R",
+                            "end_time":885,
+                            "location":"Stephen C Hall 103",
+                            "start_time":810
+                        }
+                    ]
+                },
+                {
+                    "call_number":88104,
+                    "credits":3,
+                    "ident":"E",
+                    "instructor":{
+                        "fname":"Darcy  ",
+                        "lname":"Mullen"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":950,
+                            "location":"Clough Commons 127",
+                            "start_time":900
+                        },
+                        {
+                            "day":"W",
+                            "end_time":950,
+                            "location":"Clough Commons 127",
+                            "start_time":900
+                        },
+                        {
+                            "day":"F",
+                            "end_time":950,
+                            "location":"Clough Commons 127",
+                            "start_time":900
+                        }
+                    ]
+                },
+                {
+                    "call_number":82092,
+                    "credits":3,
+                    "ident":"F1",
+                    "instructor":{
+                        "fname":"Andrew P ",
+                        "lname":"Marzoni"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":645,
+                            "location":"Skiles 169",
+                            "start_time":570
+                        },
+                        {
+                            "day":"R",
+                            "end_time":645,
+                            "location":"Skiles 169",
+                            "start_time":570
+                        }
+                    ]
+                },
+                {
+                    "call_number":84593,
+                    "credits":3,
+                    "ident":"F2",
+                    "instructor":{
+                        "fname":"Maria  ",
+                        "lname":"Aldinger"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":645,
+                            "location":"Skiles 368",
+                            "start_time":570
+                        },
+                        {
+                            "day":"R",
+                            "end_time":645,
+                            "location":"Skiles 368",
+                            "start_time":570
+                        }
+                    ]
+                },
+                {
+                    "call_number":85216,
+                    "credits":3,
+                    "ident":"F4",
+                    "instructor":{
+                        "fname":"Amy K ",
+                        "lname":"King"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":645,
+                            "location":"Skiles 168",
+                            "start_time":570
+                        },
+                        {
+                            "day":"R",
+                            "end_time":645,
+                            "location":"Skiles 168",
+                            "start_time":570
+                        }
+                    ]
+                },
+                {
+                    "call_number":85511,
+                    "credits":3,
+                    "ident":"G",
+                    "instructor":{
+                        "fname":"Patrick G ",
+                        "lname":"Ellis"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":790,
+                            "location":"Stephen C Hall 103",
+                            "start_time":740
+                        },
+                        {
+                            "day":"W",
+                            "end_time":790,
+                            "location":"Stephen C Hall 103",
+                            "start_time":740
+                        },
+                        {
+                            "day":"F",
+                            "end_time":790,
+                            "location":"Stephen C Hall 103",
+                            "start_time":740
+                        }
+                    ]
+                },
+                {
+                    "call_number":83617,
+                    "credits":3,
+                    "ident":"G1",
+                    "instructor":{
+                        "fname":"Andrew T ",
+                        "lname":"Eichel"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":790,
+                            "location":"Clough Commons 123",
+                            "start_time":740
+                        },
+                        {
+                            "day":"W",
+                            "end_time":790,
+                            "location":"Clough Commons 123",
+                            "start_time":740
+                        },
+                        {
+                            "day":"F",
+                            "end_time":790,
+                            "location":"Clough Commons 123",
+                            "start_time":740
+                        }
+                    ]
+                },
+                {
+                    "call_number":85512,
+                    "credits":3,
+                    "ident":"G3",
+                    "instructor":{
+                        "fname":"Kate G ",
+                        "lname":"Holterhoff"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":790,
+                            "location":"Clough Commons 125",
+                            "start_time":740
+                        },
+                        {
+                            "day":"W",
+                            "end_time":790,
+                            "location":"Clough Commons 125",
+                            "start_time":740
+                        },
+                        {
+                            "day":"F",
+                            "end_time":790,
+                            "location":"Clough Commons 125",
+                            "start_time":740
+                        }
+                    ]
+                },
+                {
+                    "call_number":86704,
+                    "credits":3,
+                    "ident":"G5",
+                    "instructor":{
+                        "fname":"Philip  ",
+                        "lname":"Auslander"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":790,
+                            "location":"Skiles 311",
+                            "start_time":740
+                        },
+                        {
+                            "day":"W",
+                            "end_time":790,
+                            "location":"Skiles 311",
+                            "start_time":740
+                        },
+                        {
+                            "day":"F",
+                            "end_time":790,
+                            "location":"Skiles 311",
+                            "start_time":740
+                        }
+                    ]
+                },
+                {
+                    "call_number":88976,
+                    "credits":3,
+                    "ident":"H",
+                    "instructor":{
+                        "fname":"John Edgar ",
+                        "lname":"Browning"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":975,
+                            "location":"Skiles 156",
+                            "start_time":900
+                        },
+                        {
+                            "day":"R",
+                            "end_time":975,
+                            "location":"Skiles 156",
+                            "start_time":900
+                        }
+                    ]
+                },
+                {
+                    "call_number":81714,
+                    "credits":3,
+                    "ident":"HP1",
+                    "instructor":{
+                        "fname":"Andrew P ",
+                        "lname":"Marzoni"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":555,
+                            "location":"Skiles 168",
+                            "start_time":480
+                        },
+                        {
+                            "day":"R",
+                            "end_time":555,
+                            "location":"Skiles 168",
+                            "start_time":480
+                        }
+                    ]
+                },
+                {
+                    "call_number":82438,
+                    "credits":3,
+                    "ident":"HP2",
+                    "instructor":{
+                        "fname":"Anna S ",
+                        "lname":"Ioanes"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":645,
+                            "location":"Skiles 170",
+                            "start_time":570
+                        },
+                        {
+                            "day":"R",
+                            "end_time":645,
+                            "location":"Skiles 170",
+                            "start_time":570
+                        }
+                    ]
+                },
+                {
+                    "call_number":86613,
+                    "credits":3,
+                    "ident":"HP3",
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":795,
+                            "location":"Skiles 168",
+                            "start_time":720
+                        },
+                        {
+                            "day":"R",
+                            "end_time":795,
+                            "location":"Skiles 168",
+                            "start_time":720
+                        }
+                    ]
+                },
+                {
+                    "call_number":85543,
+                    "credits":3,
+                    "ident":"HP4",
+                    "instructor":{
+                        "fname":"Joshua A ",
+                        "lname":"King"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":885,
+                            "location":"Skiles 370",
+                            "start_time":835
+                        },
+                        {
+                            "day":"W",
+                            "end_time":885,
+                            "location":"Skiles 370",
+                            "start_time":835
+                        },
+                        {
+                            "day":"F",
+                            "end_time":885,
+                            "location":"Skiles 370",
+                            "start_time":835
+                        }
+                    ]
+                },
+                {
+                    "call_number":88425,
+                    "credits":3,
+                    "ident":"HP5",
+                    "instructor":{
+                        "fname":"Andrea E ",
+                        "lname":"Krafft"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":725,
+                            "location":"Clough Commons 131",
+                            "start_time":675
+                        },
+                        {
+                            "day":"W",
+                            "end_time":725,
+                            "location":"Clough Commons 131",
+                            "start_time":675
+                        },
+                        {
+                            "day":"F",
+                            "end_time":725,
+                            "location":"Clough Commons 131",
+                            "start_time":675
+                        }
+                    ]
+                },
+                {
+                    "call_number":83275,
+                    "credits":3,
+                    "ident":"I",
+                    "instructor":{
+                        "fname":"John Edgar ",
+                        "lname":"Browning"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":1065,
+                            "location":"Skiles 156",
+                            "start_time":990
+                        },
+                        {
+                            "day":"R",
+                            "end_time":1065,
+                            "location":"Skiles 156",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":90230,
+                    "credits":3,
+                    "ident":"I2",
+                    "instructor":{
+                        "fname":"Bradley  ",
+                        "lname":"Rittenhouse"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":1065,
+                            "location":"Skiles 354",
+                            "start_time":990
+                        },
+                        {
+                            "day":"R",
+                            "end_time":1065,
+                            "location":"Skiles 354",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":82739,
+                    "credits":3,
+                    "ident":"J",
+                    "instructor":{
+                        "fname":"Kate G ",
+                        "lname":"Holterhoff"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":660,
+                            "location":"Clough Commons 123",
+                            "start_time":610
+                        },
+                        {
+                            "day":"W",
+                            "end_time":660,
+                            "location":"Clough Commons 123",
+                            "start_time":610
+                        },
+                        {
+                            "day":"F",
+                            "end_time":660,
+                            "location":"Clough Commons 123",
+                            "start_time":610
+                        }
+                    ]
+                },
+                {
+                    "call_number":84639,
+                    "credits":3,
+                    "ident":"J1",
+                    "instructor":{
+                        "fname":"Katie S ",
+                        "lname":"Homar"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":660,
+                            "location":"Skiles 168",
+                            "start_time":610
+                        },
+                        {
+                            "day":"W",
+                            "end_time":660,
+                            "location":"Skiles 168",
+                            "start_time":610
+                        },
+                        {
+                            "day":"F",
+                            "end_time":660,
+                            "location":"Skiles 168",
+                            "start_time":610
+                        }
+                    ]
+                },
+                {
+                    "call_number":86363,
+                    "credits":3,
+                    "ident":"J2",
+                    "instructor":{
+                        "fname":"Bethany G ",
+                        "lname":"Jacobs"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":660,
+                            "location":"Clough Commons 131",
+                            "start_time":610
+                        },
+                        {
+                            "day":"W",
+                            "end_time":660,
+                            "location":"Clough Commons 131",
+                            "start_time":610
+                        },
+                        {
+                            "day":"F",
+                            "end_time":660,
+                            "location":"Clough Commons 131",
+                            "start_time":610
+                        }
+                    ]
+                },
+                {
+                    "call_number":83277,
+                    "credits":3,
+                    "ident":"J4",
+                    "instructor":{
+                        "fname":"Patrick G ",
+                        "lname":"Ellis"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":660,
+                            "location":"Stephen C Hall 106",
+                            "start_time":610
+                        },
+                        {
+                            "day":"W",
+                            "end_time":660,
+                            "location":"Stephen C Hall 106",
+                            "start_time":610
+                        },
+                        {
+                            "day":"F",
+                            "end_time":660,
+                            "location":"Stephen C Hall 106",
+                            "start_time":610
+                        }
+                    ]
+                },
+                {
+                    "call_number":88900,
+                    "credits":3,
+                    "ident":"K",
+                    "instructor":{
+                        "fname":"Amy K ",
+                        "lname":"King"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":555,
+                            "location":"Skiles 302",
+                            "start_time":480
+                        },
+                        {
+                            "day":"R",
+                            "end_time":555,
+                            "location":"Skiles 302",
+                            "start_time":480
+                        }
+                    ]
+                },
+                {
+                    "call_number":81713,
+                    "credits":3,
+                    "ident":"L",
+                    "instructor":{
+                        "fname":"Bethany G ",
+                        "lname":"Jacobs"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":885,
+                            "location":"Stephen C Hall 103",
+                            "start_time":835
+                        },
+                        {
+                            "day":"W",
+                            "end_time":885,
+                            "location":"Stephen C Hall 103",
+                            "start_time":835
+                        },
+                        {
+                            "day":"F",
+                            "end_time":885,
+                            "location":"Stephen C Hall 103",
+                            "start_time":835
+                        }
+                    ]
+                },
+                {
+                    "call_number":88898,
+                    "credits":3,
+                    "ident":"L1",
+                    "instructor":{
+                        "fname":"Andrew T ",
+                        "lname":"Eichel"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":885,
+                            "location":"Skiles 168",
+                            "start_time":835
+                        },
+                        {
+                            "day":"W",
+                            "end_time":885,
+                            "location":"Skiles 168",
+                            "start_time":835
+                        },
+                        {
+                            "day":"F",
+                            "end_time":885,
+                            "location":"Skiles 168",
+                            "start_time":835
+                        }
+                    ]
+                },
+                {
+                    "call_number":90159,
+                    "credits":3,
+                    "ident":"L2",
+                    "instructor":{
+                        "fname":"Darcy  ",
+                        "lname":"Mullen"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":885,
+                            "location":"Skiles 169",
+                            "start_time":835
+                        },
+                        {
+                            "day":"W",
+                            "end_time":885,
+                            "location":"Skiles 169",
+                            "start_time":835
+                        },
+                        {
+                            "day":"F",
+                            "end_time":885,
+                            "location":"Skiles 169",
+                            "start_time":835
+                        }
+                    ]
+                },
+                {
+                    "call_number":82221,
+                    "credits":3,
+                    "ident":"L3",
+                    "instructor":{
+                        "fname":"Christina M ",
+                        "lname":"Colvin"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":885,
+                            "location":"Skiles 170",
+                            "start_time":835
+                        },
+                        {
+                            "day":"W",
+                            "end_time":885,
+                            "location":"Skiles 170",
+                            "start_time":835
+                        },
+                        {
+                            "day":"F",
+                            "end_time":885,
+                            "location":"Skiles 170",
+                            "start_time":835
+                        }
+                    ]
+                },
+                {
+                    "call_number":83283,
+                    "credits":3,
+                    "ident":"L4",
+                    "instructor":{
+                        "fname":"Katie S ",
+                        "lname":"Homar"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":885,
+                            "location":"Skiles 171",
+                            "start_time":835
+                        },
+                        {
+                            "day":"W",
+                            "end_time":885,
+                            "location":"Skiles 171",
+                            "start_time":835
+                        },
+                        {
+                            "day":"F",
+                            "end_time":885,
+                            "location":"Skiles 171",
+                            "start_time":835
+                        }
+                    ]
+                },
+                {
+                    "call_number":90199,
+                    "credits":3,
+                    "ident":"L5",
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":885,
+                            "location":"Skiles 308",
+                            "start_time":835
+                        },
+                        {
+                            "day":"W",
+                            "end_time":885,
+                            "location":"Skiles 308",
+                            "start_time":835
+                        },
+                        {
+                            "day":"F",
+                            "end_time":885,
+                            "location":"Skiles 308",
+                            "start_time":835
+                        }
+                    ]
+                },
+                {
+                    "call_number":85150,
+                    "credits":3,
+                    "ident":"N",
+                    "instructor":{
+                        "fname":"Anna S ",
+                        "lname":"Ioanes"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":795,
+                            "location":"Skiles 169",
+                            "start_time":720
+                        },
+                        {
+                            "day":"R",
+                            "end_time":795,
+                            "location":"Skiles 169",
+                            "start_time":720
+                        }
+                    ]
+                },
+                {
+                    "call_number":83308,
+                    "credits":3,
+                    "ident":"N2",
+                    "instructor":{
+                        "fname":"Maria  ",
+                        "lname":"Aldinger"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":795,
+                            "location":"Skiles 170",
+                            "start_time":720
+                        },
+                        {
+                            "day":"R",
+                            "end_time":795,
+                            "location":"Skiles 170",
+                            "start_time":720
+                        }
+                    ]
+                },
+                {
+                    "call_number":88899,
+                    "credits":3,
+                    "ident":"Q",
+                    "instructor":{
+                        "fname":"Matthew C ",
+                        "lname":"Dischinger"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":975,
+                            "location":"Skiles 314",
+                            "start_time":900
+                        },
+                        {
+                            "day":"W",
+                            "end_time":975,
+                            "location":"Skiles 314",
+                            "start_time":900
+                        }
+                    ]
+                },
+                {
+                    "call_number":88105,
+                    "credits":3,
+                    "ident":"S",
+                    "instructor":{
+                        "fname":"Matthew C ",
+                        "lname":"Dischinger"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":1065,
+                            "location":"Skiles 308",
+                            "start_time":990
+                        },
+                        {
+                            "day":"W",
+                            "end_time":1065,
+                            "location":"Skiles 308",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":90158,
+                    "credits":3,
+                    "ident":"S1",
+                    "instructor":{
+                        "fname":"Darcy  ",
+                        "lname":"Mullen"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":1065,
+                            "location":"Stephen C Hall 103",
+                            "start_time":990
+                        },
+                        {
+                            "day":"W",
+                            "end_time":1065,
+                            "location":"Stephen C Hall 103",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":84968,
+                    "credits":3,
+                    "ident":"V",
+                    "instructor":{
+                        "fname":"Matthew C ",
+                        "lname":"Dischinger"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":1155,
+                            "location":"Skiles 308",
+                            "start_time":1080
+                        },
+                        {
+                            "day":"W",
+                            "end_time":1155,
+                            "location":"Skiles 308",
+                            "start_time":1080
+                        }
+                    ]
+                },
+                {
+                    "call_number":90390,
+                    "credits":3,
+                    "ident":"W",
+                    "instructor":{
+                        "fname":"John Edgar ",
+                        "lname":"Browning"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":1155,
+                            "location":"Skiles 156",
+                            "start_time":1080
+                        },
+                        {
+                            "day":"R",
+                            "end_time":1155,
+                            "location":"Skiles 156",
+                            "start_time":1080
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "courseName":"HIST 2112",
+            "sectionData":[
+                {
+                    "call_number":86127,
+                    "credits":3,
+                    "ident":"B",
+                    "instructor":{
+                        "fname":"John Matthew ",
+                        "lname":"Smith"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":645,
+                            "location":"Howey (Physics) L4",
+                            "start_time":570
+                        },
+                        {
+                            "day":"R",
+                            "end_time":645,
+                            "location":"Howey (Physics) L4",
+                            "start_time":570
+                        }
+                    ]
+                },
+                {
+                    "call_number":91168,
+                    "credits":3,
+                    "ident":"C",
+                    "instructor":{
+                        "fname":"Todd M ",
+                        "lname":"Michney"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":790,
+                            "location":"D. M. Smith 105",
+                            "start_time":740
+                        },
+                        {
+                            "day":"W",
+                            "end_time":790,
+                            "location":"D. M. Smith 105",
+                            "start_time":740
+                        },
+                        {
+                            "day":"F",
+                            "end_time":790,
+                            "location":"D. M. Smith 105",
+                            "start_time":740
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "courseName":"MATH 1551",
+            "sectionData":[
+                {
+                    "call_number":87515,
+                    "credits":2,
+                    "ident":"A1",
+                    "instructor":{
+                        "fname":"Balazs  ",
+                        "lname":"Strenner"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":530,
+                            "location":"Howey (Physics) L2",
+                            "start_time":480
+                        },
+                        {
+                            "day":"W",
+                            "end_time":530,
+                            "location":"Howey (Physics) L2",
+                            "start_time":480
+                        },
+                        {
+                            "day":"F",
+                            "end_time":530,
+                            "location":"Skiles 154",
+                            "start_time":480
+                        }
+                    ]
+                },
+                {
+                    "call_number":87516,
+                    "credits":2,
+                    "ident":"A2",
+                    "instructor":{
+                        "fname":"Balazs  ",
+                        "lname":"Strenner"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":530,
+                            "location":"Howey (Physics) L2",
+                            "start_time":480
+                        },
+                        {
+                            "day":"W",
+                            "end_time":530,
+                            "location":"Howey (Physics) L2",
+                            "start_time":480
+                        },
+                        {
+                            "day":"F",
+                            "end_time":530,
+                            "location":"Skiles 156",
+                            "start_time":480
+                        }
+                    ]
+                },
+                {
+                    "call_number":90793,
+                    "credits":2,
+                    "ident":"A3",
+                    "instructor":{
+                        "fname":"Balazs  ",
+                        "lname":"Strenner"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":530,
+                            "location":"Howey (Physics) L2",
+                            "start_time":480
+                        },
+                        {
+                            "day":"W",
+                            "end_time":530,
+                            "location":"Howey (Physics) L2",
+                            "start_time":480
+                        },
+                        {
+                            "day":"F",
+                            "end_time":530,
+                            "location":"Skiles 168",
+                            "start_time":480
+                        }
+                    ]
+                },
+                {
+                    "call_number":90794,
+                    "credits":2,
+                    "ident":"A4",
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":530,
+                            "location":"Howey (Physics) L2",
+                            "start_time":480
+                        },
+                        {
+                            "day":"W",
+                            "end_time":530,
+                            "location":"Howey (Physics) L2",
+                            "start_time":480
+                        },
+                        {
+                            "day":"F",
+                            "end_time":530,
+                            "location":"Skiles 169",
+                            "start_time":480
+                        }
+                    ]
+                },
+                {
+                    "call_number":87543,
+                    "credits":2,
+                    "ident":"C1",
+                    "instructor":{
+                        "fname":"Balazs  ",
+                        "lname":"Strenner"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":595,
+                            "location":"Klaus 2443",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":595,
+                            "location":"Klaus 2443",
+                            "start_time":545
+                        },
+                        {
+                            "day":"F",
+                            "end_time":595,
+                            "location":"Skiles 154",
+                            "start_time":545
+                        }
+                    ]
+                },
+                {
+                    "call_number":87536,
+                    "credits":2,
+                    "ident":"C2",
+                    "instructor":{
+                        "fname":"Balazs  ",
+                        "lname":"Strenner"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":595,
+                            "location":"Klaus 2443",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":595,
+                            "location":"Klaus 2443",
+                            "start_time":545
+                        },
+                        {
+                            "day":"F",
+                            "end_time":595,
+                            "location":"Skiles 156",
+                            "start_time":545
+                        }
+                    ]
+                },
+                {
+                    "call_number":90796,
+                    "credits":2,
+                    "ident":"C3",
+                    "instructor":{
+                        "fname":"Balazs  ",
+                        "lname":"Strenner"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":595,
+                            "location":"Klaus 2443",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":595,
+                            "location":"Klaus 2443",
+                            "start_time":545
+                        },
+                        {
+                            "day":"F",
+                            "end_time":595,
+                            "location":"Skiles 255",
+                            "start_time":545
+                        }
+                    ]
+                },
+                {
+                    "call_number":87550,
+                    "credits":2,
+                    "ident":"E1",
+                    "instructor":{
+                        "fname":"Xukai  ",
+                        "lname":"Yan"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":660,
+                            "location":"Love (MRDC II) 185",
+                            "start_time":610
+                        },
+                        {
+                            "day":"W",
+                            "end_time":660,
+                            "location":"Love (MRDC II) 185",
+                            "start_time":610
+                        },
+                        {
+                            "day":"F",
+                            "end_time":660,
+                            "location":"ES&T L1175",
+                            "start_time":610
+                        }
+                    ]
+                },
+                {
+                    "call_number":90797,
+                    "credits":2,
+                    "ident":"E2",
+                    "instructor":{
+                        "fname":"Xukai  ",
+                        "lname":"Yan"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":660,
+                            "location":"Love (MRDC II) 185",
+                            "start_time":610
+                        },
+                        {
+                            "day":"W",
+                            "end_time":660,
+                            "location":"Love (MRDC II) 185",
+                            "start_time":610
+                        },
+                        {
+                            "day":"F",
+                            "end_time":660,
+                            "location":"Skiles 311",
+                            "start_time":610
+                        }
+                    ]
+                },
+                {
+                    "call_number":90795,
+                    "credits":2,
+                    "ident":"E3",
+                    "instructor":{
+                        "fname":"Xukai  ",
+                        "lname":"Yan"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":660,
+                            "location":"Love (MRDC II) 185",
+                            "start_time":610
+                        },
+                        {
+                            "day":"W",
+                            "end_time":660,
+                            "location":"Love (MRDC II) 185",
+                            "start_time":610
+                        },
+                        {
+                            "day":"F",
+                            "end_time":660,
+                            "location":"Skiles 314",
+                            "start_time":610
+                        }
+                    ]
+                },
+                {
+                    "call_number":87551,
+                    "credits":2,
+                    "ident":"G1",
+                    "instructor":{
+                        "fname":"Xukai  ",
+                        "lname":"Yan"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":725,
+                            "location":"Mason 1133",
+                            "start_time":675
+                        },
+                        {
+                            "day":"W",
+                            "end_time":725,
+                            "location":"Mason 1133",
+                            "start_time":675
+                        },
+                        {
+                            "day":"F",
+                            "end_time":725,
+                            "location":"Skiles 270",
+                            "start_time":675
+                        }
+                    ]
+                },
+                {
+                    "call_number":87552,
+                    "credits":2,
+                    "ident":"G2",
+                    "instructor":{
+                        "fname":"Xukai  ",
+                        "lname":"Yan"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":725,
+                            "location":"Mason 1133",
+                            "start_time":675
+                        },
+                        {
+                            "day":"W",
+                            "end_time":725,
+                            "location":"Mason 1133",
+                            "start_time":675
+                        },
+                        {
+                            "day":"F",
+                            "end_time":725,
+                            "location":"Skiles 255",
+                            "start_time":675
+                        }
+                    ]
+                },
+                {
+                    "call_number":90798,
+                    "credits":2,
+                    "ident":"G3",
+                    "instructor":{
+                        "fname":"Xukai  ",
+                        "lname":"Yan"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":725,
+                            "location":"Mason 1133",
+                            "start_time":675
+                        },
+                        {
+                            "day":"W",
+                            "end_time":725,
+                            "location":"Mason 1133",
+                            "start_time":675
+                        },
+                        {
+                            "day":"F",
+                            "end_time":722,
+                            "location":"Skiles 308",
+                            "start_time":675
+                        }
+                    ]
+                },
+                {
+                    "call_number":87553,
+                    "credits":2,
+                    "ident":"H1",
+                    "instructor":{
+                        "fname":"Christine  ",
+                        "lname":"Heitsch"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":790,
+                            "location":"Klaus 1456",
+                            "start_time":740
+                        },
+                        {
+                            "day":"W",
+                            "end_time":790,
+                            "location":"Klaus 1456",
+                            "start_time":740
+                        },
+                        {
+                            "day":"F",
+                            "end_time":790,
+                            "location":"Skiles 254",
+                            "start_time":740
+                        }
+                    ]
+                },
+                {
+                    "call_number":90799,
+                    "credits":2,
+                    "ident":"H2",
+                    "instructor":{
+                        "fname":"Christine  ",
+                        "lname":"Heitsch"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":790,
+                            "location":"Klaus 1456",
+                            "start_time":740
+                        },
+                        {
+                            "day":"W",
+                            "end_time":790,
+                            "location":"Klaus 1456",
+                            "start_time":740
+                        },
+                        {
+                            "day":"F",
+                            "end_time":790,
+                            "location":"Skiles 255",
+                            "start_time":740
+                        }
+                    ]
+                },
+                {
+                    "call_number":90800,
+                    "credits":2,
+                    "ident":"H3",
+                    "instructor":{
+                        "fname":"Christine  ",
+                        "lname":"Heitsch"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":790,
+                            "location":"Klaus 1456",
+                            "start_time":740
+                        },
+                        {
+                            "day":"W",
+                            "end_time":790,
+                            "location":"Klaus 1456",
+                            "start_time":740
+                        },
+                        {
+                            "day":"F",
+                            "end_time":790,
+                            "location":"Skiles 256",
+                            "start_time":740
+                        }
+                    ]
+                },
+                {
+                    "call_number":87554,
+                    "credits":2,
+                    "ident":"J1",
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":885,
+                            "location":"MRDC 2404",
+                            "start_time":835
+                        },
+                        {
+                            "day":"W",
+                            "end_time":885,
+                            "location":"MRDC 2404",
+                            "start_time":835
+                        },
+                        {
+                            "day":"F",
+                            "end_time":885,
+                            "location":"Skiles 154",
+                            "start_time":835
+                        }
+                    ]
+                },
+                {
+                    "call_number":90801,
+                    "credits":2,
+                    "ident":"J2",
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":885,
+                            "location":"MRDC 2404",
+                            "start_time":835
+                        },
+                        {
+                            "day":"W",
+                            "end_time":885,
+                            "location":"MRDC 2404",
+                            "start_time":835
+                        },
+                        {
+                            "day":"F",
+                            "end_time":885,
+                            "location":"Skiles 246",
+                            "start_time":835
+                        }
+                    ]
+                },
+                {
+                    "call_number":91188,
+                    "credits":2,
+                    "ident":"J3",
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":885,
+                            "location":"MRDC 2404",
+                            "start_time":835
+                        },
+                        {
+                            "day":"W",
+                            "end_time":885,
+                            "location":"MRDC 2404",
+                            "start_time":835
+                        },
+                        {
+                            "day":"F",
+                            "end_time":885,
+                            "location":"Skiles 254",
+                            "start_time":835
+                        }
+                    ]
+                },
+                {
+                    "call_number":87555,
+                    "credits":2,
+                    "ident":"M1",
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":950,
+                            "location":"Boggs B9",
+                            "start_time":900
+                        },
+                        {
+                            "day":"W",
+                            "end_time":950,
+                            "location":"Boggs B9",
+                            "start_time":900
+                        },
+                        {
+                            "day":"F",
+                            "end_time":950,
+                            "location":"Skiles 154",
+                            "start_time":900
+                        }
+                    ]
+                },
+                {
+                    "call_number":87556,
+                    "credits":2,
+                    "ident":"M2",
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":950,
+                            "location":"Boggs B9",
+                            "start_time":900
+                        },
+                        {
+                            "day":"W",
+                            "end_time":950,
+                            "location":"Boggs B9",
+                            "start_time":900
+                        },
+                        {
+                            "day":"F",
+                            "end_time":950,
+                            "location":"Skiles 246",
+                            "start_time":900
+                        }
+                    ]
+                },
+                {
+                    "call_number":91189,
+                    "credits":2,
+                    "ident":"M3",
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":950,
+                            "location":"Boggs B9",
+                            "start_time":900
+                        },
+                        {
+                            "day":"W",
+                            "end_time":950,
+                            "location":"Boggs B9",
+                            "start_time":900
+                        },
+                        {
+                            "day":"F",
+                            "end_time":950,
+                            "location":"Skiles 254",
+                            "start_time":900
+                        }
+                    ]
+                },
+                {
+                    "call_number":88404,
+                    "credits":2,
+                    "ident":"T1",
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":1040,
+                            "location":"Skiles 249",
+                            "start_time":990
+                        },
+                        {
+                            "day":"W",
+                            "end_time":1040,
+                            "location":"Skiles 249",
+                            "start_time":990
+                        },
+                        {
+                            "day":"F",
+                            "end_time":1040,
+                            "location":"Skiles 154",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":90802,
+                    "credits":2,
+                    "ident":"T2",
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":1040,
+                            "location":"Skiles 249",
+                            "start_time":990
+                        },
+                        {
+                            "day":"W",
+                            "end_time":1040,
+                            "location":"Skiles 249",
+                            "start_time":990
+                        },
+                        {
+                            "day":"F",
+                            "end_time":1040,
+                            "location":"Skiles 156",
+                            "start_time":990
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "activityRequests":[
+        {
+            "name":"RoboJackets",
+            "meetingTimes":[
+                {
+                    "day":"W",
+                    "end_time":560,
+                    "location":"Klaus 1443",
+                    "start_time":500
+                },
+                {
+                    "day":"R",
+                    "end_time":560,
+                    "location":"Klaus 1443",
+                    "start_time":500
+                }
+            ]
+        },
+        {
+            "name":"Gitmad",
+            "meetingTimes":[
+                {
+                    "day":"M",
+                    "end_time":1200,
+                    "location":"Klaus 1556",
+                    "start_time":1260
+                },
+                {
+                    "day":"T",
+                    "end_time":1200,
+                    "location":"Klaus 1443",
+                    "start_time":1240
+                }
+            ]
+        }
+    ]
+}
