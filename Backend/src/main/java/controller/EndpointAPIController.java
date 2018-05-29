@@ -11,8 +11,8 @@ import wrapper_classes.CF.RequestWrapperCF;
 public class EndpointAPIController {
 
     @RequestMapping(value = "/plancourses", method = RequestMethod.POST)
-    public String planCourses(@RequestBody RequestWrapperCF requests) {
+    public RequestWrapperCF planCourses(@RequestBody RequestWrapperCF requests) {
         System.out.println("Object has been deserialized");
-        return "Test";
+        return requests;
     }
 }

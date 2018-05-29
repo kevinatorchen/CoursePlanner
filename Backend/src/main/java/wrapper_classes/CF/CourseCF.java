@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class CourseCF {
     private String courseName;
+    private List<InstructorCF> desiredProfessors;
     private List<CourseSectionCF> sectionData;
 
     public CourseCF() {
@@ -15,6 +16,10 @@ public class CourseCF {
 
     public String getCourseName() {
         return courseName;
+    }
+
+    public List<InstructorCF> getDesiredProfessors() {
+        return desiredProfessors;
     }
 
     public List<CourseSectionCF> getSectionData() {

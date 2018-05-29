@@ -2,6 +2,16 @@
     "courseRequests":[
         {
             "courseName":"APPH 1040",
+            "desiredProfessors":[
+                {
+                    "fname":"Michele Lee ",
+                    "lname":"Rosbruck"
+                },
+                {
+                    "fname":"Teresa Kay ",
+                    "lname":"Snow"
+                }
+            ],
             "sectionData":[
                 {
                     "call_number":86999,
@@ -119,6 +129,16 @@
         },
         {
             "courseName":"CS 1301",
+            "desiredProfessors":[
+                {
+                    "fname":"Melinda Hardy ",
+                    "lname":"McDaniel"
+                },
+                {
+                    "fname":"David Andrew ",
+                    "lname":"Joyner"
+                }
+            ],
             "sectionData":[
                 {
                     "call_number":82745,
@@ -333,6 +353,20 @@
         },
         {
             "courseName":"ENGL 1102",
+            "desiredProfessors":[
+                {
+                    "fname":"Julie  ",
+                    "lname":"Weng"
+                },
+                {
+                    "fname":"Kate G ",
+                    "lname":"Holterhoff"
+                },
+                {
+                    "fname":"Christina M ",
+                    "lname":"Colvin"
+                }
+            ],
             "sectionData":[
                 {
                     "call_number":84638,
@@ -1509,6 +1543,16 @@
         },
         {
             "courseName":"HIST 2112",
+            "desiredProfessors":[
+                {
+                    "fname":"John Matthew ",
+                    "lname":"Smith"
+                },
+                {
+                    "fname":"Todd M ",
+                    "lname":"Michney"
+                }
+            ],
             "sectionData":[
                 {
                     "call_number":86127,
@@ -1566,6 +1610,16 @@
         },
         {
             "courseName":"MATH 1551",
+            "desiredProfessors":[
+                {
+                    "fname":"Balazs  ",
+                    "lname":"Strenner"
+                },
+                {
+                    "fname":"Xukai  ",
+                    "lname":"Yan"
+                }
+            ],
             "sectionData":[
                 {
                     "call_number":87515,
