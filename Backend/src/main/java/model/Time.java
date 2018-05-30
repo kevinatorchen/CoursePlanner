@@ -41,4 +41,13 @@ public class Time implements Comparable<Time> {
         builder.append(minute);
         return builder.toString();
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof Time)) {
+            return false;
+        }
+        Time otherTime = (Time) other;
+        return this.hour == otherTime.hour && this.minute == otherTime.minute;
+    }
 }

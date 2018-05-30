@@ -10,12 +10,17 @@ public abstract class Course extends Commitment {
   private int creditHour;
 
   public Course(String name) {
-    this(name, null, 0);
+    this(name, 0);
+  }
+
+  public Course (String name, int creditHour) {
+    this(name, null, creditHour);
   }
 
   public Course(String name, String longName, int creditHour) {
     super(name);
     this.longName = longName;
+    this.creditHour = creditHour;
   }
 
   public int getCreditHour() {

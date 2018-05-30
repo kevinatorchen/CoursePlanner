@@ -19,6 +19,14 @@ public class MeetingTime {
     this.interval = interval;
   }
 
+  public void addDay(int shiftAmount) {
+    if (((1 << shiftAmount) & daysOfWeek) > 0) {
+      throw new IllegalArgumentException("The day already exists!");
+    } else {
+      daysOfWeek += 1 << shiftAmount;
+    }
+  }
+
   public void setLocation(String location) {
     this.location = location;
   }

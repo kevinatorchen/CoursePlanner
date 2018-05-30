@@ -6,16 +6,14 @@ package model;
 public abstract class Section {
     private String name;
     private MeetingTime[] meetingTimes;
-    private String location;
     private Commitment commitment;
 
-    public Section(String name, MeetingTime[] meetingTimes, String location) {
-        this(name, meetingTimes, location, null);
+    public Section(String name, MeetingTime[] meetingTimes) {
+        this(name, meetingTimes, null);
     }
-    public Section(String name, MeetingTime[] meetingTimes, String location, Commitment commitment) {
+    public Section(String name, MeetingTime[] meetingTimes, Commitment commitment) {
         this.name = name;
         this.meetingTimes = meetingTimes;
-        this.location = location;
         this.commitment = commitment;
     }
 
@@ -25,14 +23,6 @@ public abstract class Section {
 
     public void setCommitment(Commitment commitment) {
         this.commitment = commitment;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public String getName() {

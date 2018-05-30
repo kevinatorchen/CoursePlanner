@@ -19,4 +19,8 @@ public class InstructorCF {
         return lname;
     }
 
+    @Override
+    public String toString() {
+        return fname + lname;
+    }
 }

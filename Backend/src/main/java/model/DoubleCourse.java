@@ -34,7 +34,7 @@ public class DoubleCourse extends Course {
                     meetingTimes[i] = currentSubsectionMT[j];
                 }
                 CourseSection newSection = new CourseSection(currentSubsection.getCommitment(), name, meetingTimes,
-                        currentSubsection.getCrn(), currentSubsection.getProf(), currentSubsection.getLocation());
+                        currentSubsection.getCrn(), currentSubsection.getProf());
                 individualSections[k++] = newSection;
             }
         }

@@ -5,7 +5,7 @@ package model;
  */
 
 public class StudentActivitySection extends Section {
-    public StudentActivitySection(String name, MeetingTime[] meetingTimes, String location) {
-        super(name, meetingTimes, location);
+    public StudentActivitySection(String name, MeetingTime[] meetingTimes) {
+        super(name, meetingTimes);
     }
 }

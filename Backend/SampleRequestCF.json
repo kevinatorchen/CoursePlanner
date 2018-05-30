@@ -2,16 +2,7 @@
     "courseRequests":[
         {
             "courseName":"APPH 1040",
-            "desiredProfessors":[
-                {
-                    "fname":"Michele Lee ",
-                    "lname":"Rosbruck"
-                },
-                {
-                    "fname":"Teresa Kay ",
-                    "lname":"Snow"
-                }
-            ],
+            "desiredProfessors":[],
             "sectionData":[
                 {
                     "call_number":86999,

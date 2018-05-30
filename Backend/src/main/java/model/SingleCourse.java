@@ -19,7 +19,7 @@ public class SingleCourse extends Course {
 
     @Override
     public CourseSection[] getSections(String[] professors) {
-        if (professors == null || professors.equals("")) {
+        if (professors == null || professors.length == 0) {
             return getSections();
         }
 
