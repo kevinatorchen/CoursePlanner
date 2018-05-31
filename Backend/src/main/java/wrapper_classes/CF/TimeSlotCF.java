@@ -25,6 +25,10 @@ public class TimeSlotCF {
         return location;
     }
 
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public int getStart_time() {
         return start_time;
     }

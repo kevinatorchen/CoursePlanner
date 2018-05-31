@@ -32,6 +32,10 @@ public class CourseSectionCF {
         return instructor;
     }
 
+    public void setInstructor(InstructorCF instructor) {
+        this.instructor = instructor;
+    }
+
     public List<TimeSlotCF> getTimeslots() {
         return timeslots;
     }

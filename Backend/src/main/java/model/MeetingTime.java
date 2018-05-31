@@ -9,14 +9,16 @@ public class MeetingTime {
   private Interval interval;
   private String location;
 
-  public MeetingTime(int i, Time startTime, Time endTime) {
+  public MeetingTime(int i, Time startTime, Time endTime, String location) {
     this.daysOfWeek = i;
     this.interval = new Interval(startTime, endTime);
+    this.location = location;
   }
 
-  public MeetingTime(int daysOfWeek, Interval interval) {
+  public MeetingTime(int daysOfWeek, Interval interval, String location) {
     this.daysOfWeek = daysOfWeek;
     this.interval = interval;
+    this.location = location;
   }
 
   public void addDay(int shiftAmount) {

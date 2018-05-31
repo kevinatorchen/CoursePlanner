@@ -2,7 +2,16 @@
     "courseRequests":[
         {
             "courseName":"APPH 1040",
-            "desiredProfessors":[],
+            "desiredProfessors":[
+                {
+                    "fname":"Michele Lee ",
+                    "lname":"Rosbruck"
+                },
+                {
+                    "fname":"Teresa Kay ",
+                    "lname":"Snow"
+                }
+            ],
             "sectionData":[
                 {
                     "call_number":86999,
@@ -2298,15 +2307,15 @@
             "meetingTimes":[
                 {
                     "day":"M",
-                    "end_time":1200,
+                    "end_time":1260,
                     "location":"Klaus 1556",
-                    "start_time":1260
+                    "start_time":1200
                 },
                 {
                     "day":"T",
-                    "end_time":1200,
+                    "end_time":1240,
                     "location":"Klaus 1443",
-                    "start_time":1240
+                    "start_time":1200
                 }
             ]
         }
