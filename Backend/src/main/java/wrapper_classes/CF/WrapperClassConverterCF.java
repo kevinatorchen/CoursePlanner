@@ -135,6 +135,7 @@ public class WrapperClassConverterCF {
             for (int i = 0; i < prof.length; i++) {
                 prof[i] = requestedCourseCF.getDesiredProfessors().get(i).toString();
             }
+            currentRequest.setProf(prof);
             for (Section section: currentRequest.getCommitment().getSections()) {
                 section.setCommitment(currentRequest.getCommitment());
             }

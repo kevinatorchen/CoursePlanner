@@ -5,6 +5,7 @@ package controller;
  */
 
 import model.CommitmentRequest;
+import model.Schedule;
 import org.springframework.web.bind.annotation.*;
 import wrapper_classes.CF.RequestWrapperCF;
 import wrapper_classes.CF.WrapperClassConverterCF;
@@ -15,11 +16,12 @@ import java.util.List;
 public class EndpointAPIController {
 
     @RequestMapping(value = "/plancourses", method = RequestMethod.POST)
-    public RequestWrapperCF planCourses(@RequestBody RequestWrapperCF requests) {
+    public List<Schedule> planCourses(@RequestBody RequestWrapperCF requests) {
         System.out.println("Object has been deserialized");
         System.out.println("Converting object...");
         List<CommitmentRequest> commitmentRequests = WrapperClassConverterCF.convertRequest(requests);
         System.out.println("Converted objects");
-        return requests;
+        CoursePlanner.planCourses(commitmentRequests);
+        return CoursePlanner.scheduleList;
     }
 }
