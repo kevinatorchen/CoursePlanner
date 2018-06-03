@@ -4,6 +4,8 @@ package controller;
  * Created by Kevin on 5/28/2018.
  */
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import model.CommitmentRequest;
 import model.Schedule;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +18,14 @@ import java.util.List;
 public class EndpointAPIController {
 
     @RequestMapping(value = "/plancourses", method = RequestMethod.POST)
-    public List<Schedule> planCourses(@RequestBody RequestWrapperCF requests) {
+    public String planCourses(@RequestBody RequestWrapperCF requests) throws JsonProcessingException {
         System.out.println("Object has been deserialized");
         System.out.println("Converting object...");
         List<CommitmentRequest> commitmentRequests = WrapperClassConverterCF.convertRequest(requests);
         System.out.println("Converted objects");
         CoursePlanner.planCourses(commitmentRequests);
-        return CoursePlanner.scheduleList;
+        ObjectMapper mapper = new ObjectMapper();
+        String schedulesJSON = mapper.writeValueAsString(CoursePlanner.scheduleList);
+        return schedulesJSON;
     }
 }

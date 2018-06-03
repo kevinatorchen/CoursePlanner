@@ -136,9 +136,6 @@ public class WrapperClassConverterCF {
                 prof[i] = requestedCourseCF.getDesiredProfessors().get(i).toString();
             }
             currentRequest.setProf(prof);
-            for (Section section: currentRequest.getCommitment().getSections()) {
-                section.setCommitment(currentRequest.getCommitment());
-            }
             commitmentRequests.add(currentRequest);
 
         }
@@ -150,7 +147,6 @@ public class WrapperClassConverterCF {
             studentActivitySections[0] = section;
             CommitmentRequest currentRequest = new CommitmentRequest(
                     new StudentActivity(activityCF.getName(), studentActivitySections));
-            currentRequest.getCommitment().getSections()[0].setCommitment(currentRequest.getCommitment());
             commitmentRequests.add(currentRequest);
         }
 

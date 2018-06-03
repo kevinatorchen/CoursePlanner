@@ -37,6 +37,7 @@ public class CoursePlanner {
                                  boolean ignoreProfessor, int altProfessors, int droppedCommitments) {
     if (currentCourse >= courseRequests.size()) {
       if (scheduleList.size() > MAX_RESULTS) {
+        System.out.println("Too many results!");
         return;
       }
       Schedule temp = new Schedule();
