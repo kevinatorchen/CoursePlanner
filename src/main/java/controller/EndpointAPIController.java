@@ -28,4 +28,9 @@ public class EndpointAPIController {
         String schedulesJSON = mapper.writeValueAsString(CoursePlanner.scheduleList);
         return schedulesJSON;
     }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String welcome() {
+        return "Welcome to Course Planner web service! Contact kevinjulianchen@hotmail.com to learn how to use this service.";
+    }
 }
