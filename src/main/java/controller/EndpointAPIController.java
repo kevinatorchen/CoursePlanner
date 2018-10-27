@@ -39,7 +39,7 @@ public class EndpointAPIController {
         return Integer.toString(CoursePlanner.scheduleList.size());
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/")
     public String welcome() {
         return "Welcome to Course Planner web service! Contact kevinjulianchen@hotmail.com to learn how to use this service.";
     }
