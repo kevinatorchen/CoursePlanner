@@ -6,14 +6,26 @@ package model;
 public abstract class Section {
     private String name;
     private MeetingTime[] meetingTimes;
+    private int creditHours;
+    private String courseName;
 
-    public Section(String name, MeetingTime[] meetingTimes) {
+    public Section(String name, MeetingTime[] meetingTimes, int creditHours, String courseName) {
         this.name = name;
         this.meetingTimes = meetingTimes;
+        this.creditHours = creditHours;
+        this.courseName = courseName;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getCreditHours() {
+        return creditHours;
+    }
+
+    public String getCourseName() {
+        return courseName;
     }
 
     public MeetingTime[] getMeetingTimes() {

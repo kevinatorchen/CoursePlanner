@@ -8,15 +8,17 @@ public class CourseSection extends Section {
     private String prof;
 
 
-    public CourseSection(String name, MeetingTime[] meetingTimes, int crn, String prof) {
-        super(name, meetingTimes);
+    public CourseSection(String name, MeetingTime[] meetingTimes, int creditHours, String courseName, int crn, String prof) {
+        super(name, meetingTimes, creditHours, courseName);
         this.crn = crn;
         this.prof = prof;
     }
 
-    public CourseSection(String name, MeetingTime[] meetingTimes) {
-        this(name, meetingTimes, 0, null);
+    /*
+    public CourseSection(String name, MeetingTime[] meetingTimes, int creditHours, String courseName) {
+        this(name, meetingTimes, creditHours, courseName, 0, null);
     }
+    */
 
     /*
     public boolean conflictsWith(Course other) {

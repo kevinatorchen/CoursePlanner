@@ -33,8 +33,8 @@ public class DoubleCourse extends Course {
                 for (int i = currentDoubleMT.length, j = 0; i < meetingTimes.length; i++, j++) {
                     meetingTimes[i] = currentSubsectionMT[j];
                 }
-                CourseSection newSection = new CourseSection(name, meetingTimes,
-                        currentSubsection.getCrn(), currentSubsection.getProf());
+                CourseSection newSection = new CourseSection(name, meetingTimes, currentSubsection.getCreditHours(),
+                        currentSubsection.getCourseName(), currentSubsection.getCrn(), currentSubsection.getProf());
                 individualSections[k++] = newSection;
             }
         }

@@ -123,6 +123,8 @@ public class WrapperClassConverterCF {
                 courseSections.add(new CourseSection(
                         currentCourseSectionCF.getIdent(),
                         convertTimeslotsToMeetingTimes(currentCourseSectionCF.getTimeslots()),
+                        currentCourseSectionCF.getCredits(),
+                        requestedCourseCF.getCourseName(),
                         currentCourseSectionCF.getCall_number(),
                         currentCourseSectionCF.getInstructor().toString()));
             }
@@ -143,7 +145,7 @@ public class WrapperClassConverterCF {
         for (ActivityCF activityCF: request.getActivityRequests()) {
             StudentActivitySection[] studentActivitySections = new StudentActivitySection[1];
             StudentActivitySection section = new StudentActivitySection(
-                    "N/A", convertTimeslotsToMeetingTimes(activityCF.getMeetingTimes()));
+                    "N/A", convertTimeslotsToMeetingTimes(activityCF.getMeetingTimes()), 0, activityCF.getName());
             studentActivitySections[0] = section;
             CommitmentRequest currentRequest = new CommitmentRequest(
                     new StudentActivity(activityCF.getName(), studentActivitySections));
