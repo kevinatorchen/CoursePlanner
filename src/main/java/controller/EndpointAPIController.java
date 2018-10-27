@@ -29,6 +29,16 @@ public class EndpointAPIController {
         return schedulesJSON;
     }
 
+    @RequestMapping(value = "/getNumberCourses", method = RequestMethod.POST)
+    public String getNumberCourses(@RequestBody RequestWrapperCF requests) throws JsonProcessingException {
+        System.out.println("Object has been deserialized");
+        System.out.println("Converting object...");
+        List<CommitmentRequest> commitmentRequests = WrapperClassConverterCF.convertRequest(requests);
+        System.out.println("Converted objects");
+        CoursePlanner.planCourses(commitmentRequests);
+        return Integer.toString(CoursePlanner.scheduleList.size());
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcome() {
         return "Welcome to Course Planner web service! Contact kevinjulianchen@hotmail.com to learn how to use this service.";
