@@ -1,0 +1,374 @@
+{
+    "courseRequests":[
+        {
+            "courseName":"APPH 1040",
+            "desiredProfessors":[
+                {
+                    "fname":"Michele Lee ",
+                    "lname":"Rosbruck"
+                },
+                {
+                    "fname":"Teresa Kay ",
+                    "lname":"Snow"
+                }
+            ],
+            "sectionData":[
+                {
+                    "call_number":86999,
+                    "credits":2,
+                    "ident":"A",
+                    "instructor":{
+                        "fname":"Michele Lee ",
+                        "lname":"Rosbruck"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":790,
+                            "location":"College of Business 100",
+                            "start_time":740
+                        },
+                        {
+                            "day":"W",
+                            "end_time":790,
+                            "location":"College of Business 100",
+                            "start_time":740
+                        }
+                    ]
+                },
+                {
+                    "call_number":90185,
+                    "credits":2,
+                    "ident":"B",
+                    "instructor":{
+                        "fname":"Michele Lee ",
+                        "lname":"Rosbruck"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":885,
+                            "location":"College of Business 100",
+                            "start_time":835
+                        },
+                        {
+                            "day":"W",
+                            "end_time":885,
+                            "location":"College of Business 100",
+                            "start_time":835
+                        }
+                    ]
+                },
+                {
+                    "call_number":86232,
+                    "credits":2,
+                    "ident":"E",
+                    "instructor":{
+                        "fname":"Michele Lee ",
+                        "lname":"Rosbruck"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"T",
+                            "end_time":860,
+                            "location":"Clough Commons 152",
+                            "start_time":810
+                        },
+                        {
+                            "day":"R",
+                            "end_time":860,
+                            "location":"Clough Commons 152",
+                            "start_time":810
+                        }
+                    ]
+                },
+                {
+                    "call_number":86233,
+                    "credits":2,
+                    "ident":"J",
+                    "instructor":{
+                        "fname":"Teresa Kay ",
+                        "lname":"Snow"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"F",
+                            "end_time":840,
+                            "location":"College of Business 100",
+                            "start_time":740
+                        }
+                    ]
+                },
+                {
+                    "call_number":86234,
+                    "credits":2,
+                    "ident":"L",
+                    "instructor":{
+                        "fname":"Teresa Kay ",
+                        "lname":"Snow"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"F",
+                            "end_time":1000,
+                            "location":"College of Business 100",
+                            "start_time":900
+                        }
+                    ]
+                },
+                {
+                    "call_number":89720,
+                    "credits":2,
+                    "ident":"RBS",
+                    "instructor":{
+                        "fname":"Lesley  ",
+                        "lname":"Baradel"
+                    }
+                }
+            ]
+        },
+        {
+            "courseName":"CS 1301",
+            "desiredProfessors":[
+                {
+                    "fname":"Melinda Hardy ",
+                    "lname":"McDaniel"
+                },
+                {
+                    "fname":"David Andrew ",
+                    "lname":"Joyner"
+                }
+            ],
+            "sectionData":[
+                {
+                    "call_number":82745,
+                    "credits":3,
+                    "ident":"A03",
+                    "instructor":{
+                        "fname":"Melinda Hardy ",
+                        "lname":"McDaniel"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"F",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"R",
+                            "end_time":1065,
+                            "location":"Van Leer C340",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":82746,
+                    "credits":3,
+                    "ident":"A04",
+                    "instructor":{
+                        "fname":"Melinda Hardy ",
+                        "lname":"McDaniel"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"F",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":1065,
+                            "location":"Van Leer C240",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":87416,
+                    "credits":3,
+                    "ident":"B03",
+                    "instructor":{
+                        "fname":"Melinda Hardy ",
+                        "lname":"McDaniel"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":530,
+                            "location":"College of Business 100",
+                            "start_time":480
+                        },
+                        {
+                            "day":"W",
+                            "end_time":530,
+                            "location":"College of Business 100",
+                            "start_time":480
+                        },
+                        {
+                            "day":"F",
+                            "end_time":530,
+                            "location":"College of Business 100",
+                            "start_time":480
+                        },
+                        {
+                            "day":"R",
+                            "end_time":1065,
+                            "location":"Molecular Sciences & Engr 1224",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":87417,
+                    "credits":3,
+                    "ident":"B04",
+                    "instructor":{
+                        "fname":"Melinda Hardy ",
+                        "lname":"McDaniel"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":530,
+                            "location":"College of Business 100",
+                            "start_time":480
+                        },
+                        {
+                            "day":"W",
+                            "end_time":530,
+                            "location":"College of Business 100",
+                            "start_time":480
+                        },
+                        {
+                            "day":"F",
+                            "end_time":530,
+                            "location":"College of Business 100",
+                            "start_time":480
+                        },
+                        {
+                            "day":"W",
+                            "end_time":1065,
+                            "location":"Architecture (East) 207",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":82848,
+                    "credits":3,
+                    "ident":"GR",
+                    "instructor":{
+                        "fname":"Melinda Hardy ",
+                        "lname":"McDaniel"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"M",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"F",
+                            "end_time":595,
+                            "location":"College of Business 100",
+                            "start_time":545
+                        },
+                        {
+                            "day":"W",
+                            "end_time":1065,
+                            "location":"Cherry Emerson 320",
+                            "start_time":990
+                        }
+                    ]
+                },
+                {
+                    "call_number":90085,
+                    "credits":3,
+                    "ident":"HP",
+                    "instructor":{
+                        "fname":"David Andrew ",
+                        "lname":"Joyner"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"R",
+                            "end_time":975,
+                            "location":"West Village Dining Commons 277",
+                            "start_time":900
+                        }
+                    ]
+                },
+                {
+                    "call_number":90091,
+                    "credits":3,
+                    "ident":"O1",
+                    "instructor":{
+                        "fname":"David Andrew ",
+                        "lname":"Joyner"
+                    },
+                    "timeslots":[
+                        {
+                            "day":"R",
+                            "end_time":1065,
+                            "location":"Klaus 1443",
+                            "start_time":990
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "activityRequests":[
+        {
+            "name":"RoboJackets",
+            "meetingTimes":[
+                {
+                    "day":"W",
+                    "end_time":560,
+                    "location":"Klaus 1443",
+                    "start_time":500
+                },
+                {
+                    "day":"R",
+                    "end_time":560,
+                    "location":"Klaus 1443",
+                    "start_time":500
+                }
+            ]
+        }
+    ]
+}
